@@ -1,7 +1,6 @@
 # uiip
 
 Samantha
-Git
 
 
 
@@ -394,7 +393,7 @@ Git
 
 
 
-:D
+
 
 
 
