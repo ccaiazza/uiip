@@ -1,9 +1,7 @@
 # uiip
 
-
-<<<<<<< HEAD
 Giulia Della Sala
-=======
+
 Sagliocchi
 
 
@@ -14,7 +12,7 @@ Sagliocchi
 Raffaele Sarubbi
 
 Carmine
-Giulia
+
 
 
 
