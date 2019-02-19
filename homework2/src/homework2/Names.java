@@ -9,6 +9,7 @@ public class Hello {
 		System.out.println("Michele Sagliocchi");
 		System.out.println("Raffaele Sarubbi");
 		System.out.println("Samantha Sole");
+		System.out.println("Cinzia Tammaro");
 
 	}
 
