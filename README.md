@@ -395,22 +395,6 @@ Giulia
 
 
 
-<<<<<<< HEAD
-:D
-=======
-
-
-
-
-
-:D merge!!!!!!
->>>>>>> origin/develop
-
-
-
-
-
-
 
 
 
