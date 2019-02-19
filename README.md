@@ -1,9 +1,11 @@
 # uiip
-Cinzia Tammaro
+Cinzia
 
-Git
+test
 
 
+Carmine
+Giulia
 
 
 
@@ -25,6 +27,7 @@ Git
 
 
 
+:-) siamo una squadra fortissima
 
 
 
@@ -392,7 +395,16 @@ Git
 
 
 
+<<<<<<< HEAD
 :D
+=======
+
+
+
+
+
+:D merge!!!!!!
+>>>>>>> origin/develop
 
 
 
