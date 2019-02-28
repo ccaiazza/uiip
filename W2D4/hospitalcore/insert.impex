@@ -1,0 +1,16 @@
+INSERT_UPDATE Hospital; code[unique=true]; name; citta; reparti
+;010; Cardarelli; Napoli;
+;020; Gemelli; Roma;
+
+
+INSERT_UPDATE Reparto;  codeReparto[unique=true]; nameRep; code; head; hospital;
+; rep1; Pediatrics; 010; he1;
+; rep2; Surgery; 010; he2;
+; rep3; Cardiology; 020; he3;
+
+INSERT_UPDATE Head; codeHead[unique=true]; name; 
+; he1; Rossi;
+
+
+
+
