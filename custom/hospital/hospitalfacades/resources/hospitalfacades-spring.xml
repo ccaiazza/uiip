@@ -319,7 +319,7 @@
 	</bean>
 	
 	<bean id="headPopulator"
-		class="org.training.hospital.facades.populators.HeadPopsulator">
+		class="org.training.hospital.facades.populators.HeadPopulator">
 	</bean>
 	
 	

@@ -34,7 +34,7 @@ public class DefaultHospitalDao extends DefaultGenericDao<HospitalModel> impleme
 
 
 
-		final String fsq = "SELECT{" + HospitalModel.NAME + " " + HospitalModel.REPARTI
+		final String fsq = "SELECT{" + HospitalModel.NAME + " " + HospitalModel.NUMBERREP + " " + HospitalModel.REPARTI
 				+ "} FROM {HOSPITAL}";
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(fsq);
 

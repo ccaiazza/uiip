@@ -29,7 +29,8 @@ public class DefaultRepartoService implements RepartoService
 	 * HospitalModel)
 	 */
 	@Override
-	public List<RepartoModel> getRepartiByHospital(final String code)throws AmbiguousIdentifierException, UnknownIdentifierException
+	public List<RepartoModel> getRepartiByHospital(final String code)
+			throws AmbiguousIdentifierException, UnknownIdentifierException
 	{
 		final List<RepartoModel> result = repartoDao.findRepartiByHospital(code);
        if (result.isEmpty())
@@ -39,7 +40,7 @@ public class DefaultRepartoService implements RepartoService
        else if (result.size() > 1)
        {
 			throw new AmbiguousIdentifierException(
-					"Hospital code '" + code + "' is not unique, " + result.size() + " hospital found!");
+					"Hospital code " + code + " is not unique, " + result.size() + " hospital found!");
        }
 		return result;
 	}

@@ -716,50 +716,66 @@
 		class="org.training.hospital.core.handler.DynamicAttributesNumberDepartment">
 	</bean>
 
-	
+
 	<bean name="defaultHospitalDao"
 		class=" org.training.hospital.core.dao.impl.DefaultHospitalDao">
-		<constructor-arg value = "Hospital"/>
+		<constructor-arg value="Hospital" />
 	</bean>
-	
-	
 
-<bean name="defaultRepartoDao"
+
+
+	<bean name="defaultRepartoDao"
 		class=" org.training.hospital.core.dao.impl.DefaultRepartoDao">
-		<constructor-arg value = "Reparto" />
-			
+		<constructor-arg value="Reparto" />
+
 	</bean>
-	
 
 
-<bean name="defaultHeadDao"
+
+	<bean name="defaultHeadDao"
 		class=" org.training.hospital.core.dao.impl.DefaultHeadDao">
-		<constructor-arg value = "Head" />
+		<constructor-arg value="Head" />
 	</bean>
-	
 
 
-<alias name="defaultRepartoService" alias="repartoService"/>
- <bean id="defaultRepartoService" class="org.training.hospital.core.service.impl.DefaultRepartoService">
-        <property name="repartoDao" ref="defaultRepartoDao"/>
-    </bean>
-		
-		
+
+	<alias name="defaultRepartoService" alias="repartoService" />
+	<bean id="defaultRepartoService"
+		class="org.training.hospital.core.service.impl.DefaultRepartoService">
+		<property name="repartoDao" ref="defaultRepartoDao" />
+	</bean>
+
+
+
+	<alias name="defaultHeadService" alias="headService" />
+	<bean id="defaultHeadService"
+		class="org.training.hospital.core.service.impl.DefaultHeadService">
+		<property name="headDao" ref="defaultHeadDao" />
+	</bean>
+
+
+	<alias name="defaultHospitalService" alias="hospitalService" />
+	<bean id="defaultHospitalService"
+		class="org.training.hospital.core.service.impl.DefaultHospitalService">
+		<property name="hospitalDao" ref="defaultHospitalDao" />
+	</bean>
+
+
+	<bean id="hospitalRemoveInterceptor"
+		class="org.training.hospital.core.interceptor.HospitalRemoveInterceptor">
+	</bean>
+
+	<bean id="hospitalRemoveMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping ">
+		<property name="interceptor" ref="hospitalRemoveInterceptor" />
+		<property name="typeCode" value="Hospital" />
+	</bean>
+
+	<bean id="updateHospitalListJob" class="org.training.hospital.core.job.UpdateHospitalListJob" parent="abstractJobPerformable">
+	<property name="hospitalService" ref="defaultHospitalService" />
 	
-	<alias name="defaultHeadService" alias="headService"/>
-    <bean id="defaultHeadService" class="org.training.hospital.core.service.impl.DefaultHeadService">
-        <property name="headDao" ref="defaultHeadDao"/>
-    </bean>
-	
-	
-	<alias name="defaultHospitalService" alias="hospitalService"/>
-    <bean id="defaultHospitalService" class="org.training.hospital.core.service.impl.DefaultHospitalService">
-        <property name="hospitalDao" ref="defaultHospitalDao"/>
-    </bean>
-	
-	
-	<bean id="removeInterceptor"class="MyRemoveInterceptor"/>
-	
-	
-	
+
+	</bean>
+
+
 </beans>

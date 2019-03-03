@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 1-mar-2019 0.27.30                          ---
+ * --- Generated at 3-mar-2019 14.53.45                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
@@ -72,11 +72,7 @@ public abstract class GeneratedReparto extends GenericItem
 	 */
 	public String getCodeReparto(final SessionContext ctx)
 	{
-		if( ctx == null || ctx.getLanguage() == null )
-		{
-			throw new JaloInvalidParameterException("GeneratedReparto.getCodeReparto requires a session language", 0 );
-		}
-		return (String)getLocalizedProperty( ctx, CODEREPARTO);
+		return (String)getProperty( ctx, CODEREPARTO);
 	}
 	
 	/**
@@ -89,38 +85,12 @@ public abstract class GeneratedReparto extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Reparto.codeReparto</code> attribute. 
-	 * @return the localized codeReparto - Codice Reparto
-	 */
-	public Map<Language,String> getAllCodeReparto(final SessionContext ctx)
-	{
-		return (Map<Language,String>)getAllLocalizedProperties(ctx,CODEREPARTO,C2LManager.getInstance().getAllLanguages());
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>Reparto.codeReparto</code> attribute. 
-	 * @return the localized codeReparto - Codice Reparto
-	 */
-	public Map<Language,String> getAllCodeReparto()
-	{
-		return getAllCodeReparto( getSession().getSessionContext() );
-	}
-	
-	/**
 	 * <i>Generated method</i> - Setter of the <code>Reparto.codeReparto</code> attribute. 
 	 * @param value the codeReparto - Codice Reparto
 	 */
 	public void setCodeReparto(final SessionContext ctx, final String value)
 	{
-		if ( ctx == null) 
-		{
-			throw new JaloInvalidParameterException( "ctx is null", 0 );
-		}
-		if( ctx.getLanguage() == null )
-		{
-			throw new JaloInvalidParameterException("GeneratedReparto.setCodeReparto requires a session language", 0 );
-		}
-		setLocalizedProperty(ctx, CODEREPARTO,value);
+		setProperty(ctx, CODEREPARTO,value);
 	}
 	
 	/**
@@ -130,24 +100,6 @@ public abstract class GeneratedReparto extends GenericItem
 	public void setCodeReparto(final String value)
 	{
 		setCodeReparto( getSession().getSessionContext(), value );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Reparto.codeReparto</code> attribute. 
-	 * @param value the codeReparto - Codice Reparto
-	 */
-	public void setAllCodeReparto(final SessionContext ctx, final Map<Language,String> value)
-	{
-		setAllLocalizedProperties(ctx,CODEREPARTO,value);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Reparto.codeReparto</code> attribute. 
-	 * @param value the codeReparto - Codice Reparto
-	 */
-	public void setAllCodeReparto(final Map<Language,String> value)
-	{
-		setAllCodeReparto( getSession().getSessionContext(), value );
 	}
 	
 	@Override
