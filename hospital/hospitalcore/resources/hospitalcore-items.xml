@@ -149,9 +149,6 @@
 
 				<attributes>
 					<attribute qualifier="code" type="java.lang.String">
-
-
-
 						<modifiers read="true" write="true" search="true"
 							optional="false" unique="true" />
 						<persistence type="property" />
@@ -164,8 +161,6 @@
 					</attribute>
 
 					<attribute qualifier="numberRep" type="java.lang.String">
-
-
 						<persistence type="dynamic"
 							attributeHandler="dynamicAttributesNumberDepartment" />
 					</attribute>
@@ -181,30 +176,18 @@
 			<itemtype code="Reparto" autocreate="true" generate="true"
 				jaloclass="org.training.hospital.core.jalo.Hospital">
 				<deployment table="DepReparto" typecode="20002" />
-
-
 				<attributes>
 					<attribute qualifier="codeReparto"
-						type="localized:java.lang.String">
-
-
+						type="java.lang.String">
 						<persistence type="property" />
 					</attribute>
 					<attribute qualifier="nameRep"
 						type="localized:java.lang.String">
-
-
-
 						<persistence type="property" />
 					</attribute>
 					<attribute qualifier="head" type="Head">
-
-
-
 						<persistence type="property" />
 					</attribute>
-
-
 				</attributes>
 
 
@@ -212,29 +195,18 @@
 			<itemtype code="Head" autocreate="true" generate="true"
 				jaloclass="org.training.hospital.core.jalo.Hospital">
 				<deployment table="DepHead" typecode="20003" />
-
-
 				<attributes>
 					<attribute qualifier="codeHead" type="java.lang.String">
-
-
-
 						<persistence type="property" />
 					</attribute>
 					<attribute qualifier="name"
 						type="localized:java.lang.String">
-
-
-
 						<persistence type="property" />
 					</attribute>
-
-
-
 				</attributes>
-
-
 			</itemtype>
+
+
 		</typegroup>
 	</itemtypes>
 </items>

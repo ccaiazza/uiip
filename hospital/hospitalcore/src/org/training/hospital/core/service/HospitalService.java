@@ -15,6 +15,8 @@ import org.training.hospital.core.model.HospitalModel;
 public interface HospitalService
 {
 
-	public List<HospitalModel> getHospital();
+	public List<HospitalModel> getHospitalInfo();
+
+	public List<HospitalModel> getHospitals();
 
 }

@@ -28,18 +28,26 @@ public class DefaultHospitalFacade implements HospitalFacade
 	 * @return the hospitalService
 	 */
 	@Override
-	public List<HospitalData> getHospital()
+	public List<HospitalData> getHospitalInfo()
 	{
-		final List<HospitalModel> hospitalModels = hospitalService.getHospital();
+		final List<HospitalModel> hospitalModelsInfo = hospitalService.getHospitalInfo();
 
 
-		return hospitalConverter.convertAll(hospitalModels);
+		return hospitalConverter.convertAll(hospitalModelsInfo);
 	}
 
 	/**
 	 * @param hospitalService
 	 *           the hospitalService to set
 	 */
+	@Override
+	public List<HospitalData> getHospitals()
+	{
+		final List<HospitalModel> hospitalModels = hospitalService.getHospitals();
+
+		return hospitalConverter.convertAll(hospitalModels);
+	}
+
 	@Required
 	public void setHospitalService(final HospitalService hospitalService)
 	{
@@ -58,6 +66,7 @@ public class DefaultHospitalFacade implements HospitalFacade
 	 * @param hospitalConverter
 	 *           the hospitalConverter to set
 	 */
+	@Required
 	public void setHospitalConverter(final Converter<HospitalModel, HospitalData> hospitalConverter)
 	{
 		this.hospitalConverter = hospitalConverter;

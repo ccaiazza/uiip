@@ -23,9 +23,9 @@ public class DefaultHospitalService implements HospitalService
 
 	private HospitalDao hospitalDao;
 	@Override
-	public List<HospitalModel> getHospital() throws AmbiguousIdentifierException, UnknownIdentifierException
+	public List<HospitalModel> getHospitalInfo() throws AmbiguousIdentifierException, UnknownIdentifierException
 		{
-		final List<HospitalModel> result = hospitalDao.findHospital();
+		final List<HospitalModel> result = hospitalDao.findHospitalInfo();
 			if (result.isEmpty())
 			{
 				throw new UnknownIdentifierException("Reparto not found!");
@@ -38,6 +38,19 @@ public class DefaultHospitalService implements HospitalService
 			return result;
 		}
 
+	public List<HospitalModel> getHospitals() throws AmbiguousIdentifierException, UnknownIdentifierException
+	{
+		final List<HospitalModel> result = hospitalDao.findHospitals();
+		if (result.isEmpty())
+		{
+			throw new UnknownIdentifierException("Reparto not found!");
+		}
+		else if (result.size() > 1)
+		{
+			throw new AmbiguousIdentifierException("Reparto is not unique, reparto found!");
+		}
+		return result;
+	}
 	/**
 	 * @return the hospitalDao
 	 */

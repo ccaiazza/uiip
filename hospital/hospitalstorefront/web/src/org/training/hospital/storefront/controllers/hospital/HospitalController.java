@@ -54,7 +54,7 @@ public class HospitalController
 	final Model model) throws UnsupportedEncodingException
 	{
 
-		final List<HospitalData> nReparti = hospitalFacade.getHospital();
+		final List<HospitalData> nReparti = hospitalFacade.getHospitalInfo();
 
 		model.addAttribute("nReparti", nReparti);
 		return ControllerConstants.Views.Pages.Hospital.Nreparti;

@@ -1,13 +1,14 @@
-INSERT_UPDATE Hospital; code[unique=true]; name; citta; reparti[mode = append];
+INSERT_UPDATE Hospital; code[unique=true]; name[lang = en]; citta;reparti[mode = append]
 ;010; Cardarelli; Napoli; rep2,rep1;
 ;020; Gemelli; Roma; rep3;
 
-INSERT_UPDATE Head; codeHead[unique=true]; name; 
+INSERT_UPDATE Head; codeHead[unique=true]; name[lang = en]
 ; he1; Rossi;
+; he2; Verdi;
+; he3; Bianchi;
 
 
-
-INSERT_UPDATE Reparto;  codeReparto[unique=true]; nameRep; code; head(codeHead); hospital;
+INSERT_UPDATE Reparto;  codeReparto[unique=true]; nameRep[lang = en]; code; head(codeHead); hospital(code);
 ; rep1; Pediatrics; 010; he1;
 ; rep2; Surgery; 010; he2;
 ; rep3; Cardiology; 020; he3;

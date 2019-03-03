@@ -22,7 +22,7 @@ public class DefaultHospitalDao extends DefaultGenericDao implements HospitalDao
 		// XXX Auto-generated constructor stub
 	}
 
-	public List<HospitalModel> findHospital()
+	public List<HospitalModel> findHospitalInfo()
 	{
 
 		final String queryString = "SELECT {" + HospitalModel.NAME + " " + HospitalModel.REPARTI + "} " + "FROM {"
@@ -38,6 +38,20 @@ public class DefaultHospitalDao extends DefaultGenericDao implements HospitalDao
 		return result.getResult();
 	}
 
+	public List<HospitalModel> findHospitals()
+	{
+
+		final String queryString = "SELECT {" + HospitalModel.NAME + "} " + "FROM {" + HospitalModel._TYPECODE;
+
+
+
+
+		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);//prendere parametri
+		final SearchResult<HospitalModel> result = (SearchResult<HospitalModel>) getFlexibleSearchService().search(query);
+
+
+		return result.getResult();
+	}
 
 
 

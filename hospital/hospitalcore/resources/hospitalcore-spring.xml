@@ -774,8 +774,13 @@
 
 	<bean id="hospitalMapping"
 		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
-		<property name="interceptor" ref ="hospitalRemoveInterceptor"/>
-			<property name="typeCode" value="Hospital" />
+		<property name="interceptor" ref="hospitalRemoveInterceptor" />
+		<property name="typeCode" value="Hospital" />
 	</bean>
+
+	<bean id="infoJob" class="org.training.hospital.core.job.InfoJob" >
+	<property name="hospitalService" ref="hospitalService" />
+	</bean>
+
 </beans>
 
