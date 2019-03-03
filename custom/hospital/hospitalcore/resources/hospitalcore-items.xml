@@ -159,6 +159,7 @@
 						<persistence type="dynamic"
 							attributeHandler="dynamicAttributesNumberDepartment" />
 					</attribute>
+					
 					<attribute qualifier="citta" type="java.lang.String">
 						<description>città ospedale</description>
 						<modifiers read="true" write="true" search="true"
@@ -175,7 +176,7 @@
 
 				<attributes>
 					<attribute qualifier="codeReparto"
-						type="localized:java.lang.String">
+						type="java.lang.String">
 
 						<description>Codice Reparto</description>
 						<modifiers />
