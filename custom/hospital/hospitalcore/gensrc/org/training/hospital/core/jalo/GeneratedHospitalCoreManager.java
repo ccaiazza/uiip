@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 3-mar-2019 14.53.45                         ---
+ * --- Generated at 4-mar-2019 16.42.19                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
@@ -12,6 +12,7 @@ import de.hybris.platform.jalo.JaloBusinessException;
 import de.hybris.platform.jalo.JaloSystemException;
 import de.hybris.platform.jalo.SessionContext;
 import de.hybris.platform.jalo.extension.Extension;
+import de.hybris.platform.jalo.link.Link;
 import de.hybris.platform.jalo.type.ComposedType;
 import de.hybris.platform.jalo.type.JaloGenericCreationException;
 import java.util.HashMap;
@@ -23,6 +24,7 @@ import org.training.hospital.core.jalo.ApparelStyleVariantProduct;
 import org.training.hospital.core.jalo.ElectronicsColorVariantProduct;
 import org.training.hospital.core.jalo.Head;
 import org.training.hospital.core.jalo.Hospital;
+import org.training.hospital.core.jalo.Patient;
 import org.training.hospital.core.jalo.Reparto;
 
 /**
@@ -203,6 +205,32 @@ public abstract class GeneratedHospitalCoreManager extends Extension
 	public Hospital createHospital(final Map attributeValues)
 	{
 		return createHospital( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public Patient createPatient(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( HospitalCoreConstants.TC.PATIENT );
+			return (Patient)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating Patient : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public Patient createPatient(final Map attributeValues)
+	{
+		return createPatient( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public Reparto createReparto(final SessionContext ctx, final Map attributeValues)

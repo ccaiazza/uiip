@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Required;
 import org.training.hospital.core.model.HospitalModel;
 import org.training.hospital.core.model.RepartoModel;
 import org.training.hospital.core.service.HospitalService;
-import org.training.hospital.core.service.RepartoService;
 
 /**
  * @author soprasteria
@@ -73,22 +72,6 @@ public class UpdateHospitalListJob extends AbstractJobPerformable<CronJobModel>
 			return new PerformResult(CronJobResult.FAILURE, CronJobStatus.ABORTED);
 		}
 	}
-
-
-
-	public RepartoService getRepartoService()
-	{
-		return repartoService;
-	}
-
-
-	@Required
-	public void setRepartoService(final RepartoService repartoService)
-	{
-		this.repartoService = repartoService;
-	}
-
-
 
 	public HospitalService getHospitalService()
 	{

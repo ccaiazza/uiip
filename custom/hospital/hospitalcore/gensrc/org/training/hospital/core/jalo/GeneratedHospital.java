@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 3-mar-2019 14.53.45                         ---
+ * --- Generated at 4-mar-2019 16.42.19                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
@@ -136,7 +136,7 @@ public abstract class GeneratedHospital extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>Hospital.name</code> attribute.
-	 * @return the name - Nome ospedale.
+	 * @return the name - Nome ospedale
 	 */
 	public String getName(final SessionContext ctx)
 	{
@@ -149,7 +149,7 @@ public abstract class GeneratedHospital extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>Hospital.name</code> attribute.
-	 * @return the name - Nome ospedale.
+	 * @return the name - Nome ospedale
 	 */
 	public String getName()
 	{
@@ -158,7 +158,7 @@ public abstract class GeneratedHospital extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>Hospital.name</code> attribute. 
-	 * @return the localized name - Nome ospedale.
+	 * @return the localized name - Nome ospedale
 	 */
 	public Map<Language,String> getAllName(final SessionContext ctx)
 	{
@@ -167,7 +167,7 @@ public abstract class GeneratedHospital extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>Hospital.name</code> attribute. 
-	 * @return the localized name - Nome ospedale.
+	 * @return the localized name - Nome ospedale
 	 */
 	public Map<Language,String> getAllName()
 	{
@@ -176,7 +176,7 @@ public abstract class GeneratedHospital extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>Hospital.name</code> attribute. 
-	 * @param value the name - Nome ospedale.
+	 * @param value the name - Nome ospedale
 	 */
 	public void setName(final SessionContext ctx, final String value)
 	{
@@ -193,7 +193,7 @@ public abstract class GeneratedHospital extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>Hospital.name</code> attribute. 
-	 * @param value the name - Nome ospedale.
+	 * @param value the name - Nome ospedale
 	 */
 	public void setName(final String value)
 	{
@@ -202,7 +202,7 @@ public abstract class GeneratedHospital extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>Hospital.name</code> attribute. 
-	 * @param value the name - Nome ospedale.
+	 * @param value the name - Nome ospedale
 	 */
 	public void setAllName(final SessionContext ctx, final Map<Language,String> value)
 	{
@@ -211,7 +211,7 @@ public abstract class GeneratedHospital extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>Hospital.name</code> attribute. 
-	 * @param value the name - Nome ospedale.
+	 * @param value the name - Nome ospedale
 	 */
 	public void setAllName(final Map<Language,String> value)
 	{

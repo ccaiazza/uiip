@@ -42,7 +42,7 @@
     
 	 <bean class="org.training.hospital.facades.product.data.HeadData">
         <description>Data object representing a Head</description>
-        <property name="codeHead" type="String"/>
+        <property name="uid" type="String"/>
         <property name="name" type="String"/>
 
     </bean>

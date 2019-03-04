@@ -38,6 +38,7 @@ public class DefaultHeadDao extends DefaultGenericDao<HeadModel> implements Head
 		// XXX Auto-generated constructor stub
 	}
 
+
 	@Override
 	public List<HeadModel> findHeadByHospital(final String code)
 	{
@@ -50,6 +51,9 @@ public class DefaultHeadDao extends DefaultGenericDao<HeadModel> implements Head
 
 		return result.getResult();
 
+
+
+
 	}
 
 	public List<HeadModel> findHeadByHospitalName()
@@ -57,7 +61,8 @@ public class DefaultHeadDao extends DefaultGenericDao<HeadModel> implements Head
 		final String hospitalName = "Cardarelli";
 
 
-		final String fsq = "SELECT{PK} FROM {Head AS H JOIN REPARTO as R ON {H.codeHead=R.head} JOIN Hospital AS O ON{R.hospital=O.code} } WHERE {O.name=?hospitalName\"}";
+		final String fsq = "SELECT{" + HeadModel.PK + "} FROM {" + HeadModel._TYPECODE + " AS H JOIN REPARTO as R ON {"
+				+ HeadModel.UID + "=R.head} JOIN Hospital AS O ON{R.hospital=O.code} } WHERE {O.name=?hospitalName\"}";
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(fsq, Collections.singletonMap("name", hospitalName));
 
 		final SearchResult<HeadModel> result = (SearchResult<HeadModel>) getFlexibleSearchService().search(query);
@@ -75,7 +80,7 @@ public class DefaultHeadDao extends DefaultGenericDao<HeadModel> implements Head
 	{
 		validateParameterNotNull(codeReparto, "Hospital code must not be null!");
 		final Map parameters = new HashMap();
-		final String fsq = "SELECT{PK} FROM {Reparto AS R JOIN HEAD AS H ON {H.codeHead=R.head}} WHERE {R.codeReparto=?codeReparto\"}";
+		final String fsq = "SELECT{PK} FROM {Reparto AS R JOIN HEAD AS H ON {H.uid=R.head}} WHERE {R.codeReparto=?codeReparto\"}";
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(fsq, Collections.singletonMap("codeReparto", codeReparto));
 
 		final SearchResult<HeadModel> result = (SearchResult<HeadModel>) getFlexibleSearchService().search(query);

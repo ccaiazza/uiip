@@ -48,6 +48,20 @@
 			</targetElement>
 		</relation>
 
+		<relation code="Patient2RepartoRelation" localized="false"
+			generate="true" autocreate="true">
+			<deployment table="Pat2RepRelation" typecode="20005" />
+			<sourceElement type="Patient" qualifier="list_patient"
+				cardinality="many">
+				<modifiers read="true" write="false" initial="true"
+					optional="false" search="true" />
+			</sourceElement>
+			<targetElement type="Reparto" qualifier="list_reparti"
+				cardinality="many" ordered="false" collectiontype="set">
+				<modifiers read="true" write="true" optional="true"
+					search="true" partof="true" />
+			</targetElement>
+		</relation>
 
 	</relations>
 
@@ -147,19 +161,21 @@
 
 					<attribute qualifier="name"
 						type="localized:java.lang.String">
-						<description>Nome ospedale.</description>
-						<modifiers />
+						<description>Nome ospedale</description>
+						<modifiers read="true" write="true" optional="true"
+							unique="false" />
 						<persistence type="property" />
 					</attribute>
 
 					<attribute qualifier="numberRep" type="java.lang.String">
 
 						<description>numero reparto</description>
-						<modifiers />
+						<modifiers read="true" write="true" search="true"
+							optional="false" unique="false" />
 						<persistence type="dynamic"
 							attributeHandler="dynamicAttributesNumberDepartment" />
 					</attribute>
-					
+
 					<attribute qualifier="citta" type="java.lang.String">
 						<description>città ospedale</description>
 						<modifiers read="true" write="true" search="true"
@@ -179,7 +195,8 @@
 						type="java.lang.String">
 
 						<description>Codice Reparto</description>
-						<modifiers />
+						<modifiers read="true" write="true" search="true"
+							optional="false" unique="true" />
 						<persistence type="property" />
 					</attribute>
 					<attribute qualifier="nameRep"
@@ -200,28 +217,47 @@
 
 
 			</itemtype>
-			<itemtype code="Head" autocreate="true" generate="true">
+			
+			<itemtype code="Head" extends="User" autocreate="true"
+				generate="true">
 				<deployment table="DepHead" typecode="20003" />
 
+				<!-- <attributes> <attribute qualifier="codeHead" type="java.lang.String"> 
+					<description>Codice Primario</description> <modifiers read="true" write="true" 
+					search="true" optional="false" unique="true" /> <persistence type="property" 
+					/> </attribute> </attributes> -->
 
+
+			</itemtype>
+			
+			<itemtype code="Patient" extends="User" autocreate="true" generate="true">
+				<deployment table="DepPatient" typecode="20004" />
 				<attributes>
-					<attribute qualifier="codeHead" type="java.lang.String">
+					
+					
+					<attribute qualifier="surnamePatient"
+						type="java.lang.String">
 
-						<description>Codice Reparto</description>
-						<modifiers />
-						<persistence type="property" />
-					</attribute>
-					<attribute qualifier="name"
-						type="localized:java.lang.String">
-
-						<description>Nome reparto.</description>
+						<description>Cognome Paziente</description>
 
 						<persistence type="property" />
 					</attribute>
 
+					<attribute qualifier="entryDate" type="java.lang.String">
+
+						<description>Data Ingresso</description>
+
+						<persistence type="property" />
+					</attribute>
+
+					<attribute qualifier="exitDate" type="java.lang.String">
+
+						<description>Data uscita</description>
+
+						<persistence type="property" />
+					</attribute>
 
 				</attributes>
-
 
 			</itemtype>
 		</typegroup>
