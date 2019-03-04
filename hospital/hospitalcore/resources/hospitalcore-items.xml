@@ -202,6 +202,7 @@
 					<attribute qualifier="name"
 						type="localized:java.lang.String">
 						<persistence type="property" />
+						
 					</attribute>
 				</attributes>
 			</itemtype>
