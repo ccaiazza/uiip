@@ -19,13 +19,13 @@ public class HeadPopulator implements Populator<HeadModel, HeadData>
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see de.hybris.platform.converters.Populator#populate(java.lang.Object, java.lang.Object)
 	 */
 	@Override
 	public void populate(final HeadModel source, final HeadData target) throws ConversionException
 	{
-		target.setCodeHead(source.getCodeHead());
+		target.setUid(source.getUid());
 		target.setName(source.getName());
 
 

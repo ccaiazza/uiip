@@ -48,6 +48,7 @@ public class InfoJob implements JobPerformable<CronJobModel>
 		{
 			// XXX Auto-generated catch block
 			e.printStackTrace();
+
 		}
 
 		for (int i = 0; i < infoHospitals.size(); i++)
