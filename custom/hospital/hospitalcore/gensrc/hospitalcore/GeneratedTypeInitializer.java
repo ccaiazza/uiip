@@ -108,7 +108,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 	
 		createItemType(
 			"Head",
-			"User",
+			"Customer",
 			org.training.hospital.core.jalo.Head.class,
 			"de.hybris.platform.persistence.hospitalcore_Head",
 			false,
@@ -118,7 +118,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 	
 		createItemType(
 			"Patient",
-			"User",
+			"Customer",
 			org.training.hospital.core.jalo.Patient.class,
 			"de.hybris.platform.persistence.hospitalcore_Patient",
 			false,
@@ -192,8 +192,6 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 			
 				single_createattr_Reparto_head();
 			
-				single_createattr_Patient_surnamePatient();
-			
 				single_createattr_Patient_entryDate();
 			
 				single_createattr_Patient_exitDate();
@@ -205,7 +203,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 			"hospital", 
 			"Hospital", 
 			true,
-			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.INITIAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
+			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.INITIAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
 			false,
 			false,
 			CollectionType.COLLECTION,
@@ -222,14 +220,14 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 			"Patient2RepartoRelation", 
 			false, 
 
-			"list_patient", 
+			"patients", 
 			"Patient", 
 			true,
-			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.INITIAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
+			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.INITIAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
 			true,
 			false,
 			CollectionType.COLLECTION,
-			"list_reparti", 
+			"departments", 
 			"Reparto", 
 			true,
 			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.PARTOF_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
@@ -442,23 +440,6 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 			
 	}
 	
-	public void single_createattr_Patient_surnamePatient() throws JaloBusinessException
-	{
-		
-						Map sqlColumnDefinitions = null;
-					
-				createPropertyAttribute(
-					"Patient", 
-					"surnamePatient",  
-					null,
-					"java.lang.String",
-					de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG,
-					null,
-					sqlColumnDefinitions
-				);
-			
-	}
-	
 	public void single_createattr_Patient_entryDate() throws JaloBusinessException
 	{
 		
@@ -468,7 +449,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 					"Patient", 
 					"entryDate",  
 					null,
-					"java.lang.String",
+					"java.util.Date",
 					de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG,
 					null,
 					sqlColumnDefinitions
@@ -485,7 +466,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 					"Patient", 
 					"exitDate",  
 					null,
-					"java.lang.String",
+					"java.util.Date",
 					de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG,
 					null,
 					sqlColumnDefinitions
@@ -538,7 +519,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 			"hospital", 
 			"Hospital", 
 			true,
-			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.INITIAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
+			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.INITIAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
 			"reparti", 
 			"Reparto", 
 			true,
@@ -550,11 +531,11 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 		connectRelation(
 			"Patient2RepartoRelation", 
 			false, 
-			"list_patient", 
+			"patients", 
 			"Patient", 
 			true,
-			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.INITIAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
-			"list_reparti", 
+			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.INITIAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
+			"departments", 
 			"Reparto", 
 			true,
 			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.PARTOF_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
@@ -690,8 +671,6 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 				);
 				}
 			
-			single_setAttributeProperties_Patient_surnamePatient();
-		
 			single_setAttributeProperties_Patient_entryDate();
 		
 			single_setAttributeProperties_Patient_exitDate();
@@ -985,28 +964,6 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 							);
 						}
 					
-						public void single_setAttributeProperties_Patient_surnamePatient() throws JaloBusinessException
-						{
-							
-							
-							
-							Map customPropsMap = new HashMap();
-							
-							setAttributeProperties(
-								"Patient", 
-								"surnamePatient",
-								false, 
-								null,
-								null,
-								null,
-								true,
-								true,
-								null,
-								customPropsMap,
-								null
-							);
-						}
-					
 						public void single_setAttributeProperties_Patient_entryDate() throws JaloBusinessException
 						{
 							
@@ -1101,7 +1058,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 
 									setAttributeProperties(
 										"Reparto", 
-										"list_patient",
+										"patients",
 										false, 
 										null,
 										null,
@@ -1122,7 +1079,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 
 									setAttributeProperties(
 										"Patient", 
-										"list_reparti",
+										"departments",
 										false, 
 										null,
 										null,

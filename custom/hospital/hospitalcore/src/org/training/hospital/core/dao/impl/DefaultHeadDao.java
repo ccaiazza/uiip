@@ -44,7 +44,7 @@ public class DefaultHeadDao extends DefaultGenericDao<HeadModel> implements Head
 	{
 		validateParameterNotNull(code, "Hospital code must not be null!");
 
-		final String fsq = "SELECT{PK} FROM {Reparto AS R JOIN Head as H ON {H.codHead=R.head}} WHERE {R.hospital=?code\"}";
+		final String fsq = "SELECT{PK} FROM {Reparto AS R JOIN Head as H ON {H.uid=R.head}} WHERE {R.hospital=?code\"}";
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(fsq, Collections.singletonMap("code", code));
 
 		final SearchResult<HeadModel> result = (SearchResult<HeadModel>) getFlexibleSearchService().search(query);

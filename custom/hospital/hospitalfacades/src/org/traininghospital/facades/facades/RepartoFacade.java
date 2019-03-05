@@ -13,6 +13,5 @@ import org.training.hospital.facades.product.data.RepartoData;
 public interface RepartoFacade
 {
 
-
 	public List<RepartoData> getRepartoByHospital(String code);
 }

@@ -39,27 +39,27 @@
 			<sourceElement type="Hospital" qualifier="hospital"
 				cardinality="one">
 				<modifiers read="true" write="false" initial="true"
-					optional="false" search="true" unique="true" />
+					search="true" unique="true" />
 			</sourceElement>
 			<targetElement type="Reparto" qualifier="reparti"
 				cardinality="many" ordered="false" collectiontype="set">
-				<modifiers read="true" write="true" optional="true"
-					search="true" partof="true" />
+				<modifiers read="true" write="true" search="true"
+					partof="true" />
 			</targetElement>
 		</relation>
 
 		<relation code="Patient2RepartoRelation" localized="false"
 			generate="true" autocreate="true">
 			<deployment table="Pat2RepRelation" typecode="20005" />
-			<sourceElement type="Patient" qualifier="list_patient"
+			<sourceElement type="Patient" qualifier="patients"
 				cardinality="many">
 				<modifiers read="true" write="false" initial="true"
-					optional="false" search="true" />
+					search="true" />
 			</sourceElement>
-			<targetElement type="Reparto" qualifier="list_reparti"
+			<targetElement type="Reparto" qualifier="departments"
 				cardinality="many" ordered="false" collectiontype="set">
-				<modifiers read="true" write="true" optional="true"
-					search="true" partof="true" />
+				<modifiers read="true" write="true" search="true"
+					partof="true" />
 			</targetElement>
 		</relation>
 
@@ -168,7 +168,6 @@
 					</attribute>
 
 					<attribute qualifier="numberRep" type="java.lang.String">
-
 						<description>numero reparto</description>
 						<modifiers read="true" write="true" search="true"
 							optional="false" unique="false" />
@@ -213,47 +212,30 @@
 					</attribute>
 
 
+
 				</attributes>
 
 
 			</itemtype>
-			
-			<itemtype code="Head" extends="User" autocreate="true"
+
+			<itemtype code="Head" extends="Customer" autocreate="true"
 				generate="true">
 				<deployment table="DepHead" typecode="20003" />
 
-				<!-- <attributes> <attribute qualifier="codeHead" type="java.lang.String"> 
-					<description>Codice Primario</description> <modifiers read="true" write="true" 
-					search="true" optional="false" unique="true" /> <persistence type="property" 
-					/> </attribute> </attributes> -->
 
 
 			</itemtype>
-			
-			<itemtype code="Patient" extends="User" autocreate="true" generate="true">
+
+			<itemtype code="Patient" extends="Customer"
+				autocreate="true" generate="true">
 				<deployment table="DepPatient" typecode="20004" />
 				<attributes>
-					
-					
-					<attribute qualifier="surnamePatient"
-						type="java.lang.String">
-
-						<description>Cognome Paziente</description>
-
-						<persistence type="property" />
-					</attribute>
-
-					<attribute qualifier="entryDate" type="java.lang.String">
-
+					<attribute qualifier="entryDate" type="java.util.Date">
 						<description>Data Ingresso</description>
-
 						<persistence type="property" />
 					</attribute>
-
-					<attribute qualifier="exitDate" type="java.lang.String">
-
+					<attribute qualifier="exitDate" type="java.util.Date">
 						<description>Data uscita</description>
-
 						<persistence type="property" />
 					</attribute>
 

@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 4-mar-2019 16.42.19                         ---
+ * --- Generated at 5-mar-2019 17.32.23                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
@@ -43,8 +43,8 @@ public abstract class GeneratedReparto extends GenericItem
 	public static final String HEAD = "head";
 	/** Qualifier of the <code>Reparto.hospital</code> attribute **/
 	public static final String HOSPITAL = "hospital";
-	/** Qualifier of the <code>Reparto.list_patient</code> attribute **/
-	public static final String LIST_PATIENT = "list_patient";
+	/** Qualifier of the <code>Reparto.patients</code> attribute **/
+	public static final String PATIENTS = "patients";
 	/** Relation ordering override parameter constants for Patient2RepartoRelation from ((hospitalcore))*/
 	protected static String PATIENT2REPARTORELATION_SRC_ORDERED = "relation.Patient2RepartoRelation.source.ordered";
 	protected static String PATIENT2REPARTORELATION_TGT_ORDERED = "relation.Patient2RepartoRelation.target.ordered";
@@ -214,149 +214,6 @@ public abstract class GeneratedReparto extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Reparto.list_patient</code> attribute.
-	 * @return the list_patient
-	 */
-	public Collection<Patient> getList_patient(final SessionContext ctx)
-	{
-		final List<Patient> items = getLinkedItems( 
-			ctx,
-			false,
-			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
-			"Patient",
-			null,
-			false,
-			false
-		);
-		return items;
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>Reparto.list_patient</code> attribute.
-	 * @return the list_patient
-	 */
-	public Collection<Patient> getList_patient()
-	{
-		return getList_patient( getSession().getSessionContext() );
-	}
-	
-	public long getList_patientCount(final SessionContext ctx)
-	{
-		return getLinkedItemsCount(
-			ctx,
-			false,
-			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
-			"Patient",
-			null
-		);
-	}
-	
-	public long getList_patientCount()
-	{
-		return getList_patientCount( getSession().getSessionContext() );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Reparto.list_patient</code> attribute. 
-	 * @param value the list_patient
-	 */
-	protected void setList_patient(final SessionContext ctx, final Collection<Patient> value)
-	{
-		if ( ctx == null) 
-		{
-			throw new JaloInvalidParameterException( "ctx is null", 0 );
-		}
-		// initial-only attribute: make sure this attribute can be set during item creation only
-		if ( ctx.getAttribute( "core.types.creation.initial") != Boolean.TRUE )
-		{
-			throw new JaloInvalidParameterException( "attribute '"+LIST_PATIENT+"' is not changeable", 0 );
-		}
-		setLinkedItems( 
-			ctx,
-			false,
-			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
-			null,
-			value,
-			false,
-			false,
-			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
-		);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Reparto.list_patient</code> attribute. 
-	 * @param value the list_patient
-	 */
-	protected void setList_patient(final Collection<Patient> value)
-	{
-		setList_patient( getSession().getSessionContext(), value );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Adds <code>value</code> to list_patient. 
-	 * @param value the item to add to list_patient
-	 */
-	protected void addToList_patient(final SessionContext ctx, final Patient value)
-	{
-		// initial-only attribute: make sure this attribute can be set during item creation only
-		if ( ctx.getAttribute( "core.types.creation.initial") != Boolean.TRUE )
-		{
-			throw new JaloInvalidParameterException( "attribute '"+LIST_PATIENT+"' is not changeable", 0 );
-		}
-		addLinkedItems( 
-			ctx,
-			false,
-			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
-			null,
-			Collections.singletonList(value),
-			false,
-			false,
-			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
-		);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Adds <code>value</code> to list_patient. 
-	 * @param value the item to add to list_patient
-	 */
-	protected void addToList_patient(final Patient value)
-	{
-		addToList_patient( getSession().getSessionContext(), value );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Removes <code>value</code> from list_patient. 
-	 * @param value the item to remove from list_patient
-	 */
-	protected void removeFromList_patient(final SessionContext ctx, final Patient value)
-	{
-		// initial-only attribute: make sure this attribute can be set during item creation only
-		if ( ctx.getAttribute( "core.types.creation.initial") != Boolean.TRUE )
-		{
-			throw new JaloInvalidParameterException( "attribute '"+LIST_PATIENT+"' is not changeable", 0 );
-		}
-		removeLinkedItems( 
-			ctx,
-			false,
-			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
-			null,
-			Collections.singletonList(value),
-			false,
-			false,
-			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
-		);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Removes <code>value</code> from list_patient. 
-	 * @param value the item to remove from list_patient
-	 */
-	protected void removeFromList_patient(final Patient value)
-	{
-		removeFromList_patient( getSession().getSessionContext(), value );
-	}
-	
-	/**
 	 * <i>Generated method</i> - Getter of the <code>Reparto.nameRep</code> attribute.
 	 * @return the nameRep - Nome reparto.
 	 */
@@ -438,6 +295,149 @@ public abstract class GeneratedReparto extends GenericItem
 	public void setAllNameRep(final Map<Language,String> value)
 	{
 		setAllNameRep( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Reparto.patients</code> attribute.
+	 * @return the patients
+	 */
+	public Collection<Patient> getPatients(final SessionContext ctx)
+	{
+		final List<Patient> items = getLinkedItems( 
+			ctx,
+			false,
+			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
+			"Patient",
+			null,
+			false,
+			false
+		);
+		return items;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Reparto.patients</code> attribute.
+	 * @return the patients
+	 */
+	public Collection<Patient> getPatients()
+	{
+		return getPatients( getSession().getSessionContext() );
+	}
+	
+	public long getPatientsCount(final SessionContext ctx)
+	{
+		return getLinkedItemsCount(
+			ctx,
+			false,
+			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
+			"Patient",
+			null
+		);
+	}
+	
+	public long getPatientsCount()
+	{
+		return getPatientsCount( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Reparto.patients</code> attribute. 
+	 * @param value the patients
+	 */
+	protected void setPatients(final SessionContext ctx, final Collection<Patient> value)
+	{
+		if ( ctx == null) 
+		{
+			throw new JaloInvalidParameterException( "ctx is null", 0 );
+		}
+		// initial-only attribute: make sure this attribute can be set during item creation only
+		if ( ctx.getAttribute( "core.types.creation.initial") != Boolean.TRUE )
+		{
+			throw new JaloInvalidParameterException( "attribute '"+PATIENTS+"' is not changeable", 0 );
+		}
+		setLinkedItems( 
+			ctx,
+			false,
+			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
+			null,
+			value,
+			false,
+			false,
+			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
+		);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Reparto.patients</code> attribute. 
+	 * @param value the patients
+	 */
+	protected void setPatients(final Collection<Patient> value)
+	{
+		setPatients( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Adds <code>value</code> to patients. 
+	 * @param value the item to add to patients
+	 */
+	protected void addToPatients(final SessionContext ctx, final Patient value)
+	{
+		// initial-only attribute: make sure this attribute can be set during item creation only
+		if ( ctx.getAttribute( "core.types.creation.initial") != Boolean.TRUE )
+		{
+			throw new JaloInvalidParameterException( "attribute '"+PATIENTS+"' is not changeable", 0 );
+		}
+		addLinkedItems( 
+			ctx,
+			false,
+			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
+			null,
+			Collections.singletonList(value),
+			false,
+			false,
+			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
+		);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Adds <code>value</code> to patients. 
+	 * @param value the item to add to patients
+	 */
+	protected void addToPatients(final Patient value)
+	{
+		addToPatients( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Removes <code>value</code> from patients. 
+	 * @param value the item to remove from patients
+	 */
+	protected void removeFromPatients(final SessionContext ctx, final Patient value)
+	{
+		// initial-only attribute: make sure this attribute can be set during item creation only
+		if ( ctx.getAttribute( "core.types.creation.initial") != Boolean.TRUE )
+		{
+			throw new JaloInvalidParameterException( "attribute '"+PATIENTS+"' is not changeable", 0 );
+		}
+		removeLinkedItems( 
+			ctx,
+			false,
+			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
+			null,
+			Collections.singletonList(value),
+			false,
+			false,
+			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
+		);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Removes <code>value</code> from patients. 
+	 * @param value the item to remove from patients
+	 */
+	protected void removeFromPatients(final Patient value)
+	{
+		removeFromPatients( getSession().getSessionContext(), value );
 	}
 	
 }

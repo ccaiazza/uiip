@@ -72,12 +72,4 @@ public class DefaultRepartoFacade implements RepartoFacade
 		this.repartoConverter = repartoConverter;
 	}
 
-
-
-
-
-
-
-
-
 }

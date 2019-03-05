@@ -773,8 +773,6 @@
 
 	<bean id="updateHospitalListJob" class="org.training.hospital.core.job.UpdateHospitalListJob" parent="abstractJobPerformable">
 	<property name="hospitalService" ref="defaultHospitalService" />
-	
-
 	</bean>
 
 
