@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 3-mar-2019 18.24.58                         ---
+ * --- Generated at 5-mar-2019 11.41.57                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.cockpits.constants;
