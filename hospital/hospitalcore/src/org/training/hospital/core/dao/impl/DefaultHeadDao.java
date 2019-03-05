@@ -36,7 +36,7 @@ public class DefaultHeadDao extends DefaultGenericDao implements HeadDao
 
 		// Build a query for the flexible search.
 		final String queryString = "SELECT {" + HeadModel.PK + "} " + "FROM {" + HeadModel._TYPECODE
-				+ " AS H JOIN Reaparto AS R ON{H.codeHead= R.head}} " + "WHERE {R.codeReparto =?codeReparto}";
+				+ " AS H JOIN Reaparto AS R ON{H.uid= R.head}} " + "WHERE {R.codeReparto =?codeReparto}";
 
 
 
@@ -72,7 +72,7 @@ public class DefaultHeadDao extends DefaultGenericDao implements HeadDao
 	{
 		final String nomeHospital = "Cardarelli";
 		final String queryString = "SELECT {" + HeadModel.PK + "} " + "FROM {" + HeadModel._TYPECODE
-				+ " AS H JOIN Reaparto AS R ON{H.codeHead= R.head} " + " JOIN Hospital AS O ON{R.hospital =O.code }}"
+				+ " AS H JOIN Reaparto AS R ON{H.uid= R.head} " + " JOIN Hospital AS O ON{R.hospital =O.code }}"
 				+ "WHERE {R.name=? Cardarelli}";
 
 

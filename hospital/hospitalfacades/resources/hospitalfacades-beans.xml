@@ -24,13 +24,13 @@
 		<property name="codeReparto" type="String" />
 		<property name="nameRep" type="String" />
 		<property name="code" type="String" />
-		<property name="codeHead" type="String" />
+		<property name="uidHead" type="String" />
 
 
 	</bean>
 
 	<bean class="org.training.hospital.facades.product.data.HeadData">
-		<property name="codeHead" type="String" />
+		<property name="uid" type="String" />
 		<property name="name" type="String" />
 
 
