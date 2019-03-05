@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 5-mar-2019 10.03.05                         ---
+ * --- Generated at 3-mar-2019 18.24.58                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.fulfilmentprocess.constants;

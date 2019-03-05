@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 5-mar-2019 10.03.05                         ---
+ * --- Generated at 3-mar-2019 18.24.58                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.constants;
@@ -22,7 +22,6 @@ public class GeneratedHospitalCoreConstants
 		public static final String ELECTRONICSCOLORVARIANTPRODUCT = "ElectronicsColorVariantProduct".intern();
 		public static final String HEAD = "Head".intern();
 		public static final String HOSPITAL = "Hospital".intern();
-		public static final String PATIENT = "Patient".intern();
 		public static final String REPARTO = "Reparto".intern();
 		public static final String SWATCHCOLORENUM = "SwatchColorEnum".intern();
 	}
@@ -51,7 +50,6 @@ public class GeneratedHospitalCoreConstants
 	public static class Relations
 	{
 		public static final String HOSPITAL2REPARTORELATION = "Hospital2RepartoRelation".intern();
-		public static final String PATIENT2REPARTORELATION = "Patient2RepartoRelation".intern();
 	}
 	
 	protected GeneratedHospitalCoreConstants()
