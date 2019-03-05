@@ -2,17 +2,23 @@ INSERT_UPDATE Hospital; code[unique=true]; name[lang = en]; citta;reparti[mode =
 ;010; Cardarelli; Napoli; rep2,rep1;
 ;020; Gemelli; Roma; rep3;
 
-INSERT_UPDATE Head; codeHead[unique=true]; name[lang = en]
+INSERT_UPDATE Head; uid[unique=true]; name;
 ; he1; Rossi;
 ; he2; Verdi;
 ; he3; Bianchi;
 
 
-INSERT_UPDATE Reparto;  codeReparto[unique=true]; nameRep[lang = en]; code; head(codeHead); hospital(code);
-; rep1; Pediatrics; 010; he1;
-; rep2; Surgery; 010; he2;
-; rep3; Cardiology; 020; he3;
+INSERT_UPDATE Reparto;  codeReparto[unique=true]; nameRep[lang = en]; head(codeHead); hospital(code);
+; rep1; Pediatrics;  he1; 010
+; rep2; Surgery; he2; 020
+; rep3; Cardiology;  he3; 010
 
+INSERT_UPDATE Patient; uid[unique=true]; dateEntry[dateformat='yyyy.MM.dd']; departaments(codeReparto); 
+; pa1; 2019.01.02; rep1
+; pa2; 2019.02.20; rep2
+; pa3; 2019.02.27; rep3
 
-
-
+INSERT_UPDATE Reparto;  codeReparto[unique=true]; nameRep[lang = en];
+; rep1; Pediatrics; 
+; rep2; Surgery;
+; rep3; Cardiology;  

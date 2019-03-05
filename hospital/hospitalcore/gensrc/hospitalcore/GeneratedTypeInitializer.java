@@ -108,7 +108,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 	
 		createItemType(
 			"Head",
-			"User",
+			"Customer",
 			org.training.hospital.core.jalo.Head.class,
 			"de.hybris.platform.persistence.hospitalcore_Head",
 			false,
@@ -118,7 +118,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 	
 		createItemType(
 			"Patient",
-			"User",
+			"Customer",
 			org.training.hospital.core.jalo.Patient.class,
 			"de.hybris.platform.persistence.hospitalcore_Patient",
 			false,
@@ -133,8 +133,8 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 		);
 	
 		createRelationType(
-			"Patient2RepartoRelation",
-			"de.hybris.platform.persistence.link.hospitalcore_Patient2RepartoRelation",
+			"Patient2DepartmentRelation",
+			"de.hybris.platform.persistence.link.hospitalcore_Patient2DepartmentRelation",
 			false
 		);
 	
@@ -192,8 +192,6 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 			
 				single_createattr_Reparto_head();
 			
-				single_createattr_Patient_lastName();
-			
 				single_createattr_Patient_dateEntry();
 			
 		createRelationAttributes(
@@ -203,7 +201,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 			"hospital", 
 			"Hospital", 
 			true,
-			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.INITIAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
+			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.INITIAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
 			false,
 			false,
 			CollectionType.COLLECTION,
@@ -217,17 +215,17 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 		);
 	
 		createRelationAttributes(
-			"Patient2RepartoRelation", 
+			"Patient2DepartmentRelation", 
 			false, 
 
 			"patients", 
 			"Patient", 
 			true,
-			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.INITIAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
+			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.INITIAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
 			true,
 			false,
 			CollectionType.COLLECTION,
-			"reparti", 
+			"departaments", 
 			"Reparto", 
 			true,
 			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.PARTOF_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
@@ -440,23 +438,6 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 			
 	}
 	
-	public void single_createattr_Patient_lastName() throws JaloBusinessException
-	{
-		
-						Map sqlColumnDefinitions = null;
-					
-				createPropertyAttribute(
-					"Patient", 
-					"lastName",  
-					null,
-					"java.lang.String",
-					de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG,
-					null,
-					sqlColumnDefinitions
-				);
-			
-	}
-	
 	public void single_createattr_Patient_dateEntry() throws JaloBusinessException
 	{
 		
@@ -466,7 +447,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 					"Patient", 
 					"dateEntry",  
 					null,
-					"java.lang.String",
+					"java.util.Date",
 					de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG,
 					null,
 					sqlColumnDefinitions
@@ -507,11 +488,11 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 	
 		single_setRelAttributeProperties_Hospital2RepartoRelation_source();
 	
-		single_setRelAttributeProperties_Patient2RepartoRelation_source();
+		single_setRelAttributeProperties_Patient2DepartmentRelation_source();
 	
 		single_setRelAttributeProperties_Hospital2RepartoRelation_target();
 	
-		single_setRelAttributeProperties_Patient2RepartoRelation_target();
+		single_setRelAttributeProperties_Patient2DepartmentRelation_target();
 	
 		connectRelation(
 			"Hospital2RepartoRelation", 
@@ -519,7 +500,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 			"hospital", 
 			"Hospital", 
 			true,
-			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.INITIAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
+			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.INITIAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
 			"reparti", 
 			"Reparto", 
 			true,
@@ -529,13 +510,13 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 		);
 	
 		connectRelation(
-			"Patient2RepartoRelation", 
+			"Patient2DepartmentRelation", 
 			false, 
 			"patients", 
 			"Patient", 
 			true,
-			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.INITIAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
-			"reparti", 
+			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.INITIAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
+			"departaments", 
 			"Reparto", 
 			true,
 			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.PARTOF_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
@@ -671,8 +652,6 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 				);
 				}
 			
-			single_setAttributeProperties_Patient_lastName();
-		
 			single_setAttributeProperties_Patient_dateEntry();
 		
 				setDefaultProperties(
@@ -964,28 +943,6 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 							);
 						}
 					
-						public void single_setAttributeProperties_Patient_lastName() throws JaloBusinessException
-						{
-							
-							
-							
-							Map customPropsMap = new HashMap();
-							
-							setAttributeProperties(
-								"Patient", 
-								"lastName",
-								false, 
-								null,
-								null,
-								null,
-								true,
-								true,
-								null,
-								customPropsMap,
-								null
-							);
-						}
-					
 						public void single_setAttributeProperties_Patient_dateEntry() throws JaloBusinessException
 						{
 							
@@ -1050,7 +1007,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 									);
 								}
 							
-								public void single_setRelAttributeProperties_Patient2RepartoRelation_source() throws JaloBusinessException
+								public void single_setRelAttributeProperties_Patient2DepartmentRelation_source() throws JaloBusinessException
 								{
 									
 									Map customPropsMap = new HashMap();
@@ -1071,7 +1028,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 									);
 								}
 							
-								public void single_setRelAttributeProperties_Patient2RepartoRelation_target() throws JaloBusinessException
+								public void single_setRelAttributeProperties_Patient2DepartmentRelation_target() throws JaloBusinessException
 								{
 									
 									Map customPropsMap = new HashMap();
@@ -1079,7 +1036,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 
 									setAttributeProperties(
 										"Patient", 
-										"reparti",
+										"departaments",
 										false, 
 										null,
 										null,

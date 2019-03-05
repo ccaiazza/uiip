@@ -36,10 +36,10 @@
 
 		<relation code="Hospital2RepartoRelation" localized="false"
 			generate="true" autocreate="true">
-		<sourceElement type="Hospital" qualifier="hospital"
+			<sourceElement type="Hospital" qualifier="hospital"
 				cardinality="one">
 				<modifiers read="true" write="false" initial="true"
-					optional="false" search="true" unique="true" />
+					 search="true" unique="true" />
 			</sourceElement>
 			<targetElement type="Reparto" qualifier="reparti"
 				cardinality="many" ordered="false" collectiontype="set">
@@ -47,22 +47,22 @@
 					search="true" partof="true" />
 			</targetElement>
 		</relation>
-		
-		<relation code="Patient2RepartoRelation" localized="false"
+
+		<relation code="Patient2DepartmentRelation" localized="false"
 			generate="true" autocreate="true">
 			<deployment table="Ricovero" typecode="20005" />
 			<sourceElement type="Patient" qualifier="patients"
 				cardinality="many">
 				<modifiers read="true" write="false" initial="true"
-					optional="false" search="true" />
+					 search="true" />
 			</sourceElement>
-			<targetElement type="Reparto" qualifier="reparti"
+			<targetElement type="Reparto" qualifier="departaments"
 				cardinality="many" ordered="false" collectiontype="set">
 				<modifiers read="true" write="true" optional="true"
 					search="true" partof="true" />
 			</targetElement>
 		</relation>
-		
+
 
 		<!-- <relation code="Head2RepartoRelation" localized="false" generate="true" 
 			autocreate="true"> <sourceElement type="Head" qualifier="codeHead" cardinality="one"> 
@@ -179,8 +179,8 @@
 					<attribute qualifier="numberRep" type="java.lang.String">
 						<persistence type="dynamic"
 							attributeHandler="dynamicAttributesNumberDepartment" />
-							<modifiers read="true" write="false" search="true"
-							optional="false"/>
+						<modifiers read="true" write="false" search="true"
+							optional="false" />
 					</attribute>
 
 					<attribute qualifier="citta" type="java.lang.String">
@@ -197,7 +197,7 @@
 				<attributes>
 					<attribute qualifier="codeReparto"
 						type="java.lang.String">
-						<modifiers unique = "true" />
+						<modifiers unique="true" />
 						<persistence type="property" />
 					</attribute>
 					<attribute qualifier="nameRep"
@@ -212,18 +212,16 @@
 
 			</itemtype>
 			<itemtype code="Head" autocreate="true" generate="true"
-				extends="User" jaloclass="org.training.hospital.core.jalo.Head">
+				extends="Customer" jaloclass="org.training.hospital.core.jalo.Head">
 				<deployment table="DepHead" typecode="20003" />
-
 			</itemtype>
+
 			<itemtype code="Patient" autocreate="true" generate="true"
-				extends="User" jaloclass="org.training.hospital.core.jalo.Patient">
+				extends="Customer"
+				jaloclass="org.training.hospital.core.jalo.Patient">
 				<deployment table="DepPatient" typecode="20004" />
 				<attributes>
-					<attribute qualifier="lastName" type="java.lang.String">
-						<persistence type="property" />
-					</attribute>
-					<attribute qualifier="dateEntry" type="java.lang.String">
+					<attribute qualifier="dateEntry" type="java.util.Date">
 						<persistence type="property" />
 					</attribute>
 				</attributes>

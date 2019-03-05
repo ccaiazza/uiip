@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 5-mar-2019 12.59.24                         ---
+ * --- Generated at 5-mar-2019 17.31.03                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
@@ -45,11 +45,11 @@ public abstract class GeneratedReparto extends GenericItem
 	public static final String HOSPITAL = "hospital";
 	/** Qualifier of the <code>Reparto.patients</code> attribute **/
 	public static final String PATIENTS = "patients";
-	/** Relation ordering override parameter constants for Patient2RepartoRelation from ((hospitalcore))*/
-	protected static String PATIENT2REPARTORELATION_SRC_ORDERED = "relation.Patient2RepartoRelation.source.ordered";
-	protected static String PATIENT2REPARTORELATION_TGT_ORDERED = "relation.Patient2RepartoRelation.target.ordered";
-	/** Relation disable markmodifed parameter constants for Patient2RepartoRelation from ((hospitalcore))*/
-	protected static String PATIENT2REPARTORELATION_MARKMODIFIED = "relation.Patient2RepartoRelation.markmodified";
+	/** Relation ordering override parameter constants for Patient2DepartmentRelation from ((hospitalcore))*/
+	protected static String PATIENT2DEPARTMENTRELATION_SRC_ORDERED = "relation.Patient2DepartmentRelation.source.ordered";
+	protected static String PATIENT2DEPARTMENTRELATION_TGT_ORDERED = "relation.Patient2DepartmentRelation.target.ordered";
+	/** Relation disable markmodifed parameter constants for Patient2DepartmentRelation from ((hospitalcore))*/
+	protected static String PATIENT2DEPARTMENTRELATION_MARKMODIFIED = "relation.Patient2DepartmentRelation.markmodified";
 	/**
 	* {@link BidirectionalOneToManyHandler} for handling 1:n HOSPITAL's relation attributes from 'one' side.
 	**/
@@ -208,7 +208,7 @@ public abstract class GeneratedReparto extends GenericItem
 		ComposedType relationSecondEnd0 = TypeManager.getInstance().getComposedType("Patient");
 		if(relationSecondEnd0.isAssignableFrom(referencedItem.getComposedType()))
 		{
-			return Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED);
+			return Utilities.getMarkModifiedOverride(PATIENT2DEPARTMENTRELATION_MARKMODIFIED);
 		}
 		return true;
 	}
@@ -306,7 +306,7 @@ public abstract class GeneratedReparto extends GenericItem
 		final List<Patient> items = getLinkedItems( 
 			ctx,
 			false,
-			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
+			HospitalCoreConstants.Relations.PATIENT2DEPARTMENTRELATION,
 			"Patient",
 			null,
 			false,
@@ -329,7 +329,7 @@ public abstract class GeneratedReparto extends GenericItem
 		return getLinkedItemsCount(
 			ctx,
 			false,
-			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
+			HospitalCoreConstants.Relations.PATIENT2DEPARTMENTRELATION,
 			"Patient",
 			null
 		);
@@ -358,12 +358,12 @@ public abstract class GeneratedReparto extends GenericItem
 		setLinkedItems( 
 			ctx,
 			false,
-			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
+			HospitalCoreConstants.Relations.PATIENT2DEPARTMENTRELATION,
 			null,
 			value,
 			false,
 			false,
-			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
+			Utilities.getMarkModifiedOverride(PATIENT2DEPARTMENTRELATION_MARKMODIFIED)
 		);
 	}
 	
@@ -390,12 +390,12 @@ public abstract class GeneratedReparto extends GenericItem
 		addLinkedItems( 
 			ctx,
 			false,
-			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
+			HospitalCoreConstants.Relations.PATIENT2DEPARTMENTRELATION,
 			null,
 			Collections.singletonList(value),
 			false,
 			false,
-			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
+			Utilities.getMarkModifiedOverride(PATIENT2DEPARTMENTRELATION_MARKMODIFIED)
 		);
 	}
 	
@@ -422,12 +422,12 @@ public abstract class GeneratedReparto extends GenericItem
 		removeLinkedItems( 
 			ctx,
 			false,
-			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
+			HospitalCoreConstants.Relations.PATIENT2DEPARTMENTRELATION,
 			null,
 			Collections.singletonList(value),
 			false,
 			false,
-			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
+			Utilities.getMarkModifiedOverride(PATIENT2DEPARTMENTRELATION_MARKMODIFIED)
 		);
 	}
 	

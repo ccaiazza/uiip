@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 5-mar-2019 12.59.24                         ---
+ * --- Generated at 5-mar-2019 17.31.03                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.constants;
@@ -51,7 +51,7 @@ public class GeneratedHospitalCoreConstants
 	public static class Relations
 	{
 		public static final String HOSPITAL2REPARTORELATION = "Hospital2RepartoRelation".intern();
-		public static final String PATIENT2REPARTORELATION = "Patient2RepartoRelation".intern();
+		public static final String PATIENT2DEPARTMENTRELATION = "Patient2DepartmentRelation".intern();
 	}
 	
 	protected GeneratedHospitalCoreConstants()

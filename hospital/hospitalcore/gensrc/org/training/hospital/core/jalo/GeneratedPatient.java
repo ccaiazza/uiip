@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 5-mar-2019 12.59.24                         ---
+ * --- Generated at 5-mar-2019 17.31.03                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
@@ -13,10 +13,11 @@ import de.hybris.platform.jalo.JaloSystemException;
 import de.hybris.platform.jalo.SessionContext;
 import de.hybris.platform.jalo.type.ComposedType;
 import de.hybris.platform.jalo.type.TypeManager;
-import de.hybris.platform.jalo.user.User;
+import de.hybris.platform.jalo.user.Customer;
 import de.hybris.platform.util.PartOfHandler;
 import de.hybris.platform.util.Utilities;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -29,24 +30,21 @@ import org.training.hospital.core.jalo.Reparto;
  * Generated class for type {@link org.training.hospital.core.jalo.Patient Patient}.
  */
 @SuppressWarnings({"deprecation","unused","cast","PMD"})
-public abstract class GeneratedPatient extends User
+public abstract class GeneratedPatient extends Customer
 {
-	/** Qualifier of the <code>Patient.lastName</code> attribute **/
-	public static final String LASTNAME = "lastName";
 	/** Qualifier of the <code>Patient.dateEntry</code> attribute **/
 	public static final String DATEENTRY = "dateEntry";
-	/** Qualifier of the <code>Patient.reparti</code> attribute **/
-	public static final String REPARTI = "reparti";
-	/** Relation ordering override parameter constants for Patient2RepartoRelation from ((hospitalcore))*/
-	protected static String PATIENT2REPARTORELATION_SRC_ORDERED = "relation.Patient2RepartoRelation.source.ordered";
-	protected static String PATIENT2REPARTORELATION_TGT_ORDERED = "relation.Patient2RepartoRelation.target.ordered";
-	/** Relation disable markmodifed parameter constants for Patient2RepartoRelation from ((hospitalcore))*/
-	protected static String PATIENT2REPARTORELATION_MARKMODIFIED = "relation.Patient2RepartoRelation.markmodified";
+	/** Qualifier of the <code>Patient.departaments</code> attribute **/
+	public static final String DEPARTAMENTS = "departaments";
+	/** Relation ordering override parameter constants for Patient2DepartmentRelation from ((hospitalcore))*/
+	protected static String PATIENT2DEPARTMENTRELATION_SRC_ORDERED = "relation.Patient2DepartmentRelation.source.ordered";
+	protected static String PATIENT2DEPARTMENTRELATION_TGT_ORDERED = "relation.Patient2DepartmentRelation.target.ordered";
+	/** Relation disable markmodifed parameter constants for Patient2DepartmentRelation from ((hospitalcore))*/
+	protected static String PATIENT2DEPARTMENTRELATION_MARKMODIFIED = "relation.Patient2DepartmentRelation.markmodified";
 	protected static final Map<String, AttributeMode> DEFAULT_INITIAL_ATTRIBUTES;
 	static
 	{
-		final Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>(User.DEFAULT_INITIAL_ATTRIBUTES);
-		tmp.put(LASTNAME, AttributeMode.INITIAL);
+		final Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>(Customer.DEFAULT_INITIAL_ATTRIBUTES);
 		tmp.put(DATEENTRY, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
 	}
@@ -60,16 +58,16 @@ public abstract class GeneratedPatient extends User
 	 * <i>Generated method</i> - Getter of the <code>Patient.dateEntry</code> attribute.
 	 * @return the dateEntry
 	 */
-	public String getDateEntry(final SessionContext ctx)
+	public Date getDateEntry(final SessionContext ctx)
 	{
-		return (String)getProperty( ctx, DATEENTRY);
+		return (Date)getProperty( ctx, DATEENTRY);
 	}
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>Patient.dateEntry</code> attribute.
 	 * @return the dateEntry
 	 */
-	public String getDateEntry()
+	public Date getDateEntry()
 	{
 		return getDateEntry( getSession().getSessionContext() );
 	}
@@ -78,7 +76,7 @@ public abstract class GeneratedPatient extends User
 	 * <i>Generated method</i> - Setter of the <code>Patient.dateEntry</code> attribute. 
 	 * @param value the dateEntry
 	 */
-	public void setDateEntry(final SessionContext ctx, final String value)
+	public void setDateEntry(final SessionContext ctx, final Date value)
 	{
 		setProperty(ctx, DATEENTRY,value);
 	}
@@ -87,68 +85,21 @@ public abstract class GeneratedPatient extends User
 	 * <i>Generated method</i> - Setter of the <code>Patient.dateEntry</code> attribute. 
 	 * @param value the dateEntry
 	 */
-	public void setDateEntry(final String value)
+	public void setDateEntry(final Date value)
 	{
 		setDateEntry( getSession().getSessionContext(), value );
 	}
 	
-	@Override
-	public boolean isMarkModifiedDisabled(final Item referencedItem)
-	{
-		ComposedType relationSecondEnd0 = TypeManager.getInstance().getComposedType("Reparto");
-		if(relationSecondEnd0.isAssignableFrom(referencedItem.getComposedType()))
-		{
-			return Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED);
-		}
-		return true;
-	}
-	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Patient.lastName</code> attribute.
-	 * @return the lastName
+	 * <i>Generated method</i> - Getter of the <code>Patient.departaments</code> attribute.
+	 * @return the departaments
 	 */
-	public String getLastName(final SessionContext ctx)
-	{
-		return (String)getProperty( ctx, LASTNAME);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>Patient.lastName</code> attribute.
-	 * @return the lastName
-	 */
-	public String getLastName()
-	{
-		return getLastName( getSession().getSessionContext() );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Patient.lastName</code> attribute. 
-	 * @param value the lastName
-	 */
-	public void setLastName(final SessionContext ctx, final String value)
-	{
-		setProperty(ctx, LASTNAME,value);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Patient.lastName</code> attribute. 
-	 * @param value the lastName
-	 */
-	public void setLastName(final String value)
-	{
-		setLastName( getSession().getSessionContext(), value );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>Patient.reparti</code> attribute.
-	 * @return the reparti
-	 */
-	public Set<Reparto> getReparti(final SessionContext ctx)
+	public Set<Reparto> getDepartaments(final SessionContext ctx)
 	{
 		final List<Reparto> items = getLinkedItems( 
 			ctx,
 			true,
-			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
+			HospitalCoreConstants.Relations.PATIENT2DEPARTMENTRELATION,
 			"Reparto",
 			null,
 			false,
@@ -158,42 +109,42 @@ public abstract class GeneratedPatient extends User
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Patient.reparti</code> attribute.
-	 * @return the reparti
+	 * <i>Generated method</i> - Getter of the <code>Patient.departaments</code> attribute.
+	 * @return the departaments
 	 */
-	public Set<Reparto> getReparti()
+	public Set<Reparto> getDepartaments()
 	{
-		return getReparti( getSession().getSessionContext() );
+		return getDepartaments( getSession().getSessionContext() );
 	}
 	
-	public long getRepartiCount(final SessionContext ctx)
+	public long getDepartamentsCount(final SessionContext ctx)
 	{
 		return getLinkedItemsCount(
 			ctx,
 			true,
-			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
+			HospitalCoreConstants.Relations.PATIENT2DEPARTMENTRELATION,
 			"Reparto",
 			null
 		);
 	}
 	
-	public long getRepartiCount()
+	public long getDepartamentsCount()
 	{
-		return getRepartiCount( getSession().getSessionContext() );
+		return getDepartamentsCount( getSession().getSessionContext() );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Patient.reparti</code> attribute. 
-	 * @param value the reparti
+	 * <i>Generated method</i> - Setter of the <code>Patient.departaments</code> attribute. 
+	 * @param value the departaments
 	 */
-	public void setReparti(final SessionContext ctx, final Set<Reparto> value)
+	public void setDepartaments(final SessionContext ctx, final Set<Reparto> value)
 	{
 		new PartOfHandler<Set<Reparto>>()
 		{
 			@Override
 			protected Set<Reparto> doGetValue(final SessionContext ctx)
 			{
-				return getReparti( ctx );
+				return getDepartaments( ctx );
 			}
 			@Override
 			protected void doSetValue(final SessionContext ctx, final Set<Reparto> _value)
@@ -202,70 +153,70 @@ public abstract class GeneratedPatient extends User
 				setLinkedItems( 
 					ctx,
 					true,
-					HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
+					HospitalCoreConstants.Relations.PATIENT2DEPARTMENTRELATION,
 					null,
 					value,
 					false,
 					false,
-					Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
+					Utilities.getMarkModifiedOverride(PATIENT2DEPARTMENTRELATION_MARKMODIFIED)
 				);
 			}
 		}.setValue( ctx, value );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Patient.reparti</code> attribute. 
-	 * @param value the reparti
+	 * <i>Generated method</i> - Setter of the <code>Patient.departaments</code> attribute. 
+	 * @param value the departaments
 	 */
-	public void setReparti(final Set<Reparto> value)
+	public void setDepartaments(final Set<Reparto> value)
 	{
-		setReparti( getSession().getSessionContext(), value );
+		setDepartaments( getSession().getSessionContext(), value );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Adds <code>value</code> to reparti. 
-	 * @param value the item to add to reparti
+	 * <i>Generated method</i> - Adds <code>value</code> to departaments. 
+	 * @param value the item to add to departaments
 	 */
-	public void addToReparti(final SessionContext ctx, final Reparto value)
+	public void addToDepartaments(final SessionContext ctx, final Reparto value)
 	{
 		addLinkedItems( 
 			ctx,
 			true,
-			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
+			HospitalCoreConstants.Relations.PATIENT2DEPARTMENTRELATION,
 			null,
 			Collections.singletonList(value),
 			false,
 			false,
-			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
+			Utilities.getMarkModifiedOverride(PATIENT2DEPARTMENTRELATION_MARKMODIFIED)
 		);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Adds <code>value</code> to reparti. 
-	 * @param value the item to add to reparti
+	 * <i>Generated method</i> - Adds <code>value</code> to departaments. 
+	 * @param value the item to add to departaments
 	 */
-	public void addToReparti(final Reparto value)
+	public void addToDepartaments(final Reparto value)
 	{
-		addToReparti( getSession().getSessionContext(), value );
+		addToDepartaments( getSession().getSessionContext(), value );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Removes <code>value</code> from reparti. 
-	 * @param value the item to remove from reparti
+	 * <i>Generated method</i> - Removes <code>value</code> from departaments. 
+	 * @param value the item to remove from departaments
 	 */
-	public void removeFromReparti(final SessionContext ctx, final Reparto value)
+	public void removeFromDepartaments(final SessionContext ctx, final Reparto value)
 	{
 		removeLinkedItems( 
 			ctx,
 			true,
-			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
+			HospitalCoreConstants.Relations.PATIENT2DEPARTMENTRELATION,
 			null,
 			Collections.singletonList(value),
 			false,
 			false,
-			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
+			Utilities.getMarkModifiedOverride(PATIENT2DEPARTMENTRELATION_MARKMODIFIED)
 		);
-		if( !getLinkedItems( ctx, true,HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,null).contains( value ) )
+		if( !getLinkedItems( ctx, true,HospitalCoreConstants.Relations.PATIENT2DEPARTMENTRELATION,null).contains( value ) )
 		{
 			try
 			{
@@ -279,12 +230,23 @@ public abstract class GeneratedPatient extends User
 	}
 	
 	/**
-	 * <i>Generated method</i> - Removes <code>value</code> from reparti. 
-	 * @param value the item to remove from reparti
+	 * <i>Generated method</i> - Removes <code>value</code> from departaments. 
+	 * @param value the item to remove from departaments
 	 */
-	public void removeFromReparti(final Reparto value)
+	public void removeFromDepartaments(final Reparto value)
 	{
-		removeFromReparti( getSession().getSessionContext(), value );
+		removeFromDepartaments( getSession().getSessionContext(), value );
+	}
+	
+	@Override
+	public boolean isMarkModifiedDisabled(final Item referencedItem)
+	{
+		ComposedType relationSecondEnd0 = TypeManager.getInstance().getComposedType("Reparto");
+		if(relationSecondEnd0.isAssignableFrom(referencedItem.getComposedType()))
+		{
+			return Utilities.getMarkModifiedOverride(PATIENT2DEPARTMENTRELATION_MARKMODIFIED);
+		}
+		return true;
 	}
 	
 }
