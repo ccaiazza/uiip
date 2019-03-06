@@ -43,8 +43,7 @@
 			</sourceElement>
 			<targetElement type="Reparto" qualifier="reparti"
 				cardinality="many" ordered="false" collectiontype="set">
-				<modifiers read="true" write="true" search="true"
-					partof="true" />
+				<modifiers read="true" write="true" search="true" />
 			</targetElement>
 		</relation>
 
@@ -57,11 +56,27 @@
 					search="true" />
 			</sourceElement>
 			<targetElement type="Reparto" qualifier="departments"
-				cardinality="many" ordered="false" collectiontype="set">
-				<modifiers read="true" write="true" search="true"
-					partof="true" />
+				cardinality="many" collectiontype="set">
+				<modifiers read="true" write="true" search="true" />
 			</targetElement>
 		</relation>
+
+		
+		<relation code="Patient2PathologyRelation" localized="false"
+			generate="true" autocreate="true">
+			<deployment table="Pat2RPatRelation" typecode="20007" />
+			<sourceElement type="Patient" qualifier="patients"
+				cardinality="many">
+				<modifiers read="true" write="true" initial="true"
+					search="true" />
+			</sourceElement>
+			<targetElement type="Pathology" qualifier="pathologies"
+				cardinality="many" collectiontype="set">
+				<modifiers read="true" write="true" search="true" />
+			</targetElement>
+		</relation>
+
+
 
 	</relations>
 
@@ -153,7 +168,7 @@
 
 				<attributes>
 					<attribute qualifier="code" type="java.lang.String">
-						<description>codice ospedale</description>
+						<description> Hospital Code</description>
 						<modifiers read="true" write="true" search="true"
 							optional="false" unique="true" />
 						<persistence type="property" />
@@ -161,14 +176,14 @@
 
 					<attribute qualifier="name"
 						type="localized:java.lang.String">
-						<description>Nome ospedale</description>
+						<description>Hospital Name</description>
 						<modifiers read="true" write="true" optional="true"
 							unique="false" />
 						<persistence type="property" />
 					</attribute>
 
 					<attribute qualifier="numberRep" type="java.lang.String">
-						<description>numero reparto</description>
+						<description>Number Department</description>
 						<modifiers read="true" write="true" search="true"
 							optional="false" unique="false" />
 						<persistence type="dynamic"
@@ -176,7 +191,7 @@
 					</attribute>
 
 					<attribute qualifier="citta" type="java.lang.String">
-						<description>città ospedale</description>
+						<description>City</description>
 						<modifiers read="true" write="true" search="true"
 							optional="false" unique="true" />
 						<persistence type="property" />
@@ -190,23 +205,20 @@
 
 
 				<attributes>
-					<attribute qualifier="codeReparto"
-						type="java.lang.String">
+					<attribute qualifier="code" type="java.lang.String">
 
-						<description>Codice Reparto</description>
+						<description>Department Code</description>
 						<modifiers read="true" write="true" search="true"
 							optional="false" unique="true" />
 						<persistence type="property" />
 					</attribute>
-					<attribute qualifier="nameRep"
+					<attribute qualifier="name"
 						type="localized:java.lang.String">
-
-						<description>Nome reparto.</description>
-
+						<description> Department Name</description>
 						<persistence type="property" />
 					</attribute>
 					<attribute qualifier="head" type="Head">
-						<description>Codice Reparto</description>
+						<description>Head code</description>
 						<modifiers />
 						<persistence type="property" />
 					</attribute>
@@ -221,9 +233,21 @@
 			<itemtype code="Head" extends="Customer" autocreate="true"
 				generate="true">
 				<deployment table="DepHead" typecode="20003" />
+				<attributes>
 
+					<attribute qualifier="specialization"
+						type="Localized:java.Lang.String">
+						<description>Head Specialization</description>
+						<persistence type="property" />
+					</attribute>
 
+					<attribute qualifier="registration"
+						type="Localized:java.lang.Boolean">
+						<description>Head Registration</description>
+						<persistence type="property" />
+					</attribute>
 
+				</attributes>
 			</itemtype>
 
 			<itemtype code="Patient" extends="Customer"
@@ -231,11 +255,36 @@
 				<deployment table="DepPatient" typecode="20004" />
 				<attributes>
 					<attribute qualifier="entryDate" type="java.util.Date">
-						<description>Data Ingresso</description>
+						<description> Patient Entry Date</description>
 						<persistence type="property" />
 					</attribute>
+
 					<attribute qualifier="exitDate" type="java.util.Date">
-						<description>Data uscita</description>
+						<description>Patient Exit Date</description>
+						<persistence type="property" />
+					</attribute>
+
+					<attribute qualifier="numberPathology"
+						type="java.lang.String">
+						<description>Patient Number Pathology </description>
+						<modifiers read="true" write="true" search="true" />
+						<persistence type="dynamic"
+							attributeHandler="dynamicAttributesNumberPhatology" />
+					</attribute>
+
+				</attributes>
+
+			</itemtype>
+
+
+			<itemtype code="Pathology" autocreate="true" generate="true">
+				<deployment table="DepPathology" typecode="20006" />
+				<attributes>
+					<attribute qualifier="name"
+						type="Localized:java.lang.String">
+						<description> Pathology Name </description>
+						<modifiers read="true" write="true" search="true"
+							optional="false" unique="true" />
 						<persistence type="property" />
 					</attribute>
 

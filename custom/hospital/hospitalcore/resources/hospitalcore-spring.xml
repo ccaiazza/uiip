@@ -715,13 +715,16 @@
 	<bean id="dynamicAttributesNumberDepartment"
 		class="org.training.hospital.core.handler.DynamicAttributesNumberDepartment">
 	</bean>
+	
+	<bean id="dynamicAttributesNumberPhatology"
+		class="org.training.hospital.core.handler.DynamicAttributesNumberPathology">
+	</bean>
 
 
 	<bean name="defaultHospitalDao"
 		class=" org.training.hospital.core.dao.impl.DefaultHospitalDao">
 		<constructor-arg value="Hospital" />
 	</bean>
-
 
 
 	<bean name="defaultRepartoDao"

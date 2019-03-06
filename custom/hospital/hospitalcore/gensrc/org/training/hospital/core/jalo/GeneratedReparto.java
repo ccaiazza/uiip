@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 5-mar-2019 17.32.23                         ---
+ * --- Generated at 6-mar-2019 15.19.22                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
@@ -35,10 +35,10 @@ import org.training.hospital.core.jalo.Patient;
 @SuppressWarnings({"deprecation","unused","cast","PMD"})
 public abstract class GeneratedReparto extends GenericItem
 {
-	/** Qualifier of the <code>Reparto.codeReparto</code> attribute **/
-	public static final String CODEREPARTO = "codeReparto";
-	/** Qualifier of the <code>Reparto.nameRep</code> attribute **/
-	public static final String NAMEREP = "nameRep";
+	/** Qualifier of the <code>Reparto.code</code> attribute **/
+	public static final String CODE = "code";
+	/** Qualifier of the <code>Reparto.name</code> attribute **/
+	public static final String NAME = "name";
 	/** Qualifier of the <code>Reparto.head</code> attribute **/
 	public static final String HEAD = "head";
 	/** Qualifier of the <code>Reparto.hospital</code> attribute **/
@@ -66,8 +66,8 @@ public abstract class GeneratedReparto extends GenericItem
 	static
 	{
 		final Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>();
-		tmp.put(CODEREPARTO, AttributeMode.INITIAL);
-		tmp.put(NAMEREP, AttributeMode.INITIAL);
+		tmp.put(CODE, AttributeMode.INITIAL);
+		tmp.put(NAME, AttributeMode.INITIAL);
 		tmp.put(HEAD, AttributeMode.INITIAL);
 		tmp.put(HOSPITAL, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
@@ -79,39 +79,39 @@ public abstract class GeneratedReparto extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Reparto.codeReparto</code> attribute.
-	 * @return the codeReparto - Codice Reparto
+	 * <i>Generated method</i> - Getter of the <code>Reparto.code</code> attribute.
+	 * @return the code - Department Code
 	 */
-	public String getCodeReparto(final SessionContext ctx)
+	public String getCode(final SessionContext ctx)
 	{
-		return (String)getProperty( ctx, CODEREPARTO);
+		return (String)getProperty( ctx, CODE);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Reparto.codeReparto</code> attribute.
-	 * @return the codeReparto - Codice Reparto
+	 * <i>Generated method</i> - Getter of the <code>Reparto.code</code> attribute.
+	 * @return the code - Department Code
 	 */
-	public String getCodeReparto()
+	public String getCode()
 	{
-		return getCodeReparto( getSession().getSessionContext() );
+		return getCode( getSession().getSessionContext() );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Reparto.codeReparto</code> attribute. 
-	 * @param value the codeReparto - Codice Reparto
+	 * <i>Generated method</i> - Setter of the <code>Reparto.code</code> attribute. 
+	 * @param value the code - Department Code
 	 */
-	public void setCodeReparto(final SessionContext ctx, final String value)
+	public void setCode(final SessionContext ctx, final String value)
 	{
-		setProperty(ctx, CODEREPARTO,value);
+		setProperty(ctx, CODE,value);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Reparto.codeReparto</code> attribute. 
-	 * @param value the codeReparto - Codice Reparto
+	 * <i>Generated method</i> - Setter of the <code>Reparto.code</code> attribute. 
+	 * @param value the code - Department Code
 	 */
-	public void setCodeReparto(final String value)
+	public void setCode(final String value)
 	{
-		setCodeReparto( getSession().getSessionContext(), value );
+		setCode( getSession().getSessionContext(), value );
 	}
 	
 	@Override
@@ -123,7 +123,7 @@ public abstract class GeneratedReparto extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>Reparto.head</code> attribute.
-	 * @return the head - Codice Reparto
+	 * @return the head - Head code
 	 */
 	public Head getHead(final SessionContext ctx)
 	{
@@ -132,7 +132,7 @@ public abstract class GeneratedReparto extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>Reparto.head</code> attribute.
-	 * @return the head - Codice Reparto
+	 * @return the head - Head code
 	 */
 	public Head getHead()
 	{
@@ -141,7 +141,7 @@ public abstract class GeneratedReparto extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>Reparto.head</code> attribute. 
-	 * @param value the head - Codice Reparto
+	 * @param value the head - Head code
 	 */
 	public void setHead(final SessionContext ctx, final Head value)
 	{
@@ -150,7 +150,7 @@ public abstract class GeneratedReparto extends GenericItem
 	
 	/**
 	 * <i>Generated method</i> - Setter of the <code>Reparto.head</code> attribute. 
-	 * @param value the head - Codice Reparto
+	 * @param value the head - Head code
 	 */
 	public void setHead(final Head value)
 	{
@@ -214,50 +214,50 @@ public abstract class GeneratedReparto extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Reparto.nameRep</code> attribute.
-	 * @return the nameRep - Nome reparto.
+	 * <i>Generated method</i> - Getter of the <code>Reparto.name</code> attribute.
+	 * @return the name - Department Name
 	 */
-	public String getNameRep(final SessionContext ctx)
+	public String getName(final SessionContext ctx)
 	{
 		if( ctx == null || ctx.getLanguage() == null )
 		{
-			throw new JaloInvalidParameterException("GeneratedReparto.getNameRep requires a session language", 0 );
+			throw new JaloInvalidParameterException("GeneratedReparto.getName requires a session language", 0 );
 		}
-		return (String)getLocalizedProperty( ctx, NAMEREP);
+		return (String)getLocalizedProperty( ctx, NAME);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Reparto.nameRep</code> attribute.
-	 * @return the nameRep - Nome reparto.
+	 * <i>Generated method</i> - Getter of the <code>Reparto.name</code> attribute.
+	 * @return the name - Department Name
 	 */
-	public String getNameRep()
+	public String getName()
 	{
-		return getNameRep( getSession().getSessionContext() );
+		return getName( getSession().getSessionContext() );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Reparto.nameRep</code> attribute. 
-	 * @return the localized nameRep - Nome reparto.
+	 * <i>Generated method</i> - Getter of the <code>Reparto.name</code> attribute. 
+	 * @return the localized name - Department Name
 	 */
-	public Map<Language,String> getAllNameRep(final SessionContext ctx)
+	public Map<Language,String> getAllName(final SessionContext ctx)
 	{
-		return (Map<Language,String>)getAllLocalizedProperties(ctx,NAMEREP,C2LManager.getInstance().getAllLanguages());
+		return (Map<Language,String>)getAllLocalizedProperties(ctx,NAME,C2LManager.getInstance().getAllLanguages());
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Reparto.nameRep</code> attribute. 
-	 * @return the localized nameRep - Nome reparto.
+	 * <i>Generated method</i> - Getter of the <code>Reparto.name</code> attribute. 
+	 * @return the localized name - Department Name
 	 */
-	public Map<Language,String> getAllNameRep()
+	public Map<Language,String> getAllName()
 	{
-		return getAllNameRep( getSession().getSessionContext() );
+		return getAllName( getSession().getSessionContext() );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Reparto.nameRep</code> attribute. 
-	 * @param value the nameRep - Nome reparto.
+	 * <i>Generated method</i> - Setter of the <code>Reparto.name</code> attribute. 
+	 * @param value the name - Department Name
 	 */
-	public void setNameRep(final SessionContext ctx, final String value)
+	public void setName(final SessionContext ctx, final String value)
 	{
 		if ( ctx == null) 
 		{
@@ -265,36 +265,36 @@ public abstract class GeneratedReparto extends GenericItem
 		}
 		if( ctx.getLanguage() == null )
 		{
-			throw new JaloInvalidParameterException("GeneratedReparto.setNameRep requires a session language", 0 );
+			throw new JaloInvalidParameterException("GeneratedReparto.setName requires a session language", 0 );
 		}
-		setLocalizedProperty(ctx, NAMEREP,value);
+		setLocalizedProperty(ctx, NAME,value);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Reparto.nameRep</code> attribute. 
-	 * @param value the nameRep - Nome reparto.
+	 * <i>Generated method</i> - Setter of the <code>Reparto.name</code> attribute. 
+	 * @param value the name - Department Name
 	 */
-	public void setNameRep(final String value)
+	public void setName(final String value)
 	{
-		setNameRep( getSession().getSessionContext(), value );
+		setName( getSession().getSessionContext(), value );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Reparto.nameRep</code> attribute. 
-	 * @param value the nameRep - Nome reparto.
+	 * <i>Generated method</i> - Setter of the <code>Reparto.name</code> attribute. 
+	 * @param value the name - Department Name
 	 */
-	public void setAllNameRep(final SessionContext ctx, final Map<Language,String> value)
+	public void setAllName(final SessionContext ctx, final Map<Language,String> value)
 	{
-		setAllLocalizedProperties(ctx,NAMEREP,value);
+		setAllLocalizedProperties(ctx,NAME,value);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Setter of the <code>Reparto.nameRep</code> attribute. 
-	 * @param value the nameRep - Nome reparto.
+	 * <i>Generated method</i> - Setter of the <code>Reparto.name</code> attribute. 
+	 * @param value the name - Department Name
 	 */
-	public void setAllNameRep(final Map<Language,String> value)
+	public void setAllName(final Map<Language,String> value)
 	{
-		setAllNameRep( getSession().getSessionContext(), value );
+		setAllName( getSession().getSessionContext(), value );
 	}
 	
 	/**

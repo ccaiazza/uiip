@@ -1,0 +1,52 @@
+INSERT_UPDATE Hospital; code[unique=true]; name[lang=en]; citta;
+;010; cardarelli; Napoli; 
+;020;gemelli;Roma; 
+
+
+INSERT Reparto; code[unique=true]; name[lang=en]; 
+;rep1; Pediatrics;
+;rep2; Surgery; 
+;rep3; Cardiology; 
+
+INSERT Head; uid[unique=true]; name;spacialization; registration
+;he1; red; Pediatrics;
+;he2; black; Orthopedics;
+;he3; white; Psychiatry;
+
+INSERT_UPDATE Reparto; code[unique=true]; name[lang=en]; head(uid); hospital(code); 
+;rep1; Pediatrics; he1; 010;
+;rep2; Surgery; he2 ;010;
+;rep3; Cardiology; he3; 020;
+
+
+INSERT_UPDATE Hospital; code[unique=true]; name[lang=en]; citta; reparti(code)[mode=append];
+;010; cardarelli; Naples; rep1,rep2;
+;020;gemelli; Rome; rep3;
+
+
+INSERT Patient; uid[unique=true]; name; entryDate[dateformat='yyyy.MM.dd']; exitDate[dateformat='yyyy.MM.dd']
+;p01; Jhon;2018.9.22; 2018.11.12
+;p02; Max; 2019.02.10;2019.02.15
+;p00; Karl;2018.01.16; 2018.01.26
+
+INSERT Pathology; name[lang=en]
+hypertension;
+diabetes;
+arthrosis
+
+INSERT Patient; uid[unique=true]; name; entryDate[dateformat='yyyy.MM.dd']; exitDate[dateformat='yyyy.MM.dd']; pathologies[name]
+;p01; Jhon;2018.9.22; 2018.11.12; hypertension;
+;p02; Max; 2019.02.10;2019.02.15
+;p00; Karl;2018.01.16; 2018.01.26
+
+
+INSERT_UPDATE Reparto; code[unique=true]; name[lang=en]; head(uid); hospital(code); patients(uid)[mode=append];
+;rep1; Pediatrics; he1; 010; rep1
+;rep2; Surgery; he2 ;010; rep2
+;rep3; Card; he3; 020; rep3
+
+
+
+
+
+

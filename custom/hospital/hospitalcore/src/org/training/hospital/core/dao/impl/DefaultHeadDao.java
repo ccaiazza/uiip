@@ -3,8 +3,6 @@
  */
 package org.training.hospital.core.dao.impl;
 
-import static de.hybris.platform.servicelayer.util.ServicesUtil.validateParameterNotNull;
-
 import de.hybris.platform.jalo.SearchResult;
 import de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
@@ -42,7 +40,7 @@ public class DefaultHeadDao extends DefaultGenericDao<HeadModel> implements Head
 	@Override
 	public List<HeadModel> findHeadByHospital(final String code)
 	{
-		validateParameterNotNull(code, "Hospital code must not be null!");
+
 
 		final String fsq = "SELECT{PK} FROM {Reparto AS R JOIN Head as H ON {H.uid=R.head}} WHERE {R.hospital=?code\"}";
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(fsq, Collections.singletonMap("code", code));
@@ -76,12 +74,12 @@ public class DefaultHeadDao extends DefaultGenericDao<HeadModel> implements Head
 
 
 
-	public List<HeadModel> findHeadByReparto(final String codeReparto)
+	public List<HeadModel> findHeadByReparto(final String code)
 	{
-		validateParameterNotNull(codeReparto, "Hospital code must not be null!");
+
 		final Map parameters = new HashMap();
-		final String fsq = "SELECT{PK} FROM {Reparto AS R JOIN HEAD AS H ON {H.uid=R.head}} WHERE {R.codeReparto=?codeReparto\"}";
-		final FlexibleSearchQuery query = new FlexibleSearchQuery(fsq, Collections.singletonMap("codeReparto", codeReparto));
+		final String fsq = "SELECT{PK} FROM {Reparto AS R JOIN HEAD AS H ON {H.uid=R.head}} WHERE {R.code=?code\"}";
+		final FlexibleSearchQuery query = new FlexibleSearchQuery(fsq, Collections.singletonMap("code", code));
 
 		final SearchResult<HeadModel> result = (SearchResult<HeadModel>) getFlexibleSearchService().search(query);
 

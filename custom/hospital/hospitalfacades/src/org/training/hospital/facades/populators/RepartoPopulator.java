@@ -26,8 +26,8 @@ public class RepartoPopulator implements Populator<RepartoModel, RepartoData>
 	public void populate(final RepartoModel source, final RepartoData target) throws ConversionException
 	{
 
-		target.setNameRep(source.getNameRep());
-		target.setCodeReparto(source.getCodeReparto());
+		//	target.setName(source.getName());
+		//	target.setCode(source.getCode());
 
 
 	}

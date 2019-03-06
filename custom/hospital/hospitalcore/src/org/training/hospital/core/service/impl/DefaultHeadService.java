@@ -46,10 +46,10 @@ public class DefaultHeadService implements HeadService
 	 * @see org.training.hospital.core.service.HeadService#getHeadByReparto(java.lang.String)
 	 */
 	@Override
-	public List<HeadModel> getHeadByReparto(final String codeReparto)
+	public List<HeadModel> getHeadByReparto(final String code)
 	{
 
-		final List<HeadModel> result = headDao.findHeadByHospital(codeReparto);
+		final List<HeadModel> result = headDao.findHeadByHospital(code);
 		if (result.isEmpty())
 		{
 			throw new UnknownIdentifierException("not found!");
@@ -57,7 +57,7 @@ public class DefaultHeadService implements HeadService
 		else if (result.size() > 1)
 		{
 			throw new AmbiguousIdentifierException(
-					"Reparto code '" + codeReparto + "' is not unique, " + result.size() + " reparto found!");
+					"Reparto code '" + code + "' is not unique, " + result.size() + " reparto found!");
 		}
 		return result;
 	}

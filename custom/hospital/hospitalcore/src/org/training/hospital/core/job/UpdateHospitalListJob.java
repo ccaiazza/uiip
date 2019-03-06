@@ -53,8 +53,8 @@ public class UpdateHospitalListJob extends AbstractJobPerformable<CronJobModel>
 				try
 				{
 
-					fw.write(hospitalList.get(i).getName() + " " + hospitalList.get(i).getNumberRep() + " " + r.getCodeReparto() + " "
-						+ r.getNameRep());
+					fw.write(hospitalList.get(i).getName() + " " + hospitalList.get(i).getNumberRep() + " " + r.getCode() + " "
+							+ r.getName());
 					ex = true;
 				}
 				catch (final IOException exc)
