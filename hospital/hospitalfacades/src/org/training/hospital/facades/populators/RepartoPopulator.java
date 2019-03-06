@@ -22,8 +22,11 @@ public class RepartoPopulator implements Populator<RepartoModel, RepartoData>
 	public void populate(final RepartoModel source, final RepartoData target) throws ConversionException
 	{
 
-		target.setCodeReparto(source.getCodeReparto());
-		target.setNameRep(source.getNameRep());
+		target.setCode((source.getCode()));
+		target.setName(source.getName());
+		target.setHead(source.getHead().getUid());
+		target.setHospital(source.getHospital().getCode());
+
 
 
 	}

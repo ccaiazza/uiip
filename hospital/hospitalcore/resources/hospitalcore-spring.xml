@@ -781,6 +781,12 @@
 	<bean id="infoJob" class="org.training.hospital.core.job.InfoJob" >
 	<property name="hospitalService" ref="hospitalService" />
 	</bean>
+	<bean id="dynamicAttributesNumberPathologies"
+		class="org.training.hospital.core.handler.DynamicAttributeNumberPathologies">
+
+	</bean>
 
 </beans>
+
+
 

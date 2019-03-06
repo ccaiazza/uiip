@@ -18,7 +18,7 @@ public class HospitalPopulator implements Populator<HospitalModel, HospitalData>
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see de.hybris.platform.converters.Populator#populate(java.lang.Object, java.lang.Object)
 	 */
 	@Override
@@ -28,6 +28,7 @@ public class HospitalPopulator implements Populator<HospitalModel, HospitalData>
 		target.setCode(source.getCode());
 		target.setName(source.getName());
 		target.setNumberRep(source.getNumberRep());
+		target.setCitta(source.getCitta());
 		//target.setReparti(source.getReparti());
 
 

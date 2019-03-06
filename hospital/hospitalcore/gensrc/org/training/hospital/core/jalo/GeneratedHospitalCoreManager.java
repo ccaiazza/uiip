@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 5-mar-2019 17.31.03                         ---
+ * --- Generated at 6-mar-2019 15.14.55                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
@@ -24,6 +24,7 @@ import org.training.hospital.core.jalo.ApparelStyleVariantProduct;
 import org.training.hospital.core.jalo.ElectronicsColorVariantProduct;
 import org.training.hospital.core.jalo.Head;
 import org.training.hospital.core.jalo.Hospital;
+import org.training.hospital.core.jalo.Pathology;
 import org.training.hospital.core.jalo.Patient;
 import org.training.hospital.core.jalo.Reparto;
 
@@ -205,6 +206,32 @@ public abstract class GeneratedHospitalCoreManager extends Extension
 	public Hospital createHospital(final Map attributeValues)
 	{
 		return createHospital( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public Pathology createPathology(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( HospitalCoreConstants.TC.PATHOLOGY );
+			return (Pathology)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating Pathology : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public Pathology createPathology(final Map attributeValues)
+	{
+		return createPathology( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public Patient createPatient(final SessionContext ctx, final Map attributeValues)

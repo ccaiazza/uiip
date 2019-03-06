@@ -2,23 +2,26 @@ INSERT_UPDATE Hospital; code[unique=true]; name[lang = en]; citta;reparti[mode =
 ;010; Cardarelli; Napoli; rep2,rep1;
 ;020; Gemelli; Roma; rep3;
 
-INSERT_UPDATE Head; uid[unique=true]; name;
-; he1; Rossi;
-; he2; Verdi;
-; he3; Bianchi;
+INSERT_UPDATE Head; uid[unique=true]; name; specialization;register
+; he1; Rossi; Surgery; true;
+; he2; Verdi; Pediatrics; false;
+; he3; Bianchi; Oculist; true;
+; he4; Nardi; Cardiology; true;
 
-
-INSERT_UPDATE Reparto;  codeReparto[unique=true]; nameRep[lang = en]; head(codeHead); hospital(code);
+INSERT_UPDATE Reparto;  code[unique=true]; name[lang = en]; head(uid); hospital(code); patients(uid); 
 ; rep1; Pediatrics;  he1; 010
 ; rep2; Surgery; he2; 020
-; rep3; Cardiology;  he3; 010
+; rep3; Cardiology;  he3; 020
+; rep4; Gynecology;  he4; 010
 
-INSERT_UPDATE Patient; uid[unique=true]; dateEntry[dateformat='yyyy.MM.dd']; departaments(codeReparto); 
-; pa1; 2019.01.02; rep1
-; pa2; 2019.02.20; rep2
-; pa3; 2019.02.27; rep3
+INSERT_UPDATE Patient; uid[unique=true]; dateEntry[dateformat='yyyy.MM.dd']; dateExit[dateformat='yyyy.MM.dd'];departaments(code);pathologies(name); 
+; pa1; 2019.01.02; 2019.02.02;rep2; diabetes
+; pa2; 2019.02.20;2019.03.02; rep3; cataract
+; pa3; 2019.02.27; ;rep4; abortion
 
-INSERT_UPDATE Reparto;  codeReparto[unique=true]; nameRep[lang = en];
-; rep1; Pediatrics; 
-; rep2; Surgery;
-; rep3; Cardiology;  
+
+
+INSERT_UPDATE Pathology; name[unique=true]; patients(uid); 
+; diabetes; pa1
+; cataract; pa2
+; abortion; pa3

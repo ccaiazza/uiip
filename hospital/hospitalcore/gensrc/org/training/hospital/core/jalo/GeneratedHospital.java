@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 5-mar-2019 17.31.03                         ---
+ * --- Generated at 6-mar-2019 15.14.55                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
@@ -40,7 +40,7 @@ public abstract class GeneratedHospital extends GenericItem
 	**/
 	protected static final OneToManyHandler<Reparto> REPARTIHANDLER = new OneToManyHandler<Reparto>(
 	HospitalCoreConstants.TC.REPARTO,
-	true,
+	false,
 	"hospital",
 	null,
 	false,

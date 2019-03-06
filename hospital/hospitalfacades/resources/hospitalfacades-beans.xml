@@ -21,10 +21,11 @@
 
 	<bean
 		class="org.training.hospital.facades.product.data.RepartoData">
-		<property name="codeReparto" type="String" />
-		<property name="nameRep" type="String" />
 		<property name="code" type="String" />
-		<property name="uid" type="String" />
+		<property name="name" type="String" />
+		<property name="head" type="String" />
+		<property name="patients" type="String" />
+		<property name="hospital" type="String" />
 
 
 	</bean>
@@ -32,6 +33,9 @@
 	<bean class="org.training.hospital.facades.product.data.HeadData">
 		<property name="uid" type="String" />
 		<property name="name" type="String" />
+		<property name="specialization" type="String" />
+		<property name="register" type="String" />
+		
 
 
 	</bean>

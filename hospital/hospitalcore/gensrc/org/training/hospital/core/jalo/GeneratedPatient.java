@@ -1,21 +1,19 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 5-mar-2019 17.31.03                         ---
+ * --- Generated at 6-mar-2019 15.14.55                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
 
-import de.hybris.platform.jalo.ConsistencyCheckException;
 import de.hybris.platform.jalo.Item;
 import de.hybris.platform.jalo.Item.AttributeMode;
-import de.hybris.platform.jalo.JaloSystemException;
 import de.hybris.platform.jalo.SessionContext;
 import de.hybris.platform.jalo.type.ComposedType;
 import de.hybris.platform.jalo.type.TypeManager;
 import de.hybris.platform.jalo.user.Customer;
-import de.hybris.platform.util.PartOfHandler;
 import de.hybris.platform.util.Utilities;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.training.hospital.core.constants.HospitalCoreConstants;
+import org.training.hospital.core.jalo.Pathology;
 import org.training.hospital.core.jalo.Reparto;
 
 /**
@@ -34,6 +33,8 @@ public abstract class GeneratedPatient extends Customer
 {
 	/** Qualifier of the <code>Patient.dateEntry</code> attribute **/
 	public static final String DATEENTRY = "dateEntry";
+	/** Qualifier of the <code>Patient.dateExit</code> attribute **/
+	public static final String DATEEXIT = "dateExit";
 	/** Qualifier of the <code>Patient.departaments</code> attribute **/
 	public static final String DEPARTAMENTS = "departaments";
 	/** Relation ordering override parameter constants for Patient2DepartmentRelation from ((hospitalcore))*/
@@ -41,11 +42,19 @@ public abstract class GeneratedPatient extends Customer
 	protected static String PATIENT2DEPARTMENTRELATION_TGT_ORDERED = "relation.Patient2DepartmentRelation.target.ordered";
 	/** Relation disable markmodifed parameter constants for Patient2DepartmentRelation from ((hospitalcore))*/
 	protected static String PATIENT2DEPARTMENTRELATION_MARKMODIFIED = "relation.Patient2DepartmentRelation.markmodified";
+	/** Qualifier of the <code>Patient.pathologies</code> attribute **/
+	public static final String PATHOLOGIES = "pathologies";
+	/** Relation ordering override parameter constants for Patient2PathologyRelation from ((hospitalcore))*/
+	protected static String PATIENT2PATHOLOGYRELATION_SRC_ORDERED = "relation.Patient2PathologyRelation.source.ordered";
+	protected static String PATIENT2PATHOLOGYRELATION_TGT_ORDERED = "relation.Patient2PathologyRelation.target.ordered";
+	/** Relation disable markmodifed parameter constants for Patient2PathologyRelation from ((hospitalcore))*/
+	protected static String PATIENT2PATHOLOGYRELATION_MARKMODIFIED = "relation.Patient2PathologyRelation.markmodified";
 	protected static final Map<String, AttributeMode> DEFAULT_INITIAL_ATTRIBUTES;
 	static
 	{
 		final Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>(Customer.DEFAULT_INITIAL_ATTRIBUTES);
 		tmp.put(DATEENTRY, AttributeMode.INITIAL);
+		tmp.put(DATEEXIT, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
 	}
 	@Override
@@ -88,6 +97,42 @@ public abstract class GeneratedPatient extends Customer
 	public void setDateEntry(final Date value)
 	{
 		setDateEntry( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Patient.dateExit</code> attribute.
+	 * @return the dateExit
+	 */
+	public Date getDateExit(final SessionContext ctx)
+	{
+		return (Date)getProperty( ctx, DATEEXIT);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Patient.dateExit</code> attribute.
+	 * @return the dateExit
+	 */
+	public Date getDateExit()
+	{
+		return getDateExit( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Patient.dateExit</code> attribute. 
+	 * @param value the dateExit
+	 */
+	public void setDateExit(final SessionContext ctx, final Date value)
+	{
+		setProperty(ctx, DATEEXIT,value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Patient.dateExit</code> attribute. 
+	 * @param value the dateExit
+	 */
+	public void setDateExit(final Date value)
+	{
+		setDateExit( getSession().getSessionContext(), value );
 	}
 	
 	/**
@@ -139,29 +184,16 @@ public abstract class GeneratedPatient extends Customer
 	 */
 	public void setDepartaments(final SessionContext ctx, final Set<Reparto> value)
 	{
-		new PartOfHandler<Set<Reparto>>()
-		{
-			@Override
-			protected Set<Reparto> doGetValue(final SessionContext ctx)
-			{
-				return getDepartaments( ctx );
-			}
-			@Override
-			protected void doSetValue(final SessionContext ctx, final Set<Reparto> _value)
-			{
-				final Set<Reparto> value = _value;
-				setLinkedItems( 
-					ctx,
-					true,
-					HospitalCoreConstants.Relations.PATIENT2DEPARTMENTRELATION,
-					null,
-					value,
-					false,
-					false,
-					Utilities.getMarkModifiedOverride(PATIENT2DEPARTMENTRELATION_MARKMODIFIED)
-				);
-			}
-		}.setValue( ctx, value );
+		setLinkedItems( 
+			ctx,
+			true,
+			HospitalCoreConstants.Relations.PATIENT2DEPARTMENTRELATION,
+			null,
+			value,
+			false,
+			false,
+			Utilities.getMarkModifiedOverride(PATIENT2DEPARTMENTRELATION_MARKMODIFIED)
+		);
 	}
 	
 	/**
@@ -216,17 +248,6 @@ public abstract class GeneratedPatient extends Customer
 			false,
 			Utilities.getMarkModifiedOverride(PATIENT2DEPARTMENTRELATION_MARKMODIFIED)
 		);
-		if( !getLinkedItems( ctx, true,HospitalCoreConstants.Relations.PATIENT2DEPARTMENTRELATION,null).contains( value ) )
-		{
-			try
-			{
-				value.remove( ctx );
-			}
-			catch( ConsistencyCheckException e )
-			{
-				throw new JaloSystemException(e);
-			}
-		}
 	}
 	
 	/**
@@ -246,7 +267,136 @@ public abstract class GeneratedPatient extends Customer
 		{
 			return Utilities.getMarkModifiedOverride(PATIENT2DEPARTMENTRELATION_MARKMODIFIED);
 		}
+		ComposedType relationSecondEnd1 = TypeManager.getInstance().getComposedType("Pathology");
+		if(relationSecondEnd1.isAssignableFrom(referencedItem.getComposedType()))
+		{
+			return Utilities.getMarkModifiedOverride(PATIENT2PATHOLOGYRELATION_MARKMODIFIED);
+		}
 		return true;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Patient.pathologies</code> attribute.
+	 * @return the pathologies
+	 */
+	public Collection<Pathology> getPathologies(final SessionContext ctx)
+	{
+		final List<Pathology> items = getLinkedItems( 
+			ctx,
+			true,
+			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
+			"Pathology",
+			null,
+			false,
+			false
+		);
+		return items;
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Patient.pathologies</code> attribute.
+	 * @return the pathologies
+	 */
+	public Collection<Pathology> getPathologies()
+	{
+		return getPathologies( getSession().getSessionContext() );
+	}
+	
+	public long getPathologiesCount(final SessionContext ctx)
+	{
+		return getLinkedItemsCount(
+			ctx,
+			true,
+			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
+			"Pathology",
+			null
+		);
+	}
+	
+	public long getPathologiesCount()
+	{
+		return getPathologiesCount( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Patient.pathologies</code> attribute. 
+	 * @param value the pathologies
+	 */
+	public void setPathologies(final SessionContext ctx, final Collection<Pathology> value)
+	{
+		setLinkedItems( 
+			ctx,
+			true,
+			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
+			null,
+			value,
+			false,
+			false,
+			Utilities.getMarkModifiedOverride(PATIENT2PATHOLOGYRELATION_MARKMODIFIED)
+		);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Patient.pathologies</code> attribute. 
+	 * @param value the pathologies
+	 */
+	public void setPathologies(final Collection<Pathology> value)
+	{
+		setPathologies( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Adds <code>value</code> to pathologies. 
+	 * @param value the item to add to pathologies
+	 */
+	public void addToPathologies(final SessionContext ctx, final Pathology value)
+	{
+		addLinkedItems( 
+			ctx,
+			true,
+			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
+			null,
+			Collections.singletonList(value),
+			false,
+			false,
+			Utilities.getMarkModifiedOverride(PATIENT2PATHOLOGYRELATION_MARKMODIFIED)
+		);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Adds <code>value</code> to pathologies. 
+	 * @param value the item to add to pathologies
+	 */
+	public void addToPathologies(final Pathology value)
+	{
+		addToPathologies( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Removes <code>value</code> from pathologies. 
+	 * @param value the item to remove from pathologies
+	 */
+	public void removeFromPathologies(final SessionContext ctx, final Pathology value)
+	{
+		removeLinkedItems( 
+			ctx,
+			true,
+			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
+			null,
+			Collections.singletonList(value),
+			false,
+			false,
+			Utilities.getMarkModifiedOverride(PATIENT2PATHOLOGYRELATION_MARKMODIFIED)
+		);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Removes <code>value</code> from pathologies. 
+	 * @param value the item to remove from pathologies
+	 */
+	public void removeFromPathologies(final Pathology value)
+	{
+		removeFromPathologies( getSession().getSessionContext(), value );
 	}
 	
 }

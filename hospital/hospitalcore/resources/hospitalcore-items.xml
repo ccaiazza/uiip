@@ -38,13 +38,13 @@
 			generate="true" autocreate="true">
 			<sourceElement type="Hospital" qualifier="hospital"
 				cardinality="one">
-				<modifiers read="true" write="false" initial="true"
-					 search="true" unique="true" />
+				<modifiers read="true" write="false" search="true"
+					unique="true" />
 			</sourceElement>
 			<targetElement type="Reparto" qualifier="reparti"
 				cardinality="many" ordered="false" collectiontype="set">
 				<modifiers read="true" write="true" optional="true"
-					search="true" partof="true" />
+					search="true" />
 			</targetElement>
 		</relation>
 
@@ -54,14 +54,29 @@
 			<sourceElement type="Patient" qualifier="patients"
 				cardinality="many">
 				<modifiers read="true" write="false" initial="true"
-					 search="true" />
+					search="true" />
 			</sourceElement>
 			<targetElement type="Reparto" qualifier="departaments"
-				cardinality="many" ordered="false" collectiontype="set">
+				cardinality="many" collectiontype="set">
 				<modifiers read="true" write="true" optional="true"
-					search="true" partof="true" />
+					search="true" />
 			</targetElement>
 		</relation>
+
+		<relation code="Patient2PathologyRelation" localized="false"
+			generate="true" autocreate="true">
+			<deployment table="Ricovero" typecode="20007" />
+			<sourceElement type="Patient" qualifier="patients"
+				cardinality="many">
+				<modifiers read="true" write="true" search="true" />
+			</sourceElement>
+			<targetElement type="Pathology" qualifier="pathologies"
+				cardinality="many">
+				<modifiers read="true" write="true" optional="true"
+					search="true" />
+			</targetElement>
+		</relation>
+
 
 
 		<!-- <relation code="Head2RepartoRelation" localized="false" generate="true" 
@@ -195,12 +210,11 @@
 				jaloclass="org.training.hospital.core.jalo.Reparto">
 				<deployment table="DepReparto" typecode="20002" />
 				<attributes>
-					<attribute qualifier="codeReparto"
-						type="java.lang.String">
-						<modifiers unique="true" />
+					<attribute qualifier="code" type="java.lang.String">
+						<modifiers unique="true" optional="false" />
 						<persistence type="property" />
 					</attribute>
-					<attribute qualifier="nameRep"
+					<attribute qualifier="name"
 						type="localized:java.lang.String">
 						<persistence type="property" />
 					</attribute>
@@ -214,6 +228,15 @@
 			<itemtype code="Head" autocreate="true" generate="true"
 				extends="Customer" jaloclass="org.training.hospital.core.jalo.Head">
 				<deployment table="DepHead" typecode="20003" />
+				<attributes>
+					<attribute qualifier="specialization"
+						type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="register" type="java.lang.Boolean">
+						<persistence type="property" />
+					</attribute>
+				</attributes>
 			</itemtype>
 
 			<itemtype code="Patient" autocreate="true" generate="true"
@@ -224,11 +247,29 @@
 					<attribute qualifier="dateEntry" type="java.util.Date">
 						<persistence type="property" />
 					</attribute>
+					<attribute qualifier="dateExit" type="java.util.Date">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="numberPathologies"
+						type="java.lang.String">
+						<persistence type="dynamic"
+							attributeHandler="dynamicAttributesNumberPahologies" />
+						<modifiers read="true" write="false" search="true"
+							optional="false" />
+					</attribute>
 				</attributes>
 			</itemtype>
+			<itemtype code="Pathology" autocreate="true" generate="true"
 
-
-
+				jaloclass="org.training.hospital.core.jalo.Pathology">
+				<deployment table="DepPatient" typecode="20006" />
+				<attributes>
+					<attribute qualifier="name" type="java.lang.String">
+						<persistence type="property" />
+						<modifiers unique="true" optional="false" />
+					</attribute>
+				</attributes>
+			</itemtype>
 		</typegroup>
 	</itemtypes>
 </items>

@@ -58,7 +58,7 @@ public class InfoJob implements JobPerformable<CronJobModel>
 				try
 				{
 					fw.write(infoHospitals.get(i).getName() + "con numero di reparti di " + infoHospitals.get(i).getNumberRep()
-							+ "con i reparti: " + r.getNameRep() + " " + r.getCodeReparto() + "\n");
+							+ "con i reparti: " + r.getName() + " " + r.getCode() + "\n");
 					esito = true;
 
 				}
