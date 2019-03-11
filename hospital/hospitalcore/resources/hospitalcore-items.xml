@@ -42,7 +42,7 @@
 					unique="true" />
 			</sourceElement>
 			<targetElement type="Reparto" qualifier="reparti"
-				cardinality="many" ordered="false" collectiontype="set">
+				cardinality="many" ordered="false" collectiontype="list">
 				<modifiers read="true" write="true" optional="true"
 					search="true" />
 			</targetElement>
@@ -50,14 +50,14 @@
 
 		<relation code="Patient2DepartmentRelation" localized="false"
 			generate="true" autocreate="true">
-			<deployment table="Ricovero" typecode="20005" />
+			<deployment table="Ricoveri" typecode="20005" />
 			<sourceElement type="Patient" qualifier="patients"
-				cardinality="many">
+				collectiontype="list" cardinality="many">
 				<modifiers read="true" write="false" initial="true"
 					search="true" />
 			</sourceElement>
 			<targetElement type="Reparto" qualifier="departaments"
-				cardinality="many" collectiontype="set">
+				cardinality="many" collectiontype="list">
 				<modifiers read="true" write="true" optional="true"
 					search="true" />
 			</targetElement>
@@ -65,34 +65,18 @@
 
 		<relation code="Patient2PathologyRelation" localized="false"
 			generate="true" autocreate="true">
-			<deployment table="Ricovero" typecode="20007" />
+			<deployment table="Patologia" typecode="20007" />
 			<sourceElement type="Patient" qualifier="patients"
-				cardinality="many">
+				collectiontype="list" cardinality="many">
 				<modifiers read="true" write="true" search="true" />
 			</sourceElement>
 			<targetElement type="Pathology" qualifier="pathologies"
-				cardinality="many">
+				collectiontype="list" cardinality="many">
 				<modifiers read="true" write="true" optional="true"
 					search="true" />
 			</targetElement>
 		</relation>
-
-
-
-		<!-- <relation code="Head2RepartoRelation" localized="false" generate="true" 
-			autocreate="true"> <sourceElement type="Head" qualifier="codeHead" cardinality="one"> 
-			<modifiers read="true" write="false" initial="true" optional="false" search="true" 
-			unique="true" /> </sourceElement> <targetElement type="Reparto" qualifier="Hreparti" 
-			cardinality="many" ordered="false" collectiontype="set"> <modifiers read="true" 
-			write="true" optional="true" search="true" partof="true" /> </targetElement> 
-			</relation> -->
-
-
-
-
 	</relations>
-
-
 	<itemtypes>
 
 		<!-- Add your item definitions here -->
@@ -242,7 +226,7 @@
 			<itemtype code="Patient" autocreate="true" generate="true"
 				extends="Customer"
 				jaloclass="org.training.hospital.core.jalo.Patient">
-				<deployment table="DepPatient" typecode="20004" />
+				<deployment table="DepPatients" typecode="20004" />
 				<attributes>
 					<attribute qualifier="dateEntry" type="java.util.Date">
 						<persistence type="property" />
@@ -259,10 +243,10 @@
 					</attribute>
 				</attributes>
 			</itemtype>
-			<itemtype code="Pathology" autocreate="true" generate="true"
 
+			<itemtype code="Pathology" autocreate="true" generate="true"
 				jaloclass="org.training.hospital.core.jalo.Pathology">
-				<deployment table="DepPatient" typecode="20006" />
+				<deployment table="DepPathology" typecode="20006" />
 				<attributes>
 					<attribute qualifier="name" type="java.lang.String">
 						<persistence type="property" />

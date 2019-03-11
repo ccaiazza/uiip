@@ -29,7 +29,8 @@ public class DynamicAttributeNumberPathologies implements DynamicAttributeHandle
 		{
 			throw new IllegalArgumentException("Item model is required");
 		}
-		return item.getPathologies().size() + " ";
+		//return item.getPathologies().size() + " ";
+		return null;
 
 	}
 

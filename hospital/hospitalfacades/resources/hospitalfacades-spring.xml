@@ -315,10 +315,70 @@
 	
 	<bean id="repartoPopulator"
 		class = "org.training.hospital.facades.populators.RepartoPopulator" >
+		<property name="patientConverter" ref="patientConverter" />
+		<property name="headConverter" ref="headConverter" />
+		<property name="hospitalConverter" ref="hospitalConverter" />
 
 	</bean>
 	<bean id="hospitalPopulator"
 		class = "org.training.hospital.facades.populators.HospitalPopulator" >
+		<property name="repartoConverter" ref="repartoConverter" />
+
+	</bean>
+	
+	<alias name="defaultPatientConverter"
+		alias="patientConverter" />
+	<bean id="defaultPatientConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="org.training.hospital.facades.product.data.PatientData" />
+		<property name="populators">
+			<set>
+				<ref bean="patientPopulator" />
+			</set>
+		</property>
+	</bean>
+	
+	
+	<alias name="defaultPatientFacade" alias="patientFacade" />
+	<bean id="defaultPatientFacade"
+		class="org.training.hospital.facades.impl.DefaultPatientFacade">
+		<property name="patientService" ref="patientService" />
+		<property name ="patientConverter" ref ="patientConverter"/>
+	
+	</bean>
+	<bean id="patientPopulator"
+		class = "org.training.hospital.facades.populators.PatientPopulator" >
+		<property name="repartoConverter" ref="repartoConverter" />
+		<property name="pathologyConverter" ref="pathologyConverter" />
+
+	</bean>
+	
+	<alias name="defaultPathologyConverter"
+		alias="pathologyConverter" />
+	<bean id="defaultPathologyConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="org.training.hospital.facades.product.data.PathologyData" />
+		<property name="populators">
+			<list>
+				<ref bean="pathologyPopulator" />
+			</list>
+		</property>
+	</bean>
+	
+	
+	<alias name="defaultPathologyFacade" alias="pathologyFacade" />
+	<bean id="defaultPathologytFacade"
+		class="org.training.hospital.facades.impl.DefaultPathologyFacade">
+		<property name="pathologyService" ref="pathologyService" />
+		<property name ="pathologyConverter" ref ="pathologyConverter"/>
+	
+	</bean>
+	<bean id="pathologyPopulator"
+		class = "org.training.hospital.facades.populators.PathologyPopulator" >
+		<property name ="patientConverter" ref ="patientConverter"/>
+		
 
 	</bean>
 

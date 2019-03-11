@@ -14,7 +14,7 @@ INSERT_UPDATE Reparto;  code[unique=true]; name[lang = en]; head(uid); hospital(
 ; rep3; Cardiology;  he3; 020
 ; rep4; Gynecology;  he4; 010
 
-INSERT_UPDATE Patient; uid[unique=true]; dateEntry[dateformat='yyyy.MM.dd']; dateExit[dateformat='yyyy.MM.dd'];departaments(code);pathologies(name); 
+INSERT_UPDATE Patient; uid[unique=true]; dateEntry[dateformat='yyyy.MM.dd']; dateExit[dateformat='MM/dd/yyyy'];departaments(code);pathologies(name); 
 ; pa1; 2019.01.02; 2019.02.02;rep2; diabetes
 ; pa2; 2019.02.20;2019.03.02; rep3; cataract
 ; pa3; 2019.02.27; ;rep4; abortion

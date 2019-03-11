@@ -27,6 +27,9 @@ public class HeadPopulator implements Populator<HeadModel, HeadData>
 	{
 		target.setUid(source.getUid());
 		target.setName(source.getName());
+		target.setSpecialization(source.getSpecialization());
+		target.setRegister(source.getRegister());
+
 
 
 

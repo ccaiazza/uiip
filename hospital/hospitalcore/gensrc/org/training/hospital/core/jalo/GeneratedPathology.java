@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 6-mar-2019 15.14.55                         ---
+ * --- Generated at 11-mar-2019 18.00.40                        ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
@@ -13,7 +13,6 @@ import de.hybris.platform.jalo.SessionContext;
 import de.hybris.platform.jalo.type.ComposedType;
 import de.hybris.platform.jalo.type.TypeManager;
 import de.hybris.platform.util.Utilities;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -100,7 +99,7 @@ public abstract class GeneratedPathology extends GenericItem
 	 * <i>Generated method</i> - Getter of the <code>Pathology.patients</code> attribute.
 	 * @return the patients
 	 */
-	public Collection<Patient> getPatients(final SessionContext ctx)
+	public List<Patient> getPatients(final SessionContext ctx)
 	{
 		final List<Patient> items = getLinkedItems( 
 			ctx,
@@ -108,8 +107,8 @@ public abstract class GeneratedPathology extends GenericItem
 			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
 			"Patient",
 			null,
-			false,
-			false
+			Utilities.getRelationOrderingOverride(PATIENT2PATHOLOGYRELATION_SRC_ORDERED, true),
+			Utilities.getRelationOrderingOverride(PATIENT2PATHOLOGYRELATION_TGT_ORDERED, true)
 		);
 		return items;
 	}
@@ -118,7 +117,7 @@ public abstract class GeneratedPathology extends GenericItem
 	 * <i>Generated method</i> - Getter of the <code>Pathology.patients</code> attribute.
 	 * @return the patients
 	 */
-	public Collection<Patient> getPatients()
+	public List<Patient> getPatients()
 	{
 		return getPatients( getSession().getSessionContext() );
 	}
@@ -143,7 +142,7 @@ public abstract class GeneratedPathology extends GenericItem
 	 * <i>Generated method</i> - Setter of the <code>Pathology.patients</code> attribute. 
 	 * @param value the patients
 	 */
-	public void setPatients(final SessionContext ctx, final Collection<Patient> value)
+	public void setPatients(final SessionContext ctx, final List<Patient> value)
 	{
 		setLinkedItems( 
 			ctx,
@@ -151,8 +150,8 @@ public abstract class GeneratedPathology extends GenericItem
 			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
 			null,
 			value,
-			false,
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2PATHOLOGYRELATION_SRC_ORDERED, true),
+			Utilities.getRelationOrderingOverride(PATIENT2PATHOLOGYRELATION_TGT_ORDERED, true),
 			Utilities.getMarkModifiedOverride(PATIENT2PATHOLOGYRELATION_MARKMODIFIED)
 		);
 	}
@@ -161,7 +160,7 @@ public abstract class GeneratedPathology extends GenericItem
 	 * <i>Generated method</i> - Setter of the <code>Pathology.patients</code> attribute. 
 	 * @param value the patients
 	 */
-	public void setPatients(final Collection<Patient> value)
+	public void setPatients(final List<Patient> value)
 	{
 		setPatients( getSession().getSessionContext(), value );
 	}
@@ -178,8 +177,8 @@ public abstract class GeneratedPathology extends GenericItem
 			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
 			null,
 			Collections.singletonList(value),
-			false,
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2PATHOLOGYRELATION_SRC_ORDERED, true),
+			Utilities.getRelationOrderingOverride(PATIENT2PATHOLOGYRELATION_TGT_ORDERED, true),
 			Utilities.getMarkModifiedOverride(PATIENT2PATHOLOGYRELATION_MARKMODIFIED)
 		);
 	}
@@ -205,8 +204,8 @@ public abstract class GeneratedPathology extends GenericItem
 			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
 			null,
 			Collections.singletonList(value),
-			false,
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2PATHOLOGYRELATION_SRC_ORDERED, true),
+			Utilities.getRelationOrderingOverride(PATIENT2PATHOLOGYRELATION_TGT_ORDERED, true),
 			Utilities.getMarkModifiedOverride(PATIENT2PATHOLOGYRELATION_MARKMODIFIED)
 		);
 	}
