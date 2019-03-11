@@ -237,7 +237,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
 			true,
 			false,
-			CollectionType.SET
+			CollectionType.LIST
 		);
 	
 		createRelationAttributes(
@@ -256,8 +256,8 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 			true,
 			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
 			true,
-			false,
-			CollectionType.SET
+			true,
+			CollectionType.LIST
 		);
 	
 		createRelationAttributes(
@@ -276,8 +276,8 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 			true,
 			de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG, 
 			true,
-			false,
-			CollectionType.SET
+			true,
+			CollectionType.LIST
 		);
 	
 
@@ -574,7 +574,7 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 					"Pathology", 
 					"name",  
 					null,
-					"Localized:java.lang.String",
+					"java.lang.String",
 					de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG,
 					null,
 					sqlColumnDefinitions

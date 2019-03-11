@@ -26,17 +26,15 @@
         <property name="name" type="String"/>
         <property name="numberRep" type="String"/>
         <property name="citta" type="String"/> 
-       <property name="reparti" type="String"/>
+       <property name="reparti" type="java.util.List&lt;org.training.hospital.facades.product.data.RepartoData>"/>
     </bean>
-	
-	
 	
 	 <bean class="org.training.hospital.facades.product.data.RepartoData">
         <description>Data object representing a Reparto</description>
         <property name="code" type="String"/>
         <property name="name" type="String"/>
         <property name="head" type="String"/>
-        <property name="hospital" type="String"/>
+        <property name="hospital" type=" String"/>
         <property name="patients" type="String"/>
        
     </bean>
@@ -45,10 +43,25 @@
         <description>Data object representing a Head</description>
         <property name="uid" type="String"/>
         <property name="name" type="String"/>
-
+        
     </bean>
     
+     <bean class="org.training.hospital.facades.product.data.PatientData">
+        <description>Data object representing a Patient</description>
+        <property name="uid" type="String"/>
+        <property name="name" type="String"/>
+        <property name="entryDate" type="java.util.Date"/> 
+        <property name="exitDate" type="java.util.Date"/>
+        <property name="numberPathology" type="String"/>
+ 		<property name="departments" type="String"/>
+ 		<property name="pathologies" type="String"/>
+    </bean>
 	
+	 <bean class="org.training.hospital.facades.product.data.Pathology">
+        <description>Data object representing a Pathology</description>
+        <property name="name" type="String"/>
+         <property name="patients" type="String"/>
+    </bean>
 	
 	
 	

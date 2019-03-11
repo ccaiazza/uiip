@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 6-mar-2019 15.19.22                         ---
+ * --- Generated at 11-mar-2019 10.26.05                        ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
@@ -60,7 +60,7 @@ public abstract class GeneratedReparto extends GenericItem
 	null,
 	false,
 	true,
-	CollectionType.SET
+	CollectionType.LIST
 	);
 	protected static final Map<String, AttributeMode> DEFAULT_INITIAL_ATTRIBUTES;
 	static
@@ -309,7 +309,7 @@ public abstract class GeneratedReparto extends GenericItem
 			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
 			"Patient",
 			null,
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2REPARTORELATION_SRC_ORDERED, true),
 			false
 		);
 		return items;
@@ -361,7 +361,7 @@ public abstract class GeneratedReparto extends GenericItem
 			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
 			null,
 			value,
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2REPARTORELATION_SRC_ORDERED, true),
 			false,
 			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
 		);
@@ -393,7 +393,7 @@ public abstract class GeneratedReparto extends GenericItem
 			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
 			null,
 			Collections.singletonList(value),
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2REPARTORELATION_SRC_ORDERED, true),
 			false,
 			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
 		);
@@ -425,7 +425,7 @@ public abstract class GeneratedReparto extends GenericItem
 			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
 			null,
 			Collections.singletonList(value),
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2REPARTORELATION_SRC_ORDERED, true),
 			false,
 			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
 		);

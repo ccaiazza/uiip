@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 6-mar-2019 15.19.22                         ---
+ * --- Generated at 11-mar-2019 10.26.05                        ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
@@ -9,10 +9,7 @@ package org.training.hospital.core.jalo;
 import de.hybris.platform.jalo.GenericItem;
 import de.hybris.platform.jalo.Item;
 import de.hybris.platform.jalo.Item.AttributeMode;
-import de.hybris.platform.jalo.JaloInvalidParameterException;
 import de.hybris.platform.jalo.SessionContext;
-import de.hybris.platform.jalo.c2l.C2LManager;
-import de.hybris.platform.jalo.c2l.Language;
 import de.hybris.platform.jalo.type.ComposedType;
 import de.hybris.platform.jalo.type.TypeManager;
 import de.hybris.platform.util.Utilities;
@@ -69,11 +66,7 @@ public abstract class GeneratedPathology extends GenericItem
 	 */
 	public String getName(final SessionContext ctx)
 	{
-		if( ctx == null || ctx.getLanguage() == null )
-		{
-			throw new JaloInvalidParameterException("GeneratedPathology.getName requires a session language", 0 );
-		}
-		return (String)getLocalizedProperty( ctx, NAME);
+		return (String)getProperty( ctx, NAME);
 	}
 	
 	/**
@@ -86,38 +79,12 @@ public abstract class GeneratedPathology extends GenericItem
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Pathology.name</code> attribute. 
-	 * @return the localized name - Pathology Name
-	 */
-	public Map<Language,String> getAllName(final SessionContext ctx)
-	{
-		return (Map<Language,String>)getAllLocalizedProperties(ctx,NAME,C2LManager.getInstance().getAllLanguages());
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>Pathology.name</code> attribute. 
-	 * @return the localized name - Pathology Name
-	 */
-	public Map<Language,String> getAllName()
-	{
-		return getAllName( getSession().getSessionContext() );
-	}
-	
-	/**
 	 * <i>Generated method</i> - Setter of the <code>Pathology.name</code> attribute. 
 	 * @param value the name - Pathology Name
 	 */
 	public void setName(final SessionContext ctx, final String value)
 	{
-		if ( ctx == null) 
-		{
-			throw new JaloInvalidParameterException( "ctx is null", 0 );
-		}
-		if( ctx.getLanguage() == null )
-		{
-			throw new JaloInvalidParameterException("GeneratedPathology.setName requires a session language", 0 );
-		}
-		setLocalizedProperty(ctx, NAME,value);
+		setProperty(ctx, NAME,value);
 	}
 	
 	/**
@@ -127,24 +94,6 @@ public abstract class GeneratedPathology extends GenericItem
 	public void setName(final String value)
 	{
 		setName( getSession().getSessionContext(), value );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Pathology.name</code> attribute. 
-	 * @param value the name - Pathology Name
-	 */
-	public void setAllName(final SessionContext ctx, final Map<Language,String> value)
-	{
-		setAllLocalizedProperties(ctx,NAME,value);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Pathology.name</code> attribute. 
-	 * @param value the name - Pathology Name
-	 */
-	public void setAllName(final Map<Language,String> value)
-	{
-		setAllName( getSession().getSessionContext(), value );
 	}
 	
 	/**
@@ -159,7 +108,7 @@ public abstract class GeneratedPathology extends GenericItem
 			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
 			"Patient",
 			null,
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2PATHOLOGYRELATION_SRC_ORDERED, true),
 			false
 		);
 		return items;
@@ -202,7 +151,7 @@ public abstract class GeneratedPathology extends GenericItem
 			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
 			null,
 			value,
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2PATHOLOGYRELATION_SRC_ORDERED, true),
 			false,
 			Utilities.getMarkModifiedOverride(PATIENT2PATHOLOGYRELATION_MARKMODIFIED)
 		);
@@ -229,7 +178,7 @@ public abstract class GeneratedPathology extends GenericItem
 			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
 			null,
 			Collections.singletonList(value),
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2PATHOLOGYRELATION_SRC_ORDERED, true),
 			false,
 			Utilities.getMarkModifiedOverride(PATIENT2PATHOLOGYRELATION_MARKMODIFIED)
 		);
@@ -256,7 +205,7 @@ public abstract class GeneratedPathology extends GenericItem
 			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
 			null,
 			Collections.singletonList(value),
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2PATHOLOGYRELATION_SRC_ORDERED, true),
 			false,
 			Utilities.getMarkModifiedOverride(PATIENT2PATHOLOGYRELATION_MARKMODIFIED)
 		);

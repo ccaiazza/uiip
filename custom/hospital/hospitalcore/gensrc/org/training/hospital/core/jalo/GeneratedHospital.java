@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 6-mar-2019 15.19.22                         ---
+ * --- Generated at 11-mar-2019 10.26.05                        ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
@@ -16,8 +16,8 @@ import de.hybris.platform.jalo.type.CollectionType;
 import de.hybris.platform.util.OneToManyHandler;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import org.training.hospital.core.constants.HospitalCoreConstants;
 import org.training.hospital.core.jalo.Reparto;
 
@@ -45,7 +45,7 @@ public abstract class GeneratedHospital extends GenericItem
 	null,
 	false,
 	true,
-	CollectionType.SET
+	CollectionType.LIST
 	);
 	protected static final Map<String, AttributeMode> DEFAULT_INITIAL_ATTRIBUTES;
 	static
@@ -222,16 +222,16 @@ public abstract class GeneratedHospital extends GenericItem
 	 * <i>Generated method</i> - Getter of the <code>Hospital.reparti</code> attribute.
 	 * @return the reparti
 	 */
-	public Set<Reparto> getReparti(final SessionContext ctx)
+	public List<Reparto> getReparti(final SessionContext ctx)
 	{
-		return (Set<Reparto>)REPARTIHANDLER.getValues( ctx, this );
+		return (List<Reparto>)REPARTIHANDLER.getValues( ctx, this );
 	}
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>Hospital.reparti</code> attribute.
 	 * @return the reparti
 	 */
-	public Set<Reparto> getReparti()
+	public List<Reparto> getReparti()
 	{
 		return getReparti( getSession().getSessionContext() );
 	}
@@ -240,7 +240,7 @@ public abstract class GeneratedHospital extends GenericItem
 	 * <i>Generated method</i> - Setter of the <code>Hospital.reparti</code> attribute. 
 	 * @param value the reparti
 	 */
-	public void setReparti(final SessionContext ctx, final Set<Reparto> value)
+	public void setReparti(final SessionContext ctx, final List<Reparto> value)
 	{
 		REPARTIHANDLER.setValues( ctx, this, value );
 	}
@@ -249,7 +249,7 @@ public abstract class GeneratedHospital extends GenericItem
 	 * <i>Generated method</i> - Setter of the <code>Hospital.reparti</code> attribute. 
 	 * @param value the reparti
 	 */
-	public void setReparti(final Set<Reparto> value)
+	public void setReparti(final List<Reparto> value)
 	{
 		setReparti( getSession().getSessionContext(), value );
 	}

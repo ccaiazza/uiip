@@ -715,7 +715,7 @@
 	<bean id="dynamicAttributesNumberDepartment"
 		class="org.training.hospital.core.handler.DynamicAttributesNumberDepartment">
 	</bean>
-	
+
 	<bean id="dynamicAttributesNumberPhatology"
 		class="org.training.hospital.core.handler.DynamicAttributesNumberPathology">
 	</bean>
@@ -730,16 +730,22 @@
 	<bean name="defaultRepartoDao"
 		class=" org.training.hospital.core.dao.impl.DefaultRepartoDao">
 		<constructor-arg value="Reparto" />
-
 	</bean>
 
-
+	<bean name="defaultPatientDao"
+		class="org.training.hospital.core.dao.impl.DefaultPatientDao">
+		<constructor-arg value="Patient" />
+	</bean>
 
 	<bean name="defaultHeadDao"
 		class=" org.training.hospital.core.dao.impl.DefaultHeadDao">
 		<constructor-arg value="Head" />
 	</bean>
 
+	<bean name="defaultPathologyDao"
+		class="org.training.hospital.core.dao.impl.DefaultPathologyDao">
+		<constructor-arg value="Pathology" />
+	</bean>
 
 
 	<alias name="defaultRepartoService" alias="repartoService" />
@@ -748,6 +754,15 @@
 		<property name="repartoDao" ref="defaultRepartoDao" />
 	</bean>
 
+	<alias name="defaultPatientService" alias="patientService" />
+	<bean id="defaultPatientService" class="org.training.hospital.core.service.impl.DefaultPatientService">
+		<property name="patientDao" ref="defaultPatientDao" />
+	</bean>
+
+	<alias name="defaultPathologyService" alias="pathologyService" />
+	<bean id="defaultPathologyService" class="org.training.hospital.core.service.impl.DefaultPathologyService">
+		<property name="pathologyDao" ref="defaultPathologyDao" />
+	</bean>
 
 
 	<alias name="defaultHeadService" alias="headService" />
@@ -774,9 +789,10 @@
 		<property name="typeCode" value="Hospital" />
 	</bean>
 
-	<bean id="updateHospitalListJob" class="org.training.hospital.core.job.UpdateHospitalListJob" parent="abstractJobPerformable">
-	<property name="hospitalService" ref="defaultHospitalService" />
+	<bean id="updateHospitalListJob"
+		class="org.training.hospital.core.job.UpdateHospitalListJob"
+		parent="abstractJobPerformable">
+		<property name="hospitalService" ref="defaultHospitalService" />
 	</bean>
-
 
 </beans>

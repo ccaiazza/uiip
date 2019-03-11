@@ -1,17 +1,17 @@
 INSERT_UPDATE Hospital; code[unique=true]; name[lang=en]; citta;
-;010; cardarelli; Napoli; 
+;010; cardarelli; Naples; 
 ;020;gemelli;Roma; 
 
 
-INSERT Reparto; code[unique=true]; name[lang=en]; 
+INSERT_UPDATE Reparto; code[unique=true]; name[lang=en]; 
 ;rep1; Pediatrics;
 ;rep2; Surgery; 
 ;rep3; Cardiology; 
 
-INSERT Head; uid[unique=true]; name;spacialization; registration
-;he1; red; Pediatrics;
-;he2; black; Orthopedics;
-;he3; white; Psychiatry;
+INSERT_UPDATE Head; uid[unique=true]; name;specialization[lang=en]; registration[lang=en]
+;he1; red; Pediatrics;  true;
+;he2; black; Orthopedics; true;
+;he3; white; Psychiatry; true;
 
 INSERT_UPDATE Reparto; code[unique=true]; name[lang=en]; head(uid); hospital(code); 
 ;rep1; Pediatrics; he1; 010;
@@ -29,17 +29,27 @@ INSERT Patient; uid[unique=true]; name; entryDate[dateformat='yyyy.MM.dd']; exit
 ;p02; Max; 2019.02.10;2019.02.15
 ;p00; Karl;2018.01.16; 2018.01.26
 
-INSERT Pathology; name[lang=en]
-hypertension;
-diabetes;
-arthrosis
+INSERT Pathology; name[unique=true];
+;hypertension;
+;diabetes;
+;arthrosis
 
 INSERT Patient; uid[unique=true]; name; entryDate[dateformat='yyyy.MM.dd']; exitDate[dateformat='yyyy.MM.dd']; pathologies[name]
-;p01; Jhon;2018.9.22; 2018.11.12; hypertension;
+;p01; Jhon;2018.9.22; 2018.11.12; hypertension,arthrosis;
+;p02; Max; 2019.02.10;2019.02.15; diabetes;
+;p00; Karl;2018.01.16; 2018.01.26;arthrosis
+
+INSERT Pathology; name[unique=true];
+;hypertension;
+;diabetes;
+;arthrosis
+
+
+REMOVE Patient; uid[unique=true]; name; entryDate[dateformat='yyyy.MM.dd']; exitDate[dateformat='yyyy.MM.dd']; pathologies[name]
+;p01; Jhon;2018.9.22; 2018.11.12;
 ;p02; Max; 2019.02.10;2019.02.15
 ;p00; Karl;2018.01.16; 2018.01.26
-
-
+ 
 INSERT_UPDATE Reparto; code[unique=true]; name[lang=en]; head(uid); hospital(code); patients(uid)[mode=append];
 ;rep1; Pediatrics; he1; 010; rep1
 ;rep2; Surgery; he2 ;010; rep2

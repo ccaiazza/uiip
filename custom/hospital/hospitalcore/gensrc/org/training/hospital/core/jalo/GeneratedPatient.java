@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 6-mar-2019 15.19.22                         ---
+ * --- Generated at 11-mar-2019 10.26.05                        ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
@@ -16,10 +16,8 @@ import de.hybris.platform.util.Utilities;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import org.training.hospital.core.constants.HospitalCoreConstants;
 import org.training.hospital.core.jalo.Pathology;
 import org.training.hospital.core.jalo.Reparto;
@@ -66,7 +64,7 @@ public abstract class GeneratedPatient extends Customer
 	 * <i>Generated method</i> - Getter of the <code>Patient.departments</code> attribute.
 	 * @return the departments
 	 */
-	public Set<Reparto> getDepartments(final SessionContext ctx)
+	public List<Reparto> getDepartments(final SessionContext ctx)
 	{
 		final List<Reparto> items = getLinkedItems( 
 			ctx,
@@ -74,17 +72,17 @@ public abstract class GeneratedPatient extends Customer
 			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
 			"Reparto",
 			null,
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2REPARTORELATION_SRC_ORDERED, true),
 			false
 		);
-		return new LinkedHashSet<Reparto>(items);
+		return items;
 	}
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>Patient.departments</code> attribute.
 	 * @return the departments
 	 */
-	public Set<Reparto> getDepartments()
+	public List<Reparto> getDepartments()
 	{
 		return getDepartments( getSession().getSessionContext() );
 	}
@@ -109,7 +107,7 @@ public abstract class GeneratedPatient extends Customer
 	 * <i>Generated method</i> - Setter of the <code>Patient.departments</code> attribute. 
 	 * @param value the departments
 	 */
-	public void setDepartments(final SessionContext ctx, final Set<Reparto> value)
+	public void setDepartments(final SessionContext ctx, final List<Reparto> value)
 	{
 		setLinkedItems( 
 			ctx,
@@ -117,7 +115,7 @@ public abstract class GeneratedPatient extends Customer
 			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
 			null,
 			value,
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2REPARTORELATION_SRC_ORDERED, true),
 			false,
 			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
 		);
@@ -127,7 +125,7 @@ public abstract class GeneratedPatient extends Customer
 	 * <i>Generated method</i> - Setter of the <code>Patient.departments</code> attribute. 
 	 * @param value the departments
 	 */
-	public void setDepartments(final Set<Reparto> value)
+	public void setDepartments(final List<Reparto> value)
 	{
 		setDepartments( getSession().getSessionContext(), value );
 	}
@@ -144,7 +142,7 @@ public abstract class GeneratedPatient extends Customer
 			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
 			null,
 			Collections.singletonList(value),
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2REPARTORELATION_SRC_ORDERED, true),
 			false,
 			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
 		);
@@ -171,7 +169,7 @@ public abstract class GeneratedPatient extends Customer
 			HospitalCoreConstants.Relations.PATIENT2REPARTORELATION,
 			null,
 			Collections.singletonList(value),
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2REPARTORELATION_SRC_ORDERED, true),
 			false,
 			Utilities.getMarkModifiedOverride(PATIENT2REPARTORELATION_MARKMODIFIED)
 		);
@@ -278,7 +276,7 @@ public abstract class GeneratedPatient extends Customer
 	 * <i>Generated method</i> - Getter of the <code>Patient.pathologies</code> attribute.
 	 * @return the pathologies
 	 */
-	public Set<Pathology> getPathologies(final SessionContext ctx)
+	public List<Pathology> getPathologies(final SessionContext ctx)
 	{
 		final List<Pathology> items = getLinkedItems( 
 			ctx,
@@ -286,17 +284,17 @@ public abstract class GeneratedPatient extends Customer
 			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
 			"Pathology",
 			null,
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2PATHOLOGYRELATION_SRC_ORDERED, true),
 			false
 		);
-		return new LinkedHashSet<Pathology>(items);
+		return items;
 	}
 	
 	/**
 	 * <i>Generated method</i> - Getter of the <code>Patient.pathologies</code> attribute.
 	 * @return the pathologies
 	 */
-	public Set<Pathology> getPathologies()
+	public List<Pathology> getPathologies()
 	{
 		return getPathologies( getSession().getSessionContext() );
 	}
@@ -321,7 +319,7 @@ public abstract class GeneratedPatient extends Customer
 	 * <i>Generated method</i> - Setter of the <code>Patient.pathologies</code> attribute. 
 	 * @param value the pathologies
 	 */
-	public void setPathologies(final SessionContext ctx, final Set<Pathology> value)
+	public void setPathologies(final SessionContext ctx, final List<Pathology> value)
 	{
 		setLinkedItems( 
 			ctx,
@@ -329,7 +327,7 @@ public abstract class GeneratedPatient extends Customer
 			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
 			null,
 			value,
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2PATHOLOGYRELATION_SRC_ORDERED, true),
 			false,
 			Utilities.getMarkModifiedOverride(PATIENT2PATHOLOGYRELATION_MARKMODIFIED)
 		);
@@ -339,7 +337,7 @@ public abstract class GeneratedPatient extends Customer
 	 * <i>Generated method</i> - Setter of the <code>Patient.pathologies</code> attribute. 
 	 * @param value the pathologies
 	 */
-	public void setPathologies(final Set<Pathology> value)
+	public void setPathologies(final List<Pathology> value)
 	{
 		setPathologies( getSession().getSessionContext(), value );
 	}
@@ -356,7 +354,7 @@ public abstract class GeneratedPatient extends Customer
 			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
 			null,
 			Collections.singletonList(value),
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2PATHOLOGYRELATION_SRC_ORDERED, true),
 			false,
 			Utilities.getMarkModifiedOverride(PATIENT2PATHOLOGYRELATION_MARKMODIFIED)
 		);
@@ -383,7 +381,7 @@ public abstract class GeneratedPatient extends Customer
 			HospitalCoreConstants.Relations.PATIENT2PATHOLOGYRELATION,
 			null,
 			Collections.singletonList(value),
-			false,
+			Utilities.getRelationOrderingOverride(PATIENT2PATHOLOGYRELATION_SRC_ORDERED, true),
 			false,
 			Utilities.getMarkModifiedOverride(PATIENT2PATHOLOGYRELATION_MARKMODIFIED)
 		);

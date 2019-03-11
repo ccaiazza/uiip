@@ -42,7 +42,7 @@
 					search="true" unique="true" />
 			</sourceElement>
 			<targetElement type="Reparto" qualifier="reparti"
-				cardinality="many" ordered="false" collectiontype="set">
+				cardinality="many" ordered="false" collectiontype="list">
 				<modifiers read="true" write="true" search="true" />
 			</targetElement>
 		</relation>
@@ -56,7 +56,7 @@
 					search="true" />
 			</sourceElement>
 			<targetElement type="Reparto" qualifier="departments"
-				cardinality="many" collectiontype="set">
+				cardinality="many" collectiontype="list">
 				<modifiers read="true" write="true" search="true" />
 			</targetElement>
 		</relation>
@@ -71,7 +71,7 @@
 					search="true" />
 			</sourceElement>
 			<targetElement type="Pathology" qualifier="pathologies"
-				cardinality="many" collectiontype="set">
+				cardinality="many" collectiontype="list">
 				<modifiers read="true" write="true" search="true" />
 			</targetElement>
 		</relation>
@@ -281,7 +281,7 @@
 				<deployment table="DepPathology" typecode="20006" />
 				<attributes>
 					<attribute qualifier="name"
-						type="Localized:java.lang.String">
+						type="java.lang.String">
 						<description> Pathology Name </description>
 						<modifiers read="true" write="true" search="true"
 							optional="false" unique="true" />
