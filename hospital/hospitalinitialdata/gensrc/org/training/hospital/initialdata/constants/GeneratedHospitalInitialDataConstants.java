@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 11-mar-2019 18.00.40                        ---
+ * --- Generated at 12-mar-2019 12.39.55                        ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.initialdata.constants;

@@ -1,4 +1,5 @@
 /**
+Agisce sul ciclo di vita del model--> modificando il model
  *
  */
 package org.training.hospital.core.interceptor;
@@ -17,6 +18,7 @@ import org.training.hospital.core.model.RepartoModel;
  * @author soprasteria
  *
  */
+
 public class HospitalInterceptor implements RemoveInterceptor<HospitalModel>
 {
 
