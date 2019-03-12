@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 11-mar-2019 10.26.05                        ---
+ * --- Generated at 12-mar-2019 12.39.59                        ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.facades.constants;

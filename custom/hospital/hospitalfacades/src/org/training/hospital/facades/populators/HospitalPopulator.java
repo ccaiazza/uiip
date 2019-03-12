@@ -22,7 +22,6 @@ public class HospitalPopulator implements Populator<HospitalModel, HospitalData>
 {
 	private Converter<RepartoModel, RepartoData> repartoConverter;
 
-
 	@Override
 	public void populate(final HospitalModel source, final HospitalData target) throws ConversionException
 	{
