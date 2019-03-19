@@ -24,7 +24,7 @@ public class DefaultHeadService implements HeadService
 	 * @see org.training.hospital.core.service.HeadService#getHeadByHospital(java.lang.String)
 	 */
 	@Override
-	public List<HeadModel> getHeadByHospital(final String code)
+	public List<HeadModel> getHeadForHospital(final String code)
 	{
 		final List<HeadModel> result = headDao.findHeadByHospital(code);
       if (result.isEmpty())
@@ -46,7 +46,7 @@ public class DefaultHeadService implements HeadService
 	 * @see org.training.hospital.core.service.HeadService#getHeadByReparto(java.lang.String)
 	 */
 	@Override
-	public List<HeadModel> getHeadByReparto(final String code)
+	public List<HeadModel> getHeadForReparto(final String code)
 	{
 
 		final List<HeadModel> result = headDao.findHeadByHospital(code);
@@ -83,9 +83,9 @@ public class DefaultHeadService implements HeadService
 	 */
 
 	@Override
-	public List<HeadModel> getHeadByHospitalName()
+	public List<HeadModel> getHeadForHospitalName(final String name)
 	{
-		final List<HeadModel> result = headDao.findHeadByHospitalName();
+		final List<HeadModel> result = headDao.findHeadByHospitalName(name);
 		if (result.isEmpty())
 		{
 			throw new UnknownIdentifierException("not found!");

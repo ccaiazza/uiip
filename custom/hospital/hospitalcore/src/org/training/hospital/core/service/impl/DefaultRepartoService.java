@@ -29,7 +29,7 @@ public class DefaultRepartoService implements RepartoService
 	 * HospitalModel)
 	 */
 	@Override
-	public List<RepartoModel> getRepartiByHospital(final String code)
+	public List<RepartoModel> getRepartiForHospital(final String code)
 			throws AmbiguousIdentifierException, UnknownIdentifierException
 	{
 		final List<RepartoModel> result = repartoDao.findRepartiByHospital(code);

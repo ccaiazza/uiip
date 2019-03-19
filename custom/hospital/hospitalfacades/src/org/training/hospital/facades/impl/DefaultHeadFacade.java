@@ -63,9 +63,9 @@ public class DefaultHeadFacade implements HeadFacade
 
 
 	@Override
-	public List<HeadData> getHeadByHospital(final String code)
+	public List<HeadData> getHeadForHospital(final String code)
 	{
-		 final List<HeadModel> headModels = headService.getHeadByHospital(code);
+		final List<HeadModel> headModels = headService.getHeadForHospital(code);
 		return headConverter.convertAll(headModels);
 
 
@@ -73,28 +73,31 @@ public class DefaultHeadFacade implements HeadFacade
 
 
 	@Override
-	public List<HeadData> getHeadByReparto(final String codeReparto)
+	public List<HeadData> getHeadForReparto(final String codeReparto)
 	{
-		final List<HeadModel> headModels = headService.getHeadByReparto(codeReparto);
+		final List<HeadModel> headModels = headService.getHeadForReparto(codeReparto);
 		return headConverter.convertAll(headModels);
 
 
 	}
+
+
+
 
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see org.traininghospital.facades.facades.HeadFacade#getHeadByHospitalName()
+	 *
+	 * @see org.traininghospital.facades.facades.HeadFacade#getHeadByHospitalName(java.lang.String)
 	 */
 	@Override
-	public List<HeadData> getHeadByHospitalName()
+	public List<HeadData> getHeadForHospitalName(final String name)
 	{
-		final List<HeadModel> headModels = headService.getHeadByHospitalName();
+		final List<HeadModel> headModels = headService.getHeadForHospitalName(name);
 		return headConverter.convertAll(headModels);
-
-
 	}
+
+
 
 
 

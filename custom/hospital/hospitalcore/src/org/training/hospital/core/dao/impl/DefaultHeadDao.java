@@ -54,14 +54,14 @@ public class DefaultHeadDao extends DefaultGenericDao<HeadModel> implements Head
 
 	}
 
-	public List<HeadModel> findHeadByHospitalName()
+	public List<HeadModel> findHeadByHospitalName(final String name)
 	{
-		final String hospitalName = "Cardarelli";
+
 
 
 		final String fsq = "SELECT{" + HeadModel.PK + "} FROM {" + HeadModel._TYPECODE + " AS H JOIN REPARTO as R ON {"
-				+ HeadModel.UID + "=R.head} JOIN Hospital AS O ON{R.hospital=O.code} } WHERE {O.name=?hospitalName\"}";
-		final FlexibleSearchQuery query = new FlexibleSearchQuery(fsq, Collections.singletonMap("name", hospitalName));
+				+ HeadModel.UID + "=R.head} JOIN Hospital AS O ON{R.hospital=O.code} } WHERE {O.name=?name\"}";
+		final FlexibleSearchQuery query = new FlexibleSearchQuery(fsq, Collections.singletonMap("name", name));
 
 		final SearchResult<HeadModel> result = (SearchResult<HeadModel>) getFlexibleSearchService().search(query);
 
@@ -90,4 +90,8 @@ public class DefaultHeadDao extends DefaultGenericDao<HeadModel> implements Head
 
 
 	}
+
+
+
+
 }

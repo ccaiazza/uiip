@@ -17,7 +17,7 @@ public interface HeadDao
 
 	public List<HeadModel> findHeadByHospital(String code);
 
-	public List<HeadModel> findHeadByHospitalName();
+	public List<HeadModel> findHeadByHospitalName(String name);
 
 	public List<HeadModel> findHeadByReparto(String code);
 }

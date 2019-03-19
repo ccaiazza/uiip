@@ -14,5 +14,5 @@ import org.training.hospital.core.model.PathologyModel;
  */
 public interface PathologyService
 {
-	public List<PathologyModel> getPathologyByName(String name);
+	public List<PathologyModel> getPathologyForName(String name);
 }

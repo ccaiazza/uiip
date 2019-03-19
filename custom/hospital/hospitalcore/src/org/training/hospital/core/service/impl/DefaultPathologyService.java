@@ -22,7 +22,7 @@ public class DefaultPathologyService implements PathologyService
 	private PathologyDao pathologyDao;
 
 	@Override
-	public List<PathologyModel> getPathologyByName(final String name)
+	public List<PathologyModel> getPathologyForName(final String name)
 			throws UnknownIdentifierException, AmbiguousIdentifierException
 	{
 

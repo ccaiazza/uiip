@@ -14,9 +14,9 @@ import org.training.hospital.core.model.HeadModel;
  */
 public interface HeadService
 {
-	public List<HeadModel> getHeadByHospital(String code);
+	public List<HeadModel> getHeadForHospital(String code);
 
-	public List<HeadModel> getHeadByReparto(String codeReparto);
-	
-	public List <HeadModel> getHeadByHospitalName();
+	public List<HeadModel> getHeadForReparto(String codeReparto);
+
+	public List<HeadModel> getHeadForHospitalName(String name);
 }

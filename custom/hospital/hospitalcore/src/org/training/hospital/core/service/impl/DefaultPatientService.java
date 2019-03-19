@@ -24,7 +24,7 @@ public class DefaultPatientService implements PatientService
 
 
 	@Override
-	public List<PatientModel> getPatientByCode(final String id) throws AmbiguousIdentifierException, UnknownIdentifierException
+	public List<PatientModel> getPatientForCode(final String id) throws AmbiguousIdentifierException, UnknownIdentifierException
 	{
 		final List<PatientModel> result = patientDao.findPatientByCode(id);
 		if (result.isEmpty())

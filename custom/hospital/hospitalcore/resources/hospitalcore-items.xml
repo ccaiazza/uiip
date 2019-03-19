@@ -42,7 +42,7 @@
 					search="true" unique="true" />
 			</sourceElement>
 			<targetElement type="Reparto" qualifier="reparti"
-				cardinality="many" ordered="false" collectiontype="list">
+				cardinality="many" collectiontype="list">
 				<modifiers read="true" write="true" search="true" />
 			</targetElement>
 		</relation>
@@ -84,7 +84,7 @@
 					search="true" unique="true" />
 			</sourceElement>
 			<targetElement type="Doctor" qualifier="doctors"
-				cardinality="many" ordered="false" collectiontype="list">
+				cardinality="many" collectiontype="list">
 				<modifiers read="true" write="true" search="true" />
 			</targetElement>
 		</relation>

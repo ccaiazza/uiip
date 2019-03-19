@@ -13,5 +13,5 @@ import org.training.hospital.core.model.PatientModel;
  */
 public interface PatientService
 {
-	public List<PatientModel> getPatientByCode(String id);
+	public List<PatientModel> getPatientForCode(String id);
 }

@@ -14,9 +14,9 @@ import org.training.hospital.facades.product.data.HeadData;
  */
 public interface HeadFacade
 {
-	public List<HeadData> getHeadByHospital(String code);
+	public List<HeadData> getHeadForHospital(String code);
 
-	public List<HeadData> getHeadByReparto(String codeRep);
+	public List<HeadData> getHeadForReparto(String codeRep);
 
-	public List<HeadData> getHeadByHospitalName();
+	public List<HeadData> getHeadForHospitalName(String name);
 }

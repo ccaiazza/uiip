@@ -44,13 +44,13 @@ public class DefaultHospitalDao extends DefaultGenericDao<HospitalModel> impleme
 
 	}
 
-	public List<HospitalModel> findInfoHospital()
+	public List<HospitalModel> findInfoHospital(final String code)
 	{
 
 
 
 		final String fsq = "SELECT{" + HospitalModel.NAME + " " + HospitalModel.NUMBERREP + " " + HospitalModel.REPARTI
-				+ "} FROM {HOSPITAL}";
+				+ "} FROM {HOSPITAL AS H} WHERE {H.code=?code\"}";
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(fsq);
 
 		final SearchResult<HospitalModel> result = (SearchResult<HospitalModel>) getFlexibleSearchService().search(query);

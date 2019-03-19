@@ -48,7 +48,7 @@ public class HospitalController
 	public String showRepartidetails(@PathVariable String hospitalCode, final Model model) throws UnsupportedEncodingException
 	{
 		hospitalCode = URLDecoder.decode(hospitalCode, "UTF-8");
-		final List<RepartoData> reparti = repartoFacade.getRepartoByHospital(hospitalCode);
+		final List<RepartoData> reparti = repartoFacade.getRepartoForHospital(hospitalCode);
 		model.addAttribute("hospitalCode", hospitalCode);
 		model.addAttribute("reparti", reparti);
 		return ControllerConstants.Views.Pages.Hospital.RepartiHospital;
