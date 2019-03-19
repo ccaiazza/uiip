@@ -755,12 +755,14 @@
 	</bean>
 
 	<alias name="defaultPatientService" alias="patientService" />
-	<bean id="defaultPatientService" class="org.training.hospital.core.service.impl.DefaultPatientService">
+	<bean id="defaultPatientService"
+		class="org.training.hospital.core.service.impl.DefaultPatientService">
 		<property name="patientDao" ref="defaultPatientDao" />
 	</bean>
 
 	<alias name="defaultPathologyService" alias="pathologyService" />
-	<bean id="defaultPathologyService" class="org.training.hospital.core.service.impl.DefaultPathologyService">
+	<bean id="defaultPathologyService"
+		class="org.training.hospital.core.service.impl.DefaultPathologyService">
 		<property name="pathologyDao" ref="defaultPathologyDao" />
 	</bean>
 
@@ -788,11 +790,37 @@
 		<property name="interceptor" ref="hospitalRemoveInterceptor" />
 		<property name="typeCode" value="Hospital" />
 	</bean>
+	
+<!--  
+	<bean id="repartoLoadInterceptor"
+		class="org.training.hospital.core.interceptor.RepartoLoadInterceptor">
+		<property name="newName" value="Marx" />
+	</bean>
+
+	<bean id="repartoLoadMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping ">
+		<property name="interceptor" ref="repartoLoadInterceptor" />
+		<property name="typeCode" value="Reparto" />
+	</bean>
+-->
 
 	<bean id="updateHospitalListJob"
 		class="org.training.hospital.core.job.UpdateHospitalListJob"
 		parent="abstractJobPerformable">
 		<property name="hospitalService" ref="defaultHospitalService" />
 	</bean>
+
+	<bean id="headValidateInterceptor"
+		class="org.training.hospital.core.interceptor.HeadValidateInterceptor">
+	</bean>
+
+	<bean id="headValidateMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping ">
+		<property name="interceptor" ref="headValidateInterceptor" />
+		<property name="typeCode" value="Head" />
+	</bean>
+	
+	
+
 
 </beans>

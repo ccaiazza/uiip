@@ -91,20 +91,6 @@ public class RepartoPopulator implements Populator<RepartoModel, RepartoData>
 		return patientConverter;
 	}
 
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString()
-	{
-		return "RepartoPopulator [hospitalConverter=" + hospitalConverter + ", headConverter=" + headConverter
-				+ ", patientConverter=" + patientConverter + "]";
-	}
-
-
 	@Required
 	public void setPatientConverter(final Converter<PatientModel, PatientData> patientConverter)
 	{

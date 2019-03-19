@@ -18,19 +18,10 @@ import org.training.hospital.core.service.HospitalService;
  *
  */
 
-
-
-
-
-
 public class DefaultHospitalService implements HospitalService
 {
 
 	private HospitalDao hospitalDao;
-
-
-
-
 
 	@Override
 	public List<HospitalModel> getHospital()

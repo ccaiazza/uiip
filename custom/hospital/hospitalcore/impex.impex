@@ -8,10 +8,17 @@ INSERT_UPDATE Reparto; code[unique=true]; name[lang=en];
 ;rep2; Surgery; 
 ;rep3; Cardiology; 
 
-INSERT_UPDATE Head; uid[unique=true]; name;specialization[lang=en]; registration[lang=en]
-;he1; red; Pediatrics;  true;
-;he2; black; Orthopedics; true;
-;he3; white; Psychiatry; true;
+
+INSERT_UPDATE Doctor; uid[unique=true]; name;specialization; registration
+;doc1; Bianchi; Pediatrics;  true;
+;doc2; Neri; Orthopedics; true;
+;doc3; Ferri; Psychiatry; true;
+
+INSERT_UPDATE Head; uid[unique=true]; name;
+;he5; Ambrogi; 
+;he1; Verdi;
+;he2; Ricci;
+;he3; Versi;
 
 INSERT_UPDATE Reparto; code[unique=true]; name[lang=en]; head(uid); hospital(code); 
 ;rep1; Pediatrics; he1; 010;
@@ -34,10 +41,10 @@ INSERT Pathology; name[unique=true];
 ;diabetes;
 ;arthrosis
 
-INSERT Patient; uid[unique=true]; name; entryDate[dateformat='yyyy.MM.dd']; exitDate[dateformat='yyyy.MM.dd']; pathologies[name]
-;p01; Jhon;2018.9.22; 2018.11.12; hypertension,arthrosis;
-;p02; Max; 2019.02.10;2019.02.15; diabetes;
-;p00; Karl;2018.01.16; 2018.01.26;arthrosis
+INSERT_UPDATE Patient; uid[unique=true]; name; entryDate[dateformat='yyyy.MM.dd']; exitDate[dateformat='yyyy.MM.dd']; pathologies(name)[mode=append];
+;p01; Carlo Marino; 2018.9.22; 2018.11.12; hypertension;
+;p02; Serena Cappa;  2019.02.10;2019.02.15; diabetes;
+;p00; Roberto Bassi; 2018.01.16; 2018.01.26;arthrosis;
 
 INSERT Pathology; name[unique=true];
 ;hypertension;

@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 12-mar-2019 12.39.59                        ---
+ * --- Generated at 18-mar-2019 16.27.48                        ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.test.constants;

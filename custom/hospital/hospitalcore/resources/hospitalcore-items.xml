@@ -61,7 +61,7 @@
 			</targetElement>
 		</relation>
 
-		
+
 		<relation code="Patient2PathologyRelation" localized="false"
 			generate="true" autocreate="true">
 			<deployment table="Pat2RPatRelation" typecode="20007" />
@@ -75,6 +75,21 @@
 				<modifiers read="true" write="true" search="true" />
 			</targetElement>
 		</relation>
+
+		<relation localized="false" code="Reparto2DoctorRelation"
+			generate="true" autocreate="true">
+			<sourceElement type="Reparto" qualifier="reparto"
+				cardinality="one">
+				<modifiers read="true" write="false" initial="true"
+					search="true" unique="true" />
+			</sourceElement>
+			<targetElement type="Doctor" qualifier="doctors"
+				cardinality="many" ordered="false" collectiontype="list">
+				<modifiers read="true" write="true" search="true" />
+			</targetElement>
+		</relation>
+
+
 
 
 
@@ -185,7 +200,7 @@
 					<attribute qualifier="numberRep" type="java.lang.String">
 						<description>Number Department</description>
 						<modifiers read="true" write="true" search="true"
-							optional="false" unique="false" />
+							optional="true" unique="false" />
 						<persistence type="dynamic"
 							attributeHandler="dynamicAttributesNumberDepartment" />
 					</attribute>
@@ -222,30 +237,33 @@
 						<modifiers />
 						<persistence type="property" />
 					</attribute>
-
-
-
 				</attributes>
 
 
 			</itemtype>
-
-			<itemtype code="Head" extends="Customer" autocreate="true"
+			<itemtype code="Doctor" extends="Customer" autocreate="true"
 				generate="true">
-				<deployment table="DepHead" typecode="20003" />
+				<deployment table="DepDoctor" typecode="20008" />
 				<attributes>
 
 					<attribute qualifier="specialization"
-						type="Localized:java.Lang.String">
+						type="java.Lang.String">
 						<description>Head Specialization</description>
 						<persistence type="property" />
 					</attribute>
 
 					<attribute qualifier="registration"
-						type="Localized:java.lang.Boolean">
+						type="java.lang.Boolean">
 						<description>Head Registration</description>
 						<persistence type="property" />
 					</attribute>
+
+				</attributes>
+			</itemtype>
+			<itemtype code="Head" extends="Doctor" autocreate="true"
+				generate="true">
+				<deployment table="DepHead" typecode="20003" />
+				<attributes>
 
 				</attributes>
 			</itemtype>
@@ -280,17 +298,15 @@
 			<itemtype code="Pathology" autocreate="true" generate="true">
 				<deployment table="DepPathology" typecode="20006" />
 				<attributes>
-					<attribute qualifier="name"
-						type="java.lang.String">
+					<attribute qualifier="name" type="java.lang.String">
 						<description> Pathology Name </description>
 						<modifiers read="true" write="true" search="true"
 							optional="false" unique="true" />
 						<persistence type="property" />
 					</attribute>
-
 				</attributes>
-
 			</itemtype>
+
 		</typegroup>
 	</itemtypes>
 </items>

@@ -46,6 +46,7 @@
         
     </bean>
     
+    
      <bean class="org.training.hospital.facades.product.data.PatientData">
         <description>Data object representing a Patient</description>
         <property name="uid" type="String"/>

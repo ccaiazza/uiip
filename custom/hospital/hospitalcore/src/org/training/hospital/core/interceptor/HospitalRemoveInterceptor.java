@@ -20,7 +20,6 @@ public class HospitalRemoveInterceptor implements RemoveInterceptor<HospitalMode
 	@Override
 	public void onRemove(final HospitalModel hospitalModel, final InterceptorContext ctx) throws InterceptorException
 	{
-		System.out.println("This hospitalModel will be removed from the database: " + hospitalModel.toString());
 
 		final List<RepartoModel> lista = hospitalModel.getReparti();
 
