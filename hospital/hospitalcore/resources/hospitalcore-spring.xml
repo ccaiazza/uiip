@@ -718,20 +718,20 @@
 	</bean>
 
 
-	<bean name="defaultRepartoDao" 
+	<bean name="defaultRepartoDao"
 		class="org.training.hospital.core.dao.impl.DefaultRepartoDao">
 		<constructor-arg value="Reparto" />
 
 	</bean>
 
 
-	<bean name="defaultHeadDao" 
+	<bean name="defaultHeadDao"
 		class="org.training.hospital.core.dao.impl.DefaultHeadDao">
 		<constructor-arg value="Head" />
 
 	</bean>
 
-	<bean name="defaultHospitalDao" 
+	<bean name="defaultHospitalDao"
 		class="org.training.hospital.core.dao.impl.DefaultHospitalDao">
 		<constructor-arg value="Hospital" />
 
@@ -781,7 +781,7 @@
 
 	</bean>
 
-	<bean name="defaultPatientDao" 
+	<bean name="defaultPatientDao"
 		class="org.training.hospital.core.dao.impl.DefaultPatientDao">
 		<constructor-arg value="Patient" />
 
@@ -794,7 +794,7 @@
 
 	</bean>
 
-	<bean name="defaultPathologyDao" 
+	<bean name="defaultPathologyDao"
 		class="org.training.hospital.core.dao.impl.DefaulPathologyDao">
 		<constructor-arg value="Pathology" />
 
@@ -805,6 +805,27 @@
 		class="org.training.hospital.core.service.impl.DefaultPathologyService">
 		<property name="pathologyDao" ref="defaultPathologyDao" />
 
+	</bean>
+
+	<bean id="repartoLoadInterceptor"
+		class="org.training.hospital.core.interceptor.RepartoInterceptor">
+		<property name="nomeHead" value="name" />
+	</bean>
+
+	<bean id="repartoMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="repartoLoadInterceptor" />
+		<property name="typeCode" value="Reparto" />
+	</bean>
+
+	<bean id="headValidateInterceptor"
+		class="org.training.hospital.core.interceptor.HeadInterceptor">
+	</bean>
+
+	<bean id="headMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="headValidateInterceptor" />
+		<property name="typeCode" value="Head" />
 	</bean>
 
 

@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 12-mar-2019 12.39.55                        ---
+ * --- Generated at 19-mar-2019 9.09.39                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;

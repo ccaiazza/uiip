@@ -1,23 +1,30 @@
-INSERT_UPDATE Hospital; code[unique=true]; name[lang = en]; citta;reparti[mode = append]
-;010; Cardarelli; Napoli; rep2,rep1;
-;020; Gemelli; Roma; rep3;
+INSERT_UPDATE Hospital; code[unique=true]; name[lang = en]; citta;reparti(code)[mode = append]
+;010; Cardarelli; Napoli; rep3,rep1;
+;020; Gemelli; Roma; rep4,rep2
+;030; BambinGesu; Napoli; rep6,rep7;
+;040; SantaRita; Avellino; rep5;
 
-INSERT_UPDATE Head; uid[unique=true]; name; specialization;register
-; he1; Rossi; Surgery; true;
-; he2; Verdi; Pediatrics; false;
-; he3; Bianchi; Oculist; true;
-; he4; Nardi; Cardiology; true;
+INSERT_UPDATE Head; uid[unique=true]; name; specialization;register; yearsExperience; 
+; he1; Rossi; Surgery; true; 10; rep2
+; he2; Verdi; Pediatrics; false; 5; rep1
+; he3; Bianchi; Oculist; true; 7; rep5
+; he4; Nardi; Cardiology; true; 6; rep3
+; he5; Tarantino; Psychiatry; true; 6; rep6
+; he6; Iannaccone; Neuro; true; 6; rep7
 
-INSERT_UPDATE Reparto;  code[unique=true]; name[lang = en]; head(uid); hospital(code); patients(uid); 
-; rep1; Pediatrics;  he1; 010
-; rep2; Surgery; he2; 020
-; rep3; Cardiology;  he3; 020
-; rep4; Gynecology;  he4; 010
+INSERT_UPDATE Reparto;  code[unique=true]; name[lang = en]; head(uid); hospital(code); patients(uid); doctors(uid);
+; rep1; Pediatrics;  he2; 010;d2
+; rep2; Surgery; he1; 020; d1
+; rep3; Cardiology;  he4; 020;d4
+; rep4; Gynecology;  ; 010
+; rep5; Oculist;  he3; 040;d3
+; rep6; Psychiatry;  he5; 030;d5
+; rep7; Neuro;  he6; 030;he6
 
-INSERT_UPDATE Patient; uid[unique=true]; dateEntry[dateformat='yyyy.MM.dd']; dateExit[dateformat='MM/dd/yyyy'];departaments(code);pathologies(name); 
-; pa1; 2019.01.02; 2019.02.02;rep2; diabetes
-; pa2; 2019.02.20;2019.03.02; rep3; cataract
-; pa3; 2019.02.27; ;rep4; abortion
+INSERT_UPDATE Patient; uid[unique=true]; name ;dateEntry[dateformat='yyyy.MM.dd']; dateExit[dateformat='yyyy.MM.dd'];departaments(code);pathologies(name);  
+; pa1; Carlo; 2019.01.02; 2019.02.02;rep2; diabetes
+; pa2; Francesco;2019.02.20;2019.03.02; rep3; cataract
+; pa3; Andrea; 2019.02.27; ;rep4; abortion
 
 
 
@@ -25,3 +32,10 @@ INSERT_UPDATE Pathology; name[unique=true]; patients(uid);
 ; diabetes; pa1
 ; cataract; pa2
 ; abortion; pa3
+
+INSERT_UPDATE Doctor; uid[unique=true]; name; specialization;register;department(code);
+; d1; DiNapoli; Surgery; true; rep2
+; d2; Sole; Pediatrics; false; rep1
+; d3; Raggio; Oculist; true; rep5
+; d4; Strumolo; Cardiology; true; rep3
+; d5; Lombardi; Psychiatry; true; rep6

@@ -76,6 +76,20 @@
 					search="true" />
 			</targetElement>
 		</relation>
+
+		<relation code="Doctor2DepartmentRelation" localized="false"
+			generate="true" autocreate="true">
+			<sourceElement type="Reparto" qualifier="department"
+				cardinality="one">
+				<modifiers read="true" write="true" search="true"
+					unique="true" />
+			</sourceElement>
+			<targetElement type="Doctor" qualifier="doctors"
+				collectiontype="list" cardinality="many">
+				<modifiers read="true" write="true" optional="true"
+					search="true" />
+			</targetElement>
+		</relation>
 	</relations>
 	<itemtypes>
 
@@ -206,18 +220,30 @@
 						<persistence type="property" />
 					</attribute>
 				</attributes>
-
-
 			</itemtype>
-			<itemtype code="Head" autocreate="true" generate="true"
-				extends="Customer" jaloclass="org.training.hospital.core.jalo.Head">
-				<deployment table="DepHead" typecode="20003" />
+
+
+			<itemtype code="Doctor" autocreate="true" generate="true"
+				extends="Customer"
+				jaloclass="org.training.hospital.core.jalo.Doctor">
+				<deployment table="DepDoctor" typecode="20008" />
 				<attributes>
 					<attribute qualifier="specialization"
 						type="java.lang.String">
 						<persistence type="property" />
 					</attribute>
 					<attribute qualifier="register" type="java.lang.Boolean">
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="Head" autocreate="true" generate="true"
+				extends="Doctor" jaloclass="org.training.hospital.core.jalo.Head">
+				<deployment table="DepHead" typecode="20003" />
+				<attributes>
+					<attribute qualifier="yearsExperience"
+						type="java.lang.String">
 						<persistence type="property" />
 					</attribute>
 				</attributes>
@@ -237,7 +263,7 @@
 					<attribute qualifier="numberPathologies"
 						type="java.lang.String">
 						<persistence type="dynamic"
-							attributeHandler="dynamicAttributesNumberPahologies" />
+							attributeHandler="dynamicAttributesNumberPathologies" />
 						<modifiers read="true" write="false" search="true"
 							optional="false" />
 					</attribute>

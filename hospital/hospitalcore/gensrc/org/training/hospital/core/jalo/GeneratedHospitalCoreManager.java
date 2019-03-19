@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 12-mar-2019 12.39.55                        ---
+ * --- Generated at 19-mar-2019 9.09.39                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
@@ -21,6 +21,7 @@ import org.training.hospital.core.constants.HospitalCoreConstants;
 import org.training.hospital.core.jalo.ApparelProduct;
 import org.training.hospital.core.jalo.ApparelSizeVariantProduct;
 import org.training.hospital.core.jalo.ApparelStyleVariantProduct;
+import org.training.hospital.core.jalo.Doctor;
 import org.training.hospital.core.jalo.ElectronicsColorVariantProduct;
 import org.training.hospital.core.jalo.Head;
 import org.training.hospital.core.jalo.Hospital;
@@ -128,6 +129,32 @@ public abstract class GeneratedHospitalCoreManager extends Extension
 	public ApparelStyleVariantProduct createApparelStyleVariantProduct(final Map attributeValues)
 	{
 		return createApparelStyleVariantProduct( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public Doctor createDoctor(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( HospitalCoreConstants.TC.DOCTOR );
+			return (Doctor)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating Doctor : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public Doctor createDoctor(final Map attributeValues)
+	{
+		return createDoctor( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public ElectronicsColorVariantProduct createElectronicsColorVariantProduct(final SessionContext ctx, final Map attributeValues)

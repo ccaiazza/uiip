@@ -34,6 +34,7 @@ public class HospitalInterceptor implements RemoveInterceptor<HospitalModel>
 		for (final RepartoModel r : lista)
 		{
 			ctx.getModelService().remove(r);
+
 		}
 
 	}

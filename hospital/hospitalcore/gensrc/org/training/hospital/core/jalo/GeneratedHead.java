@@ -1,35 +1,32 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 12-mar-2019 12.39.55                        ---
+ * --- Generated at 19-mar-2019 9.09.39                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
 
 import de.hybris.platform.jalo.Item.AttributeMode;
 import de.hybris.platform.jalo.SessionContext;
-import de.hybris.platform.jalo.user.Customer;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import org.training.hospital.core.constants.HospitalCoreConstants;
+import org.training.hospital.core.jalo.Doctor;
 
 /**
  * Generated class for type {@link org.training.hospital.core.jalo.Head Head}.
  */
 @SuppressWarnings({"deprecation","unused","cast","PMD"})
-public abstract class GeneratedHead extends Customer
+public abstract class GeneratedHead extends Doctor
 {
-	/** Qualifier of the <code>Head.specialization</code> attribute **/
-	public static final String SPECIALIZATION = "specialization";
-	/** Qualifier of the <code>Head.register</code> attribute **/
-	public static final String REGISTER = "register";
+	/** Qualifier of the <code>Head.yearsExperience</code> attribute **/
+	public static final String YEARSEXPERIENCE = "yearsExperience";
 	protected static final Map<String, AttributeMode> DEFAULT_INITIAL_ATTRIBUTES;
 	static
 	{
-		final Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>(Customer.DEFAULT_INITIAL_ATTRIBUTES);
-		tmp.put(SPECIALIZATION, AttributeMode.INITIAL);
-		tmp.put(REGISTER, AttributeMode.INITIAL);
+		final Map<String, AttributeMode> tmp = new HashMap<String, AttributeMode>(Doctor.DEFAULT_INITIAL_ATTRIBUTES);
+		tmp.put(YEARSEXPERIENCE, AttributeMode.INITIAL);
 		DEFAULT_INITIAL_ATTRIBUTES = Collections.unmodifiableMap(tmp);
 	}
 	@Override
@@ -39,112 +36,39 @@ public abstract class GeneratedHead extends Customer
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Head.register</code> attribute.
-	 * @return the register
+	 * <i>Generated method</i> - Getter of the <code>Head.yearsExperience</code> attribute.
+	 * @return the yearsExperience
 	 */
-	public Boolean isRegister(final SessionContext ctx)
+	public String getYearsExperience(final SessionContext ctx)
 	{
-		return (Boolean)getProperty( ctx, REGISTER);
+		return (String)getProperty( ctx, YEARSEXPERIENCE);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Head.register</code> attribute.
-	 * @return the register
+	 * <i>Generated method</i> - Getter of the <code>Head.yearsExperience</code> attribute.
+	 * @return the yearsExperience
 	 */
-	public Boolean isRegister()
+	public String getYearsExperience()
 	{
-		return isRegister( getSession().getSessionContext() );
+		return getYearsExperience( getSession().getSessionContext() );
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Head.register</code> attribute. 
-	 * @return the register
+	 * <i>Generated method</i> - Setter of the <code>Head.yearsExperience</code> attribute. 
+	 * @param value the yearsExperience
 	 */
-	public boolean isRegisterAsPrimitive(final SessionContext ctx)
+	public void setYearsExperience(final SessionContext ctx, final String value)
 	{
-		Boolean value = isRegister( ctx );
-		return value != null ? value.booleanValue() : false;
+		setProperty(ctx, YEARSEXPERIENCE,value);
 	}
 	
 	/**
-	 * <i>Generated method</i> - Getter of the <code>Head.register</code> attribute. 
-	 * @return the register
+	 * <i>Generated method</i> - Setter of the <code>Head.yearsExperience</code> attribute. 
+	 * @param value the yearsExperience
 	 */
-	public boolean isRegisterAsPrimitive()
+	public void setYearsExperience(final String value)
 	{
-		return isRegisterAsPrimitive( getSession().getSessionContext() );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Head.register</code> attribute. 
-	 * @param value the register
-	 */
-	public void setRegister(final SessionContext ctx, final Boolean value)
-	{
-		setProperty(ctx, REGISTER,value);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Head.register</code> attribute. 
-	 * @param value the register
-	 */
-	public void setRegister(final Boolean value)
-	{
-		setRegister( getSession().getSessionContext(), value );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Head.register</code> attribute. 
-	 * @param value the register
-	 */
-	public void setRegister(final SessionContext ctx, final boolean value)
-	{
-		setRegister( ctx,Boolean.valueOf( value ) );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Head.register</code> attribute. 
-	 * @param value the register
-	 */
-	public void setRegister(final boolean value)
-	{
-		setRegister( getSession().getSessionContext(), value );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>Head.specialization</code> attribute.
-	 * @return the specialization
-	 */
-	public String getSpecialization(final SessionContext ctx)
-	{
-		return (String)getProperty( ctx, SPECIALIZATION);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Getter of the <code>Head.specialization</code> attribute.
-	 * @return the specialization
-	 */
-	public String getSpecialization()
-	{
-		return getSpecialization( getSession().getSessionContext() );
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Head.specialization</code> attribute. 
-	 * @param value the specialization
-	 */
-	public void setSpecialization(final SessionContext ctx, final String value)
-	{
-		setProperty(ctx, SPECIALIZATION,value);
-	}
-	
-	/**
-	 * <i>Generated method</i> - Setter of the <code>Head.specialization</code> attribute. 
-	 * @param value the specialization
-	 */
-	public void setSpecialization(final String value)
-	{
-		setSpecialization( getSession().getSessionContext(), value );
+		setYearsExperience( getSession().getSessionContext(), value );
 	}
 	
 }

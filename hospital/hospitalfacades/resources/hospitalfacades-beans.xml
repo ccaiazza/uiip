@@ -31,11 +31,20 @@
 			type="org.training.hospital.facades.product.data.HospitalData" />
 	</bean>
 
+	<bean
+		class="org.training.hospital.facades.product.data.DoctorData">
+		<property name="uid" type="String" />
+		<property name="name" type="String" />
+		<property name="specialization" type="String" />
+		<property name="register" type="Boolean" />
+	</bean>
+
 	<bean class="org.training.hospital.facades.product.data.HeadData">
 		<property name="uid" type="String" />
 		<property name="name" type="String" />
 		<property name="specialization" type="String" />
 		<property name="register" type="Boolean" />
+		<property name="yearsExperience" type="String" />
 	</bean>
 
 	<bean
@@ -43,7 +52,8 @@
 		<property name="code" type="String" />
 		<property name="name" type="String" />
 		<property name="numberRep" type="String" />
-		<property name="reparti" type="java.util.List&lt;org.training.hospital.facades.product.data.RepartoData>" />
+		<property name="reparti"
+			type="java.util.List&lt;org.training.hospital.facades.product.data.RepartoData>" />
 		<property name="citta" type="String" />
 	</bean>
 
@@ -52,8 +62,10 @@
 		<property name="dateEntry" type="java.util.Date" />
 		<property name="dateExit" type="java.util.Date" />
 		<property name="numberPathologies" type="String" />
-		<property name="departaments" type="java.util.List&lt;org.training.hospital.facades.product.data.RepartoData>" />
-		<property name="pathologies" type="java.util.List&lt;org.training.hospital.facades.product.data.PathologyData>" />
+		<property name="departaments"
+			type="java.util.List&lt;org.training.hospital.facades.product.data.RepartoData>" />
+		<property name="pathologies"
+			type="java.util.List&lt;org.training.hospital.facades.product.data.PathologyData>" />
 		<property name="uid" type="String" />
 		<property name="name" type="String" />
 	</bean>
@@ -61,7 +73,8 @@
 	<bean
 		class="org.training.hospital.facades.product.data.PathologyData">
 		<property name="name" type="String" />
-		<property name="patients" type="java.util.List&lt;org.training.hospital.facades.product.data.PatientData>" />
+		<property name="patients"
+			type="java.util.List&lt;org.training.hospital.facades.product.data.PatientData>" />
 	</bean>
 
 </beans>

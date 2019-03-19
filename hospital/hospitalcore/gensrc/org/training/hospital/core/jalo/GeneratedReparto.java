@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 12-mar-2019 12.39.55                        ---
+ * --- Generated at 19-mar-2019 9.09.39                         ---
  * ----------------------------------------------------------------
  */
 package org.training.hospital.core.jalo;
@@ -18,12 +18,14 @@ import de.hybris.platform.jalo.type.CollectionType;
 import de.hybris.platform.jalo.type.ComposedType;
 import de.hybris.platform.jalo.type.TypeManager;
 import de.hybris.platform.util.BidirectionalOneToManyHandler;
+import de.hybris.platform.util.OneToManyHandler;
 import de.hybris.platform.util.Utilities;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.training.hospital.core.constants.HospitalCoreConstants;
+import org.training.hospital.core.jalo.Doctor;
 import org.training.hospital.core.jalo.Head;
 import org.training.hospital.core.jalo.Hospital;
 import org.training.hospital.core.jalo.Patient;
@@ -49,6 +51,8 @@ public abstract class GeneratedReparto extends GenericItem
 	protected static String PATIENT2DEPARTMENTRELATION_TGT_ORDERED = "relation.Patient2DepartmentRelation.target.ordered";
 	/** Relation disable markmodifed parameter constants for Patient2DepartmentRelation from ((hospitalcore))*/
 	protected static String PATIENT2DEPARTMENTRELATION_MARKMODIFIED = "relation.Patient2DepartmentRelation.markmodified";
+	/** Qualifier of the <code>Reparto.doctors</code> attribute **/
+	public static final String DOCTORS = "doctors";
 	/**
 	* {@link BidirectionalOneToManyHandler} for handling 1:n HOSPITAL's relation attributes from 'one' side.
 	**/
@@ -56,6 +60,18 @@ public abstract class GeneratedReparto extends GenericItem
 	HospitalCoreConstants.TC.REPARTO,
 	false,
 	"hospital",
+	null,
+	false,
+	true,
+	CollectionType.LIST
+	);
+	/**
+	* {@link OneToManyHandler} for handling 1:n DOCTORS's relation attributes from 'many' side.
+	**/
+	protected static final OneToManyHandler<Doctor> DOCTORSHANDLER = new OneToManyHandler<Doctor>(
+	HospitalCoreConstants.TC.DOCTOR,
+	false,
+	"department",
 	null,
 	false,
 	true,
@@ -118,6 +134,78 @@ public abstract class GeneratedReparto extends GenericItem
 	{
 		HOSPITALHANDLER.newInstance(ctx, allAttributes);
 		return super.createItem( ctx, type, allAttributes );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Reparto.doctors</code> attribute.
+	 * @return the doctors
+	 */
+	public List<Doctor> getDoctors(final SessionContext ctx)
+	{
+		return (List<Doctor>)DOCTORSHANDLER.getValues( ctx, this );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Reparto.doctors</code> attribute.
+	 * @return the doctors
+	 */
+	public List<Doctor> getDoctors()
+	{
+		return getDoctors( getSession().getSessionContext() );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Reparto.doctors</code> attribute. 
+	 * @param value the doctors
+	 */
+	public void setDoctors(final SessionContext ctx, final List<Doctor> value)
+	{
+		DOCTORSHANDLER.setValues( ctx, this, value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Reparto.doctors</code> attribute. 
+	 * @param value the doctors
+	 */
+	public void setDoctors(final List<Doctor> value)
+	{
+		setDoctors( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Adds <code>value</code> to doctors. 
+	 * @param value the item to add to doctors
+	 */
+	public void addToDoctors(final SessionContext ctx, final Doctor value)
+	{
+		DOCTORSHANDLER.addValue( ctx, this, value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Adds <code>value</code> to doctors. 
+	 * @param value the item to add to doctors
+	 */
+	public void addToDoctors(final Doctor value)
+	{
+		addToDoctors( getSession().getSessionContext(), value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Removes <code>value</code> from doctors. 
+	 * @param value the item to remove from doctors
+	 */
+	public void removeFromDoctors(final SessionContext ctx, final Doctor value)
+	{
+		DOCTORSHANDLER.removeValue( ctx, this, value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Removes <code>value</code> from doctors. 
+	 * @param value the item to remove from doctors
+	 */
+	public void removeFromDoctors(final Doctor value)
+	{
+		removeFromDoctors( getSession().getSessionContext(), value );
 	}
 	
 	/**
