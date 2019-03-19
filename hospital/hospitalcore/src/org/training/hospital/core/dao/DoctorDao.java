@@ -5,6 +5,8 @@ package org.training.hospital.core.dao;
 
 import java.util.List;
 
+import org.training.hospital.core.model.DoctorModel;
+
 
 /**
  * @author ssole
@@ -12,6 +14,6 @@ import java.util.List;
  */
 public interface DoctorDao
 {
-	public List<DoctorDao> findDoctorbyName(String name);
+	public List<DoctorModel> findDoctorbyName(String name);
 
 }
