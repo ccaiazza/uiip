@@ -49,7 +49,7 @@ public class HospitalController
 	private PathologyFacade pathologyFacade;
 
 
-	@RequestMapping(value = "/repartu{hospitalCode}") //nome file jsp
+	@RequestMapping(value = "/repartu/{hospitalCode}") //nome file jsp
 	public String showRepartiDetails(@PathVariable String codeHospital, final Model model) throws UnsupportedEncodingException
 	{
 		codeHospital = URLDecoder.decode(codeHospital, "UTF-8");
@@ -60,11 +60,11 @@ public class HospitalController
 	}
 
 	@RequestMapping(value = "/nReparti") //nome file jsp
-	public String showNomeRepartiDetails(@PathVariable
+	public String showNomeRepartiDetails(@PathVariable String code,
 	final Model model) throws UnsupportedEncodingException
 	{
-
-		final List<HospitalData> nReparti = hospitalFacade.getHospitalInfo();
+		code = URLDecoder.decode(code, "UTF-8");
+		final List<HospitalData> nReparti = hospitalFacade.getHospitalInfo(code);
 
 		model.addAttribute("nReparti", nReparti);
 		return ControllerConstants.Views.Pages.Hospital.Nreparti;

@@ -20,7 +20,7 @@ import org.training.hospital.core.model.HospitalModel;
  */
 public interface HospitalDao
 {
-	public List<HospitalModel> findHospitalInfo();
+	public List<HospitalModel> findHospitalInfo(String code);
 
 	public List<HospitalModel> findHospitals();
 }

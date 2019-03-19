@@ -18,6 +18,6 @@ public interface HeadDao
 
 	public List<HeadModel> findHeadByHospital(String code);
 
-	public List<HeadModel> findHeadByHospitalCardarelli();
+	public List<HeadModel> findHeadByHospitalName(String name);
 
 }

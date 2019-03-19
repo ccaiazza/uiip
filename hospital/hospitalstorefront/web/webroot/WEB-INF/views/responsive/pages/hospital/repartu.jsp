@@ -10,7 +10,7 @@
             :<br>
             <ul>
              <c:forEach var="reparto" items="${reparti}">
-                <li>${reparto.nameRep}</li>
+                <li>${reparto.name}</li>
               </c:forEach>
             </ul>
       

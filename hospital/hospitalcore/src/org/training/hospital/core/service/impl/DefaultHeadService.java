@@ -60,9 +60,10 @@ public class DefaultHeadService implements HeadService
 		return result;
 	}
 
-	public List<HeadModel> getHeadforHospitalCardarelli() throws AmbiguousIdentifierException, UnknownIdentifierException
+	public List<HeadModel> getHeadforHospitalName(final String name)
+			throws AmbiguousIdentifierException, UnknownIdentifierException
 	{
-		final List<HeadModel> result = headDao.findHeadByHospitalCardarelli();
+		final List<HeadModel> result = headDao.findHeadByHospitalName(name);
 		if (result.isEmpty())
 		{
 			throw new UnknownIdentifierException("Primario not found!");

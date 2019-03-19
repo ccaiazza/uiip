@@ -17,5 +17,5 @@ public interface HospitalFacade
 
 	public List<HospitalData> getHospitals();
 
-	public List<HospitalData> getHospitalInfo();
+	public List<HospitalData> getHospitalInfo(String code);
 }

@@ -28,9 +28,9 @@ public class DefaultHospitalFacade implements HospitalFacade
 	 * @return the hospitalService
 	 */
 	@Override
-	public List<HospitalData> getHospitalInfo()
+	public List<HospitalData> getHospitalInfo(final String code)
 	{
-		final List<HospitalModel> hospitalModelsInfo = hospitalService.getHospitalInfo();
+		final List<HospitalModel> hospitalModelsInfo = hospitalService.getHospitalInfoforCode(code);
 
 
 		return hospitalConverter.convertAll(hospitalModelsInfo);
