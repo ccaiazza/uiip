@@ -34,7 +34,7 @@ public class RepartoInterceptor implements LoadInterceptor<RepartoModel>
 
 		if (headmodel != null)
 		{
-			if (headmodel.getName() == null)
+			if (headmodel.getName() != null)
 			{
 
 				repartoModel.getHead().setName(nomeHead);

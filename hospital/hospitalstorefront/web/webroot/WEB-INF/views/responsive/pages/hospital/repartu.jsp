@@ -5,14 +5,14 @@
     <body>
         <h1>Reparto Details</h1>
  
-        Reparto Details for ${hospitalCode}<br><br>
+        Reparto Details for ${code} :<br><br> 
             
-            :<br>
-            <ul>
-             <c:forEach var="reparto" items="${reparti}">
-                <li>${reparto.name}</li>
-              </c:forEach>
-            </ul>
+            <br>
+          <ul> 
+             <c:forEach var="reparto" items="${repartu}"> 
+                <li>${reparto.getCode()} ${ reparto.getName()}</li> 
+               </c:forEach>
+            </ul> 
       
     </body>
 </html>

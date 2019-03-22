@@ -32,15 +32,24 @@ public class RepartoPopulator implements Populator<RepartoModel, RepartoData>
 	@Override
 	public void populate(final RepartoModel source, final RepartoData target) throws ConversionException
 	{
+		if (source == null)
+		{
+			throw new IllegalArgumentException("Model is empty");
+		}
+		else
+		{
+
+				target.setCode((source.getCode()));
+				target.setName(source.getName());
+			}
 
 
-		target.setCode((source.getCode()));
-		target.setName(source.getName());
-		target.setHead(headConverter.convert(source.getHead()));
-		target.setHospital(hospitalConverter.convert(source.getHospital()));
-		target.setPatients(patientConverter.convertAll(source.getPatients()));
+			//target.setHead(headConverter.convert(source.getHead()));
+			//target.setHospital(hospitalConverter.convert(source.getHospital()));
+			//target.setPatients(patientConverter.convertAll(source.getPatients()));
+		}
 
-	}
+
 
 	/**
 	 * @return the patientConverter

@@ -6,6 +6,7 @@ package org.training.hospital.core.service.impl;
 import de.hybris.platform.servicelayer.exceptions.AmbiguousIdentifierException;
 import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Required;
@@ -25,7 +26,7 @@ public class DefaultPatientService implements PatientService
 	 * @see org.training.hospital.core.service.PatientService#getPatientForDateEntry()
 	 */
 	@Override
-	public List<PatientModel> getPatientForDateEntry(final String entry)
+	public List<PatientModel> getPatientForDateEntry(final Date entry)
 			throws AmbiguousIdentifierException, UnknownIdentifierException
 	{
 		final List<PatientModel> result = patientDao.findPatientbyDateEntry(entry);

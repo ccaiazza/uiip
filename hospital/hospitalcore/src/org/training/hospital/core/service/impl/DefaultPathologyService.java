@@ -3,7 +3,6 @@
  */
 package org.training.hospital.core.service.impl;
 
-import de.hybris.platform.servicelayer.exceptions.AmbiguousIdentifierException;
 import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
 
 import java.util.List;
@@ -26,17 +25,17 @@ public class DefaultPathologyService implements PathologyService
 	 */
 	@Override
 	public List<PathologyModel> getPatologyforPatient(final String patientCode)
-			throws AmbiguousIdentifierException, UnknownIdentifierException
+			throws UnknownIdentifierException
 	{
 		final List<PathologyModel> result = pathologyDao.findPatologybyPatient(patientCode);
 		if (result.isEmpty())
 		{
 			throw new UnknownIdentifierException("Pathology not found!");
 		}
-		else if (result.size() > 1)
-		{
-			throw new AmbiguousIdentifierException("Pathology is not unique, pathology found!");
-		}
+		//		else if (result.size() > 1)
+		//		{
+		//			throw new AmbiguousIdentifierException("Pathology is not unique, pathology found!");
+		//		}
 		return result;
 	}
 

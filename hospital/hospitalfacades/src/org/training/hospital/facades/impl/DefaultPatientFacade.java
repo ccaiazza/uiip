@@ -5,6 +5,7 @@ package org.training.hospital.facades.impl;
 
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Required;
@@ -24,7 +25,7 @@ public class DefaultPatientFacade implements PatientFacade
 	private Converter<PatientModel, PatientData> patientConverter;
 
 	@Override
-	public List<PatientData> getPatientbyDateEntry(final String entry)
+	public List<PatientData> getPatientbyDateEntry(final Date entry)
 	{
 
 		final List<PatientModel> patients = patientService.getPatientForDateEntry(entry);

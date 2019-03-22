@@ -3,6 +3,7 @@
  */
 package org.training.hospital.core.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.training.hospital.core.model.PatientModel;
@@ -15,5 +16,5 @@ import org.training.hospital.core.model.PatientModel;
 public interface PatientService
 {
 
-	List<PatientModel> getPatientForDateEntry(final String entry);
+	List<PatientModel> getPatientForDateEntry(final Date entry);
 }
