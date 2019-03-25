@@ -24,6 +24,7 @@ public class DefaultRepartoFacade implements RepartoFacade
 {
 	private RepartoService repartoService;
 	private Converter<RepartoModel, RepartoData> repartoConverter;
+
 	/*
 	 * (non-Javadoc)
 	 *
@@ -33,8 +34,6 @@ public class DefaultRepartoFacade implements RepartoFacade
 	public List<RepartoData> getReparto(final String code)
 	{
 		final List<RepartoModel> repartoModels = repartoService.getRepartiforHospital(code);
-
-
 		return repartoConverter.convertAll(repartoModels);
 	}
 

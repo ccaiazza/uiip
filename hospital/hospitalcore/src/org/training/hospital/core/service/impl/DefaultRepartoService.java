@@ -3,7 +3,6 @@
  */
 package org.training.hospital.core.service.impl;
 
-import de.hybris.platform.servicelayer.exceptions.AmbiguousIdentifierException;
 import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
 
 import java.util.List;
@@ -27,20 +26,26 @@ public class DefaultRepartoService implements RepartoService
 	 * @see org.training.hospital.core.service.RepartoService#getRepartiForHospital(java.lang.String)
 	 */
 	@Override
-	public List<RepartoModel> getRepartiforHospital(final String codeHospital)
-			throws AmbiguousIdentifierException, UnknownIdentifierException
+	public List<RepartoModel> getRepartiforHospital(final String code)
+			throws UnknownIdentifierException
 	{
-		final List<RepartoModel> result = repartoDao.findRepartiByHospital(codeHospital);
+		final List<RepartoModel> result = repartoDao.findRepartiByHospital(code);
+
 		if (result.isEmpty())
 		{
 			throw new UnknownIdentifierException("Reparto not found!");
+
+
 		}
-		else if (result.size() > 1)
-		{
-			throw new AmbiguousIdentifierException(
-					"Reparto is not unique, reparto found!");
-		}
+		//		else if (result.size() > 1)
+		//		{
+		//			throw new AmbiguousIdentifierException("Reparto is not unique, reparto found!");
+		//		}
+
+
 		return result;
+
+
 	}
 
 	/**

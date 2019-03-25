@@ -17,6 +17,6 @@ public interface HeadFacade
 
 	public List<HeadData> getHeadbyReparto(String code);
 
-	public List<HeadData> getHeadforHospitalCardarelli();
+	public List<HeadData> getHeadforHospitalName(String code);
 
 }

@@ -86,13 +86,13 @@ public class DefaultHeadFacade implements HeadFacade
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.training.hospital.facades.facade.HeadFacade#getHeadforHospitalCardarelli()
 	 */
 	@Override
-	public List<HeadData> getHeadforHospitalCardarelli()
+	public List<HeadData> getHeadforHospitalName(final String code)
 	{
-		final List<HeadModel> headModels = headService.getHeadforHospitalCardarelli();
+		final List<HeadModel> headModels = headService.getHeadforHospitalName(code);
 
 
 		return headConverter.convertAll(headModels);

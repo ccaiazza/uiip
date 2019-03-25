@@ -1,8 +1,10 @@
 package org.training.hospital.core.dao.impl;
 
-import de.hybris.platform.jalo.SearchResult;
+
+
 import de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
+import de.hybris.platform.servicelayer.search.SearchResult;
 
 import java.util.List;
 
@@ -22,22 +24,36 @@ public class DefaultHospitalDao extends DefaultGenericDao implements HospitalDao
 		// XXX Auto-generated constructor stub
 	}
 
-	public List<HospitalModel> findHospital()
+	public List<HospitalModel> findHospitalInfo(final String code)
 	{
 
 		final String queryString = "SELECT {" + HospitalModel.NAME + " " + HospitalModel.REPARTI + "} " + "FROM {"
-				+ HospitalModel._TYPECODE;
+				+ HospitalModel._TYPECODE + "WHERE { " + HospitalModel.CODE + "?=code }";
 
 
 
 
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);//prendere parametri
-		final SearchResult<HospitalModel> result = (SearchResult<HospitalModel>) getFlexibleSearchService().search(query);
+		final SearchResult<HospitalModel> result = getFlexibleSearchService().search(query);
 
 
 		return result.getResult();
 	}
 
+	public List<HospitalModel> findHospitals()
+	{
+
+		final String queryString = "SELECT {" + HospitalModel.PK + "} " + "FROM {" + HospitalModel._TYPECODE + "}";
+
+
+
+
+		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);//prendere parametri
+		final SearchResult<HospitalModel> result = getFlexibleSearchService().search(query);
+
+
+		return result.getResult();
+	}
 
 
 

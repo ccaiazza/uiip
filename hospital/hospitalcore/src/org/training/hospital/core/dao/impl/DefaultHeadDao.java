@@ -36,7 +36,7 @@ public class DefaultHeadDao extends DefaultGenericDao implements HeadDao
 
 		// Build a query for the flexible search.
 		final String queryString = "SELECT {" + HeadModel.PK + "} " + "FROM {" + HeadModel._TYPECODE
-				+ " AS H JOIN Reaparto AS R ON{H.codeHead= R.head}} " + "WHERE {R.codeReparto =?codeReparto}";
+				+ " AS H JOIN Reaparto AS R ON{H.uid= R.head}} " + "WHERE {R.codeReparto =?codeReparto}";
 
 
 
@@ -53,7 +53,7 @@ public class DefaultHeadDao extends DefaultGenericDao implements HeadDao
 	{
 		// Build a query for the flexible search.
 		final String queryString = "SELECT {" + HeadModel.PK + "} " + "FROM {" + HeadModel._TYPECODE
-				+ " AS P JOIN Reparto AS R ON{P.codeHead= R.head}} " + "WHERE {R.hospital =?codeHospital}";
+				+ " AS P JOIN Reparto AS R ON{P.uid= R.head}} " + "WHERE {R.hospital =?codeHospital}";
 
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString, Collections.singletonMap("code", codeHospital));
 		final SearchResult<HeadModel> result = (SearchResult<HeadModel>) getFlexibleSearchService().search(query);
@@ -68,17 +68,17 @@ public class DefaultHeadDao extends DefaultGenericDao implements HeadDao
 	 * @see org.training.hospital.core.dao.HeadDao#findHeadByHospitalName(java.lang.String)
 	 */
 	@Override
-	public List<HeadModel> findHeadByHospitalCardarelli()
+	public List<HeadModel> findHeadByHospitalName(final String name)
 	{
-		final String nomeHospital = "Cardarelli";
+
 		final String queryString = "SELECT {" + HeadModel.PK + "} " + "FROM {" + HeadModel._TYPECODE
-				+ " AS H JOIN Reaparto AS R ON{H.codeHead= R.head} " + " JOIN Hospital AS O ON{R.hospital =O.code }}"
-				+ "WHERE {R.name=? Cardarelli}";
+				+ " AS H JOIN Reaparto AS R ON{H.uid= R.head} " + " JOIN Hospital AS O ON{R.hospital =O.code }}"
+				+ "WHERE {R.name=? name}";
 
 
 
 
-		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString, Collections.singletonMap("name", nomeHospital));//prendere parametri
+		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString, Collections.singletonMap("name", name));//prendere parametri
 		final SearchResult<HeadModel> result = (SearchResult<HeadModel>) getFlexibleSearchService().search(query);
 
 

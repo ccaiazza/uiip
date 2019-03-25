@@ -22,4 +22,6 @@ public interface RepartoDao
 	public List<RepartoModel> findRepartiByHospital(final String codeHospital);
 
 
+
+
 }

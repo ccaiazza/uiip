@@ -1,4 +1,5 @@
 /**
+Agisce sul ciclo di vita del model--> modificando il model
  *
  */
 package org.training.hospital.core.interceptor;
@@ -7,7 +8,7 @@ import de.hybris.platform.servicelayer.interceptor.InterceptorContext;
 import de.hybris.platform.servicelayer.interceptor.InterceptorException;
 import de.hybris.platform.servicelayer.interceptor.RemoveInterceptor;
 
-import java.util.Set;
+import java.util.List;
 
 import org.training.hospital.core.model.HospitalModel;
 import org.training.hospital.core.model.RepartoModel;
@@ -17,6 +18,7 @@ import org.training.hospital.core.model.RepartoModel;
  * @author soprasteria
  *
  */
+
 public class HospitalInterceptor implements RemoveInterceptor<HospitalModel>
 {
 
@@ -28,18 +30,20 @@ public class HospitalInterceptor implements RemoveInterceptor<HospitalModel>
 	public void onRemove(final HospitalModel hospitalModel, final InterceptorContext ctx) throws InterceptorException
 	{
 
-		final Set<RepartoModel> lista = hospitalModel.getReparti();
+		final List<RepartoModel> lista = hospitalModel.getReparti();
 		for (final RepartoModel r : lista)
 		{
 			ctx.getModelService().remove(r);
+
 		}
 
 	}
-
-
-
-
 }
+
+
+
+
+
 
 
 

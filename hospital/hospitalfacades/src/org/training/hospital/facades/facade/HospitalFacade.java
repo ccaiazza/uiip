@@ -15,5 +15,7 @@ import org.training.hospital.facades.product.data.HospitalData;
 public interface HospitalFacade
 {
 
-	public List<HospitalData> getHospital();
+	public List<HospitalData> getHospitals();
+
+	public List<HospitalData> getHospitalInfo(String code);
 }

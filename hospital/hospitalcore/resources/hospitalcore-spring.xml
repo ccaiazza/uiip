@@ -718,12 +718,6 @@
 	</bean>
 
 
-
-
-
-
-
-
 	<bean name="defaultRepartoDao"
 		class="org.training.hospital.core.dao.impl.DefaultRepartoDao">
 		<constructor-arg value="Reparto" />
@@ -774,8 +768,68 @@
 
 	<bean id="hospitalMapping"
 		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
-		<property name="interceptor" ref ="hospitalRemoveInterceptor"/>
-			<property name="typeCode" value="Hospital" />
+		<property name="interceptor" ref="hospitalRemoveInterceptor" />
+		<property name="typeCode" value="Hospital" />
 	</bean>
+
+	<bean id="infoJob" class="org.training.hospital.core.job.InfoJob">
+		<property name="hospitalService" ref="hospitalService" />
+	</bean>
+
+	<bean id="dynamicAttributesNumberPathologies"
+		class="org.training.hospital.core.handler.DynamicAttributeNumberPathologies">
+
+	</bean>
+
+	<bean name="defaultPatientDao"
+		class="org.training.hospital.core.dao.impl.DefaultPatientDao">
+		<constructor-arg value="Patient" />
+
+	</bean>
+
+	<alias name="defaultPatientService" alias="patientService" />
+	<bean id="defaultPatientService"
+		class="org.training.hospital.core.service.impl.DefaultPatientService">
+		<property name="patientDao" ref="defaultPatientDao" />
+
+	</bean>
+
+	<bean name="defaultPathologyDao"
+		class="org.training.hospital.core.dao.impl.DefaulPathologyDao">
+		<constructor-arg value="Pathology" />
+
+	</bean>
+
+	<alias name="defaultPathologyService" alias="pathologyService" />
+	<bean id="defaultPathologyService"
+		class="org.training.hospital.core.service.impl.DefaultPathologyService">
+		<property name="pathologyDao" ref="defaultPathologyDao" />
+
+	</bean>
+
+	<bean id="repartoLoadInterceptor"
+		class="org.training.hospital.core.interceptor.RepartoInterceptor">
+		<property name="nomeHead" value="name" />
+	</bean>
+
+	<bean id="repartoMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="repartoLoadInterceptor" />
+		<property name="typeCode" value="Reparto" />
+	</bean>
+
+	<bean id="headValidateInterceptor"
+		class="org.training.hospital.core.interceptor.HeadInterceptor">
+	</bean>
+
+	<bean id="headMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="headValidateInterceptor" />
+		<property name="typeCode" value="Head" />
+	</bean>
+
+
 </beans>
+
+
 
