@@ -167,9 +167,13 @@ public interface ControllerConstants
 
 			interface Hospital
 			{
-				String RepartiHospital = "pages/hospital/reparti";
+				String HospitalDetails = "pages/hospital/hospitalDetails";
 
-				String Nnreparti = "pages/hospital/nnreparti";
+				String HospitalListing = "pages/hospital/hospitalListing";
+
+				String RepartoListing = "pages/hospital/repartoListing";
+
+				String DepartmentListing = "pages/hospital/departmentListing";
 			}
 
 		}

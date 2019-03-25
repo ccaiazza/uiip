@@ -22,32 +22,23 @@ public class DefaultRepartoService implements RepartoService
 
 	private RepartoDao repartoDao;
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see org.training.hospital.core.service.RepartoService#getRepartiByHospital(org.training.hospital.core.model.
-	 * HospitalModel)
-	 */
+
 	@Override
-	public List<RepartoModel> getRepartiForHospital(final String code)
+	public List<RepartoModel> getRepartoForHospital(final String code)
 			throws AmbiguousIdentifierException, UnknownIdentifierException
 	{
-		final List<RepartoModel> result = repartoDao.findRepartiByHospital(code);
-       if (result.isEmpty())
-       {
+		final List<RepartoModel> result = repartoDao.findRepartoByHospital(code);
+		if (result.isEmpty())
+		{
 			throw new UnknownIdentifierException("not found!");
-       }
-       else if (result.size() > 1)
-       {
-			throw new AmbiguousIdentifierException(
-					"Hospital code " + code + " is not unique, " + result.size() + " hospital found!");
-       }
+		}
+		//		else if (result.size() > 1)
+		//		{
+		//			throw new AmbiguousIdentifierException(
+		//					"Hospital code " + code + " is not unique, " + result.size() + " hospital found!");
+		//		}
 		return result;
 	}
-
-	/**
-	 * @return the repartoDao
-	 */
 	public RepartoDao getRepartoDao()
 	{
 		return repartoDao;
@@ -58,6 +49,25 @@ public class DefaultRepartoService implements RepartoService
 	{
 		this.repartoDao = repartoDao;
 	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see org.training.hospital.core.service.RepartoService#getDepartments()
+	 */
+	@Override
+	public List<RepartoModel> getDepartments()
+	{
+
+		return repartoDao.findDepartments();
+	}
+
+
+
+
+
+
+
 
 
 

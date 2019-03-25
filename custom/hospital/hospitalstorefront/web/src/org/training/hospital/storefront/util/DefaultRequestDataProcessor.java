@@ -20,8 +20,9 @@ import org.springframework.web.servlet.support.RequestDataValueProcessor;
 
 public class DefaultRequestDataProcessor implements RequestDataValueProcessor
 {
+
 	@Override
-	public String processAction(final HttpServletRequest request, final String action, final String httpMethod )
+	public String processAction(final HttpServletRequest request, final String action, final String httpMethod)
 	{
 		return action;
 	}
@@ -45,3 +46,4 @@ public class DefaultRequestDataProcessor implements RequestDataValueProcessor
 	}
 
 }
+

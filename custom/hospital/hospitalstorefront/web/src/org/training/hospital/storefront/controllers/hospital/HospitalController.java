@@ -39,38 +39,51 @@ public class HospitalController
 
 
 
-
-
-
-
-
-	@RequestMapping(value = "/reparti/{hospitalCode}")
-	public String showRepartidetails(@PathVariable String hospitalCode, final Model model) throws UnsupportedEncodingException
+	@RequestMapping(value = "HospitalDetails/{code}") //Punto di accesso HTTP
+	// Stampa le informazioni dell'ospedale relativo al codeHospital inserito
+	public String showHospitalDetails(@PathVariable("code") String code, final Model model)
+			throws UnsupportedEncodingException
 	{
-		hospitalCode = URLDecoder.decode(hospitalCode, "UTF-8");
-		final List<RepartoData> reparti = repartoFacade.getRepartoForHospital(hospitalCode);
-		model.addAttribute("hospitalCode", hospitalCode);
+		code = URLDecoder.decode(code, "UTF-8");
+		final HospitalData hospital = hospitalFacade.getHospitalForCode(code);
+		model.addAttribute("hospital", hospital);
+		return ControllerConstants.Views.Pages.Hospital.HospitalDetails;
+	}
+
+	@RequestMapping(value = "/hospitals")
+	//Stampa la lista di ospedali presenti nel db
+	public String getHospitals(final Model model) throws UnsupportedEncodingException
+	{
+		final List<HospitalData> hospitals = hospitalFacade.getHospital();
+		model.addAttribute("hospitals", hospitals);
+		return ControllerConstants.Views.Pages.Hospital.HospitalListing;
+
+	}
+
+	@RequestMapping(value = "RepartoDetails/{code}") //Punto di accesso HTTP
+	//Stampa  la lista di reparti presenti nell'ospedale richiesto
+	public String showReparti(@PathVariable("code") String code, final Model model) throws UnsupportedEncodingException
+	{
+		code = URLDecoder.decode(code, "UTF-8");
+		final List<RepartoData> reparti = repartoFacade.getRepartoForHospital(code);
+
 		model.addAttribute("reparti", reparti);
-		return ControllerConstants.Views.Pages.Hospital.RepartiHospital;
+		return ControllerConstants.Views.Pages.Hospital.RepartoListing;
 	}
 
-
-	@RequestMapping(value = "/nnreparti/")
-	public String showRepartietails(@PathVariable
-	final Model model) throws UnsupportedEncodingException
+	@RequestMapping(value = "/departments")
+	//Stampa la lista di reparti presenti nel db
+	public String getDepartment(final Model model) throws UnsupportedEncodingException
 	{
-
-		final List<HospitalData> nnreparti = hospitalFacade.getHospital();
-
-		model.addAttribute("nnreparti", nnreparti);
-		return ControllerConstants.Views.Pages.Hospital.Nnreparti;
-
-
-
-
-
-
+		final List<RepartoData> reparti = repartoFacade.getDepartments();
+		model.addAttribute("reparti", reparti);
+		return ControllerConstants.Views.Pages.Hospital.DepartmentListing;
 	}
+
+
+
+
+
 
 
 

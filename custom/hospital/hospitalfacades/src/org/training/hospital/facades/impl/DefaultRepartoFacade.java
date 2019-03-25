@@ -27,10 +27,20 @@ public class DefaultRepartoFacade implements RepartoFacade
 	@Override
 	public List<RepartoData> getRepartoForHospital(final String code)
 	{
-		final List<RepartoModel> repartoModels = repartoService.getRepartiForHospital(code);
+		final List<RepartoModel> repartoModels = repartoService.getRepartoForHospital(code);
 
 		return repartoConverter.convertAll(repartoModels);
 	}
+
+	public List<RepartoData> getDepartments()
+	{
+		final List<RepartoModel> repartoModels = repartoService.getDepartments();
+		return repartoConverter.convertAll(repartoModels);
+	}
+
+
+
+
 
 
 	/**

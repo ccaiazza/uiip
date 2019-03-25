@@ -16,5 +16,5 @@ public interface HospitalDao
 {
 	public List<HospitalModel> findHospital();
 
-	public List<HospitalModel> findInfoHospital(String code);
+	public List<HospitalModel> findHospitalByCode(String code);
 }

@@ -15,4 +15,5 @@ import org.training.hospital.core.model.PatientModel;
 public interface PatientDao
 {
 	public List<PatientModel> findPatientByCode(String id);
+
 }

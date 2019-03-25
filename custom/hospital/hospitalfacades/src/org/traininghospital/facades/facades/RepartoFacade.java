@@ -14,4 +14,7 @@ public interface RepartoFacade
 {
 
 	public List<RepartoData> getRepartoForHospital(String code);
+
+	public List<RepartoData> getDepartments();
+
 }

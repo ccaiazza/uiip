@@ -3,13 +3,13 @@
  */
 package org.training.hospital.core.dao.impl;
 
-import de.hybris.platform.jalo.SearchResult;
 import de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.FlexibleSearchService;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.training.hospital.core.dao.HospitalDao;
 import org.training.hospital.core.model.HospitalModel;
 
@@ -19,6 +19,7 @@ import org.training.hospital.core.model.HospitalModel;
  */
 public class DefaultHospitalDao extends DefaultGenericDao<HospitalModel> implements HospitalDao
 {
+	@Autowired
 	private FlexibleSearchService flexibleSearchService;
 	/**
 	 * @param typecode
@@ -32,40 +33,24 @@ public class DefaultHospitalDao extends DefaultGenericDao<HospitalModel> impleme
 	public List<HospitalModel> findHospital()
 	{
 
-
-
-		final String fsq = "SELECT{" + HospitalModel.NAME + " " + HospitalModel.NUMBERREP + " " + HospitalModel.REPARTI
-				+ "} FROM {HOSPITAL}";
+		final String fsq = "SELECT {h:" + HospitalModel.PK + "} FROM {" + HospitalModel._TYPECODE + " AS h}";
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(fsq);
 
-		final SearchResult<HospitalModel> result = (SearchResult<HospitalModel>) getFlexibleSearchService().search(query);
-
-		return result.getResult();
-
+		return flexibleSearchService.<HospitalModel> search(query).getResult();
 	}
 
-	public List<HospitalModel> findInfoHospital(final String code)
+
+
+
+	public List<HospitalModel> findHospitalByCode(final String code)
 	{
-
-
-
-		final String fsq = "SELECT{" + HospitalModel.NAME + " " + HospitalModel.NUMBERREP + " " + HospitalModel.REPARTI
-				+ "} FROM {HOSPITAL AS H} WHERE {H.code=?code\"}";
+		final String fsq = "SELECT{h:" + HospitalModel.PK + "} FROM {" + HospitalModel._TYPECODE + " AS h}" //
+				+ "WHERE " + "{h:" + HospitalModel.CODE + "}=?code";
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(fsq);
+		query.addQueryParameter("code", code);
 
-		final SearchResult<HospitalModel> result = (SearchResult<HospitalModel>) getFlexibleSearchService().search(query);
 
-		return result.getResult();
-
+		return flexibleSearchService.<HospitalModel> search(query).getResult();
 	}
-
-
-
-
-
-
-	/* (non-Javadoc)
-	 * @see org.training.hospital.core.dao.HospitalDao#findRepartiByHospital(java.lang.String)
-	 */
 
 }

@@ -16,4 +16,6 @@ public interface HospitalService
 {
 
 	public List<HospitalModel> getHospital();
+
+	public HospitalModel getHospitalForCode(String code);
 }

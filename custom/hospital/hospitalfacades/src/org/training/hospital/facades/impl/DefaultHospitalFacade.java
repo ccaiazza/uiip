@@ -5,6 +5,7 @@ package org.training.hospital.facades.impl;
 
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Required;
@@ -24,17 +25,7 @@ public class DefaultHospitalFacade implements HospitalFacade
 	private Converter<HospitalModel, HospitalData> hospitalConverter;
 
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see org.traininghospital.facades.facades.HospitalFacade#getHospital()
-	 *
-	 * @Override public List<HospitalData> getHospital() { // XXX Auto-generated method stub return null; }
-	 *
-	 * /**
-	 *
-	 * @return the hospitalService
-	 */
+
 	public HospitalService getHospitalService()
 	{
 		return hospitalService;
@@ -52,9 +43,23 @@ public class DefaultHospitalFacade implements HospitalFacade
 	{
 
 		final List<HospitalModel> hospitalModels = hospitalService.getHospital();
-		return hospitalConverter.convertAll(hospitalModels);
+		final List<HospitalData> hospitalFacadeData = new ArrayList<HospitalData>();
+		for (final HospitalModel hm : hospitalModels)
+		{
+			final HospitalData hd = new HospitalData();
+			hd.setCode(hm.getCode());
+			hd.setName(hm.getName());
+			hd.setCitta(hm.getCitta());
+			hospitalFacadeData.add(hd);
+		}
+		return hospitalFacadeData;
 
 	}
+
+
+
+
+
 
 	/**
 	 * @return the hospitalConverter
@@ -70,9 +75,36 @@ public class DefaultHospitalFacade implements HospitalFacade
 		this.hospitalConverter = hospitalConverter;
 	}
 
-	/**
-	 * @return the hospitalConverter
-	 */
+
+	@Override
+	public HospitalData getHospitalForCode(final String code)
+	{
+		HospitalModel hospital = null;
+		if (code != null)
+		{
+			hospital = hospitalService.getHospitalForCode(code);
+			if (hospital == null)
+			{
+				return null;
+			}
+		}
+		else
+		{
+			throw new IllegalArgumentException("Hospital with code " + code + " not found.");
+		}
+
+
+		final HospitalData hospitalData = new HospitalData();
+		hospitalData.setCode(hospital.getCode());
+		hospitalData.setName(hospital.getName());
+		hospitalData.setCitta(hospital.getCitta());
+		hospitalData.setNumberRep(hospital.getNumberRep());
+		return hospitalData;
+	}
+
+
+
+
 
 
 

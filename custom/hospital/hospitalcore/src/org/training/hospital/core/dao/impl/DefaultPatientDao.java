@@ -41,4 +41,13 @@ public class DefaultPatientDao extends DefaultGenericDao<PatientModel> implement
 
 	}
 
-}
+
+
+	}
+
+
+
+
+
+
+

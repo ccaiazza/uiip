@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testclasses><hospitalfrontend><testclass>de.hybris.platform.hospitalfrontend.jalo.HospitalfrontendTest</testclass><testclass>de.hybris.platform.hospitalfrontend.service.impl.DefaultHospitalfrontendServiceIntegrationTest</testclass></hospitalfrontend></testclasses>

@@ -14,5 +14,7 @@ import org.training.hospital.core.model.RepartoModel;
  */
 public interface RepartoDao
 {
-	public List<RepartoModel> findRepartiByHospital(String code);
+	public List<RepartoModel> findRepartoByHospital(String code);
+
+	public List<RepartoModel> findDepartments();
 }

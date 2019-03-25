@@ -19,8 +19,8 @@ public class HeadPopulator implements Populator <HeadModel, HeadData>
 	@Override
 	public void populate(final HeadModel source, final HeadData target) throws ConversionException
 	{
-		source.setUid(target.getUid());
-		source.setName(target.getName());
+		target.setUid(source.getUid());
+		target.setName(source.getName());
 
 
 	}
