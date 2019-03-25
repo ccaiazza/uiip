@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- [y] hybris Platform Copyright (c) 2018 SAP SE or an SAP affiliate company. 
+	All rights reserved. This software is the confidential and proprietary information 
+	of SAP ("Confidential Information"). You shall not disclose such Confidential 
+	Information and shall use it only in accordance with the terms of the license 
+	agreement you entered into with SAP. -->
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="items.xsd">
+
+	<collectiontypes>
+		<collectiontype code="GenderList" elementtype="Gender"
+			autocreate="true" generate="true" type="list" />
+		<collectiontype code="SwatchColorSet"
+			elementtype="SwatchColorEnum" autocreate="true" generate="true"
+			type="set" />
+	</collectiontypes>
+
+	<enumtypes>
+		<enumtype generate="true" code="SwatchColorEnum"
+			autocreate="true" dynamic="true">
+			<value code="BLACK" />
+			<value code="BLUE" />
+			<value code="BROWN" />
+			<value code="GREEN" />
+			<value code="GREY" />
+			<value code="ORANGE" />
+			<value code="PINK" />
+			<value code="PURPLE" />
+			<value code="RED" />
+			<value code="SILVER" />
+			<value code="WHITE" />
+			<value code="YELLOW" />
+		</enumtype>
+	</enumtypes>
+	<relations>
+
+		<relation code="Hospital2RepartoRelation" localized="false"
+			generate="true" autocreate="true">
+			<sourceElement type="Hospital" qualifier="hospital"
+				cardinality="one">
+				<modifiers read="true" write="false" search="true"
+					unique="true" />
+			</sourceElement>
+			<targetElement type="Reparto" qualifier="reparti"
+				cardinality="many" ordered="false" collectiontype="list">
+				<modifiers read="true" write="true" optional="true"
+					search="true" />
+			</targetElement>
+		</relation>
+
+		<relation code="Patient2DepartmentRelation" localized="false"
+			generate="true" autocreate="true">
+			<deployment table="Ricoveri" typecode="20005" />
+			<sourceElement type="Patient" qualifier="patients"
+				collectiontype="list" cardinality="many">
+				<modifiers read="true" write="false" initial="true"
+					search="true" />
+			</sourceElement>
+			<targetElement type="Reparto" qualifier="departaments"
+				cardinality="many" collectiontype="list">
+				<modifiers read="true" write="true" optional="true"
+					search="true" />
+			</targetElement>
+		</relation>
+
+		<relation code="Patient2PathologyRelation" localized="false"
+			generate="true" autocreate="true">
+			<deployment table="Patologia" typecode="20007" />
+			<sourceElement type="Patient" qualifier="patients"
+				collectiontype="list" cardinality="many">
+				<modifiers read="true" write="true" search="true" />
+			</sourceElement>
+			<targetElement type="Pathology" qualifier="pathologies"
+				collectiontype="list" cardinality="many">
+				<modifiers read="true" write="true" optional="true"
+					search="true" />
+			</targetElement>
+		</relation>
+
+		<relation code="Doctor2DepartmentRelation" localized="false"
+			generate="true" autocreate="true">
+			<sourceElement type="Reparto" qualifier="department"
+				cardinality="one">
+				<modifiers read="true" write="true" search="true"
+					unique="true" />
+			</sourceElement>
+			<targetElement type="Doctor" qualifier="doctors"
+				collectiontype="list" cardinality="many">
+				<modifiers read="true" write="true" optional="true"
+					search="true" />
+			</targetElement>
+		</relation>
+	</relations>
+	<itemtypes>
+
+		<!-- Add your item definitions here -->
+
+
+		<!-- TypeGroups are for structure of this file only -->
+
+		<typegroup name="Apparel">
+			<itemtype code="ApparelProduct" extends="Product"
+				autocreate="true" generate="true"
+				jaloclass="org.training.hospital.core.jalo.ApparelProduct">
+				<description>Base apparel product extension that contains additional attributes.</description>
+				<attributes>
+					<attribute qualifier="genders" type="GenderList">
+						<description>List of genders that the ApparelProduct is designed for</description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="ApparelStyleVariantProduct"
+				extends="VariantProduct" autocreate="true" generate="true"
+				jaloclass="org.training.hospital.core.jalo.ApparelStyleVariantProduct">
+				<description>Apparel style variant type that contains additional attribute describing variant style.
+                </description>
+				<attributes>
+					<attribute qualifier="style"
+						type="localized:java.lang.String"
+						metatype="VariantAttributeDescriptor">
+						<description>Color/Pattern of the product.</description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+
+					<attribute qualifier="swatchColors" type="SwatchColorSet">
+						<description>A normalized color mapping to a standardized front-end navigable name.
+                        </description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+
+			</itemtype>
+
+			<itemtype code="ApparelSizeVariantProduct"
+				extends="ApparelStyleVariantProduct" autocreate="true"
+				generate="true"
+				jaloclass="org.training.hospital.core.jalo.ApparelSizeVariantProduct">
+				<description>Apparel size variant type that contains additional attribute describing variant size.
+                </description>
+				<attributes>
+					<attribute qualifier="size"
+						type="localized:java.lang.String"
+						metatype="VariantAttributeDescriptor">
+						<description>Size of the product.</description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+		</typegroup>
+
+		<typegroup name="Electronics">
+			<itemtype code="ElectronicsColorVariantProduct"
+				extends="VariantProduct" autocreate="true" generate="true"
+				jaloclass="org.training.hospital.core.jalo.ElectronicsColorVariantProduct">
+				<description>Electronics color variant type that contains additional attribute describing variant color.
+                </description>
+				<attributes>
+					<attribute qualifier="color"
+						type="localized:java.lang.String"
+						metatype="VariantAttributeDescriptor">
+
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+		</typegroup>
+		<typegroup name="Ospedale">
+			<itemtype code="Hospital" autocreate="true" generate="true"
+				jaloclass="org.training.hospital.core.jalo.Hospital">
+
+				<deployment table="DepHospital" typecode="20001" />
+
+				<attributes>
+					<attribute qualifier="code" type="java.lang.String">
+						<modifiers read="true" write="true" search="true"
+							optional="false" unique="true" />
+						<persistence type="property" />
+					</attribute>
+
+					<attribute qualifier="name"
+						type="localized:java.lang.String">
+
+						<persistence type="property" />
+					</attribute>
+
+					<attribute qualifier="numberRep" type="java.lang.String">
+						<persistence type="dynamic"
+							attributeHandler="dynamicAttributesNumberDepartment" />
+						<modifiers read="true" write="false" search="true"
+							optional="false" />
+					</attribute>
+
+					<attribute qualifier="citta" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+
+				</attributes>
+
+			</itemtype>
+
+			<itemtype code="Reparto" autocreate="true" generate="true"
+				jaloclass="org.training.hospital.core.jalo.Reparto">
+				<deployment table="DepReparto" typecode="20002" />
+				<attributes>
+					<attribute qualifier="code" type="java.lang.String">
+						<modifiers unique="true" optional="false" />
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="name"
+						type="localized:java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="head" type="Head">
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+
+
+			<itemtype code="Doctor" autocreate="true" generate="true"
+				extends="Customer"
+				jaloclass="org.training.hospital.core.jalo.Doctor">
+				<deployment table="DepDoctor" typecode="20008" />
+				<attributes>
+					<attribute qualifier="specialization"
+						type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="register" type="java.lang.Boolean">
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="Head" autocreate="true" generate="true"
+				extends="Doctor" jaloclass="org.training.hospital.core.jalo.Head">
+				<deployment table="DepHead" typecode="20003" />
+				<attributes>
+					<attribute qualifier="yearsExperience"
+						type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="Patient" autocreate="true" generate="true"
+				extends="Customer"
+				jaloclass="org.training.hospital.core.jalo.Patient">
+				<deployment table="DepPatients" typecode="20004" />
+				<attributes>
+					<attribute qualifier="dateEntry" type="java.util.Date">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="dateExit" type="java.util.Date">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="numberPathologies"
+						type="java.lang.String">
+						<persistence type="dynamic"
+							attributeHandler="dynamicAttributesNumberPathologies" />
+						<modifiers read="true" write="false" search="true"
+							optional="false" />
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="Pathology" autocreate="true" generate="true"
+				jaloclass="org.training.hospital.core.jalo.Pathology">
+				<deployment table="DepPathology" typecode="20006" />
+				<attributes>
+					<attribute qualifier="name" type="java.lang.String">
+						<persistence type="property" />
+						<modifiers unique="true" optional="false" />
+					</attribute>
+				</attributes>
+			</itemtype>
+		</typegroup>
+	</itemtypes>
+</items>

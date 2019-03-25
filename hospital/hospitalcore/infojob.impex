@@ -1,0 +1,8 @@
+INSERT_UPDATE ServicelayerJob; code[unique=true]; springId;
+ ;infoJob;infoJob
+ 
+INSERT_UPDATE CronJob;code(code)[unique=true];job(code);singleExecutable; sessionLanguage(isocode);
+ ;cronJob;infoJob;false; en
+ 
+INSERT_UPDATE Trigger;cronJob(code)[unique=true];cronExpression
+ ;cronJob; 0 0 3 * * ?
