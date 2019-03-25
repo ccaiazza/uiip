@@ -10,7 +10,7 @@
             :<br>
             <ul>
              <c:forEach var="patients" items="${patients}">
-                <li>${patients.name} &nbsp; ${patients.uid}</li>
+                <li>${patients.name} &nbsp; ${patients.uid} &nbsp; number pathologies: ${patients.getNumberPathologies()}</li>
               </c:forEach>
             </ul>
       

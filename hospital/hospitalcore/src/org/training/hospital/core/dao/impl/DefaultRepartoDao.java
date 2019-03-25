@@ -48,6 +48,14 @@ public class DefaultRepartoDao extends DefaultGenericDao implements RepartoDao
 		return result.getResult();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.training.hospital.core.dao.RepartoDao#findPatients()
+	 */
+
+
+
 	/**
 	 * @return the flexibleSearchService
 	 */
