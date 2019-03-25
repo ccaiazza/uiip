@@ -35,10 +35,10 @@ public class PatientPopulator implements Populator<PatientModel, PatientData>
 	{
 
 		target.setDateEntry(source.getDateEntry());
-		//		target.setDateExit(source.getDateExit());
-		//		target.setNumberPathologies(source.getNumberPathologies());
-		//		target.setDepartaments(repartoConverter.convertAll(source.getDepartaments()));
-		//		target.setPathologies(pathologyConverter.convertAll(source.getPathologies()));
+		target.setDateExit(source.getDateExit());
+		target.setNumberPathologies(source.getNumberPathologies());
+		//	target.setDepartaments(repartoConverter.convertAll(source.getDepartaments()));
+		//	target.setPathologies(pathologyConverter.convertAll(source.getPathologies()));
 		target.setUid(source.getUid());
 		target.setName(source.getName());
 	}

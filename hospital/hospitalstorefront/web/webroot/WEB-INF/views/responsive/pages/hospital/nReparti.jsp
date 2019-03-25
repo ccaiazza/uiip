@@ -3,30 +3,21 @@
 <html>
     <title>Ospedali</title>
     <body>
-        <h1>Elenco città :</h1>
+        <h1>Hospital  :</h1>
  
        <br><br>
             
             <br>
             <ul>
               <c:forEach var="nReparti" items="${nReparti}"> 
-              <li>${nReparti.citta}</li> 
+              <li>${nReparti.code} &nbsp; ${nReparti.name} &nbsp; with city:  &nbsp; ${nReparti.citta} &nbsp; with number departament:  &nbsp; ${nReparti.getNumberRep()} </li> 
                </c:forEach> 
             </ul>
             
-             <h1>Nome ospedale :</h1>
-              <ul>
-              <c:forEach var="nReparti" items="${nReparti}"> 
-              <li>${nReparti.name}</li> 
-               </c:forEach> 
-            </ul>
+           
             
-             <h1>Codice ospedale :</h1>
-              <ul>
-              <c:forEach var="nReparti" items="${nReparti}"> 
-              <li>${nReparti.code}</li> 
-               </c:forEach> 
-            </ul>
+        
+             
       
     </body>
 </html>

@@ -9,7 +9,6 @@ import de.hybris.platform.servicelayer.search.SearchResult;
 import java.util.List;
 
 import org.training.hospital.core.dao.HospitalDao;
-import org.training.hospital.core.jalo.Hospital;
 import org.training.hospital.core.model.HospitalModel;
 
 
@@ -29,7 +28,7 @@ public class DefaultHospitalDao extends DefaultGenericDao implements HospitalDao
 	{
 
 		final String queryString = "SELECT {" + HospitalModel.NAME + " " + HospitalModel.REPARTI + "} " + "FROM {"
-				+ HospitalModel._TYPECODE + "WHERE { " + Hospital.CODE + "?= code }";
+				+ HospitalModel._TYPECODE + "WHERE { " + HospitalModel.CODE + "?=code }";
 
 
 

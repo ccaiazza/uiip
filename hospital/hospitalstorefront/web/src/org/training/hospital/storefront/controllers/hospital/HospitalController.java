@@ -92,13 +92,13 @@ public class HospitalController
 
 	}
 
-	@RequestMapping(value = "/pathologies/{codePatient}")
+	@RequestMapping(value = "/pathology/{codePatient}")
 	public String showPathologiesDetails(@PathVariable("codePatient")
 	final String codePatient, final Model model) throws UnsupportedEncodingException
 	{
 		final List<PathologyData> pathologies = pathologyFacade.getPatologyforPatient(codePatient);
 		model.addAttribute("codePatient", codePatient);
-		model.addAttribute("pathologies", pathologies);
+		model.addAttribute("pathology", pathologies);
 
 
 		return ControllerConstants.Views.Pages.Hospital.Pathologies;

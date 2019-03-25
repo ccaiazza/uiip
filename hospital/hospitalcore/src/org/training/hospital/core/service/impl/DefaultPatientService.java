@@ -3,7 +3,6 @@
  */
 package org.training.hospital.core.service.impl;
 
-import de.hybris.platform.servicelayer.exceptions.AmbiguousIdentifierException;
 import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
 
 import java.util.Date;
@@ -27,17 +26,17 @@ public class DefaultPatientService implements PatientService
 	 */
 	@Override
 	public List<PatientModel> getPatientForDateEntry(final Date entry)
-			throws AmbiguousIdentifierException, UnknownIdentifierException
+			throws UnknownIdentifierException
 	{
 		final List<PatientModel> result = patientDao.findPatientbyDateEntry(entry);
 		if (result.isEmpty())
 		{
 			throw new UnknownIdentifierException("Patient not found!");
 		}
-		else if (result.size() > 1)
-		{
-			throw new AmbiguousIdentifierException("Patient is not unique, patient found!");
-		}
+		//		else if (result.size() > 1)
+		//		{
+		//			throw new AmbiguousIdentifierException("Patient is not unique, patient found!");
+		//		}
 		return result;
 	}
 

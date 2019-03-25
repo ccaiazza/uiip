@@ -29,7 +29,7 @@ public class DefaultHospitalService implements HospitalService
 		final List<HospitalModel> result = hospitalDao.findHospitalInfo(code);
 			if (result.isEmpty())
 			{
-				throw new UnknownIdentifierException("Reparto not found!");
+			throw new UnknownIdentifierException("Hospital not found!");
 			}
 		//			else if (result.size() > 1)
 		//			{
@@ -44,7 +44,7 @@ public class DefaultHospitalService implements HospitalService
 		final List<HospitalModel> result = hospitalDao.findHospitals();
 		if (result.isEmpty())
 		{
-			throw new UnknownIdentifierException("Reparto not found!");
+			throw new UnknownIdentifierException("Hospital not found!");
 		}
 		//		else if (result.size() > 1)
 		//		{

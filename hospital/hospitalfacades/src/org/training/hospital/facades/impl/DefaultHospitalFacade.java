@@ -5,7 +5,6 @@ package org.training.hospital.facades.impl;
 
 import de.hybris.platform.servicelayer.dto.converter.Converter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Required;
@@ -52,16 +51,9 @@ public class DefaultHospitalFacade implements HospitalFacade
 	public List<HospitalData> getHospitals()
 	{
 		final List<HospitalModel> hospitalModels = hospitalService.getHospitals();
-		final List<HospitalData> hospitalData = new ArrayList<HospitalData>();
-		for (final HospitalModel hm : hospitalModels)
-		{
-			final HospitalData sfd = new HospitalData();
-			sfd.setName(hm.getName());
-			sfd.setCitta(hm.getCitta());
-			sfd.setCode(hm.getCode());
-			hospitalData.add(sfd);
-		}
-		return hospitalData;
+		return hospitalConverter.convertAll(hospitalModels);
+
+
 	}
 
 	@Required

@@ -35,7 +35,7 @@ public class DefaultPatientDao extends DefaultGenericDao implements PatientDao
 	{
 
 		final String query = "SELECT {" + PatientModel.PK + "} FROM {" + PatientModel._TYPECODE + " AS P }"
-				+ "WHERE{P.dateEntry} =? entry";
+				+ "WHERE{P.dateEntry}=?entry";
 		final FlexibleSearchQuery resultQuery = new FlexibleSearchQuery(query);
 		resultQuery.addQueryParameter("entry", entry);
 		final SearchResult<PatientModel> result = getFlexibleSearchService().search(resultQuery);

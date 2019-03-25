@@ -39,15 +39,16 @@ public class RepartoPopulator implements Populator<RepartoModel, RepartoData>
 		else
 		{
 
-				target.setCode((source.getCode()));
-				target.setName(source.getName());
-			}
-
-
-			//target.setHead(headConverter.convert(source.getHead()));
-			//target.setHospital(hospitalConverter.convert(source.getHospital()));
+			target.setCode((source.getCode()));
+			target.setName(source.getName());
+			target.setHead(headConverter.convert(source.getHead()));
+			target.setHospital(hospitalConverter.convert(source.getHospital()));
 			//target.setPatients(patientConverter.convertAll(source.getPatients()));
 		}
+
+
+
+	}
 
 
 

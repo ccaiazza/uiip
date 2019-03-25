@@ -9,6 +9,7 @@ import de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.SearchResult;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.training.hospital.core.dao.PathologyDao;
@@ -39,10 +40,11 @@ public class DefaulPathologyDao extends DefaultGenericDao implements PathologyDa
 	{
 		final String query = "SELECT { " + PathologyModel.PK + " } FROM {" + PathologyModel._TYPECODE
 				+ " AS P JOIN Patient2PathologyRelation AS P2p ON{P.pk} = {P2p.target} JOIN " + PatientModel._TYPECODE
-				+ " AS M ON{M.pk} = {P2p.source} } WHERE{ M.uid } =? codePatient";
+				+ " AS M ON{M.pk} = {P2p.source} } WHERE{ M.uid }=?codePatient";
 
-		final FlexibleSearchQuery resultQuery = new FlexibleSearchQuery(query);
-		resultQuery.addQueryParameter("codePatient", codePatient);
+		final FlexibleSearchQuery resultQuery = new FlexibleSearchQuery(query,
+				Collections.singletonMap("codePatient", codePatient));
+		//resultQuery.addQueryParameter("codePatient", codePatient);
 		final SearchResult<PathologyModel> result = getFlexibleSearchService().search(resultQuery);
 		return result.getResult();
 	}

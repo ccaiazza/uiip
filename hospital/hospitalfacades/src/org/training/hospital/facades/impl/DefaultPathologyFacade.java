@@ -26,9 +26,9 @@ public class DefaultPathologyFacade implements PathologyFacade
 	 * @see org.training.hospital.facades.facade.PathologyFacade#getPatologyforPatient(java.lang.String)
 	 */
 	@Override
-	public List<PathologyData> getPatologyforPatient(final String patientCode)
+	public List<PathologyData> getPatologyforPatient(final String codePatient)
 	{
-		final List<PathologyModel> pathologyModels = pathologyService.getPatologyforPatient(patientCode);
+		final List<PathologyModel> pathologyModels = pathologyService.getPatologyforPatient(codePatient);
 		return pathologyConverter.convertAll(pathologyModels);
 
 	}

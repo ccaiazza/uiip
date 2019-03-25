@@ -5,12 +5,12 @@
     <body>
         <h1>Patients Details</h1>
  
-        Patients Details for ${dateEntry}<br><br>
+        Patients Details for ${entry}<br><br>
             
             :<br>
             <ul>
              <c:forEach var="patients" items="${patients}">
-                <li>${patients.name}</li>
+                <li>${patients.name} &nbsp; ${patients.uid}</li>
               </c:forEach>
             </ul>
       

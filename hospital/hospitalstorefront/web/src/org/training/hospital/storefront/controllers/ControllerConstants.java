@@ -170,7 +170,7 @@ public interface ControllerConstants
 				String RepartiHospital = "pages/hospital/repartu"; // NOSONAR
 				String Nreparti = "pages/hospital/nReparti";
 				String Patients = "pages/hospital/patients";
-				String Pathologies = "pages/hospital/pathologies";
+				String Pathologies = "pages/hospital/pathology";
 
 
 			}
