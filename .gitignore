@@ -34,7 +34,7 @@ gensrc
 /hospital/hospitalstorefront/web/webroot/_ui/responsive/theme-alpha/css/style.css
 /hospital/hospitalstorefront/web/webroot/_ui/responsive/theme-lambda/css/style.css
 /hospital/hospitalstorefront/web/commonwebsrc/acceleratorstorefrontcommons/de/hybris/platform/acceleratorstorefrontcommons/*
-
+/hospital/hospitalstorefront/web/commonwebsrc/acceleratorstorefrontcommons/de/hybris/platform/acceleratorstorefrontcommons/forms/*
 
 **/build.xml
 **/platformhome.properties
