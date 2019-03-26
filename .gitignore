@@ -24,16 +24,16 @@ gensrc
 *.xsd
 
 # File to ignore
-hospital/hospitalstorefront/web/addonsrc/*
-hospital/hospitalstorefront/web/webroot/WEB-INF/_ui-src/addons/*
-hospital/hospitalstorefront/web/webroot/WEB-INF/tags/addons/*
-hospital/hospitalstorefront/web/webroot/WEB-INF/tld/addons/*
-hospital/hospitalstorefront/web/webroot/WEB-INF/views/addons/*
-hospital/hospitalstorefront/web/webroot/WEB-INF/views/*
-hospital/hospitalstorefront/web/webroot/_ui/addons/*
-hospital/hospitalstorefront/web/webroot/_ui/responsive/theme-alpha/css/style.css
-hospital/hospitalstorefront/web/webroot/_ui/responsive/theme-lambda/css/style.css
-hospital/hospitalstorefront/web/commonwebsrc/acceleratorstorefrontcommons/de/hybris/platform/acceleratorstorefrontcommons/*
+/hospital/hospitalstorefront/web/addonsrc/*
+/hospital/hospitalstorefront/web/webroot/WEB-INF/_ui-src/addons/*
+/hospital/hospitalstorefront/web/webroot/WEB-INF/tags/addons/*
+/hospital/hospitalstorefront/web/webroot/WEB-INF/tld/addons/*
+/hospital/hospitalstorefront/web/webroot/WEB-INF/views/addons/*
+/hospital/hospitalstorefront/web/webroot/WEB-INF/views/*
+/hospital/hospitalstorefront/web/webroot/_ui/addons/*
+/hospital/hospitalstorefront/web/webroot/_ui/responsive/theme-alpha/css/style.css
+/hospital/hospitalstorefront/web/webroot/_ui/responsive/theme-lambda/css/style.css
+/hospital/hospitalstorefront/web/commonwebsrc/acceleratorstorefrontcommons/de/hybris/platform/acceleratorstorefrontcommons/*
 
 
 **/build.xml
