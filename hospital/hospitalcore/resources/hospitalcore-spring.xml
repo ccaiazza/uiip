@@ -787,7 +787,6 @@
 	<bean name="defaultPatientDao"
 		class="org.training.hospital.core.dao.impl.DefaultPatientDao">
 		<constructor-arg value="Patient" />
-
 	</bean>
 
 	<alias name="defaultPatientService" alias="patientService" />

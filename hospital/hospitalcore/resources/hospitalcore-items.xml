@@ -199,9 +199,7 @@
 					<attribute qualifier="citta" type="java.lang.String">
 						<persistence type="property" />
 					</attribute>
-
 				</attributes>
-
 			</itemtype>
 
 			<itemtype code="Reparto" autocreate="true" generate="true"
