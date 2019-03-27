@@ -217,9 +217,9 @@
 					<attribute qualifier="head" type="Head">
 						<persistence type="property" />
 					</attribute>
-			<attribute qualifier="busyBeds" type="java.lang.String">
+			<attribute qualifier="busyBeds" type="java.lang.Integer">
 						<persistence type="dynamic"
-							attributeHandler="dynamicAttributesNumberDepartment" />
+							attributeHandler="defaultAttributesBysyBeds" />
 						<modifiers read="true" write="false" search="true"
 							optional="false" />
 					</attribute>

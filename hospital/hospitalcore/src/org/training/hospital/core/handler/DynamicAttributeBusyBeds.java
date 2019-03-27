@@ -11,12 +11,12 @@ import org.training.hospital.core.model.RepartoModel;
  * @author ctammaro
  *
  */
-public class DynamicAttributeBusyBeds implements DynamicAttributeHandler<String, RepartoModel>
+public class DynamicAttributeBusyBeds implements DynamicAttributeHandler<Integer, RepartoModel>
 {
 
 
 	@Override
-	public String get(final RepartoModel item)
+	public Integer get(final RepartoModel item)
 	{
 
 		if (item == null)
@@ -28,18 +28,18 @@ public class DynamicAttributeBusyBeds implements DynamicAttributeHandler<String,
 		{
 			if (item.getPatients() == null)
 			{
-				return 0 + " ";
+				return 0;
 			}
 			else
 			{
-				return item.getPatients().size() + " ";
+				return item.getPatients().size();
 			}
 		}
 	}
 
 
 	@Override
-	public void set(final RepartoModel arg0, final String arg1)
+	public void set(final RepartoModel arg0, final Integer arg1)
 	{
 
 	}
