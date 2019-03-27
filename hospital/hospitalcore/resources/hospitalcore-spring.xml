@@ -778,7 +778,10 @@
 
 	<bean id="dynamicAttributesNumberPathologies"
 		class="org.training.hospital.core.handler.DynamicAttributeNumberPathologies">
+	</bean>
 
+	<bean id="defaultAttributesBysyBeds"
+		class="org.training.hospital.core.handler.DynamicAttributeBusyBeds">
 	</bean>
 
 	<bean name="defaultPatientDao"

@@ -219,7 +219,13 @@
 					<attribute qualifier="head" type="Head">
 						<persistence type="property" />
 					</attribute>
-				</attributes>
+			<attribute qualifier="busyBeds" type="java.lang.String">
+						<persistence type="dynamic"
+							attributeHandler="dynamicAttributesNumberDepartment" />
+						<modifiers read="true" write="false" search="true"
+							optional="false" />
+					</attribute>
+					</attributes>
 			</itemtype>
 
 
