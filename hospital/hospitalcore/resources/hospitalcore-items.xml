@@ -48,15 +48,28 @@
 			</targetElement>
 		</relation>
 
-		<relation code="Patient2DepartmentRelation" localized="false"
+		<relation code="Patient2RoomRelation" localized="false"
 			generate="true" autocreate="true">
-			<deployment table="Ricoveri" typecode="20005" />
-			<sourceElement type="Patient" qualifier="patients"
-				collectiontype="list" cardinality="many">
-				<modifiers read="true" write="false" initial="true"
+			<sourceElement type="Room" qualifier="room"
+				cardinality="one">
+				<modifiers read="true" write="false" unique="true"
 					search="true" />
 			</sourceElement>
-			<targetElement type="Reparto" qualifier="departaments"
+			<targetElement type="Patient" qualifier="patients"
+				cardinality="many" collectiontype="list">
+				<modifiers read="true" write="true" optional="true"
+					search="true" />
+			</targetElement>
+		</relation>
+
+		<relation code="Reparto2RoomRelation" localized="false"
+			generate="true" autocreate="true">
+			<sourceElement type="Reparto" qualifier="departament"
+				cardinality="one">
+				<modifiers read="true" write="false" unique="true"
+					search="true" />
+			</sourceElement>
+			<targetElement type="Room" qualifier="rooms"
 				cardinality="many" collectiontype="list">
 				<modifiers read="true" write="true" optional="true"
 					search="true" />
@@ -244,6 +257,20 @@
 				<attributes>
 					<attribute qualifier="yearsExperience"
 						type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="Room" autocreate="true" generate="true"
+				 jaloclass="org.training.hospital.core.jalo.Room">
+				<deployment table="DepRoom" typecode="20009" />
+				<attributes>
+					<attribute qualifier="code" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="numberBeds"
+						type="java.lang.Integer">
 						<persistence type="property" />
 					</attribute>
 				</attributes>
