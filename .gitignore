@@ -1,4 +1,4 @@
-# Compiled class file
+﻿# Compiled class file
 *.class
 
 # Log file
@@ -56,7 +56,7 @@ hybris/bin/*
 hybris/data
 hybris/log
 hybris/temp
-hybris/config/solr/instances/default/hsperfdata_*
+/config/solr/instances/default/hsperfdata_*
 
 
 # Installed add-ons

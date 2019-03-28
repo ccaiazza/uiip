@@ -229,6 +229,10 @@
 						type="localized:java.lang.String">
 						<persistence type="property" />
 					</attribute>
+					<attribute qualifier="numberFloor"
+						type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
 					<attribute qualifier="head" type="Head">
 						<persistence type="property" />
 					</attribute>
@@ -263,14 +267,23 @@
 			</itemtype>
 
 			<itemtype code="Room" autocreate="true" generate="true"
-				 jaloclass="org.training.hospital.core.jalo.Room">
+				jaloclass="org.training.hospital.core.jalo.Room">
 				<deployment table="DepRoom" typecode="20009" />
 				<attributes>
 					<attribute qualifier="code" type="java.lang.String">
 						<persistence type="property" />
+						<modifiers unique="true" optional="false" />
 					</attribute>
 					<attribute qualifier="numberBeds"
 						type="java.lang.Integer">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="numberRoom"
+						type="localized:java.lang.Integer">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="telephoneNumber"
+						type="java.lang.String">
 						<persistence type="property" />
 					</attribute>
 				</attributes>
