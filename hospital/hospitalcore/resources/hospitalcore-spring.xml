@@ -828,6 +828,18 @@
 		<property name="typeCode" value="Head" />
 	</bean>
 
+	<bean name="defaultRoomDao"
+		class="org.training.hospital.core.dao.impl.DefaultRoomDao">
+		<constructor-arg value="Room" />
+	</bean>
+
+	<alias name="defaultRoomService" alias="roomService" />
+	<bean id="defaultRoomService"
+		class="org.training.hospital.core.service.impl.DefaultRoomService">
+		<property name="roomDao" ref="defaultRoomDao" />
+	</bean>
+
+	
 
 </beans>
 
