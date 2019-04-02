@@ -14,10 +14,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.training.hospital.core.service.RoomService;
 import org.training.hospital.facades.facade.HospitalFacade;
 import org.training.hospital.facades.facade.PathologyFacade;
 import org.training.hospital.facades.facade.PatientFacade;
 import org.training.hospital.facades.facade.RepartoFacade;
+import org.training.hospital.facades.facade.RoomFacade;
 import org.training.hospital.facades.product.data.HospitalData;
 import org.training.hospital.facades.product.data.PathologyData;
 import org.training.hospital.facades.product.data.PatientData;
@@ -50,7 +52,12 @@ public class HospitalController
 	@Resource(name = "pathologyFacade")
 	private PathologyFacade pathologyFacade;
 
-
+	@Resource(name = "roomFacade")
+	private RoomFacade roomFacade;
+	
+	@Resource(name = "roomService")
+	private RoomService roomService;
+	
 	@RequestMapping(value = "/repartu/{code}") //nome file jsp
 	public String showRepartiDetails(@PathVariable("code") String code, final Model model)
 			throws UnsupportedEncodingException
@@ -105,6 +112,20 @@ public class HospitalController
 
 	}
 
+	
+	@RequestMapping(value = "/Room/{codeRoom}")
+	public String showRoomBedFree(@PathVariable("codeRoom")
+	final String codeRoom, final Model model) throws UnsupportedEncodingException
+	{
+		
+		final Integer freeBeds = roomFacade.getFreeBeds(codeRoom);
+	
+		model.addAttribute("codeRoom", codeRoom);
+		model.addAttribute("freeBeds", freeBeds );
+		return ControllerConstants.Views.Pages.Hospital.FreeBeds;
+		
+
+	}
 
 
 }

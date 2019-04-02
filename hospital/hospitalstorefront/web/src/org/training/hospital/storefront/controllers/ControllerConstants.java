@@ -171,6 +171,8 @@ public interface ControllerConstants
 				String Nreparti = "pages/hospital/nReparti";
 				String Patients = "pages/hospital/patients";
 				String Pathologies = "pages/hospital/pathology";
+				String FreeBeds = "pages/hospital/freeBeds";
+				
 
 
 			}
