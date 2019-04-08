@@ -30,7 +30,7 @@ public class RoomPopulator implements Populator<RoomModel, RoomData> {
 			target.setNumberRoom(source.getNumberRoom());
 			target.setTelephoneNumber(source.getTelephoneNumber());
 			target.setDepartament(repartoConverter.convert(source.getDepartament()));
-			target.setPatients(patientConverter.convertAll(source.getPatients()));
+			//target.setPatients(patientConverter.convertAll(source.getPatients()));
 		}
 
 	}

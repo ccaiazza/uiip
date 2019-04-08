@@ -18,6 +18,9 @@ public interface PatientDao
 {
 	public List<PatientModel> findPatientbyDateEntry(Date entry);
 
+	public List<PatientModel> findPatients();
+	
+	public PatientModel findPatientbyCode(String uid); 
 
 
 }

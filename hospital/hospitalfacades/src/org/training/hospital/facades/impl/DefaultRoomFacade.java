@@ -18,9 +18,9 @@ public class DefaultRoomFacade implements RoomFacade {
 	private Converter <RoomModel, RoomData> roomConverter;
 
 	@Override
-	public Integer getNumberBedsFree(String code) {
+	public Integer getNumberBedsFreeForCode(String code) {
 
-		final Integer freeBeds = roomService.getNumberBedsFree(code);
+		final Integer freeBeds = roomService.getNumberBedsFreeForCode(code);
 		return freeBeds;
 		
 	}

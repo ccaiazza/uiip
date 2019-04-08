@@ -16,5 +16,7 @@ import org.training.hospital.facades.product.data.PatientData;
 public interface PatientFacade
 {
 	public List<PatientData> getPatientbyDateEntry(Date enty);
+	public List<PatientData> getPatients();
+	public PatientData getPatientForCode(String uid);
 
 }

@@ -33,6 +33,28 @@ public class DefaultPatientFacade implements PatientFacade
 		return patientsResult;
 	}
 
+
+	@Override
+	public List<PatientData> getPatients() {
+		final List<PatientModel> patients=patientService.getPatients();
+		return patientConverter.convertAll(patients);
+			
+	}
+
+
+	@Override
+	public PatientData getPatientForCode(String uid) {
+		final PatientModel patient=patientService.getPatientForCode(uid);
+		return patientConverter.convert(patient);
+			
+	}
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * @return the patientService
 	 */

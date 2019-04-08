@@ -7,7 +7,7 @@ import org.training.hospital.facades.product.data.RoomData;
 
 public interface RoomFacade {
 
-	public Integer getNumberBedsFree(String code);
+	public Integer getNumberBedsFreeForCode(String code);
 	
 	public RoomData getRoomforCode (String code);
 	
