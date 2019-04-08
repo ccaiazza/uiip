@@ -306,22 +306,24 @@
 		</property>
 	</bean>
 
-	<bean id="headPopulator"
+	<alias name="defaultHeadPopulator" alias="headPopulator" />
+	<bean id="defaultHeadPopulator"
 		class="org.training.hospital.facades.populators.HeadPopulator">
 
 	</bean>
 
-	<bean id="repartoPopulator"
+	<alias name="defaultRepartoPopulator" alias="repartoPopulator" />
+	<bean id="defaultRepartoPopulator"
 		class="org.training.hospital.facades.populators.RepartoPopulator">
 		<property name="patientConverter" ref="patientConverter" />
 		<property name="headConverter" ref="headConverter" />
 		<property name="hospitalConverter" ref="hospitalConverter" />
-
 	</bean>
-	<bean id="hospitalPopulator"
+
+	<alias name="defaultHospitalPopulator" alias="hospitalPopulator" />
+	<bean id="defaultHospitalPopulator"
 		class="org.training.hospital.facades.populators.HospitalPopulator">
 		<property name="repartoConverter" ref="repartoConverter" />
-
 	</bean>
 
 	<alias name="defaultPatientConverter" alias="patientConverter" />
@@ -342,13 +344,23 @@
 		class="org.training.hospital.facades.impl.DefaultPatientFacade">
 		<property name="patientService" ref="patientService" />
 		<property name="patientConverter" ref="patientConverter" />
+		
+	</bean>
+
+
+	<alias name="defaultRoomFacade" alias="roomFacade" />
+	<bean id="defaultRoomFacade"
+		class="org.training.hospital.facades.impl.DefaultRoomFacade">
+		<property name="roomService" ref="roomService" />
+		<property name="roomConverter" ref="roomConverter" />
 
 	</bean>
-	<bean id="patientPopulator"
+
+	<alias name="defaultPatientPopulator" alias="patientPopulator" />
+	<bean id="defaultPatientPopulator"
 		class="org.training.hospital.facades.populators.PatientPopulator">
 		<property name="repartoConverter" ref="repartoConverter" />
 		<property name="pathologyConverter" ref="pathologyConverter" />
-
 	</bean>
 
 	<alias name="defaultPathologyConverter"
@@ -364,6 +376,27 @@
 		</property>
 	</bean>
 
+	<alias name="defaultRoomPopulator" alias="roomPopulator" />
+	<bean id="defaultRoomPopulator"
+		class="org.training.hospital.facades.populators.RoomPopulator">
+		<property name="roomConverter" ref="roomConverter" />
+		<property name="patientConverter" ref="patientConverter" />
+		<property name="bedConverter" ref="bedConverter" />
+	</bean>
+
+	<alias name="defaultRoomConverter" alias="roomConverter" />
+	<bean id="defaultRoomConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="org.training.hospital.facades.product.data.RoomData" />
+		<property name="populators">
+			<list>
+				<ref bean="roomPopulator" />
+			</list>
+		</property>
+	</bean>
+
+
 
 	<alias name="defaultPathologyFacade" alias="pathologyFacade" />
 	<bean id="defaultPathologyFacade"
@@ -372,11 +405,44 @@
 		<property name="pathologyConverter" ref="pathologyConverter" />
 
 	</bean>
-	<bean id="pathologyPopulator"
+
+
+	<alias name="defaultPathologyPopulator"
+		alias="pathologyPopulator" />
+	<bean id="defaultPathologyPopulator"
 		class="org.training.hospital.facades.populators.PathologyPopulator">
 		<property name="patientConverter" ref="patientConverter" />
+	</bean>
 
+	<alias name="defaultBedFacade" alias="bedFacade" />
+	<bean id="defaultBedFacade"
+		class="org.training.hospital.facades.impl.DefaultBedFacade">
+		<property name="bedService" ref="bedService" />
+		<property name="bedConverter" ref="bedConverter" />
 
 	</bean>
 
+	<alias name="defaultBedPopulator" alias="bedPopulator" />
+	<bean id="defaultBedPopulator"
+		class="org.training.hospital.facades.populators.BedPopulator">
+		<property name="roomConverter" ref="roomConverter" />
+	</bean>
+
+	<alias name="defaultBedConverter" alias="bedConverter" />
+	<bean id="defaultBedConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="org.training.hospital.facades.product.data.BedData" />
+		<property name="populators">
+			<list>
+				<ref bean="bedPopulator" />
+			</list>
+		</property>
+	</bean>
+
+
+
+
+
 </beans>
+

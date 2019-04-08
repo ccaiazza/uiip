@@ -48,20 +48,6 @@
 			</targetElement>
 		</relation>
 
-		<relation code="Patient2RoomRelation" localized="false"
-			generate="true" autocreate="true">
-			<sourceElement type="Room" qualifier="room"
-				cardinality="one">
-				<modifiers read="true" write="false" unique="true"
-					search="true" />
-			</sourceElement>
-			<targetElement type="Patient" qualifier="patients"
-				cardinality="many" collectiontype="list">
-				<modifiers read="true" write="true" optional="true"
-					search="true" />
-			</targetElement>
-		</relation>
-
 		<relation code="Reparto2RoomRelation" localized="false"
 			generate="true" autocreate="true">
 			<sourceElement type="Reparto" qualifier="departament"
@@ -84,6 +70,20 @@
 				<modifiers read="true" write="true" search="true" />
 			</sourceElement>
 			<targetElement type="Pathology" qualifier="pathologies"
+				collectiontype="list" cardinality="many">
+				<modifiers read="true" write="true" optional="true"
+					search="true" />
+			</targetElement>
+		</relation>
+
+		<relation code="Bed2RoomRelation" localized="false"
+			generate="true" autocreate="true">
+			<sourceElement type="Room" qualifier="room"
+				cardinality="one">
+				<modifiers read="true" write="true" search="true"
+					unique="true" />
+			</sourceElement>
+			<targetElement type="Bed" qualifier="beds"
 				collectiontype="list" cardinality="many">
 				<modifiers read="true" write="true" optional="true"
 					search="true" />
@@ -289,6 +289,20 @@
 				</attributes>
 			</itemtype>
 
+			<itemtype code="Bed" autocreate="true" generate="true"
+				jaloclass="org.training.hospital.core.jalo.Bed">
+				<deployment table="DepBed" typecode="20010" />
+				<attributes>
+					<attribute qualifier="code" type="java.lang.String">
+						<persistence type="property" />
+						<modifiers unique="true" optional="false" />
+					</attribute>
+					<attribute qualifier="number" type="java.lang.Integer">
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+
 			<itemtype code="Patient" autocreate="true" generate="true"
 				extends="Customer"
 				jaloclass="org.training.hospital.core.jalo.Patient">
@@ -306,6 +320,9 @@
 							attributeHandler="dynamicAttributesNumberPathologies" />
 						<modifiers read="true" write="false" search="true"
 							optional="false" />
+					</attribute>
+					<attribute qualifier="bed" type="Bed">
+						<persistence type="property" />
 					</attribute>
 				</attributes>
 			</itemtype>

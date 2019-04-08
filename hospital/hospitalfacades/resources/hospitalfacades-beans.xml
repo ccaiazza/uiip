@@ -29,6 +29,7 @@
 			type="java.util.List&lt;org.training.hospital.facades.product.data.PatientData>" />
 		<property name="hospital"
 			type="org.training.hospital.facades.product.data.HospitalData" />
+		<property name="numberFloor" type="java.lang.Integer" />
 	</bean>
 
 	<bean
@@ -75,6 +76,26 @@
 		<property name="name" type="String" />
 		<property name="patients"
 			type="java.util.List&lt;org.training.hospital.facades.product.data.PatientData>" />
+	</bean>
+
+	<bean class="org.training.hospital.facades.product.data.RoomData">
+		<property name="code" type="String" />
+		<property name="patients"
+			type="java.util.List&lt;org.training.hospital.facades.product.data.PatientData>" />
+		<property name="departament"
+			type="org.training.hospital.facades.product.data.RepartoData " />
+		<property name="numberBeds" type="java.lang.Integer" />
+		<property name="numberRoom" type="java.lang.Integer" />
+		<property name="telephoneNumber" type="String" />
+		<property name="beds"
+			type="java.util.List&lt;org.training.hospital.facades.product.data.BedData>" />
+	</bean>
+
+	<bean class="org.training.hospital.facades.product.data.BedData">
+		<property name="code" type="String" />
+		<property name="number" type="java.lang.Integer" />
+		<property name="room"
+			type="org.training.hospital.facades.product.data.RoomData " />
 	</bean>
 
 </beans>

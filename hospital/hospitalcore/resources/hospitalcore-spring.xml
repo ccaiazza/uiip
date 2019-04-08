@@ -714,57 +714,46 @@
 
 	<bean id="dynamicAttributesNumberDepartment"
 		class="org.training.hospital.core.handler.DynamicAttributeNumberDepartment">
-
 	</bean>
 
-
-	<bean name="defaultRepartoDao"
+	<alias name="defaultRepartoDao" alias="repartoDao" />
+	<bean id="defaultRepartoDao"
 		class="org.training.hospital.core.dao.impl.DefaultRepartoDao">
 		<constructor-arg value="Reparto" />
-
 	</bean>
 
-
-	<bean name="defaultHeadDao"
+	<alias name="defaultHeadDao" alias="headDao" />
+	<bean id="defaultHeadDao"
 		class="org.training.hospital.core.dao.impl.DefaultHeadDao">
 		<constructor-arg value="Head" />
-
 	</bean>
 
-	<bean name="defaultHospitalDao"
+	<alias name="defaultHospitalDao" alias="hospitalDao" />
+	<bean id="defaultHospitalDao"
 		class="org.training.hospital.core.dao.impl.DefaultHospitalDao">
 		<constructor-arg value="Hospital" />
-
 	</bean>
-
 
 	<alias name="defaultHeadService" alias="headService" />
 	<bean id="defaultHeadService"
 		class="org.training.hospital.core.service.impl.DefaultHeadService">
 		<property name="headDao" ref="defaultHeadDao" />
-
 	</bean>
 
 	<alias name="defaultRepartoService" alias="repartoService" />
 	<bean id="defaultRepartoService"
 		class="org.training.hospital.core.service.impl.DefaultRepartoService">
 		<property name="repartoDao" ref="defaultRepartoDao" />
-
 	</bean>
 
 	<alias name="defaultHospitalService" alias="hospitalService" />
 	<bean id="defaultHospitalService"
 		class="org.training.hospital.core.service.impl.DefaultHospitalService">
 		<property name="hospitalDao" ref="defaultHospitalDao" />
-
 	</bean>
-
-
 
 	<bean id="hospitalRemoveInterceptor"
 		class="org.training.hospital.core.interceptor.HospitalInterceptor" />
-
-
 
 	<bean id="hospitalMapping"
 		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
@@ -778,26 +767,25 @@
 
 	<bean id="dynamicAttributesNumberPathologies"
 		class="org.training.hospital.core.handler.DynamicAttributeNumberPathologies">
-
 	</bean>
 
-	<bean name="defaultPatientDao"
+	<alias name="defaultPatientDao" alias="patientDao" />
+	<bean id="defaultPatientDao"
 		class="org.training.hospital.core.dao.impl.DefaultPatientDao">
 		<constructor-arg value="Patient" />
-
 	</bean>
 
 	<alias name="defaultPatientService" alias="patientService" />
 	<bean id="defaultPatientService"
 		class="org.training.hospital.core.service.impl.DefaultPatientService">
 		<property name="patientDao" ref="defaultPatientDao" />
-
+		<property name="modelService" ref="modelService" />
 	</bean>
 
-	<bean name="defaultPathologyDao"
+	<alias name="defaultPathologyDao" alias="pathologyDao" />
+	<bean id="defaultPathologyDao"
 		class="org.training.hospital.core.dao.impl.DefaulPathologyDao">
 		<constructor-arg value="Pathology" />
-
 	</bean>
 
 	<alias name="defaultPathologyService" alias="pathologyService" />
@@ -828,7 +816,8 @@
 		<property name="typeCode" value="Head" />
 	</bean>
 
-	<bean name="defaultRoomDao"
+	<alias name="defaultRoomDao" alias="roomDao" />
+	<bean id="defaultRoomDao"
 		class="org.training.hospital.core.dao.impl.DefaultRoomDao">
 		<constructor-arg value="Room" />
 	</bean>
@@ -839,7 +828,33 @@
 		<property name="roomDao" ref="defaultRoomDao" />
 	</bean>
 
+	<bean id="deletePatientJob"
+		class="org.training.hospital.core.job.DeletePatientJob">
+		<property name="roomService" ref="roomService" />
+		<property name="code" value="String" />
+	</bean>
+
+	<alias name="defaultBedDao" alias="bedDao" />
+	<bean id="defaultBedDao"
+		class="org.training.hospital.core.dao.impl.DefaultBedDao">
+		<constructor-arg value="Bed" />
+	</bean>
+
+	<alias name="defaultBedService" alias="bedService" />
+	<bean id="defaultBedService"
+		class="org.training.hospital.core.service.impl.DefaultBedService">
+		<property name="bedDao" ref="defaultBedDao" />
+	</bean>
 	
+	<bean id="patienteInterceptor"
+		class="org.training.hospital.core.interceptor.PatientInterceptor">
+	</bean>
+
+	<bean id="patientMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="headValidateInterceptor" />
+		<property name="typeCode" value="Patient" />
+	</bean>
 
 </beans>
 

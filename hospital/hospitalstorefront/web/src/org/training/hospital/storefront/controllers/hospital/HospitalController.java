@@ -14,14 +14,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.training.hospital.core.service.RoomService;
+import org.training.hospital.facades.facade.BedFacade;
 import org.training.hospital.facades.facade.HospitalFacade;
 import org.training.hospital.facades.facade.PathologyFacade;
 import org.training.hospital.facades.facade.PatientFacade;
 import org.training.hospital.facades.facade.RepartoFacade;
+import org.training.hospital.facades.facade.RoomFacade;
+import org.training.hospital.facades.product.data.BedData;
 import org.training.hospital.facades.product.data.HospitalData;
 import org.training.hospital.facades.product.data.PathologyData;
 import org.training.hospital.facades.product.data.PatientData;
 import org.training.hospital.facades.product.data.RepartoData;
+import org.training.hospital.facades.product.data.RoomData;
 import org.training.hospital.storefront.controllers.ControllerConstants;
 
 import com.sap.security.core.server.csi.util.URLDecoder;
@@ -49,6 +54,14 @@ public class HospitalController
 
 	@Resource(name = "pathologyFacade")
 	private PathologyFacade pathologyFacade;
+	
+	@Resource(name = "roomFacade")
+	private RoomFacade roomFacade;
+	
+	@Resource(name = "bedFacade")
+	private BedFacade bedFacade;
+	
+	
 
 
 	@RequestMapping(value = "/repartu/{code}") //nome file jsp
@@ -104,6 +117,26 @@ public class HospitalController
 		return ControllerConstants.Views.Pages.Hospital.Pathologies;
 
 	}
+	
+	@RequestMapping(value = "/room/{code}")
+	public String showRoomDetails(@PathVariable("code")
+	final String code, final Model model) throws UnsupportedEncodingException
+	{
+		final RoomData room = roomFacade.getRoomForCode(code);
+		final List<BedData> beds = bedFacade.getBedsforRoom(code);
+		final Integer numberBedsFree = bedFacade.getNumberBedsForCode(code); 
+		model.addAttribute("code", code);
+		model.addAttribute("beds", beds);
+		model.addAttribute("room", room);
+		model.addAttribute("numberBedsFree",numberBedsFree);
+		
+
+
+		return ControllerConstants.Views.Pages.Hospital.Room;
+
+	}
+	
+
 
 
 
