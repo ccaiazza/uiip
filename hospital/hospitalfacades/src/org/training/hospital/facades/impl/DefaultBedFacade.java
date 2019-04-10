@@ -17,13 +17,13 @@ public class DefaultBedFacade implements BedFacade {
 	private Converter<BedModel, BedData> bedConverter ;
 	
 	@Override
-	public Integer getNumberBedsForCode(String code) {
+	public Integer getNumberBedsForRoom(String code) {
 		final Integer numberBeds = bedService.getNumberBedsForCode(code);
 		return numberBeds;
 	}
 	
 	@Override
-	public List<BedData> getBedsforRoom(String code) {
+	public List<BedData> getBedsForRoom(String code) {
 		final List<BedModel> bedModels = bedService.getBedsforRoom(code);
 		return bedConverter.convertAll(bedModels);
 		

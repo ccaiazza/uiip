@@ -7,7 +7,7 @@ import org.training.hospital.facades.product.data.BedData;
 
 public interface BedFacade {
 	
-	public Integer getNumberBedsForCode(String code);
-	public List<BedData> getBedsforRoom(String code);
+	public Integer getNumberBedsForRoom(String code);
+	public List<BedData> getBedsForRoom(String code);
 
 }

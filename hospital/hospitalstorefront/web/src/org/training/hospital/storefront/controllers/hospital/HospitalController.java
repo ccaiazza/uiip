@@ -129,8 +129,8 @@ public class HospitalController
 	final String code, final Model model) throws UnsupportedEncodingException
 	{
 		final RoomData room = roomFacade.getRoomForCode(code);
-		final List<BedData> beds = bedFacade.getBedsforRoom(code);
-		final Integer numberBedsFree = bedFacade.getNumberBedsForCode(code); 
+		final List<BedData> beds = bedFacade.getBedsForRoom(code);
+		final Integer numberBedsFree = bedFacade.getNumberBedsForRoom(code); 
 		model.addAttribute("code", code);
 		model.addAttribute("beds", beds);
 		model.addAttribute("room", room);
