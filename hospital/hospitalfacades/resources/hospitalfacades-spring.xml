@@ -315,7 +315,6 @@
 	<alias name="defaultRepartoPopulator" alias="repartoPopulator" />
 	<bean id="defaultRepartoPopulator"
 		class="org.training.hospital.facades.populators.RepartoPopulator">
-		<property name="patientConverter" ref="patientConverter" />
 		<property name="headConverter" ref="headConverter" />
 		<property name="hospitalConverter" ref="hospitalConverter" />
 	</bean>
@@ -323,7 +322,6 @@
 	<alias name="defaultHospitalPopulator" alias="hospitalPopulator" />
 	<bean id="defaultHospitalPopulator"
 		class="org.training.hospital.facades.populators.HospitalPopulator">
-		<property name="repartoConverter" ref="repartoConverter" />
 	</bean>
 
 	<alias name="defaultPatientConverter" alias="patientConverter" />
@@ -344,7 +342,7 @@
 		class="org.training.hospital.facades.impl.DefaultPatientFacade">
 		<property name="patientService" ref="patientService" />
 		<property name="patientConverter" ref="patientConverter" />
-		
+
 	</bean>
 
 
@@ -359,8 +357,7 @@
 	<alias name="defaultPatientPopulator" alias="patientPopulator" />
 	<bean id="defaultPatientPopulator"
 		class="org.training.hospital.facades.populators.PatientPopulator">
-		<property name="repartoConverter" ref="repartoConverter" />
-		<property name="pathologyConverter" ref="pathologyConverter" />
+		<property name="bedConverter" ref="bedConverter" />
 	</bean>
 
 	<alias name="defaultPathologyConverter"
@@ -379,8 +376,6 @@
 	<alias name="defaultRoomPopulator" alias="roomPopulator" />
 	<bean id="defaultRoomPopulator"
 		class="org.training.hospital.facades.populators.RoomPopulator">
-		<property name="roomConverter" ref="roomConverter" />
-		<property name="patientConverter" ref="patientConverter" />
 		<property name="bedConverter" ref="bedConverter" />
 	</bean>
 
@@ -425,7 +420,6 @@
 	<alias name="defaultBedPopulator" alias="bedPopulator" />
 	<bean id="defaultBedPopulator"
 		class="org.training.hospital.facades.populators.BedPopulator">
-		<property name="roomConverter" ref="roomConverter" />
 	</bean>
 
 	<alias name="defaultBedConverter" alias="bedConverter" />

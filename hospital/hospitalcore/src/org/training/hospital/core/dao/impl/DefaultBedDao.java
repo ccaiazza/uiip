@@ -21,20 +21,18 @@ public class DefaultBedDao extends DefaultGenericDao implements BedDao {
 	}
 
 	@Override
-	public Integer findBedsFreebyCode(String code) {
-		final Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"),Locale.ITALY);
-		final Date today = calendar.getTime();
-		final String queryString = "SELECT distinct { "+BedModel.PK+" } FROM{ Bed AS B JOIN Room AS R ON{R.pk} = {B.room} JOIN Patient AS P ON{P.bed}={B.pk}} WHERE {R.code}=?code AND {P.dateExit}<?today AND {P.dateExit} is not null AND {B.pk}  NOT IN ({{ SELECT {B.pk} FROM {Bed AS B JOIN Patient AS P ON{P.bed}={B.pk}} WHERE {P.dateExit}>=?today OR {P.dateExit} is null }})";
+	public Integer findBedsFreeByRoom(String code) {
+
+		final String queryString = "SELECT { "+BedModel.PK+" } FROM {Bed AS B JOIN Room AS R ON{R.pk} = {B.room}} WHERE{R.code}=?code AND {B.pk} NOT IN ({{ SELECT {B.pk} FROM{Bed AS B JOIN Room AS R ON{R.pk} = {B.room} JOIN Patient AS P ON{P.bed}={B.pk}} WHERE {R.code}=?code  }})";
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
 		query.addQueryParameter("code", code);
-		query.addQueryParameter("today", today);
-		final SearchResult<BedModel> result = getFlexibleSearchService().search(query);
+		final SearchResult<Integer> result = getFlexibleSearchService().search(query);
 		return result.getResult().size();
 	}
 
 
 	@Override
-	public List<BedModel> findBedsbyRoom(String code) {
+	public List<BedModel> findBedsByRoom(String code) {
 		final String queryString = "SELECT { "+ BedModel.PK+ " } FROM{ Bed AS B JOIN Room AS R ON{R.pk} = {B.room}} WHERE {R.code}=?code ";
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
 		query.addQueryParameter("code", code);

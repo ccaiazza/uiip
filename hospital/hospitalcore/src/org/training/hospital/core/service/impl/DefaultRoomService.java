@@ -17,39 +17,10 @@ import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
 public class DefaultRoomService implements RoomService {
 	private RoomDao roomDao;
 
-	@Override
-	public Integer getNumberBedsFreeForCode(String code) {
-
-		final Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"),Locale.ITALY);
-		final Date today = calendar.getTime();
-		final RoomModel room = roomDao.findRoombyCode(code);
-//		final List<PatientModel> patients = room.getPatients();
-//		Integer numberFree = room.getNumberBeds();
-//		for (final PatientModel pa : patients)
-//		{
-//			final Date dataExit = pa.getDateExit();
-//			if(dataExit != null) {
-//				if (today.before(dataExit))
-//				{
-//					numberFree -= 1;
-//				}
-//			} else {
-//				numberFree -= 1;
-//			}
-//		}
-//
-//		if (numberFree <= room.getNumberBeds())
-//		{
-//			return numberFree;
-//		}
-//		else
-//		{
-			return room.getNumberBeds();
-//		}
-	}
+	
 	@Override
 	public RoomModel getRoomForCode(String code) {
-		final RoomModel roomModel = roomDao.findRoombyCode(code);
+		final RoomModel roomModel = roomDao.findRoomByCode(code);
 		if (roomModel == null)
 		{
 			throw new UnknownIdentifierException("Room not found!");

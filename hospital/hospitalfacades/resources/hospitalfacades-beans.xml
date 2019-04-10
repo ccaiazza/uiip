@@ -69,6 +69,7 @@
 			type="java.util.List&lt;org.training.hospital.facades.product.data.PathologyData>" />
 		<property name="uid" type="String" />
 		<property name="name" type="String" />
+		<property name="bed" type="org.training.hospital.facades.product.data.BedData" />
 	</bean>
 
 	<bean

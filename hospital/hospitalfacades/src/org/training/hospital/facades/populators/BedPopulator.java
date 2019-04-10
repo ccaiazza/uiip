@@ -12,30 +12,17 @@ import de.hybris.platform.servicelayer.dto.converter.Converter;
 
 public class BedPopulator implements Populator<BedModel, BedData> {
 
-	private Converter<RoomModel, RoomData> roomConverter;
+	
 
 	@Override
 	public void populate(BedModel source, BedData target) throws ConversionException {
 		target.setCode(source.getCode());
 		target.setNumber(source.getNumber());
-		//target.setRoom(roomConverter.convert(source.getRoom()));
+
 
 	}
 
-	/**
-	 * @return the roomConverter
-	 */
-	public Converter<RoomModel, RoomData> getRoomConverter() {
-		return roomConverter;
-	}
 
-	/**
-	 * @param roomConverter the roomConverter to set
-	 */
-	@Required
-	public void setRoomConverter(Converter<RoomModel, RoomData> roomConverter) {
-		this.roomConverter = roomConverter;
-	}
 	
 	
 

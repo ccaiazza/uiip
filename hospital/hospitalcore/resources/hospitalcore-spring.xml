@@ -784,7 +784,7 @@
 
 	<alias name="defaultPathologyDao" alias="pathologyDao" />
 	<bean id="defaultPathologyDao"
-		class="org.training.hospital.core.dao.impl.DefaulPathologyDao">
+		class="org.training.hospital.core.dao.impl.DefaultPathologyDao">
 		<constructor-arg value="Pathology" />
 	</bean>
 
@@ -828,12 +828,6 @@
 		<property name="roomDao" ref="defaultRoomDao" />
 	</bean>
 
-	<bean id="deletePatientJob"
-		class="org.training.hospital.core.job.DeletePatientJob">
-		<property name="roomService" ref="roomService" />
-		<property name="code" value="String" />
-	</bean>
-
 	<alias name="defaultBedDao" alias="bedDao" />
 	<bean id="defaultBedDao"
 		class="org.training.hospital.core.dao.impl.DefaultBedDao">
@@ -845,17 +839,21 @@
 		class="org.training.hospital.core.service.impl.DefaultBedService">
 		<property name="bedDao" ref="defaultBedDao" />
 	</bean>
-	
-	<bean id="patienteInterceptor"
+
+	<bean id="patientInterceptor"
 		class="org.training.hospital.core.interceptor.PatientInterceptor">
+		<property name="patientService" ref="patientService" />
 	</bean>
 
 	<bean id="patientMapping"
 		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
-		<property name="interceptor" ref="headValidateInterceptor" />
+		<property name="interceptor" ref="patientInterceptor" />
 		<property name="typeCode" value="Patient" />
 	</bean>
 
+	<bean id="dynamicAttributesNumberBed"
+		class="org.training.hospital.core.handler.DynamicAttributeNumberBed">
+	</bean>
 </beans>
 
 

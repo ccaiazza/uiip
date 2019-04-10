@@ -33,7 +33,7 @@ public class DefaultDoctorDao extends DefaultGenericDao implements DoctorDao
 	 * @see org.training.hospital.core.dao.DoctorDao#findDoctorbyName(java.lang.String)
 	 */
 	@Override
-	public List<DoctorModel> findDoctorbyName(final String name)
+	public List<DoctorModel> findDoctorByName(final String name)
 	{
 		final String queryString = "SELECT {" + DoctorModel.PK + "} 	FROM {" + DoctorModel._TYPECODE + " }" + "WHERE { "
 				+ DoctorModel.NAME + " ?= name";

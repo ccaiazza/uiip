@@ -16,7 +16,7 @@ public class DefaultRoomDao extends DefaultGenericDao implements RoomDao {
 	}
 
 	@Override
-	public RoomModel findRoombyCode(String code) throws NullPointerException{
+	public RoomModel findRoomByCode(String code) throws NullPointerException{
 
 
 		final String queryString = "SELECT {" + RoomModel.PK + " } FROM { "+ RoomModel._TYPECODE + " } WHERE {"+ RoomModel.CODE + "}=?code ";
@@ -28,7 +28,7 @@ public class DefaultRoomDao extends DefaultGenericDao implements RoomDao {
 			return result.getResult().get(0);
 		}
 		else {
-			throw new NullPointerException("Room not found");
+			return null;
 		}
 	}
 

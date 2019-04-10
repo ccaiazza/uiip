@@ -14,6 +14,6 @@ import org.training.hospital.core.model.DoctorModel;
  */
 public interface DoctorDao
 {
-	public List<DoctorModel> findDoctorbyName(String name);
+	public List<DoctorModel> findDoctorByName(String name);
 
 }

@@ -17,7 +17,7 @@ public class DefaultBedService implements BedService {
 	private BedDao bedDao;
 	@Override
 	public Integer getNumberBedsForCode(String code) {
-		final Integer numberBedsFree = bedDao.findBedsFreebyCode(code);
+		final Integer numberBedsFree = bedDao.findBedsFreeByRoom(code);
 		if (numberBedsFree == null)
 		{
 			throw new UnknownIdentifierException("Bed not found!");
@@ -28,7 +28,7 @@ public class DefaultBedService implements BedService {
 	
 	@Override
 	public List<BedModel> getBedsforRoom(String code) {
-		final List<BedModel> beds = bedDao.findBedsbyRoom(code);
+		final List<BedModel> beds = bedDao.findBedsByRoom(code);
 		if (beds == null)
 		{
 			throw new UnknownIdentifierException("Bed not found!");

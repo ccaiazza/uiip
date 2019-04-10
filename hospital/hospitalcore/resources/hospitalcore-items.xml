@@ -274,9 +274,16 @@
 						<persistence type="property" />
 						<modifiers unique="true" optional="false" />
 					</attribute>
+					<!-- <attribute qualifier="numberBeds" -->
+					<!-- type="java.lang.Integer"> -->
+					<!-- <persistence type="property" /> -->
+					<!-- </attribute> -->
 					<attribute qualifier="numberBeds"
 						type="java.lang.Integer">
-						<persistence type="property" />
+						<persistence type="dynamic"
+							attributeHandler="dynamicAttributesNumberBed" />
+						<modifiers read="true" write="false" search="true"
+							optional="false" />
 					</attribute>
 					<attribute qualifier="numberRoom"
 						type="localized:java.lang.Integer">
