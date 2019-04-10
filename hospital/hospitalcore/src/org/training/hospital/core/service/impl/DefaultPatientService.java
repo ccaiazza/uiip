@@ -34,7 +34,7 @@ public class DefaultPatientService implements PatientService
 	public List<PatientModel> getPatientForDateEntry(final Date entry)
 			throws UnknownIdentifierException
 	{
-		final List<PatientModel> result = patientDao.findPatientbyDateEntry(entry);
+		final List<PatientModel> result = patientDao.findPatientByDateEntry(entry);
 		if (result.isEmpty())
 		{
 			throw new UnknownIdentifierException("Patient not found!");
@@ -58,29 +58,30 @@ public class DefaultPatientService implements PatientService
 	}
 	
 	@Override
-	public PatientModel getPatientForCode(String uid) {
-		final PatientModel result=patientDao.findPatientbyCode(uid);
+	public PatientModel getPatientForUid(String uid) {
+		final PatientModel result=patientDao.findPatientByUid(uid);
 		if(result==null) {
 			throw new UnknownIdentifierException("Patient not found!");
 		}
 		return result;
 	}
 
-	
-	
-	
-	
 
 public PatientModel releasePatient(String code) {
 
-	final Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"), Locale.ITALY);
-	final Date today = calendar.getTime();
 
-		final PatientModel patient= patientDao.findPatientbyCode(code);
+	Date today = new Date();
+	
+
+		final PatientModel patient= patientDao.findPatientByUid(code);
+		if(patient==null) {
+			throw new UnknownIdentifierException("Patient not found!");
+		}
+		else {
 		patient.setDateExit(today);
 		modelService.save(patient);
 		return patient;
-		
+		}
 	}
 
 	
@@ -98,6 +99,16 @@ public PatientModel releasePatient(String code) {
 	public void setPatientDao(final PatientDao patientDao)
 	{
 		this.patientDao = patientDao;
+	}
+
+	
+	public ModelService getModelService() {
+		return modelService;
+	}
+
+	@Required
+	public void setModelService(ModelService modelService) {
+		this.modelService = modelService;
 	}
 	
 

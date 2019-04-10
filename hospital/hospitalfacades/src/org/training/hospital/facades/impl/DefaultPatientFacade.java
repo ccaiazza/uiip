@@ -25,66 +25,77 @@ public class DefaultPatientFacade implements PatientFacade
 	private Converter<PatientModel, PatientData> patientConverter;
 
 	@Override
-	public List<PatientData> getPatientbyDateEntry(final Date entry)
+	public List<PatientData> getPatientForDateEntry(final Date entry)
 	{
-
+		
 		final List<PatientModel> patients = patientService.getPatientForDateEntry(entry);
+		if(patients.isEmpty()) {
+			return null;
+		}
+		else {
 		final List<PatientData> patientsResult = patientConverter.convertAll(patients);
 		return patientsResult;
 	}
-
+	}
 
 	@Override
 	public List<PatientData> getPatients() {
 		final List<PatientModel> patients=patientService.getPatients();
-		return patientConverter.convertAll(patients);
-			
+		if(patients == null) {
+			return null;
+		}
+		else {
+			final List<PatientData> patientsResult = patientConverter.convertAll(patients);
+			return patientsResult;
+		}
 	}
-
-
+	
 	@Override
-	public PatientData getPatientForCode(String uid) {
-		final PatientModel patient=patientService.getPatientForCode(uid);
+	public PatientData getPatientForUid(String uid) {
+		final PatientModel patient=patientService.getPatientForUid(uid);
+		if(patient == null) {
+			return null;
+		}
+		else
 		return patientConverter.convert(patient);
 			
 	}
 	
+	@Override
+	public PatientData releasePatient(String code) {
+		final PatientModel patient= patientService.releasePatient(code);
+		if(patient == null) {
+			return null;
+		}
+		else
+		return patientConverter.convert(patient);
+	}
+
 	
 	
 	
 	
 	
 	
-	/**
-	 * @return the patientService
-	 */
 	public PatientService getPatientService()
 	{
 		return patientService;
 	}
 
-	/**
-	 * @param patientService
-	 *           the patientService to set
-	 */
+	
 	@Required
 	public void setPatientService(final PatientService patientService)
 	{
 		this.patientService = patientService;
 	}
 
-	/**
-	 * @return the patientConverter
-	 */
+
 	public Converter<PatientModel, PatientData> getPatientConverter()
 	{
 		return patientConverter;
 	}
 
-	/**
-	 * @param patientConverter
-	 *           the patientConverter to set
-	 */
+	
 	@Required
 	public void setPatientConverter(final Converter<PatientModel, PatientData> patientConverter)
 	{

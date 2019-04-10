@@ -31,7 +31,7 @@ public class DefaultPatientDao extends DefaultGenericDao implements PatientDao
 	}
 
 	@Override
-	public List<PatientModel> findPatientbyDateEntry(final Date entry)
+	public List<PatientModel> findPatientByDateEntry(final Date entry)
 	{
 
 		final String query = "SELECT {" + PatientModel.PK + "} FROM {" + PatientModel._TYPECODE + " AS P }"
@@ -52,7 +52,7 @@ public class DefaultPatientDao extends DefaultGenericDao implements PatientDao
 	}
 
 	@Override
-	public PatientModel findPatientbyCode(String uid) {
+	public PatientModel findPatientByUid(String uid) {
 		
 	final String queryString= "SELECT {"+ PatientModel.PK +"} FROM {"+ PatientModel._TYPECODE +" AS P } WHERE {P.uid}=?uid ";	
 	

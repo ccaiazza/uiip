@@ -1,6 +1,7 @@
 package org.training.hospital.core.interceptor;
 
 import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -15,18 +16,21 @@ public class PatientInterceptor implements PrepareInterceptor<PatientModel> {
 
 	@Override
 	public void onPrepare(PatientModel patientModel, InterceptorContext ctx) throws InterceptorException {
-		final Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"),Locale.ITALY);
-		final Date today = calendar.getTime();
-		if(patientModel!= null) {
-			if(patientModel.getDateExit() == today){
+
+
+		final Date today = new Date();
+
+		if(patientModel!= null && patientModel.getDateExit() != null) {
+			if(  (patientModel.getDateExit().before(today) || patientModel.getDateExit().equals(today))) {
 				patientModel.setBed(null);
-				
 			} 
-
-
-
-
 		}
-
+		
+		if(patientModel.getDateExit().before(patientModel.getDateEntry())) {
+			
+		}
+		
+		
+		
 	}
 }

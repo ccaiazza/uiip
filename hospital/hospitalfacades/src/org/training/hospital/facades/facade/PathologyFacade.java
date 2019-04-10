@@ -15,5 +15,5 @@ import org.training.hospital.facades.product.data.PathologyData;
 public interface PathologyFacade
 {
 
-	public List<PathologyData> getPatologyforPatient(final String patient);
+	public List<PathologyData> getPatologyForPatient(final String patient);
 }

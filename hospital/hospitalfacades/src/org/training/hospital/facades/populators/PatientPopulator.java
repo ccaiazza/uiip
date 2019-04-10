@@ -41,11 +41,15 @@ public class PatientPopulator implements Populator<PatientModel, PatientData>
 		target.setNumberPathologies(source.getNumberPathologies());
 		target.setUid(source.getUid());
 		target.setName(source.getName());
-		target.setBed(bedConverter.convert(source.getBed()));
+		if(source.getBed() != null) {
+			 target.setBed(bedConverter.convert(source.getBed()));
+		}
 		
-
 	}
 
+	
+		
+	
 	
 
 	/**
