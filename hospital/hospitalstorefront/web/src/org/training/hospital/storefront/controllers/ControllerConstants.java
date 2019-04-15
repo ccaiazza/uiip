@@ -173,8 +173,8 @@ public interface ControllerConstants
 				String Pathologies = "pages/hospital/pathology";
 				String Room = "pages/hospital/room";
 				String PatientList = "pages/hospital/patientList";
-
-
+				String FreeBeds = "pages/hospital/freeBeds";
+				
 			}
 		}
 

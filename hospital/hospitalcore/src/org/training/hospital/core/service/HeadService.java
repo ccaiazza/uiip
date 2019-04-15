@@ -19,5 +19,5 @@ public interface HeadService
 
 	public List<HeadModel> getHeadForHospital(String code);
 
-	public List<HeadModel> getHeadforHospitalName(String name);
+	public List<HeadModel> getHeadForHospitalName(String name);
 }

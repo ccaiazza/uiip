@@ -60,7 +60,7 @@ public class DefaultHeadService implements HeadService
 		return result;
 	}
 
-	public List<HeadModel> getHeadforHospitalName(final String name)
+	public List<HeadModel> getHeadForHospitalName(final String name)
 			throws AmbiguousIdentifierException, UnknownIdentifierException
 	{
 		final List<HeadModel> result = headDao.findHeadByHospitalName(name);

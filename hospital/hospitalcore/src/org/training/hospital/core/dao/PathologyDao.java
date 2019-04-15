@@ -15,5 +15,5 @@ import org.training.hospital.core.model.PathologyModel;
 public interface PathologyDao
 {
 
-	public List<PathologyModel> findPatologybyPatient(String patientCode);
+	public List<PathologyModel> findPatologyByPatient(String patientCode);
 }

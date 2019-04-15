@@ -15,6 +15,6 @@ import org.training.hospital.core.model.PathologyModel;
 public interface PathologyService
 {
 
-	public List<PathologyModel> getPatologyforPatient(String patientCode);
+	public List<PathologyModel> getPatologyForPatient(String patientCode);
 
 }

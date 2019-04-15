@@ -14,16 +14,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.training.hospital.core.model.PatientModel;
 import org.training.hospital.core.service.PatientService;
-
+import org.training.hospital.core.service.RoomService;
 import org.training.hospital.facades.facade.BedFacade;
 import org.training.hospital.facades.facade.HospitalFacade;
 import org.training.hospital.facades.facade.PathologyFacade;
 import org.training.hospital.facades.facade.PatientFacade;
 import org.training.hospital.facades.facade.RepartoFacade;
 import org.training.hospital.facades.facade.RoomFacade;
-
 import org.training.hospital.facades.product.data.BedData;
 import org.training.hospital.facades.product.data.HospitalData;
 import org.training.hospital.facades.product.data.PathologyData;
@@ -57,18 +55,18 @@ public class HospitalController
 
 	@Resource(name = "pathologyFacade")
 	private PathologyFacade pathologyFacade;
-	
+
 	@Resource(name = "roomFacade")
 	private RoomFacade roomFacade;
-	
+
 	@Resource(name = "bedFacade")
 	private BedFacade bedFacade;
-	
+
 	@Resource(name = "patientService")
 	private PatientService patientService;
-	
-	
 
+	@Resource(name = "roomService")
+	private RoomService roomService;
 
 	@RequestMapping(value = "/repartu/{code}") //nome file jsp
 	public String showRepartiDetails(@PathVariable("code") String code, final Model model)
@@ -79,10 +77,10 @@ public class HospitalController
 		if (repartoFacade != null)
 		{
 			final List<RepartoData> reparti = repartoFacade.getRepartoForCode(code);
-		model.addAttribute("code", code);
-		model.addAttribute("repartu", reparti);
-		return ControllerConstants.Views.Pages.Hospital.RepartiHospital;
-	}
+			model.addAttribute("code", code);
+			model.addAttribute("repartu", reparti);
+			return ControllerConstants.Views.Pages.Hospital.RepartiHospital;
+		}
 		else
 		{
 			return ControllerConstants.Views.Pages.Hospital.RepartiHospital;
@@ -123,7 +121,7 @@ public class HospitalController
 		return ControllerConstants.Views.Pages.Hospital.Pathologies;
 
 	}
-	
+
 	@RequestMapping(value = "/room/{code}")
 	public String showRoomDetails(@PathVariable("code")
 	final String code, final Model model) throws UnsupportedEncodingException
@@ -135,29 +133,39 @@ public class HospitalController
 		model.addAttribute("beds", beds);
 		model.addAttribute("room", room);
 		model.addAttribute("numberBedsFree",numberBedsFree);
-		
+
 
 
 		return ControllerConstants.Views.Pages.Hospital.Room;
 
 	}
-	
+
 	@RequestMapping(value = "/patientList/{code}" )
 	public String showPatientsDetails(@PathVariable("code")
 	final String code,final Model model) throws UnsupportedEncodingException
 	{
 		final PatientData patient = patientFacade.getPatientForUid(code);
-//		final PatientModel pmodel = patientService.releasePatient(code);
+		//		final PatientModel pmodel = patientService.releasePatient(code);
 		final List<PatientData> patientlist = patientFacade.getPatients();
-		
+
 		model.addAttribute("code", code);
 		model.addAttribute("patient", patient);
 		model.addAttribute("patientlist", patientlist);
-//		model.addAttribute("pmodel", pmodel);
+		//		model.addAttribute("pmodel", pmodel);
 		return ControllerConstants.Views.Pages.Hospital.PatientList;
 
 	}
 
+
+	@RequestMapping(value = "/Room/{codeRoom}")
+	public String showRoomBedFree(@PathVariable("codeRoom")
+	final String codeRoom, final Model model) throws UnsupportedEncodingException
+	{
+		model.addAttribute("codeRoom", codeRoom);
+		return ControllerConstants.Views.Pages.Hospital.FreeBeds;
+
+
+	}
 
 
 }

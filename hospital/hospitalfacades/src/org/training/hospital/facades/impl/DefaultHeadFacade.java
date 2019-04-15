@@ -27,7 +27,7 @@ public class DefaultHeadFacade implements HeadFacade
 	 * @see org.training.hospital.facades.facade.HeadFacade#getHead(java.lang.String)
 	 */
 	@Override
-	public List<HeadData> getHeadbyReparto(final String code)
+	public List<HeadData> getHeadForReparto(final String code)
 	{
 		final List<HeadModel> headModels = headService.getHeadForReparto(code);
 
@@ -35,74 +35,49 @@ public class DefaultHeadFacade implements HeadFacade
 		return headConverter.convertAll(headModels);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see org.training.hospital.facades.facade.HeadFacade#getHeadbyHospital(java.lang.String)
-	 */
+	
 	@Override
-	public List<HeadData> getHeadbyHospital(final String code)
+	public List<HeadData> getHeadForHospitalName(final String code)
+	{
+		final List<HeadModel> headModels = headService.getHeadForHospitalName(code);
+
+
+		return headConverter.convertAll(headModels);
+	}
+	
+
+	@Override
+	public List<HeadData> getHeadForHospital(final String code)
 	{
 		final List<HeadModel> headModels = headService.getHeadForHospital(code);
 
 		return headConverter.convertAll(headModels);
 	}
 
-	/**
-	 * @return the headService
-	 */
 	public HeadService getHeadService()
 	{
 		return headService;
 	}
 
-	/**
-	 * @param headService
-	 *           the headService to set
-	 */
+	
 	@Required
 	public void setHeadService(final HeadService headService)
 	{
 		this.headService = headService;
 	}
 
-	/**
-	 * @return the repartoConverter
-	 */
+	
 	public Converter<HeadModel, HeadData> getHeadConverter()
 	{
 		return headConverter;
 	}
 
-	/**
-	 * @param repartoConverter
-	 *           the repartoConverter to set
-	 */
+	
 	@Required
 	public void setHeadConverter(final Converter<HeadModel, HeadData> headConverter)
 	{
 		this.headConverter = headConverter;
 	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see org.training.hospital.facades.facade.HeadFacade#getHeadforHospitalCardarelli()
-	 */
-	@Override
-	public List<HeadData> getHeadforHospitalName(final String code)
-	{
-		final List<HeadModel> headModels = headService.getHeadforHospitalName(code);
-
-
-		return headConverter.convertAll(headModels);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see org.training.hospital.facades.facade.HeadFacade#getHeadforHospitalCardarelli()
-	 */
 
 
 

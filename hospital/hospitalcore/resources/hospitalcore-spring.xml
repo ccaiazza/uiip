@@ -841,8 +841,7 @@
 	</bean>
 
 	<bean id="patientInterceptor"
-		class="org.training.hospital.core.interceptor.PatientInterceptor">
-		<property name="patientService" ref="patientService" />
+		class="org.training.hospital.core.interceptor.PatientInterceptor">	
 	</bean>
 
 	<bean id="patientMapping"

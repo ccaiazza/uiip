@@ -1,6 +1,7 @@
 package org.training.hospital.facades.populators;
 
 
+
 import org.springframework.beans.factory.annotation.Required;
 import org.training.hospital.core.model.BedModel;
 import org.training.hospital.core.model.HeadModel;
@@ -16,44 +17,36 @@ import de.hybris.platform.servicelayer.dto.converter.Converter;
 
 public class RoomPopulator implements Populator<RoomModel, RoomData> {
 
-	
+
+
 	private Converter<BedModel, BedData> bedConverter;
-	
+
 	@Override
 	public void populate(RoomModel source, RoomData target) throws ConversionException {
-		
+
+
 		if (source == null)
 		{
 			throw new IllegalArgumentException("Model is empty");
 		}
 		else
 		{
-
 			target.setCode((source.getCode()));
 			target.setNumberBeds(source.getNumberBeds());
 			target.setBeds(bedConverter.convertAll(source.getBeds()));
-		    target.setNumberBeds(source.getNumberBeds());
+			target.setNumberBeds(source.getNumberBeds());
 		}
-		
+
 	}
 
-	
-
-
-	/**
-	 * @return the bedConverter
-	 */
 	public Converter<BedModel, BedData> getBedConverter() {
 		return bedConverter;
 	}
 
-	/**
-	 * @param bedConverter the bedConverter to set
-	 */
+
 	@Required
 	public void setBedConverter(Converter<BedModel, BedData> bedConverter) {
 		this.bedConverter = bedConverter;
 	}
 
-	
 }

@@ -17,11 +17,7 @@ import org.training.hospital.facades.product.data.HeadData;
 public class HeadPopulator implements Populator<HeadModel, HeadData>
 {
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see de.hybris.platform.converters.Populator#populate(java.lang.Object, java.lang.Object)
-	 */
+	
 	@Override
 	public void populate(final HeadModel source, final HeadData target) throws ConversionException
 	{

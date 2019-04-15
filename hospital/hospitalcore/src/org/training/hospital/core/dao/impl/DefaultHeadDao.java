@@ -38,9 +38,6 @@ public class DefaultHeadDao extends DefaultGenericDao implements HeadDao
 		final String queryString = "SELECT {" + HeadModel.PK + "} " + "FROM {" + HeadModel._TYPECODE
 				+ " AS H JOIN Reaparto AS R ON{H.uid= R.head}} " + "WHERE {R.codeReparto =?codeReparto}";
 
-
-
-
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString, Collections.singletonMap("code", codeReparto));
 		final SearchResult<HeadModel> result = (SearchResult<HeadModel>) getFlexibleSearchService().search(query);
 
@@ -73,10 +70,7 @@ public class DefaultHeadDao extends DefaultGenericDao implements HeadDao
 
 		final String queryString = "SELECT {" + HeadModel.PK + "} " + "FROM {" + HeadModel._TYPECODE
 				+ " AS H JOIN Reaparto AS R ON{H.uid= R.head} " + " JOIN Hospital AS O ON{R.hospital =O.code }}"
-				+ "WHERE {R.name=? name}";
-
-
-
+				+ "WHERE {R.name} =? name";
 
 		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString, Collections.singletonMap("name", name));//prendere parametri
 		final SearchResult<HeadModel> result = (SearchResult<HeadModel>) getFlexibleSearchService().search(query);

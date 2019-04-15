@@ -16,8 +16,11 @@ import org.training.hospital.core.model.PatientModel;
  */
 public interface PatientDao
 {
-	public List<PatientModel> findPatientbyDateEntry(Date entry);
+	public List<PatientModel> findPatientByDateEntry(Date entry);
 
+	public List<PatientModel> findPatients();
+	
+	public PatientModel findPatientByUid(String uid); 
 
 
 }
