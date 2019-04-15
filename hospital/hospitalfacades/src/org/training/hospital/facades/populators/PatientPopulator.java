@@ -3,19 +3,15 @@
  */
 package org.training.hospital.facades.populators;
 
+import org.springframework.beans.factory.annotation.Required;
+import org.training.hospital.core.model.BedModel;
+import org.training.hospital.core.model.PatientModel;
+import org.training.hospital.facades.product.data.BedData;
+import org.training.hospital.facades.product.data.PatientData;
+
 import de.hybris.platform.converters.Populator;
 import de.hybris.platform.servicelayer.dto.converter.ConversionException;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
-
-import org.springframework.beans.factory.annotation.Required;
-import org.training.hospital.core.model.BedModel;
-import org.training.hospital.core.model.PathologyModel;
-import org.training.hospital.core.model.PatientModel;
-import org.training.hospital.core.model.RepartoModel;
-import org.training.hospital.facades.product.data.BedData;
-import org.training.hospital.facades.product.data.PathologyData;
-import org.training.hospital.facades.product.data.PatientData;
-import org.training.hospital.facades.product.data.RepartoData;
 
 
 /**
@@ -25,7 +21,6 @@ import org.training.hospital.facades.product.data.RepartoData;
 public class PatientPopulator implements Populator<PatientModel, PatientData>
 {
 	
-	private Converter<PathologyModel, PathologyData> pathologyConverter;
 	private Converter<BedModel, BedData> bedConverter;
 	/*
 	 * (non-Javadoc)
@@ -64,24 +59,4 @@ public class PatientPopulator implements Populator<PatientModel, PatientData>
 	public void setBedConverter(Converter<BedModel, BedData> bedConverter) {
 		this.bedConverter = bedConverter;
 	}
-
-
-
-	public Converter<PathologyModel, PathologyData> getPathologyConverter()
-	{
-		return pathologyConverter;
-	}
-
-	
-	@Required
-	public void setPathologyConverter(final Converter<PathologyModel, PathologyData> pathologyConverter)
-	{
-		this.pathologyConverter = pathologyConverter;
-	}
-
-	
-	
-
-
-
 }

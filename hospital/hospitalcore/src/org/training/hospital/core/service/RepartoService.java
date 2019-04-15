@@ -15,5 +15,5 @@ import org.training.hospital.core.model.RepartoModel;
 public interface RepartoService
 {
 
-	public List<RepartoModel> getRepartiforHospital(String code);
+	public List<RepartoModel> getRepartiForHospital(String code);
 }

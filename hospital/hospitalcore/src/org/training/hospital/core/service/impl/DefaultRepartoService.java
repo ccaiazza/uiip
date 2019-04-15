@@ -26,7 +26,7 @@ public class DefaultRepartoService implements RepartoService
 	 * @see org.training.hospital.core.service.RepartoService#getRepartiForHospital(java.lang.String)
 	 */
 	@Override
-	public List<RepartoModel> getRepartiforHospital(final String code)
+	public List<RepartoModel> getRepartiForHospital(final String code)
 			throws UnknownIdentifierException
 	{
 		final List<RepartoModel> result = repartoDao.findRepartiByHospital(code);

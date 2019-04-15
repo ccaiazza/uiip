@@ -48,20 +48,6 @@
 			</targetElement>
 		</relation>
 
-		<relation code="Patient2RoomRelation" localized="false"
-			generate="true" autocreate="true">
-			<sourceElement type="Room" qualifier="room"
-				cardinality="one">
-				<modifiers read="true" write="false" unique="true"
-					search="true" />
-			</sourceElement>
-			<targetElement type="Patient" qualifier="patients"
-				cardinality="many" collectiontype="list">
-				<modifiers read="true" write="true" optional="true"
-					search="true" />
-			</targetElement>
-		</relation>
-
 		<relation code="Reparto2RoomRelation" localized="false"
 			generate="true" autocreate="true">
 			<sourceElement type="Reparto" qualifier="departament"
@@ -84,6 +70,20 @@
 				<modifiers read="true" write="true" search="true" />
 			</sourceElement>
 			<targetElement type="Pathology" qualifier="pathologies"
+				collectiontype="list" cardinality="many">
+				<modifiers read="true" write="true" optional="true"
+					search="true" />
+			</targetElement>
+		</relation>
+
+		<relation code="Bed2RoomRelation" localized="false"
+			generate="true" autocreate="true">
+			<sourceElement type="Room" qualifier="room"
+				cardinality="one">
+				<modifiers read="true" write="true" search="true"
+					unique="true" />
+			</sourceElement>
+			<targetElement type="Bed" qualifier="beds"
 				collectiontype="list" cardinality="many">
 				<modifiers read="true" write="true" optional="true"
 					search="true" />
@@ -229,6 +229,10 @@
 						type="localized:java.lang.String">
 						<persistence type="property" />
 					</attribute>
+					<attribute qualifier="numberFloor"
+						type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
 					<attribute qualifier="head" type="Head">
 						<persistence type="property" />
 					</attribute>
@@ -263,14 +267,44 @@
 			</itemtype>
 
 			<itemtype code="Room" autocreate="true" generate="true"
-				 jaloclass="org.training.hospital.core.jalo.Room">
+				jaloclass="org.training.hospital.core.jalo.Room">
 				<deployment table="DepRoom" typecode="20009" />
 				<attributes>
 					<attribute qualifier="code" type="java.lang.String">
 						<persistence type="property" />
+						<modifiers unique="true" optional="false" />
 					</attribute>
+					<!-- <attribute qualifier="numberBeds" -->
+					<!-- type="java.lang.Integer"> -->
+					<!-- <persistence type="property" /> -->
+					<!-- </attribute> -->
 					<attribute qualifier="numberBeds"
 						type="java.lang.Integer">
+						<persistence type="dynamic"
+							attributeHandler="dynamicAttributesNumberBed" />
+						<modifiers read="true" write="false" search="true"
+							optional="false" />
+					</attribute>
+					<attribute qualifier="numberRoom"
+						type="localized:java.lang.Integer">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="telephoneNumber"
+						type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="Bed" autocreate="true" generate="true"
+				jaloclass="org.training.hospital.core.jalo.Bed">
+				<deployment table="DepBed" typecode="20010" />
+				<attributes>
+					<attribute qualifier="code" type="java.lang.String">
+						<persistence type="property" />
+						<modifiers unique="true" optional="false" />
+					</attribute>
+					<attribute qualifier="number" type="java.lang.Integer">
 						<persistence type="property" />
 					</attribute>
 				</attributes>
@@ -293,6 +327,9 @@
 							attributeHandler="dynamicAttributesNumberPathologies" />
 						<modifiers read="true" write="false" search="true"
 							optional="false" />
+					</attribute>
+					<attribute qualifier="bed" type="Bed">
+						<persistence type="property" />
 					</attribute>
 				</attributes>
 			</itemtype>

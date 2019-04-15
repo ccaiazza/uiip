@@ -31,9 +31,9 @@ public class DefaultRepartoFacade implements RepartoFacade
 	 * @see org.training.hospital.facades.facade.RepartoFacade#getReparto(java.lang.String)
 	 */
 	@Override
-	public List<RepartoData> getReparto(final String code)
+	public List<RepartoData> getRepartoForCode(final String code)
 	{
-		final List<RepartoModel> repartoModels = repartoService.getRepartiforHospital(code);
+		final List<RepartoModel> repartoModels = repartoService.getRepartiForHospital(code);
 		return repartoConverter.convertAll(repartoModels);
 	}
 

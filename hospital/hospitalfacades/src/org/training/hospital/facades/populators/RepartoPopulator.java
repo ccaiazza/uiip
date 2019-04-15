@@ -25,7 +25,7 @@ import org.training.hospital.facades.product.data.RepartoData;
 public class RepartoPopulator implements Populator<RepartoModel, RepartoData>
 {
 
-	private Converter<PatientModel, PatientData> patientConverter;
+
 	private Converter<HeadModel, HeadData> headConverter;
 	private Converter<HospitalModel, HospitalData> hospitalConverter;
 
@@ -41,34 +41,17 @@ public class RepartoPopulator implements Populator<RepartoModel, RepartoData>
 
 			target.setCode((source.getCode()));
 			target.setName(source.getName());
-			target.setHead(headConverter.convert(source.getHead()));
-			target.setHospital(hospitalConverter.convert(source.getHospital()));
-			//target.setPatients(patientConverter.convertAll(source.getPatients()));
+			if(source.getHead()!= null) {
+				target.setHead(headConverter.convert(source.getHead()));
+			}
+			if(source.getHospital() != null) {
+				target.setHospital(hospitalConverter.convert(source.getHospital()));
+			}
 		}
-
-
-
 	}
 
 
 
-	/**
-	 * @return the patientConverter
-	 */
-	public Converter<PatientModel, PatientData> getPatientConverter()
-	{
-		return patientConverter;
-	}
-
-	/**
-	 * @param patientConverter
-	 *           the patientConverter to set
-	 */
-	@Required
-	public void setPatientConverter(final Converter<PatientModel, PatientData> patientConverter)
-	{
-		this.patientConverter = patientConverter;
-	}
 
 	/**
 	 * @return the headConverter
