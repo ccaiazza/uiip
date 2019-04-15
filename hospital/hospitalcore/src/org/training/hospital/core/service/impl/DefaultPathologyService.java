@@ -24,10 +24,10 @@ public class DefaultPathologyService implements PathologyService
 	 * @see org.training.hospital.core.service.PathologyService#getPatologyforPatient(org.training.hospital.core.model.PatientModel)
 	 */
 	@Override
-	public List<PathologyModel> getPatologyforPatient(final String codePatient)
+	public List<PathologyModel> getPatologyForPatient(final String codePatient)
 			throws UnknownIdentifierException
 	{
-		final List<PathologyModel> result = pathologyDao.findPatologybyPatient(codePatient);
+		final List<PathologyModel> result = pathologyDao.findPatologyByPatient(codePatient);
 		if (result.isEmpty())
 		{
 			throw new UnknownIdentifierException("Pathology not found!");

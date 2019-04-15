@@ -20,13 +20,13 @@ import org.training.hospital.core.model.PatientModel;
  * @author soprasteria
  *
  */
-public class DefaulPathologyDao extends DefaultGenericDao implements PathologyDao
+public class DefaultPathologyDao extends DefaultGenericDao implements PathologyDao
 {
 
 	/**
 	 * @param typecode
 	 */
-	public DefaulPathologyDao(final String typecode)
+	public DefaultPathologyDao(final String typecode)
 	{
 		super(typecode);
 		// XXX Auto-generated constructor stub
@@ -36,7 +36,7 @@ public class DefaulPathologyDao extends DefaultGenericDao implements PathologyDa
 	 * @see org.training.hospital.core.dao.PathologyDao#findPatologybyPatient(org.training.hospital.core.model.PatientModel)
 	 */
 	@Override
-	public List<PathologyModel> findPatologybyPatient(final String codePatient)
+	public List<PathologyModel> findPatologyByPatient(final String codePatient)
 	{
 		final String query = "SELECT { " + PathologyModel.PK + " } FROM {" + PathologyModel._TYPECODE
 				+ " AS P JOIN Patient2PathologyRelation AS P2p ON{P.pk} = {P2p.target} JOIN " + PatientModel._TYPECODE

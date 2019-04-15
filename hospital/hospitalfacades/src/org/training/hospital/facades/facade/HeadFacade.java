@@ -13,10 +13,10 @@ import org.training.hospital.facades.product.data.HeadData;
  */
 public interface HeadFacade
 {
-	public List<HeadData> getHeadbyHospital(String code);
+	public List<HeadData> getHeadForHospital(String code);
 
-	public List<HeadData> getHeadbyReparto(String code);
+	public List<HeadData> getHeadForReparto(String code);
 
-	public List<HeadData> getHeadforHospitalName(String code);
+	public List<HeadData> getHeadForHospitalName(String code);
 
 }

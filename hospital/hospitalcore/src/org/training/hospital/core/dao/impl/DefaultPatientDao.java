@@ -31,7 +31,7 @@ public class DefaultPatientDao extends DefaultGenericDao implements PatientDao
 	}
 
 	@Override
-	public List<PatientModel> findPatientbyDateEntry(final Date entry)
+	public List<PatientModel> findPatientByDateEntry(final Date entry)
 	{
 
 		final String query = "SELECT {" + PatientModel.PK + "} FROM {" + PatientModel._TYPECODE + " AS P }"
@@ -42,6 +42,27 @@ public class DefaultPatientDao extends DefaultGenericDao implements PatientDao
 		return result.getResult();
 	}
 
+	@Override
+	public List<PatientModel> findPatients() {
+	
+		final String queryString="SELECT {"+ PatientModel.PK + "} FROM {" + PatientModel._TYPECODE +"} ";
+		final FlexibleSearchQuery query= new FlexibleSearchQuery(queryString); 
+		final SearchResult <PatientModel> result= getFlexibleSearchService().search(query);
+				return result.getResult();
+	}
+
+	@Override
+	public PatientModel findPatientByUid(String uid) {
+		
+	final String queryString= "SELECT {"+ PatientModel.PK +"} FROM {"+ PatientModel._TYPECODE +" AS P } WHERE {P.uid}=?uid ";	
+	
+	final FlexibleSearchQuery query= new FlexibleSearchQuery(queryString);
+	query.addQueryParameter("uid", uid);
+	final SearchResult<PatientModel> result=getFlexibleSearchService().search(query);
+		return result.getResult().get(0);
+	}
+
+	
 
 
 

@@ -17,4 +17,7 @@ public interface PatientService
 {
 
 	List<PatientModel> getPatientForDateEntry(final Date entry);
+	List<PatientModel> getPatients();
+	PatientModel getPatientForUid(String uid); 
+	PatientModel releasePatient(String code);
 }

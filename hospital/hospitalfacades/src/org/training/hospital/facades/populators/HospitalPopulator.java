@@ -34,7 +34,7 @@ public class HospitalPopulator implements Populator<HospitalModel, HospitalData>
 		target.setName(source.getName());
 		target.setNumberRep(source.getNumberRep());
 		target.setCitta(source.getCitta());
-		//target.setReparti(repartoConverter.convertAll(source.getReparti()));
+		
 
 
 

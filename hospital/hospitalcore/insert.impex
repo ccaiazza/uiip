@@ -12,19 +12,24 @@ INSERT_UPDATE Head; uid[unique=true]; name; specialization;register; yearsExperi
 ; he5; Tarantino; Psychiatry; true; 6; rep6
 ; he6; Iannaccone; Neuro; true; 6; rep7
 
-INSERT_UPDATE Reparto;  code[unique=true]; name[lang = en]; head(uid); hospital(code);  doctors(uid); patients(uid);
-; rep1; Pediatrics;  he2; 010; d2; pa2
-; rep2; Surgery; he1; 020;  d1; pa1
-; rep3; Cardiology;  he4; 020; d4; pa2
-; rep4; Gynecology;  ; 010; ;pa3; pa3
-; rep5; Oculist;  he3; 040;  d3; pa1, pa2;
-; rep6; Psychiatry;  he5; 030;  d5; pa3, pa1;
-; rep7; Neuro;  he6; 030; he6 ; pa2;
+INSERT_UPDATE Reparto;  code[unique=true]; name[lang = en]; head(uid); hospital(code);  doctors(uid); rooms(code)
+; rep1; Pediatrics;  he2; 010; d2; r10
+; rep2; Surgery; he1; 020;  d1; r11;
+; rep3; Cardiology;he4; 010; d4; r12;
+; rep4; Gynecology;  ; 020; ;
+; rep5; Oculist;  he3; 040;  d3; 
+; rep6; Psychiatry;  he5; 030;  d5; 
+; rep7; Neuro;  he6; 030; he6 ; 
 
-INSERT_UPDATE Patient; uid[unique=true]; name ;dateEntry[dateformat='yyyy.MM.dd']; dateExit[dateformat='yyyy.MM.dd'];departaments(code);pathologies(name);  
-; pa1; Carlo; 2019.01.02; 2019.02.02;rep2; diabetes, 
-; pa2; Francesco;2019.02.20;2019.03.02; rep3; cataract, cancer
-; pa3; Andrea; 2019.02.27; ;rep4; abortion
+INSERT_UPDATE Patient; uid[unique=true]; name ;dateEntry[dateformat='yyyy/MM/dd']; dateExit[dateformat='yyyy/MM/dd'];departaments(code);pathologies(name); room(code);  
+; pa1; Carlo; 2019/01/02; 2019/02/02;rep1; diabetes;r10;
+; pa2; Francesco;2019/02/20;2019/03/02; rep1; cataract; r10;
+; pa3; Andrea; 2019/02/27; 2019/05/28;rep1; abortion; r10;
+; pa4; Pasquale; 2018/07/27; 2019/04/28;rep2;diabetes;r11;
+; pa5; Mario; 2019/04/12; 2019/05/30;rep2; diabetes; r11;
+; pa6; Rita; 2018/02/27; 2018/05/28;rep1; diabetes; r10;
+; pa7; Ivana; 2019/03/19; ;rep1; diabetes; r10;
+
 
 
 
@@ -32,7 +37,7 @@ INSERT_UPDATE Pathology; name[unique=true]; patients(uid);
 ; diabetes; pa1
 ; cataract; pa2
 ; abortion; pa3
-; cancer; pa2
+
 
 INSERT_UPDATE Doctor; uid[unique=true]; name; specialization;register;department(code);
 ; d1; DiNapoli; Surgery; true; rep2
@@ -40,3 +45,15 @@ INSERT_UPDATE Doctor; uid[unique=true]; name; specialization;register;department
 ; d3; Raggio; Oculist; true; rep5
 ; d4; Strumolo; Cardiology; true; rep3
 ; d5; Lombardi; Psychiatry; true; rep6
+
+INSERT Room; code[unique=true]; numberBeds; numberRoom; 
+;r10; 7; 1
+;r11; 2; 2
+;r12; 7; 3
+;r13; 7; 4
+
+INSERT_UPDATE Room; code[unique=true]; numberBeds; numberRoom; patients(uid)[mode append]; departament(code);
+;r10; 7; 1; pa1,pa7,pa3,pa6;rep1;
+;r11; 2; 2; pa2;rep2;
+;r12; 7; 3; pa4;rep3;
+;r13; 7; 4; rep4;

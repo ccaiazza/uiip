@@ -23,7 +23,7 @@ public class DefaultHospitalService implements HospitalService
 
 	private HospitalDao hospitalDao;
 	@Override
-	public List<HospitalModel> getHospitalInfoforCode(final String code)
+	public List<HospitalModel> getHospitalInfoForCode(final String code)
 			throws UnknownIdentifierException
 		{
 		final List<HospitalModel> result = hospitalDao.findHospitalInfo(code);

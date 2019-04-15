@@ -19,16 +19,20 @@ import org.training.hospital.facades.product.data.PatientData;
  */
 public class PathologyPopulator implements Populator<PathologyModel, PathologyData>
 {
-
-
 	private Converter<PatientModel, PatientData> patientConverter;
+
 	@Override
 	public void populate(final PathologyModel source, final PathologyData target) throws ConversionException
 	{
 
 
 		target.setName(source.getName());
-		target.setPatients(patientConverter.convertAll(source.getPatients()));
+		if(source.getPatients()==null) {
+			target.setPatients(null);
+		}
+		else {
+			target.setPatients(patientConverter.convertAll(source.getPatients()));
+		}
 	}
 
 	/**
