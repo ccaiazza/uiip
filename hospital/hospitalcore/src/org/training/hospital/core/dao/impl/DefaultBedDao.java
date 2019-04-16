@@ -1,10 +1,6 @@
 package org.training.hospital.core.dao.impl;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
 
 import org.training.hospital.core.dao.BedDao;
 import org.training.hospital.core.model.BedModel;
@@ -41,6 +37,17 @@ public class DefaultBedDao extends DefaultGenericDao implements BedDao {
 
 
 	}
+
+	@Override
+	public BedModel findBedByCode(String code) {
+		final String queryString = "SELECT { "+ BedModel.PK+ " } FROM{ Bed AS B } WHERE {B.code}=?code ";
+		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
+		query.addQueryParameter("code", code);
+		final BedModel result = getFlexibleSearchService().searchUnique(query);
+		return result;
+	}
+	
+	
 
 
 

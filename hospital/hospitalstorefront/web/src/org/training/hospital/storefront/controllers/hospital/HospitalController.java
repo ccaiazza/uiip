@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.training.hospital.core.model.PatientModel;
 import org.training.hospital.core.service.PatientService;
 import org.training.hospital.core.service.RoomService;
 import org.training.hospital.facades.facade.BedFacade;
@@ -78,7 +79,7 @@ public class HospitalController
 		{
 			final List<RepartoData> reparti = repartoFacade.getRepartoForCode(code);
 			model.addAttribute("code", code);
-			model.addAttribute("repartu", reparti);
+			model.addAttribute("reparto", reparti);
 			return ControllerConstants.Views.Pages.Hospital.RepartiHospital;
 		}
 		else
@@ -145,13 +146,13 @@ public class HospitalController
 	final String code,final Model model) throws UnsupportedEncodingException
 	{
 		final PatientData patient = patientFacade.getPatientForUid(code);
-		//		final PatientModel pmodel = patientService.releasePatient(code);
+		final PatientModel pmodel = patientService.releasePatient(code);
 		final List<PatientData> patientlist = patientFacade.getPatients();
 
 		model.addAttribute("code", code);
 		model.addAttribute("patient", patient);
 		model.addAttribute("patientlist", patientlist);
-		//		model.addAttribute("pmodel", pmodel);
+		model.addAttribute("pmodel", pmodel);
 		return ControllerConstants.Views.Pages.Hospital.PatientList;
 
 	}

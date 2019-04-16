@@ -21,14 +21,14 @@ INSERT_UPDATE Reparto;  code[unique=true]; name[lang = en]; head(uid); hospital(
 ; rep6; Psychiatry;  he5; 030;  d5; 
 ; rep7; Neuro;  he6; 030; he6 ; 
 
-INSERT_UPDATE Patient; uid[unique=true]; name ;dateEntry[dateformat='yyyy/MM/dd']; dateExit[dateformat='yyyy/MM/dd'];departaments(code);pathologies(name); room(code);  
-; pa1; Carlo; 2019/01/02; 2019/02/02;rep1; diabetes;r10;
-; pa2; Francesco;2019/02/20;2019/03/02; rep1; cataract; r10;
-; pa3; Andrea; 2019/02/27; 2019/05/28;rep1; abortion; r10;
-; pa4; Pasquale; 2018/07/27; 2019/04/28;rep2;diabetes;r11;
-; pa5; Mario; 2019/04/12; 2019/05/30;rep2; diabetes; r11;
-; pa6; Rita; 2018/02/27; 2018/05/28;rep1; diabetes; r10;
-; pa7; Ivana; 2019/03/19; ;rep1; diabetes; r10;
+INSERT_UPDATE Patient; uid[unique=true]; name ;dateEntry[dateformat='yyyy/MM/dd']; dateExit[dateformat='yyyy/MM/dd'];pathologies(name); room(code); bed(code);  
+; pa1; Carlo; 2019/01/02; 2019/02/02; diabetes;r10;b1;
+; pa2; Francesco;2019/02/20;2019/03/02; cataract; r10;b2;
+; pa3; Andrea; 2019/02/27; 2019/05/28; abortion; r10;
+; pa4; Pasquale; 2018/07/27; 2019/04/28; diabetes;r11;
+; pa5; Mario; 2019/04/12; 2019/05/30; diabetes; r11;
+; pa6; Rita; 2018/02/27; 2018/05/28; diabetes; r10;
+; pa7; Ivana; 2019/03/19;2019/04/25 ; diabetes; r10;b3;
 
 
 
@@ -52,8 +52,18 @@ INSERT Room; code[unique=true]; numberBeds; numberRoom;
 ;r12; 7; 3
 ;r13; 7; 4
 
-INSERT_UPDATE Room; code[unique=true]; numberBeds; numberRoom; patients(uid)[mode append]; departament(code);
-;r10; 7; 1; pa1,pa7,pa3,pa6;rep1;
-;r11; 2; 2; pa2;rep2;
-;r12; 7; 3; pa4;rep3;
+INSERT_UPDATE Room; code[unique=true]; numberBeds; numberRoom; departament(code);
+;r10; 7; 1; rep1;
+;r11; 2; 2; rep2;
+;r12; 7; 3; rep3;
 ;r13; 7; 4; rep4;
+
+
+INSERT_UPDATE Bed; code[unique=true]; number; room(code);
+b10; 1; r10;
+b12; 2; r10;
+b13; 3; r10;
+b14; 4; r11;
+
+
+

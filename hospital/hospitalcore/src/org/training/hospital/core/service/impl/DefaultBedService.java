@@ -10,11 +10,14 @@ import org.training.hospital.core.model.BedModel;
 import org.training.hospital.core.service.BedService;
 
 import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
+import de.hybris.platform.servicelayer.model.ModelService;
 
 
 public class DefaultBedService implements BedService {
 
 	private BedDao bedDao;
+	private ModelService modelService;
+	
 	@Override
 	public Integer getNumberBedsForCode(String code) {
 		final Integer numberBedsFree = bedDao.findBedsFreeByRoom(code);
@@ -36,6 +39,19 @@ public class DefaultBedService implements BedService {
 		return beds;
 		
 	}
+	@Override
+	public void occupyBed(String code) {
+		final BedModel bed = bedDao.findBedByCode(code);
+		bed.setFree(false);
+		modelService.save(bed);
+		
+	}
+	@Override
+	public void realeseBed(String code) {
+		final BedModel bed = bedDao.findBedByCode(code);
+		bed.setFree(true);
+		modelService.save(bed);
+	}
 	/**
 	 * @return the bedDao
 	 */
@@ -49,6 +65,23 @@ public class DefaultBedService implements BedService {
 	public void setBedDao(BedDao bedDao) {
 		this.bedDao = bedDao;
 	}
+
+	/**
+	 * @return the modelService
+	 */
+	public ModelService getModelService() {
+		return modelService;
+	}
+
+	/**
+	 * @param modelService the modelService to set
+	 */
+	@Required
+	public void setModelService(ModelService modelService) {
+		this.modelService = modelService;
+	}
+	
+	
 	
 	
 	
