@@ -846,6 +846,7 @@
 	<bean id="patientInterceptor"
 		class="org.training.hospital.core.interceptor.PatientInterceptor">	
 		<property name="bedService" ref="bedService" />
+		<property name="modelService" ref="modelService" />
 	</bean>
 
 	<bean id="patientMapping"

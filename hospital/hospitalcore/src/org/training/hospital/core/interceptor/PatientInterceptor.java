@@ -3,16 +3,20 @@ package org.training.hospital.core.interceptor;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Required;
+import org.training.hospital.core.model.BedModel;
 import org.training.hospital.core.model.PatientModel;
 import org.training.hospital.core.service.BedService;
 
 import de.hybris.platform.servicelayer.interceptor.InterceptorContext;
 import de.hybris.platform.servicelayer.interceptor.InterceptorException;
 import de.hybris.platform.servicelayer.interceptor.PrepareInterceptor;
+import de.hybris.platform.servicelayer.model.ModelService;
 
 public class PatientInterceptor implements PrepareInterceptor<PatientModel> {
 
 	private BedService bedService;
+	private ModelService modelService;
+	
 
 	@Override
 	public void onPrepare(PatientModel patientModel, InterceptorContext ctx) throws InterceptorException {
@@ -22,37 +26,22 @@ public class PatientInterceptor implements PrepareInterceptor<PatientModel> {
 
 		if(patientModel!= null) {
 			if(patientModel.getDateExit() != null) {
-				if(  (patientModel.getDateExit().before(today) || patientModel.getDateExit().equals(today))) {
-					
+				if(patientModel.getDateExit().before(today) || patientModel.getDateExit().equals(today)) {
+					BedModel bed = patientModel.getBed();
+					bed.setIsFree(true);
+					modelService.save(bed);
 					patientModel.setBed(null);
-			
-					}
-				
-				else {
-					if(patientModel.getBed().getFree()) {
-					bedService.occupyBed(patientModel.getBed().getCode());
-				}
-					else {
-						patientModel.setBed(null);
 					}
 				}
-				if(patientModel.getDateExit().before(patientModel.getDateEntry())) {
-					patientModel.setDateExit(null);
-				}
-			}
 			else {
 				
-				if(patientModel.getBed().getFree()) {
-					bedService.occupyBed(patientModel.getBed().getCode());
-				}
-					else {
-						patientModel.setBed(null);
-					}
-			}
-
-			
+				BedModel bed = patientModel.getBed();
+				bed.setIsFree(false);
+				modelService.save(bed);
+				}	
 		}
-	}
+		}	
+	
 	public BedService getBedService() {
 		return bedService;
 	}
@@ -60,5 +49,22 @@ public class PatientInterceptor implements PrepareInterceptor<PatientModel> {
 	public void setBedService(BedService bedService) {
 		this.bedService = bedService;
 	}
+
+	/**
+	 * @return the modelService
+	 */
+	public ModelService getModelService() {
+		return modelService;
+	}
+
+	/**
+	 * @param modelService the modelService to set
+	 */
+	@Required
+	public void setModelService(ModelService modelService) {
+		this.modelService = modelService;
+	}
+	
+	
 
 }

@@ -30,7 +30,7 @@ public class DefaultBedService implements BedService {
 	}
 	
 	@Override
-	public List<BedModel> getBedsforRoom(String code) {
+	public List<BedModel> getBedsForRoom(String code) {
 		final List<BedModel> beds = bedDao.findBedsByRoom(code);
 		if (beds == null)
 		{
@@ -39,22 +39,10 @@ public class DefaultBedService implements BedService {
 		return beds;
 		
 	}
-	@Override
-	public void occupyBed(String code) {
-		final BedModel bed = bedDao.findBedByCode(code);
-		bed.setFree(false);
-		modelService.save(bed);
-		
-	}
-	@Override
-	public void realeseBed(String code) {
-		final BedModel bed = bedDao.findBedByCode(code);
-		bed.setFree(true);
-		modelService.save(bed);
-	}
-	/**
-	 * @return the bedDao
-	 */
+	
+	
+	
+	
 	public BedDao getBedDao() {
 		return bedDao;
 	}
@@ -80,6 +68,7 @@ public class DefaultBedService implements BedService {
 	public void setModelService(ModelService modelService) {
 		this.modelService = modelService;
 	}
+
 	
 	
 	

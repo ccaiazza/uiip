@@ -3,6 +3,7 @@
  */
 package org.training.hospital.core.service.impl;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -37,10 +38,7 @@ public class DefaultPatientService implements PatientService
 		{
 			throw new UnknownIdentifierException("Patient not found!");
 		}
-		//		else if (result.size() > 1)
-		//		{
-		//			throw new AmbiguousIdentifierException("Patient is not unique, patient found!");
-		//		}
+		
 		return result;
 	}
 
@@ -68,7 +66,13 @@ public class DefaultPatientService implements PatientService
 	public PatientModel releasePatient(String code) {
 
 
-		Date today = new Date();
+		
+		final Calendar cal= Calendar.getInstance();
+		cal.set(Calendar.HOUR, 0);
+		cal.set(Calendar.MINUTE, 0);
+		cal.set(Calendar.SECOND, 0);
+		cal.set(Calendar.MILLISECOND, 0);
+		Date today = cal.getTime();
 
 
 		final PatientModel patient= patientDao.findPatientByUid(code);
@@ -77,12 +81,9 @@ public class DefaultPatientService implements PatientService
 		}
 		else {
 			patient.setDateExit(today);
-			if(patient.getBed()!=null) {
-				final String codeBed = patient.getBed().getCode();
-				bedService.realeseBed(codeBed);
-				modelService.save(patient);
+			modelService.save(patient);
 			}
-		}
+		
 		return patient;
 	}
 

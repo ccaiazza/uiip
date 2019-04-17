@@ -307,7 +307,7 @@
 					<attribute qualifier="number" type="java.lang.Integer">
 						<persistence type="property" />
 					</attribute>
-					<attribute qualifier="free" type="java.lang.Boolean">
+					<attribute qualifier="isFree" type="java.lang.Boolean">
 					<defaultvalue>java.lang.Boolean.TRUE</defaultvalue>
 						<persistence type="property" />
 					</attribute>
