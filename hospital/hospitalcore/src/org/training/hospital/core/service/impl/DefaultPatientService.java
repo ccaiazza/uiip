@@ -3,14 +3,12 @@
  */
 package org.training.hospital.core.service.impl;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Required;
 import org.training.hospital.core.dao.PatientDao;
 import org.training.hospital.core.model.PatientModel;
-import org.training.hospital.core.service.BedService;
 import org.training.hospital.core.service.PatientService;
 
 import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
@@ -24,7 +22,7 @@ public class DefaultPatientService implements PatientService
 {
 	private PatientDao patientDao;
 	private ModelService modelService;
-	private BedService bedService;
+	
 
 	/* (non-Javadoc)
 	 * @see org.training.hospital.core.service.PatientService#getPatientForDateEntry()
@@ -55,27 +53,31 @@ public class DefaultPatientService implements PatientService
 
 	@Override
 	public PatientModel getPatientForUid(String uid) {
+		if(uid==null) {
+			throw new IllegalArgumentException("uid is null");
+		}
+		else {
 		final PatientModel result=patientDao.findPatientByUid(uid);
 		if(result==null) {
 			throw new UnknownIdentifierException("Patient not found!");
 		}
 		return result;
 	}
-
+	}
 
 	public PatientModel releasePatient(String code) {
 
 
 		
-		final Calendar cal= Calendar.getInstance();
-		cal.set(Calendar.HOUR, 0);
-		cal.set(Calendar.MINUTE, 0);
-		cal.set(Calendar.SECOND, 0);
-		cal.set(Calendar.MILLISECOND, 0);
-		Date today = cal.getTime();
+		
+		Date today = new Date();
 
 
 		final PatientModel patient= patientDao.findPatientByUid(code);
+		if(code==null) {
+			throw new IllegalArgumentException("code is null");
+		}
+		else {
 		if(patient==null) {
 			throw new UnknownIdentifierException("Patient not found!");
 		}
@@ -86,7 +88,7 @@ public class DefaultPatientService implements PatientService
 		
 		return patient;
 	}
-
+	}
 
 
 
@@ -116,20 +118,6 @@ public class DefaultPatientService implements PatientService
 		this.modelService = modelService;
 	}
 
-	/**
-	 * @return the bedService
-	 */
-	public BedService getBedService() {
-		return bedService;
-	}
-
-	/**
-	 * @param bedService the bedService to set
-	 */
-	@Required
-	public void setBedService(BedService bedService) {
-		this.bedService = bedService;
-	}
 
 
 

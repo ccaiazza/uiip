@@ -1,9 +1,13 @@
 package org.training.hospital.core.dao.impl;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.training.hospital.core.dao.BedDao;
 import org.training.hospital.core.model.BedModel;
+
+import com.google.common.collect.ImmutableMap;
 
 import de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
@@ -19,11 +23,12 @@ public class DefaultBedDao extends DefaultGenericDao implements BedDao {
 	@Override
 	public Integer findBedsFreeByRoom(String code) {
 
-		final String queryString = "SELECT { "+BedModel.PK+" } FROM {Bed AS B JOIN Room AS R ON{R.pk} = {B.room}} WHERE{R.code}=?code AND {B.pk} NOT IN ({{ SELECT {B.pk} FROM{Bed AS B JOIN Room AS R ON{R.pk} = {B.room} JOIN Patient AS P ON{P.bed}={B.pk}} WHERE {R.code}=?code  }})";
-		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString);
-		query.addQueryParameter("code", code);
-		final SearchResult<Integer> result = getFlexibleSearchService().search(query);
-		return result.getResult().size();
+		final String queryString = "SELECT COUNT({ "+BedModel.PK+" }) FROM {Bed AS B JOIN Room AS R ON{R.pk} = {B.room}} WHERE{R.code}=?code AND {B.pk} NOT IN ({{ SELECT {B.pk} FROM{Bed AS B JOIN Room AS R ON{R.pk} = {B.room} JOIN Patient AS P ON{P.bed}={B.pk}} WHERE {R.code}=?code  }})";
+		Map<String, Object> queryParams = ImmutableMap.of("code", code);
+		final FlexibleSearchQuery query = new FlexibleSearchQuery(queryString,queryParams );
+        query.setResultClassList(Collections.singletonList(Integer.class));
+		final Integer result = getFlexibleSearchService().searchUnique(query);
+		return result;
 	}
 
 

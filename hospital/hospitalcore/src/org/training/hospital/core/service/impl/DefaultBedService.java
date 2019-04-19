@@ -20,7 +20,12 @@ public class DefaultBedService implements BedService {
 	
 	@Override
 	public Integer getNumberBedsForCode(String code) {
+		if(code==null) {
+			throw new IllegalArgumentException("code is null!");
+		}
+		else {
 		final Integer numberBedsFree = bedDao.findBedsFreeByRoom(code);
+		
 		if (numberBedsFree == null)
 		{
 			throw new UnknownIdentifierException("Bed not found!");
@@ -28,16 +33,20 @@ public class DefaultBedService implements BedService {
 		return numberBedsFree;
 		
 	}
-	
+}
 	@Override
 	public List<BedModel> getBedsForRoom(String code) {
-		final List<BedModel> beds = bedDao.findBedsByRoom(code);
-		if (beds == null)
-		{
-			throw new UnknownIdentifierException("Bed not found!");
+		if(code==null) {
+			throw new IllegalArgumentException("code is null!");
 		}
-		return beds;
-		
+		else {
+			final List<BedModel> beds = bedDao.findBedsByRoom(code);
+			if (beds == null)
+			{
+				throw new UnknownIdentifierException("Bed not found!");
+			}
+			return beds;
+		}
 	}
 	
 	

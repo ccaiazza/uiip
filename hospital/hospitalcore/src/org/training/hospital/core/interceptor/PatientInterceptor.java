@@ -5,7 +5,6 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Required;
 import org.training.hospital.core.model.BedModel;
 import org.training.hospital.core.model.PatientModel;
-import org.training.hospital.core.service.BedService;
 
 import de.hybris.platform.servicelayer.interceptor.InterceptorContext;
 import de.hybris.platform.servicelayer.interceptor.InterceptorException;
@@ -14,7 +13,7 @@ import de.hybris.platform.servicelayer.model.ModelService;
 
 public class PatientInterceptor implements PrepareInterceptor<PatientModel> {
 
-	private BedService bedService;
+	
 	private ModelService modelService;
 	
 
@@ -33,26 +32,11 @@ public class PatientInterceptor implements PrepareInterceptor<PatientModel> {
 					patientModel.setBed(null);
 					}
 				}
-			else {
-				
-				BedModel bed = patientModel.getBed();
-				bed.setIsFree(false);
-				modelService.save(bed);
-				}	
 		}
-		}	
+		
+	}	
 	
-	public BedService getBedService() {
-		return bedService;
-	}
-	@Required
-	public void setBedService(BedService bedService) {
-		this.bedService = bedService;
-	}
-
-	/**
-	 * @return the modelService
-	 */
+	
 	public ModelService getModelService() {
 		return modelService;
 	}
