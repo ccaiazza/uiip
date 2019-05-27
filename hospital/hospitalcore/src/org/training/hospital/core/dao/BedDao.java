@@ -7,5 +7,6 @@ import org.training.hospital.core.model.BedModel;
 public interface BedDao {
 	public Integer findBedsFreeByRoom(String code);
 	public List<BedModel> findBedsByRoom(String code);
+	public BedModel findBedByCode(String code);
 
 }

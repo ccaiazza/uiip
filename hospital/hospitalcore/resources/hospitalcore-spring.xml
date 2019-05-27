@@ -779,7 +779,7 @@
 	<bean id="defaultPatientService"
 		class="org.training.hospital.core.service.impl.DefaultPatientService">
 		<property name="patientDao" ref="defaultPatientDao" />
-		<property name="modelService" ref="modelService" />
+		<property name="modelService" ref="modelService" />	
 	</bean>
 
 	<alias name="defaultPathologyDao" alias="pathologyDao" />
@@ -838,10 +838,12 @@
 	<bean id="defaultBedService"
 		class="org.training.hospital.core.service.impl.DefaultBedService">
 		<property name="bedDao" ref="defaultBedDao" />
+		<property name="modelService" ref="modelService" />
 	</bean>
 
 	<bean id="patientInterceptor"
 		class="org.training.hospital.core.interceptor.PatientInterceptor">	
+		<property name="modelService" ref="modelService" />
 	</bean>
 
 	<bean id="patientMapping"

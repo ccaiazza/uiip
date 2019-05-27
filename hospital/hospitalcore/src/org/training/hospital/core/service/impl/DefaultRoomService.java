@@ -1,14 +1,7 @@
 package org.training.hospital.core.service.impl;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
-
 import org.springframework.beans.factory.annotation.Required;
 import org.training.hospital.core.dao.RoomDao;
-import org.training.hospital.core.model.PatientModel;
 import org.training.hospital.core.model.RoomModel;
 import org.training.hospital.core.service.RoomService;
 
@@ -20,6 +13,10 @@ public class DefaultRoomService implements RoomService {
 	
 	@Override
 	public RoomModel getRoomForCode(String code) {
+		if(code==null) {
+			throw new IllegalArgumentException("code is null");
+		}
+		else {
 		final RoomModel roomModel = roomDao.findRoomByCode(code);
 		if (roomModel == null)
 		{
@@ -27,6 +24,7 @@ public class DefaultRoomService implements RoomService {
 		}
 		return roomModel;
 	}
+}
 	/**
 	 * @return the roomDao
 	 */

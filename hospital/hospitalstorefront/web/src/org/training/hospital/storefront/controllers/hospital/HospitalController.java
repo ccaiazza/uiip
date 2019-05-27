@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.training.hospital.core.model.PatientModel;
 import org.training.hospital.core.service.PatientService;
 import org.training.hospital.core.service.RoomService;
 import org.training.hospital.facades.facade.BedFacade;
@@ -67,8 +68,10 @@ public class HospitalController
 
 	@Resource(name = "roomService")
 	private RoomService roomService;
+	
 
-	@RequestMapping(value = "/repartu/{code}") //nome file jsp
+
+	@RequestMapping(value = "/reparto/{code}") //nome file jsp
 	public String showRepartiDetails(@PathVariable("code") String code, final Model model)
 			throws UnsupportedEncodingException
 	{
@@ -78,7 +81,7 @@ public class HospitalController
 		{
 			final List<RepartoData> reparti = repartoFacade.getRepartoForCode(code);
 			model.addAttribute("code", code);
-			model.addAttribute("repartu", reparti);
+			model.addAttribute("reparto", reparti);
 			return ControllerConstants.Views.Pages.Hospital.RepartiHospital;
 		}
 		else
@@ -87,17 +90,23 @@ public class HospitalController
 		}
 	}
 
-	@RequestMapping(value = "/nReparti") //nome file jsp
-	public String showNomeRepartiDetails(final Model model) throws UnsupportedEncodingException
+	@RequestMapping(value = "/nReparti/{code}") //nome file jsp
+	public String showNomeRepartiDetails(@PathVariable("code") String code, final Model model) throws UnsupportedEncodingException
 	{
 
-		final List<HospitalData> nReparti = hospitalFacade.getHospitals();
-
-		model.addAttribute("nReparti", nReparti);
+		code = URLDecoder.decode(code, "UTF-8");
+		final List<HospitalData> hospitals = hospitalFacade.getHospitals();
+		final List<HospitalData> hospitalData = hospitalFacade.getHospitalInfo(code);
+		final List<String> number = hospitalFacade.getNumberDepartamentForCodeHospital(code);
+		
+		model.addAttribute("code", code);
+		model.addAttribute("hospitalData", hospitalData);
+		model.addAttribute("number", number);
+		model.addAttribute("hospitals", hospitals);
 		return ControllerConstants.Views.Pages.Hospital.Nreparti;
 	}
 
-	@RequestMapping(value = "/patients/{entry}")
+	@RequestMapping(value = "/patientList/{entry}")
 	public String showPatientsDetails(@PathVariable("entry")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	final Date entry, final Model model) throws UnsupportedEncodingException
@@ -140,32 +149,23 @@ public class HospitalController
 
 	}
 
-	@RequestMapping(value = "/patientList/{code}" )
+	@RequestMapping(value = "/patient/{code}" )
 	public String showPatientsDetails(@PathVariable("code")
 	final String code,final Model model) throws UnsupportedEncodingException
 	{
 		final PatientData patient = patientFacade.getPatientForUid(code);
-		//		final PatientModel pmodel = patientService.releasePatient(code);
+		final PatientModel pmodel = patientService.releasePatient(code);
 		final List<PatientData> patientlist = patientFacade.getPatients();
 
 		model.addAttribute("code", code);
 		model.addAttribute("patient", patient);
 		model.addAttribute("patientlist", patientlist);
-		//		model.addAttribute("pmodel", pmodel);
+		model.addAttribute("pmodel", pmodel);
 		return ControllerConstants.Views.Pages.Hospital.PatientList;
 
 	}
 
-
-	@RequestMapping(value = "/Room/{codeRoom}")
-	public String showRoomBedFree(@PathVariable("codeRoom")
-	final String codeRoom, final Model model) throws UnsupportedEncodingException
-	{
-		model.addAttribute("codeRoom", codeRoom);
-		return ControllerConstants.Views.Pages.Hospital.FreeBeds;
-
-
-	}
-
+	
+	
 
 }
