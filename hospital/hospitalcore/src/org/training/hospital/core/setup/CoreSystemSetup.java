@@ -10,6 +10,11 @@
  */
 package org.training.hospital.core.setup;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.training.hospital.core.constants.HospitalCoreConstants;
+
 import de.hybris.platform.commerceservices.setup.AbstractSystemSetup;
 import de.hybris.platform.core.Registry;
 import de.hybris.platform.core.initialization.SystemSetup;
@@ -18,10 +23,6 @@ import de.hybris.platform.core.initialization.SystemSetup.Type;
 import de.hybris.platform.core.initialization.SystemSetupContext;
 import de.hybris.platform.core.initialization.SystemSetupParameter;
 import de.hybris.platform.core.initialization.SystemSetupParameterMethod;
-import org.training.hospital.core.constants.HospitalCoreConstants;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -31,6 +32,8 @@ import java.util.List;
 public class CoreSystemSetup extends AbstractSystemSetup
 {
 	public static final String IMPORT_ACCESS_RIGHTS = "accessRights";
+	public static final String CONTENTCATALOG = "pharmacyContentCatalog";
+	public static final String PRODUCTCATALOG = "pharmacyProductCatalog";
 
 	/**
 	 * This method will be called by system creator during initialization and system update. Be sure that this method can
@@ -49,6 +52,9 @@ public class CoreSystemSetup extends AbstractSystemSetup
 		importImpexFile(context, "/hospitalcore/import/common/themes.impex");
 		importImpexFile(context, "/hospitalcore/import/common/user-groups.impex");
 		importImpexFile(context, "/hospitalcore/import/common/cronjobs.impex");
+		
+		createContentCatalogSyncJob(context,CONTENTCATALOG );
+		createProductCatalogSyncJob(context, PRODUCTCATALOG);
 	}
 
 	/**
