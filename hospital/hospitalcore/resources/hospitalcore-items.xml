@@ -103,8 +103,38 @@
 					search="true" />
 			</targetElement>
 		</relation>
+
+		<relation code="Doctor2PrescriptionRelation"
+			localized="false" generate="true" autocreate="true">
+			<sourceElement type="Doctor" qualifier="doctor"
+				cardinality="one">
+				<modifiers read="true" write="true" search="true"
+					unique="true" />
+			</sourceElement>
+			<targetElement type="Prescription"
+				qualifier="prescriptions" collectiontype="list" cardinality="many">
+				<modifiers read="true" write="true" optional="true"
+					search="true" />
+			</targetElement>
+		</relation>
+
+		<relation code="Prescription2ProductRelation"
+			localized="false" generate="true" autocreate="true">
+			<sourceElement type="Prescription"
+				qualifier="prescription" cardinality="one">
+				<modifiers read="true" write="true" search="true"
+					unique="true" />
+			</sourceElement>
+			<targetElement type="MedicalProduct"
+				qualifier="products" collectiontype="list" cardinality="many">
+				<modifiers read="true" write="true" optional="true"
+					search="true" />
+			</targetElement>
+		</relation>
 	</relations>
 	<itemtypes>
+	
+	
 
 		<!-- Add your item definitions here -->
 
@@ -166,7 +196,7 @@
 				</attributes>
 			</itemtype>
 		</typegroup>
-
+		
 		<typegroup name="Electronics">
 			<itemtype code="ElectronicsColorVariantProduct"
 				extends="VariantProduct" autocreate="true" generate="true"
@@ -308,7 +338,7 @@
 						<persistence type="property" />
 					</attribute>
 					<attribute qualifier="isFree" type="java.lang.Boolean">
-					<defaultvalue>java.lang.Boolean.TRUE</defaultvalue>
+						<defaultvalue>java.lang.Boolean.TRUE</defaultvalue>
 						<persistence type="property" />
 					</attribute>
 				</attributes>
@@ -349,5 +379,99 @@
 				</attributes>
 			</itemtype>
 		</typegroup>
+
+		<typegroup name="Pharmacy">
+		<itemtype code="Product" autocreate="false" generate="false">
+			<description>Extending the Product type from core with additional attributes.</description>
+			<attributes>
+				<attribute qualifier="pregnancy" type="java.lang.Boolean">
+					<persistence type="property"/>
+					<description>Attribute indicates the possibility of using the product during pregnancy
+                </description>
+				</attribute>
+				<attribute qualifier="age" type="java.lang.Integer">
+					<persistence type="property"/>
+					<description>Attribute indicates age first use
+                </description>
+				</attribute>
+				<attribute qualifier="symptom" type="java.lang.String">
+					<persistence type="property"/>
+					<description>Attribute indicates symptom </description>
+				</attribute>
+				<attribute qualifier="use" type="java.lang.String">
+					<persistence type="property"/>
+					<description>Attribute indicates type of use </description>
+				</attribute>
+				<attribute qualifier="action" type="java.lang.String">
+					<persistence type="property"/>
+					<description>Attribute indicates action of product</description>
+				</attribute>
+			</attributes>
+		</itemtype>
+		
+			<itemtype code="Prescription" autocreate="true"
+				generate="true">
+				<deployment table="Prescription" typecode="20013" />
+				<attributes>
+					<attribute qualifier="code" type="java.lang.String">
+						<persistence type="property" />
+						<modifiers unique="true" optional="false" />
+					</attribute>
+					<attribute qualifier="asl" type="java.lang.String">
+						<persistence type="property" />
+						<modifiers optional="false" />
+					</attribute>
+					<attribute qualifier="district" type="java.lang.String">
+						<persistence type="property" />
+						<modifiers optional="false" />
+					</attribute>
+					<attribute qualifier="date" type="java.util.Date">
+						<persistence type="property" />
+						<modifiers optional="false" />
+					</attribute>
+					<attribute qualifier="exemption" type="java.lang.Boolean">
+						<persistence type="property" />
+						<modifiers optional="false" />
+					</attribute>
+					<attribute qualifier="patient" type="Patient">
+						<persistence type="property" />
+						<modifiers optional="false" />
+					</attribute>
+				</attributes>
+			</itemtype>
+		
+		<itemtype code="ParapharmaceuticalProduct" autocreate="true"
+			generate="true" extends="Product">
+			<deployment table="ParapharmaceuticalProduct" typecode="20011" />
+		</itemtype>
+
+		<itemtype code="MedicalProduct" autocreate="true"
+			generate="true" extends="Product">
+			<deployment table="MedicalProduct" typecode="20012" />
+		</itemtype>
+		
+		<itemtype code="ParapharmaceuticalColorVariantProduct"
+				extends="VariantProduct" autocreate="true" generate="true">
+				<description>Parapharmaceutical color variant type that contains additional attribute describing variant color 
+				</description>
+				<attributes>
+					<attribute qualifier="color" type="SwatchColorSet">
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+			
+		<itemtype code="ParapharmaceuticalSizeVariantProduct"
+				extends="ParapharmaceuticalColorVariantProduct" autocreate="true" generate="true">
+				<description>Pharafarmaceutical size variant type that contains additional attribute describing variant size. 
+				</description>
+				<attributes>
+					<attribute qualifier="size" type="localized:java.lang.String">
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+		</itemtype>	
+	</typegroup>
 	</itemtypes>
 </items>
