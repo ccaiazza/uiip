@@ -130,7 +130,7 @@
 					search="true" />
 			</targetElement>
 		</relation>
-		
+
 	</relations>
 	<itemtypes>
 
@@ -336,7 +336,7 @@
 						<persistence type="property" />
 					</attribute>
 					<attribute qualifier="isFree" type="java.lang.Boolean">
-					<defaultvalue>java.lang.Boolean.TRUE</defaultvalue>
+						<defaultvalue>java.lang.Boolean.TRUE</defaultvalue>
 						<persistence type="property" />
 					</attribute>
 				</attributes>
@@ -378,8 +378,7 @@
 			</itemtype>
 		</typegroup>
 		<typegroup name="Pharmacy">
-
-
+		
 			<itemtype code="Prescription" autocreate="true"
 				generate="true">
 				<deployment table="Prescription" typecode="20013" />
@@ -394,7 +393,7 @@
 					</attribute>
 					<attribute qualifier="district" type="java.lang.String">
 						<persistence type="property" />
-						<modifiers unique="true" optional="false" />
+						<modifiers optional="false" />
 					</attribute>
 					<attribute qualifier="date" type="java.util.Date">
 						<persistence type="property" />
@@ -411,7 +410,10 @@
 				</attributes>
 			</itemtype>
 
-			
+
+
+
+
 
 		</typegroup>
 	</itemtypes>
