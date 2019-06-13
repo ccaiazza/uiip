@@ -103,8 +103,12 @@
 					search="true" />
 			</targetElement>
 		</relation>
+		
+		
 	</relations>
 	<itemtypes>
+	
+	
 
 		<!-- Add your item definitions here -->
 
@@ -355,33 +359,33 @@
 			<description>Extending the Product type from core with additional attributes.</description>
 			<attributes>
 				<attribute qualifier="pregnancy" type="java.lang.Boolean">
-					<persistence type="property"></persistence>
+					<persistence type="property"/>
 					<description>Attribute indicates the possibility of using the product during pregnancy
                 </description>
 				</attribute>
 				<attribute qualifier="age" type="java.lang.Integer">
-					<persistence type="property"></persistence>
+					<persistence type="property"/>
 					<description>Attribute indicates age first use
                 </description>
 				</attribute>
 				<attribute qualifier="symptom" type="java.lang.String">
-					<persistence type="property"></persistence>
+					<persistence type="property"/>
 					<description>Attribute indicates symptom </description>
 				</attribute>
 				<attribute qualifier="use" type="java.lang.String">
-					<persistence type="property"></persistence>
+					<persistence type="property"/>
 					<description>Attribute indicates type of use </description>
 				</attribute>
 				<attribute qualifier="action" type="java.lang.String">
-					<persistence type="property"></persistence>
+					<persistence type="property"/>
 					<description>Attribute indicates action of product</description>
 				</attribute>
 			</attributes>
 		</itemtype>
 
-		<itemtype code="Parapharmaceutical" autocreate="true"
+		<itemtype code="ParapharmaceuticalProduct" autocreate="true"
 			generate="true" extends="Product">
-			<deployment table="Parapharmaceutical" typecode="20011" />
+			<deployment table="ParapharmaceuticalProduct" typecode="20011" />
 		</itemtype>
 
 		<itemtype code="MedicalProduct" autocreate="true"
@@ -395,7 +399,6 @@
 				</description>
 				<attributes>
 					<attribute qualifier="color" type="SwatchColorSet">
-						<modifiers />
 						<persistence type="property" />
 					</attribute>
 				</attributes>
@@ -406,7 +409,7 @@
 				<description>Pharafarmaceutical size variant type that contains additional attribute describing variant size. 
 				</description>
 				<attributes>
-					<attribute qualifier="size" type="localized:java.lang.Double">
+					<attribute qualifier="size" type="localized:java.lang.String">
 						<modifiers />
 						<persistence type="property" />
 					</attribute>
