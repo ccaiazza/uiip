@@ -22,6 +22,9 @@
 		resource="classpath:/hospitalcore/integration/hot-folder-store-apparel-spring.xml" />
 	<import
 		resource="classpath:/hospitalcore/integration/hot-folder-common-spring.xml" />
+	<import
+		resource="classpath:/hospitalcore/integration/hot-folder-store-pharmacy-spring.xml" />
+	
 
 	<!-- SystemSetup for the HospitalCore -->
 	<bean id="acceleratorCoreSystemSetup"
@@ -761,10 +764,6 @@
 		<property name="typeCode" value="Hospital" />
 	</bean>
 
-	<bean id="infoJob" class="org.training.hospital.core.job.InfoJob">
-		<property name="hospitalService" ref="hospitalService" />
-	</bean>
-
 	<bean id="dynamicAttributesNumberPathologies"
 		class="org.training.hospital.core.handler.DynamicAttributeNumberPathologies">
 	</bean>
@@ -854,6 +853,18 @@
 
 	<bean id="dynamicAttributesNumberBed"
 		class="org.training.hospital.core.handler.DynamicAttributeNumberBed">
+	</bean>
+	
+	<alias name="defaultPrescriptionDao" alias="prescriptionDao" />
+	<bean id="defaultPrescriptionDao"
+		class="org.training.hospital.core.dao.impl.DefaultPrescriptionDao">
+		<constructor-arg value="Prescription" />
+	</bean>
+	
+	<alias name="defaultPrescriptionService" alias="prescriptionService" />
+	<bean id="defaultPrescriptionService"
+		class="org.training.hospital.core.service.impl.DefaultPrescriptionService">
+		<property name="prescriptionDao" ref="defaultPrescriptionDao" />
 	</bean>
 </beans>
 
