@@ -21,16 +21,19 @@ public class DefaultMedicalImpexRowFilter implements ImpexRowFilter {
 	@Override
 	public boolean filter(Map<Integer, String> row) throws ModelNotFoundException{
 		
-		LOG.info(" Filtering row: " + row);	
+		LOG.info("Start filtering row: ");	
+		LOG.debug(" Filtering row: " + row);
 			String code = row.get(column);
 			PrescriptionModel model = prescriptionService.getPrescriptionForCode(code);
 			if(model == null) {
-				LOG.info("Prescription no exist with code: " + row.get(column));
+				LOG.info("Prescription no exist");
+				LOG.debug("Prescription exist with code: "+ row.get(column));
 				row.put(column, " ");
 				return true;
 			}
 			else {
-				LOG.info("Prescription exist with code: "+ row.get(column));
+				LOG.info("Prescription exist ");
+				LOG.debug("Prescription exist with code: "+ row.get(column));
 				return true;
 			}	
 		}
