@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [y] hybris Platform Copyright (c) 2018 SAP SE or an SAP affiliate company. 
+	All rights reserved. This software is the confidential and proprietary information 
+	of SAP ("Confidential Information"). You shall not disclose such Confidential 
+	Information and shall use it only in accordance with the terms of the license 
+	agreement you entered into with SAP. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:file="http://www.springframework.org/schema/integration/file"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/integration 
+	http://www.springframework.org/schema/integration/spring-integration.xsd
+	http://www.springframework.org/schema/integration/file 
+	http://www.springframework.org/schema/integration/file/spring-integration-file.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+
+	<!-- Config a base directory -->
+	<bean id="baseDirectoryPharmacy" class="java.lang.String">
+		<constructor-arg
+			value="#{baseDirectory}/${tenantId}/pharmacy" />
+	</bean>
+
+	<!-- 1) Scan for files -->
+	<file:inbound-channel-adapter
+		id="batchFilesPharmacy" directory="#{baseDirectoryPharmacy}"
+		filename-regex="^(.*)-(\d+)\.csv" comparator="fileOrderComparator">
+		<int:poller fixed-rate="1000" />
+	</file:inbound-channel-adapter>
+
+
+	<!-- 2) move the file to processing and create header -->
+	<file:outbound-gateway
+		request-channel="batchFilesPharmacy"
+		reply-channel="batchFilesPharmacyProc"
+		directory="#{baseDirectoryPharmacy}/processing"
+		delete-source-files="true" />
+
+	<!-- Initialize the batch header with relevant information -->
+	<int:service-activator
+		input-channel="batchFilesPharmacyProc"
+		output-channel="batchFilesHeaderInit" ref="pharmacyHeaderSetupTask"
+		method="execute" />
+
+	<bean id="pharmacyHeaderSetupTask"
+		class="de.hybris.platform.acceleratorservices.dataimport.batch.task.HeaderSetupTask">
+		<property name="catalog" value="pharmacyProductCatalog" />
+		<property name="net" value="false" />
+		<property name="storeBaseDirectory"
+			ref="baseDirectoryPharmacy" />
+	</bean>
+
+
+	<bean id="batchMedicalProductConverterMapping"
+		class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+		p:mapping="medicalproduct"
+		p:converter-ref="batchMedicalProductConverter" />
+
+	<bean id="batchParapharmaceuticalProductConverterMapping"
+		class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+		p:mapping="parapharmaceuticalproduct"
+		p:converter-ref="batchParapharmaceuticalProductConverter" />
+
+	<bean id="batchSizeVariantConverterMapping"
+		class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+		p:mapping="variantsize" p:converter-ref="batchSizeVariantConverter" />
+
+	<bean id="batchColorVariantConverterMapping"
+		class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping"
+		p:mapping="variantcolor" p:converter-ref="batchColorVariantConverter" />
+
+
+	<!-- Pharmacy specific converters -->
+	<bean id="batchMedicalProductConverter"
+		class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>#{defaultImpexProductHeader}
+				# Insert Medical Products
+				$productCatalog=pharmacyProductCatalog
+				$productCatalogName=Pharmacy Product
+				$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+				$supercategories=supercategories(code, $catalogVersion)
+				$baseProduct=baseProduct(code,$catalogVersion)
+				$approved=approvalstatus(code)[default='check']
+				INSERT_UPDATE MedicalProduct; code[unique=true];name[lang=en];$supercategories;manufacturerName;manufacturerAID;ean;description[lang=en];priceQuantity;pregnancy;age;symptom;use;action;prescription(code);$catalogVersion;$approved;sequenceId[translator=de.hybris.platform.acceleratorservices.dataimport.batch.converter.SequenceIdTranslator]
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+0};{1};{2};{3};{4};{5};{6};{7};{8};{9};{10};{11};{12};{13};{14};{15};{S}
+			</value>
+		</property>
+		<property name="rowFilter">
+			<bean
+				class="org.training.hospital.core.dataimport.batch.converter.impl.DefaultMedicalImpexRowFilter">
+				  <property name="expression" value="row[14] == 'PrescriptionModel'" />
+				<property name="prescriptionService" ref="defaultPrescriptionService" />
+				 <property name="column" value="13" />
+			</bean>
+		</property>
+
+</bean>
+
+
+		<!-- Pharmacy specific converters -->
+		<bean id="batchParapharmaceuticalProductConverter"
+			class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+			<property name="header">
+				<value>#{defaultImpexProductHeader}
+					# Insert Parapharmaceutical Products
+					$productCatalog=pharmacyProductCatalog
+					$productCatalogName=Pharmacy Product
+					$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+					$supercategories=supercategories(code, $catalogVersion)
+					$baseProduct=baseProduct(code,$catalogVersion)
+					$approved=approvalstatus(code)[default='check']
+					INSERT_UPDATE ParapharmaceuticalProduct;
+					code[unique=true];name[lang=en];$supercategories;manufacturerName;manufacturerAID;ean;description[lang=en];priceQuantity;pregnancy;age;symptom;use;action;variantType(code);$catalogVersion;$approved;sequenceId[translator=de.hybris.platform.acceleratorservices.dataimport.batch.converter.SequenceIdTranslator]
+				</value>
+			</property>
+			<property name="impexRow">
+				<value>;{+0};{1};{2};{3};{4};{5};{6};{7};{8};{9};{10};{11};{12};{13};{14};{15};{16};{S}
+				</value>
+			</property>
+			<property name="rowFilter">
+				<bean
+					class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexRowFilter">
+					<property name="expression" value="row[1]" />
+				</bean>
+
+			</property>
+			<property name="type" value="ParapharmaceuticalProduct" />
+		</bean>
+
+
+		<bean id="batchSizeVariantConverter"
+			class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+			<property name="header">
+				<value>#{defaultImpexProductHeader}
+					$productCatalog=pharmacyProductCatalog
+					$productCatalogName=Pharmacy Product
+					$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+					$supercategories=supercategories(code, $catalogVersion)
+					$baseProduct=baseProduct(code,$catalogVersion)
+					$approved=approvalstatus(code)[default='check']
+					# Insert size variant specific data
+					INSERT_UPDATE ParapharmaceuticalSizeVariantProduct;
+					code[unique=true];$baseProduct;$supercategories;$catalogVersion;size[lang=$lang];sequenceId[translator=de.hybris.platform.acceleratorservices.dataimport.batch.converter.SequenceIdTranslator]
+				</value>
+			</property>
+			<property name="impexRow">
+				<value>;{+0};{1};{2};{3};{4};{S}</value>
+			</property>
+			<property name="rowFilter">
+				<bean
+					class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexRowFilter">
+					<property name="expression"
+						value="row[2] == 'ParapharmaceuticalSizeVariantProduct' || row[4]" />
+				</bean>
+			</property>
+		</bean>
+
+		<bean id="batchColorVariantConverter"
+			class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+			<property name="header">
+				<value>#{defaultImpexProductHeader}
+					$productCatalog=pharmacyProductCatalog
+					$productCatalogName=Pharmacy Product
+					$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+					$supercategories=supercategories(code, $catalogVersion)
+					$baseProduct=baseProduct(code,$catalogVersion)
+					$approved=approvalstatus(code)[default='check']
+					# Insert style variant specific data
+					INSERT_UPDATE
+					ParapharmaceuticalColorVariantProduct;code[unique=true];$baseProduct;$supercategories;color[lang=$lang];$catalogVersion;variantType(code);sequenceId[translator=de.hybris.platform.acceleratorservices.dataimport.batch.converter.SequenceIdTranslator]
+				</value>
+			</property>
+			<property name="impexRow">
+				<value>;{+0};{1};{2};{3};{4};{5};{S}</value>
+			</property>
+			<property name="rowFilter">
+				<bean
+					class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexRowFilter">
+					<property name="expression"
+						value="row[2] == 'ParapharmaceuticalColorVariantProduct' || (!row[2] &amp;&amp; !row[4])" />
+				</bean>
+			</property>
+		</bean>
+
+
+
+
+</beans>
+
+
