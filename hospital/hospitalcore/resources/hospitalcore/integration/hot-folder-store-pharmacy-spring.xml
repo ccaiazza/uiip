@@ -65,6 +65,13 @@
 			<property name="impexRow">
 				<value>;{+0};{1};{2};{3};{4};{5};{6};{7};{8};{9};{10};{11};{12};{13};{14};{15};{S}</value>
 			</property>
+			<property name="rowFilter">
+			<bean class="org.training.hospital.core.dataimport.batch.converter.impl.DefaultMedicalImpexRowFilter">
+				<property name="expression" value="row[16]"/>
+				<property name="prescriptionService" ref="defaultPrescriptionService"/>	
+				<property name="column" value = "15"/>
+			</bean>
+			</property>
 	</bean>
 	
 	<bean id="batchParapharmaceuticalProductConverter"
@@ -101,7 +108,7 @@
             INSERT_UPDATE ParapharmaceuticalColorVariantProduct; code[unique=true]; $baseProduct;$supercategories;color(code);$catalogVersion; variantType(code);sequenceId[translator=de.hybris.platform.acceleratorservices.dataimport.batch.converter.SequenceIdTranslator]</value>            
             </property>
 			<property name="impexRow">
-				<value>;{+0};{+1};{2};{3};{4};{5};{S}</value>
+				<value>;{+0};{1};{2};{3};{4};{5};{S}</value>
 			</property>
 	</bean>
 	

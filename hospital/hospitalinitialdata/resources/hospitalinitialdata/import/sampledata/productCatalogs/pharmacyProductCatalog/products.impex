@@ -1,0 +1,53 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Products
+
+# Macros / Replacement Parameter definitions
+$productCatalog=pharmacyProductCatalog
+$productCatalogName=Pharmacy Product
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code, $catalogVersion)
+$baseProduct=baseProduct(code,$catalogVersion)
+$approved=approvalstatus(code)[default='check']
+
+# Insert MedicalProducts
+INSERT_UPDATE MedicalProduct; code[unique=true]; name[lang=en];$supercategories;manufacturerName;manufacturerAID;ean;description[lang=en];priceQuantity;pregnancy;age;symptom;use;action;prescription(code);$catalogVersion;$approved; 
+;M236P; Kenacort;;Bristol; Br;000003;cortisone-based medicine; 10; true; 15; allergy; external;anti-inflammatory;pre00; ; ;
+;M2223; Moment; ; Angelini Spa; An; 000001; Analgesic medicine; 7; true; 5; headache; oral; anti-infiammatory;pre00; ; ;
+;M2224; MomentAct; ; Angelini Spa; An; 000001; Analgesic medicine; 6; true; 7; headache; oral; anti-infiammatory;pre00; ; ;
+;M2225; MomentDol; ; Angelini Spa; An; 000002; Analgesic medicine; 6; true; 7; headache; oral; anti-infiammatory;pre00; ; ;
+;M2226; BenactiveGola; ; Reckitt benckiser Spa; Rb; 000004; Analgesic medicine; 5; true; 5;sore throat; oral; anti-infiammatory;pre01; ; ;
+;M2227; TantumVerde; ; Angelini Spa; An; 000005; Analgesic medicine; 7; true; 4; sore throat; oral; anti-infiammatory;pre01; ; ;
+
+# Insert ParapharmaceuticalProducts
+INSERT_UPDATE ParapharmaceuticalProduct; code[unique=true]; name[lang=en]; $supercategories;manufacturerName;manufacturerAID;ean; description[lang=en];priceQuantity;pregnancy;age;symptom;use;action;$catalogVersion;$approved;variantType(code)
+;P0001; Multiferro; ; Lj pharma Srl; LP;  000100; Iron supplement; 12; true; 5; iron deficiency ; oral; iron intake; ; ; ; 	
+;P0002; Multicentrum; ; Pfizer; Pf;  000101; Multivitamin food supplement; 10; true; 4; vitamin deficiency ; oral; vitamin intake; ; ; ; 	
+;P0003; Lisomucil; ;Sanofi Spa; Sf;000102;  Disinfected and free- phlegm effect by cought and bronchitis; 8;true; 15; cough and phlegm; oral;  mucolytic	
+;P0004; Polase; ; Pfizer; Pf;000103; dietary supplement of mineral salts potassium and magnesium citrate; 10; true; 10; supply of mineral salts;oral;supply of mineral salts
+;P0005; LipGloss; ; Bionike; Bn;000104; lip gloss; 12; true; ; ;external;moisturizing; ParapharmaceuticalColorVariantProduct
+;P0006; Leggins dimagrante; ; ; ; 000105; Slimming leggins; 57;true; ; ; external; slimming; ParapharmaceuticalColorVariantProduct
+
+
+INSERT_UPDATE ParapharmaceuticalColorVariantProduct; code[unique=true]; $baseProduct;$supercategories;color(code);$catalogVersion; variantType(code)
+;P0005_R;P0005; ; RED;  ;
+;P0006_B;P0006; ; BLACK; ; ParapharmaceuticalSizeVariantProduct 
+
+
+INSERT_UPDATE ParapharmaceuticalSizeVariantProduct; code[unique=true];$baseProduct; $supercategories;$catalogVersion;size[lang=en]; $approved;
+;P0006_B_S;P0006_B; ; ; S; ; 
+;P0006_B_M;P0006_B; ; ; M; ; 
+;P0006_B_L;P0006_B; ; ; L; ; 
+
+
+INSERT_UPDATE Prescription; code[unique=true]; asl; district; date[dateformat='yyyy/MM/dd']; exemption;patient(uid);products(code)
+;pre00; ASL10; AV; 2019/06/13; true; pa1; M236P
+;pre01; ASL10; AV; 2019/06/17; true; pa1;

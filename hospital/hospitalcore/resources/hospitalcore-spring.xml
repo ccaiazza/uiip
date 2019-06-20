@@ -24,7 +24,6 @@
 		resource="classpath:/hospitalcore/integration/hot-folder-common-spring.xml" />
 	<import
 		resource="classpath:/hospitalcore/integration/hot-folder-store-pharmacy-spring.xml" />
-	
 
 	<!-- SystemSetup for the HospitalCore -->
 	<bean id="acceleratorCoreSystemSetup"
@@ -778,7 +777,7 @@
 	<bean id="defaultPatientService"
 		class="org.training.hospital.core.service.impl.DefaultPatientService">
 		<property name="patientDao" ref="defaultPatientDao" />
-		<property name="modelService" ref="modelService" />	
+		<property name="modelService" ref="modelService" />
 	</bean>
 
 	<alias name="defaultPathologyDao" alias="pathologyDao" />
@@ -841,7 +840,7 @@
 	</bean>
 
 	<bean id="patientInterceptor"
-		class="org.training.hospital.core.interceptor.PatientInterceptor">	
+		class="org.training.hospital.core.interceptor.PatientInterceptor">
 		<property name="modelService" ref="modelService" />
 	</bean>
 
