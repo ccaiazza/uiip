@@ -1,0 +1,10 @@
+M237P,Momendol, ,Angelini, An,000009, , ,Naprossene Sodico, 7.80, true, 15,inflammation, fever and are useful in the symptomatic treatment of rheumatic iseases,oral,anti-inflammatory,pre00
+M238P,Dicloreum, ,Angelini, An,000010, , ,diclofenac, 11, true, 15,anti-inflammation, inflammation, external,anti-inflammatory,pre00
+M236P,Kenacort, , Bristol, Br,000003, , , cortisone-based medicine, 10, true, 15, allergy, external, anti-inflammatory,pre00
+M239P,Propolgemma, , Aboca, Ab,000011, , , ,8 , true, 12, product for the throat, oral, anti-inflammatory,pre00
+M240P, Vicks Tosse, , Vicks, Vc,000012, , , destrometorfano, 3 , true, 14, dry cough, oral, anti-inflammatory,pre00
+M241P, Isomar Occhi Multidose, , Euritalia pharma, Ep,000013, , , , 4.20 , true, 1, dry eyes, local, moisturizing, pre00
+M242P, Mentolo Eucalipto, , BENAGOL, be, 000014, , , diclorobenzil alcool, 4.70 , true, 12, sore throat, oral, disinfectant, pre00
+M243P, ASPI GOLA, , Buyer, bu, 000015, , , flurbiprofene, 8.70 , true, 12, symptoms of pain and irritation of the gums and mouth and throat, oral, painkiller, pre00
+M244P, TACHIPIRINA Prima Infanzia, , Angelini, an, 000016, , , paracetamolo, 4.50 , false, 1, fever, , analgesic, pre00
+M245P, TANTUM VERDE Bocca Collutorio, , Angelini, an, 000017, , , benzidamina cloridrato, 8.90 , true, 15, irritation of the mouth and gums, oral, anti-inflammatory, pre00
