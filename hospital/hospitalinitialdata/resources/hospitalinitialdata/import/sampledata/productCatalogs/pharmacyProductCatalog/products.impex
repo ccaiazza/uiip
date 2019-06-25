@@ -48,6 +48,11 @@ INSERT_UPDATE ParapharmaceuticalSizeVariantProduct; code[unique=true];$baseProdu
 ;P0006_B_L;P0006_B; ; ; L; ; 
 
 
-INSERT_UPDATE Prescription; code[unique=true]; asl; district; date[dateformat='yyyy/MM/dd']; exemption;patient(uid);products(code)
-;pre00; ASL10; AV; 2019/06/13; true; pa1; M236P
-;pre01; ASL10; AV; 2019/06/17; true; pa1;
+INSERT_UPDATE Prescription; code[unique=true][translator=org.training.hospital.core.translators.PrescriptionValueTranslator]; asl; district; date[dateformat='yyyy/MM/dd']; exemption;patient(uid);products(code)
+;pr00; ASL10; AV; 2019/06/13; true; pa1; M236P
+;pr01; ASL10; AV; 2019/06/17; true; pa1;
+;pr1; ASL10; AV; 2019/06/24; true; pa1;
+;PR1; ASL10; AV; 2019/06/24; true; pa1;
+;pr110;ASL11; BN; 2019/06/12; true;
+;pr02;ASL11; BN; 2019/06/12; true;
+;pr; ASL11; BN; 2019/06/12; true;
