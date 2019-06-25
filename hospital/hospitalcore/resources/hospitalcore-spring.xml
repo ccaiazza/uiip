@@ -868,16 +868,4 @@
 		<property name="prescriptionDao" ref="defaultPrescriptionDao" />
 	</bean>
 	
-	<alias name="prescriptionValueTranslator" alias="prescriptionValueTranslator" />
-	<bean id="prescriptionValueTranslator"
-		class="org.training.hospital.core.translators.PrescriptionValueTranslator">
-		
-	</bean>
-	
-	
 </beans>
-
-
-
-
-

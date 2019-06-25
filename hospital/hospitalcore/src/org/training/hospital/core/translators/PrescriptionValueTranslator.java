@@ -20,8 +20,7 @@ public class PrescriptionValueTranslator extends AbstractValueTranslator {
 	
 
 	
-	String strPattern ="[a-zA-Z]{2}\\d{1,8}$";
-	boolean b = false;
+	String regex ="[a-zA-Z]{2}\\d{1,8}$";
 	Date today=new Date();
 	
 	public static Logger LOG = Logger.getLogger(PrescriptionValueTranslator.class);
@@ -41,8 +40,8 @@ public class PrescriptionValueTranslator extends AbstractValueTranslator {
 			String result = String.valueOf(valueExpr);
 				Pattern pattern = Pattern.compile(strPattern);    
 				Matcher m= pattern.matcher(result);
-				b= m.matches();
-				if(b==true) {
+			
+				if(m.matches()) {
 					return result + "_" + today;
 				}
 		}
