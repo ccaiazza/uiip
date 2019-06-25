@@ -753,7 +753,8 @@
 		class="org.training.hospital.core.service.impl.DefaultHospitalService">
 		<property name="hospitalDao" ref="defaultHospitalDao" />
 	</bean>
-
+	
+	
 	<bean id="hospitalRemoveInterceptor"
 		class="org.training.hospital.core.interceptor.HospitalInterceptor" />
 
@@ -786,6 +787,7 @@
 		<constructor-arg value="Pathology" />
 	</bean>
 
+	
 	<alias name="defaultPathologyService" alias="pathologyService" />
 	<bean id="defaultPathologyService"
 		class="org.training.hospital.core.service.impl.DefaultPathologyService">
@@ -865,7 +867,5 @@
 		class="org.training.hospital.core.service.impl.DefaultPrescriptionService">
 		<property name="prescriptionDao" ref="defaultPrescriptionDao" />
 	</bean>
+	
 </beans>
-
-
-
