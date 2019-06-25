@@ -1,0 +1,6 @@
+P235P,Enantyum, , A.Menarini,Em, 0002, , , Over-the-counter medication with analgesic action, 4.95, true, 15, headache, oral, analgesic
+P236P,NICORETTE, , NICORETTE,ni, 0001, , , , 20.50, false, 20, nicotine withdrawal symptoms, oral, ,
+P237P, MAG 2, , Sanofi, sa, 0003, , , Mag 2 for oral use that allows to rapidly replenish the physiological proportion of magnesium ensuring an effective treatment of magnesium deficiency., 15, true, 14, magnesium deficiency, oral, ,
+P238P,Enerzona Omega, , Enervit spa ,Es, 0004, , , Food supplement of omega 3, 49.95, true, 15, , oral, ,
+P239P,Mgk Vis Full Sport, , Pool Pharma, Pp, 0005, , , Dietary product for athletes with mineral salts designed to replenish hydrosaline losses caused by sweating due to muscle activity, 12, false, 18, , oral, ,
+P240P,Nebula M 2000 , , Air liquide medical syst. spa ,Air, 0006, , , The nebula aerosol therapy device is characterized by a series of solutions that make it both a very efficient and rapid apparatus for the treatment of the lower respiratory tract and an extremely valid system for the treatment of the upper respiratory tract and for performing nasal washing., 96, true, 6, , inhaler, ,
