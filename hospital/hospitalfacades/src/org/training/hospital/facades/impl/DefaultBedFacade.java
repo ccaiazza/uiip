@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Required;
 import org.training.hospital.core.model.BedModel;
-import org.training.hospital.core.model.RepartoModel;
 import org.training.hospital.core.service.BedService;
 import org.training.hospital.facades.facade.BedFacade;
 import org.training.hospital.facades.product.data.BedData;
@@ -24,7 +23,7 @@ public class DefaultBedFacade implements BedFacade {
 	
 	@Override
 	public List<BedData> getBedsForRoom(String code) {
-		final List<BedModel> bedModels = bedService.getBedsforRoom(code);
+		final List<BedModel> bedModels = bedService.getBedsForRoom(code);
 		return bedConverter.convertAll(bedModels);
 		
 	}
