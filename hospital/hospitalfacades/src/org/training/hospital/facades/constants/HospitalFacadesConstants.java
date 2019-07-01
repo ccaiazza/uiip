@@ -16,6 +16,7 @@ package org.training.hospital.facades.constants;
 public class HospitalFacadesConstants extends GeneratedHospitalFacadesConstants
 {
 	public static final String EXTENSIONNAME = "hospitalfacades";
+	public static final String OPTIONS_SEPARATOR = ",";
 
 	private HospitalFacadesConstants()
 	{

@@ -11,12 +11,25 @@
 		class="de.hybris.platform.commercefacades.product.data.ProductData">
 		<property name="genders"
 			type="java.util.List&lt;org.training.hospital.facades.product.data.GenderData>" />
-	</bean>
+			<property name="onlineDate" type="java.util.Date" />
+			<property name="offlineDate" type="java.util.Date" />
+			<property name="ean" type="String" />
+			<property name="manufacturerAID" type="String" />
+			<property name="pregnancy" type="Boolean" />
+			<property name="age" type="java.lang.Integer" />
+			<property name="symptom" type="String" />
+			<property name="use" type="String" />
+			<property name="action" type="String" />
+			<property name="priceQuantity" type="java.lang.Double" />
+			<property name="approvalStatus" type="de.hybris.platform.catalog.enums.ArticleApprovalStatus" />
+			</bean>
 
 	<bean
 		class="org.training.hospital.facades.product.data.GenderData">
 		<property name="code" type="String" />
 		<property name="name" type="String" />
+		
+		
 	</bean>
 
 	<bean
@@ -98,5 +111,10 @@
 		<property name="room"
 			type="org.training.hospital.facades.product.data.RoomData " />
 	</bean>
+	
+	<enum class="de.hybris.platform.commercefacades.product.ProductOption">
+		<value>MEDICAL</value> 
+	</enum>
+
 
 </beans>

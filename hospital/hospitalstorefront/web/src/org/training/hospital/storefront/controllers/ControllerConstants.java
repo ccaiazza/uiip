@@ -23,6 +23,7 @@ import de.hybris.platform.acceleratorcms.model.components.SimpleResponsiveBanner
 import de.hybris.platform.acceleratorcms.model.components.SubCategoryListComponentModel;
 import de.hybris.platform.cms2.model.contents.components.CMSLinkComponentModel;
 import de.hybris.platform.cms2lib.model.components.ProductCarouselComponentModel;
+import de.hybris.platform.commercefacades.product.data.ProductData;
 
 
 /**
@@ -176,6 +177,15 @@ public interface ControllerConstants
 				String FreeBeds = "pages/hospital/freeBeds";
 				
 			}
+			
+			interface Pharmacy // NOSONAR
+			{
+				String Product = "pages/pharmacy/product"; // NOSONAR
+				
+			}
+			
+			
+			
 		}
 
 		interface Fragments
