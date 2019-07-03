@@ -21,7 +21,7 @@
 			<property name="use" type="String" />
 			<property name="action" type="String" />
 			<property name="priceQuantity" type="java.lang.Double" />
-			<property name="approvalStatus" type="de.hybris.platform.catalog.enums.ArticleApprovalStatus" />
+			<property name="approvalStatus" type="String" />
 			</bean>
 
 	<bean
