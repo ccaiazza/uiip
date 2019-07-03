@@ -15,7 +15,7 @@ public class ProductPharmacyPopulator extends ProductPopulator{
 		target.setOnlineDate(source.getOnlineDate());
 		target.setEan(source.getEan());
 		target.setPriceQuantity(source.getPriceQuantity());
-		target.setApprovalStatus(source.getApprovalStatus());
+		target.setApprovalStatus(source.getCode());
 		
 	
 		
