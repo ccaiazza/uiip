@@ -6,8 +6,7 @@ import org.training.hospital.core.model.BedModel;
 
 public interface BedService {
 	public Integer getNumberBedsForCode(String code);
-	public List<BedModel> getBedsforRoom(String code);
-	public void occupyBed(String code);
-	public void realeseBed(String code);
+	public List<BedModel> getBedsForRoom(String code);
+	
 
 }

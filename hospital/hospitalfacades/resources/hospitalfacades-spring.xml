@@ -424,5 +424,31 @@
 			</list>
 		</property>
 	</bean>
+
+	<alias name="defaultProductPharmacyPopulator" alias="productPopulator" />
+	<bean id="defaultProductPharmacyPopulator" parent="defaultProductPopulator"
+		class="org.training.hospital.facades.populators.ProductPharmacyPopulator">
+	</bean>
+	
+	<alias name="defaultMedicalPopulator" alias="productMedicalPopulator" />
+	<bean id="defaultMedicalPopulator" 
+		class="org.training.hospital.facades.populators.MedicalPopulator">
+	</bean>
+	
+	<alias name="defaultProductConfiguredPopulator"
+	alias="productConfiguredPopulator" />
+	<bean id="defaultProductConfiguredPopulator"
+		class="de.hybris.platform.commercefacades.converter.impl.DefaultConfigurablePopulator">
+		<property name="populators">
+			<map
+				key-type="de.hybris.platform.commercefacades.product.ProductOption">
+				<entry key="MEDICAL" value-ref="productMedicalPopulator" />
+				<entry key="BASIC" value-ref="productBasicPopulatorList" />
+				<entry key="DESCRIPTION" value-ref="productDescriptionPopulatorList" />
+				<entry key="CATEGORIES" value-ref="productCategoriesPopulatorList" />
+				<entry key="VARIANT_FULL" value-ref="productVariantFullPopulatorList" />
+			</map>
+		</property>
+	</bean>
 </beans>
 
