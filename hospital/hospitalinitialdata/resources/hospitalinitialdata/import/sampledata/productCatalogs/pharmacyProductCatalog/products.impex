@@ -16,14 +16,14 @@ $productCatalogName=Pharmacy Product
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 $supercategories=supercategories(code, $catalogVersion)
 $baseProduct=baseProduct(code,$catalogVersion)
-$approved=approvalstatus(code)[default='check']
 
+$approved=approvalstatus(code)[default='approved']
 # Insert MedicalProducts
-INSERT_UPDATE MedicalProduct; code[unique=true]; name[lang=en];$supercategories;manufacturerName;manufacturerAID;ean;description[lang=en];priceQuantity;pregnancy;age;symptom;use;action;prescription(code);$catalogVersion;$approved; 
-;M236P; Kenacort;;Bristol; Br;000003;cortisone-based medicine; 10; true; 15; allergy; external;anti-inflammatory;pre00; ; ;
-;M2223; Moment; ; Angelini Spa; An; 000001; Analgesic medicine; 7; true; 5; headache; oral; anti-infiammatory;pre00; ; ;
-;M2224; MomentAct; ; Angelini Spa; An; 000001; Analgesic medicine; 6; true; 7; headache; oral; anti-infiammatory;pre00; ; ;
-;M2225; MomentDol; ; Angelini Spa; An; 000002; Analgesic medicine; 6; true; 7; headache; oral; anti-infiammatory;pre00; ; ;
+INSERT_UPDATE MedicalProduct; code[unique=true]; name[lang=en];$supercategories;manufacturerName;manufacturerAID;ean;description[lang=en];priceQuantity;pregnancy;age;symptom;use;action;prescription(code);onlineDate; offlineDate;$catalogVersion;$approved; 
+;M236P; Kenacort; medicalProduct ;Bristol; Br;000003;cortisone-based medicine; 10; true; 15; allergy; external;anti-inflammatory;pre00; ; ; ; ;
+;M2223; Moment; medicalProduct ; Angelini Spa; An; 000001; Analgesic medicine; 7; true; 5; headache; oral; anti-infiammatory;pre00; ; ;
+;M2224; MomentAct; medicalProduct ; Angelini Spa; An; 000001; Analgesic medicine; 6; true; 7; headache; oral; anti-infiammatory;pre00; ; ;
+;M2225; MomentDol; medicalProduct ; Angelini Spa; An; 000002; Analgesic medicine; 6; true; 7; headache; oral; anti-infiammatory;pre00; ; ;
 ;M2226; BenactiveGola; ; Reckitt benckiser Spa; Rb; 000004; Analgesic medicine; 5; true; 5;sore throat; oral; anti-infiammatory;pre01; ; ;
 ;M2227; TantumVerde; ; Angelini Spa; An; 000005; Analgesic medicine; 7; true; 4; sore throat; oral; anti-infiammatory;pre01; ; ;
 

@@ -38,7 +38,7 @@ public class PrescriptionValueTranslator extends AbstractValueTranslator {
 		 if (valueExpr != null)
 		{
 			String result = String.valueOf(valueExpr);
-				Pattern pattern = Pattern.compile(strPattern);    
+				Pattern pattern = Pattern.compile(regex);    
 				Matcher m= pattern.matcher(result);
 			
 				if(m.matches()) {

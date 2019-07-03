@@ -97,11 +97,9 @@ public class HospitalController
 		code = URLDecoder.decode(code, "UTF-8");
 		final List<HospitalData> hospitals = hospitalFacade.getHospitals();
 		final List<HospitalData> hospitalData = hospitalFacade.getHospitalInfo(code);
-		final List<String> number = hospitalFacade.getNumberDepartamentForCodeHospital(code);
 		
 		model.addAttribute("code", code);
 		model.addAttribute("hospitalData", hospitalData);
-		model.addAttribute("number", number);
 		model.addAttribute("hospitals", hospitals);
 		return ControllerConstants.Views.Pages.Hospital.Nreparti;
 	}
