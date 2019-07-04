@@ -62,5 +62,6 @@
 	 <extension name='hospitaltest' />
 	 <extension name='hospitalinitialdata' />
 	 <extension name='hospitalstorefront' />
+	  <extension name='hospitalbackoffice' />
   </extensions>
 </hybrisconfig>
