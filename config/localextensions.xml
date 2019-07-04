@@ -62,5 +62,6 @@
 	 <extension name='hospitaltest' />
 	 <extension name='hospitalinitialdata' />
 	 <extension name='hospitalstorefront' />
+	  <extension dir="C:\Hybris\hybris\bin/custom/hospitalbackoffice"/>
   </extensions>
 </hybrisconfig>
