@@ -49,12 +49,12 @@ xmlns:context="http://www.springframework.org/schema/context"
 				<ref bean="log4jFilter" />
 				<ref bean="tenantActivationFilter" />
 				<!-- This filter creates new jalo session and close it after request is handled. -->
-<!-- 				<ref bean="restSessionFilter" /> -->
+				<ref bean="restSessionFilter" />
 				<!-- If you want to track user session:
 					- uncomment filter below 
 					- comment or remove restSessionFilter above
 					- comment or remove SessionHindingRequestFilter in web.xml -->
-				<ref bean="sessionFilter" />
+<!-- 				<ref bean="sessionFilter" /> -->
 				<ref bean = "hospitalwebservicesFilter"/>
 				
 
@@ -64,9 +64,9 @@ xmlns:context="http://www.springframework.org/schema/context"
 		</constructor-arg>
 	</bean>
 
-<!-- 	<bean id="restSessionFilter" class="de.hybris.platform.webservicescommons.filter.RestSessionFilter"> -->
-<!-- 		<property name="sessionService" ref="sessionService" /> -->
-<!-- 	</bean> -->
+	<bean id="restSessionFilter" class="de.hybris.platform.webservicescommons.filter.RestSessionFilter">
+		<property name="sessionService" ref="sessionService" />
+	</bean>
 
     <bean id="hospitalwebservicesFilter" class="org.training.filters.SessionCatalogVersionFilter">
 		<property name="catalogVersionService" ref="catalogVersionService" />

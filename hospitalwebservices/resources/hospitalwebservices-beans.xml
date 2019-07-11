@@ -133,7 +133,7 @@
 	</bean>
 	
 	<bean class="de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO">
-	<property name="onlineDate" type="java.util.Date" />
+	        <property name="onlineDate" type="java.util.Date" />
 			<property name="offlineDate" type="java.util.Date" />
 			<property name="ean" type="String" />
 			<property name="manufacturerAID" type="String" />

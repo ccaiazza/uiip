@@ -30,6 +30,7 @@ public final class HospitalwebservicesConstants extends GeneratedHospitalwebserv
 	public static final String CLIENT_CREDENTIAL_AUTHORIZATION_NAME = "oauth2_client_credentials";
 	public static final String BASIC_FIELD_SET = "BASIC";
 	public static final String FULL_FIELD_SET = "FULL";
+	public static final String BASIC_OPTION = "BASIC,DESCRIPTION,MEDICAL,CATEGORIES";
 
 	private HospitalwebservicesConstants()
 	{

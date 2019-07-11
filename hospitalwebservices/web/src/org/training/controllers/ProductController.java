@@ -39,7 +39,6 @@ import io.swagger.annotations.Authorization;
 public class ProductController
 {
 
-	private static final String BASIC_OPTION = "BASIC,DESCRIPTION,MEDICAL,CATEGORIES";
 	@Resource(name = "dataMapper")
 	private DataMapper dataMapper;
 
@@ -54,7 +53,7 @@ public class ProductController
 	public ProductWsDTO getProductWsDTO(@PathVariable
 	final String code, @ApiParam(value = "Sample path variable parameter. It should be returned in response DTO", required = true)
 	@RequestParam(required = false, defaultValue = HospitalwebservicesConstants.FULL_FIELD_SET)
-	final String fields, @RequestParam(required = false, defaultValue = BASIC_OPTION)
+	final String fields, @RequestParam(required = false, defaultValue = HospitalwebservicesConstants.BASIC_OPTION)
 	final String opt)
 	{
 		final Set<ProductOption> opts = extractOptions(opt);

@@ -54,15 +54,15 @@
 		  - uncomment sessionFilter in hospitalwebservices-web-spring.xml
 		  - comment or remove restSessionFilter in hospitalwebservices-web-spring.xml
 	-->
-<!-- 	<filter> -->
-<!-- 		<filter-name>SessionHidingRequestFilter</filter-name> -->
-<!-- 		<filter-class>de.hybris.platform.webservicescommons.filter.SessionHidingFilter</filter-class> -->
-<!-- 	</filter> -->
+	<filter>
+		<filter-name>SessionHidingRequestFilter</filter-name>
+		<filter-class>de.hybris.platform.webservicescommons.filter.SessionHidingFilter</filter-class>
+	</filter>
 
-<!-- 	<filter-mapping> -->
-<!-- 		<filter-name>SessionHidingRequestFilter</filter-name> -->
-<!-- 		<url-pattern>/*</url-pattern> -->
-<!-- 	</filter-mapping> -->
+	<filter-mapping>
+		<filter-name>SessionHidingRequestFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	
 <!--
 	Enabling Spring managed Delegating Filter Proxy for hybris Filter Stack.

@@ -14,7 +14,7 @@
                
       <requires-extension name="webservicescommons"/>       
       <requires-extension name="hospitalfacades"/>
-<!--       <requires-extension name="ycommercewebservices"/>     -->
+
        
       <coremodule generated="true" manager="org.training.jalo.HospitalwebservicesManager" packageroot="org.training"/>
 
