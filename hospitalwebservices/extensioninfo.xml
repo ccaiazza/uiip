@@ -12,7 +12,9 @@
 
    <extension abstractclassprefix="Generated" classprefix="Hospitalwebservices" managername="HospitalwebservicesManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="hospitalwebservices" usemaven="false">
                
-      <requires-extension name="webservicescommons"/>         
+      <requires-extension name="webservicescommons"/>       
+      <requires-extension name="hospitalfacades"/>
+<!--       <requires-extension name="ycommercewebservices"/>     -->
        
       <coremodule generated="true" manager="org.training.jalo.HospitalwebservicesManager" packageroot="org.training"/>
 

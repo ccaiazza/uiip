@@ -11,7 +11,7 @@ public class MedicalPopulator implements Populator<ProductModel, ProductData> {
 	public void populate(ProductModel source, ProductData target) throws ConversionException {
 		target.setAge(source.getAge());
 		target.setPregnancy(source.getPregnancy());
-		target.setSymtom(source.getSymptom());
+		target.setSymptom(source.getSymptom());
 		target.setUse(source.getUse());
 		target.setAction(source.getAction());
 
