@@ -145,4 +145,23 @@
 			<property name="priceQuantity" type="java.lang.Double" />
 			<property name="approvalStatus" type="String" />
 	</bean>
+	
+	<bean class="org.training.dto.PatientWsDTO" 
+	extends = "de.hybris.platform.commercewebservicescommons.dto.user.UserWsDTO">
+	        <property name="dateEntry" type="java.util.Date" />
+			<property name="dateExit" type="java.util.Date" />
+			<property name="numberPathologies" type="String" />
+			<property name="uid" type="String" />
+			<property name="name" type="String" />
+	</bean>
+	
+	<bean class="org.training.dto.PrescriptionWsDTO">
+	        <property name="code" type="String" />
+			<property name="asl" type="String" />
+			<property name="district" type="String" />
+			<property name="date" type="java.util.Date" />
+			<property name="exemption" type="Boolean" />
+			<property name="patient" type="org.training.dto.PatientWsDTO" />
+			<property name="products" type="java.util.List&lt;de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO>"/>
+	</bean>
 </beans>

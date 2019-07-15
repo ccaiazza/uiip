@@ -181,4 +181,23 @@
 			</map>
 		</property>
 	</bean>
+	
+		<bean id="prescriptionFieldMapper" parent="fieldMapper">
+		<property name="sourceClass" value="org.training.dto.PrescriptionWsDTO"/>
+		<property name="destClass"   value="org.training.hospital.facades.product.data.PrescriptionData"/>
+		<property name="fieldMapping">
+			<map/>	
+		</property>
+	</bean>
+	
+	<bean parent="fieldSetLevelMapping" id="prescriptionWsDTOFieldSetLevelMapping">
+		<property name="dtoClass"
+		          value="org.training.dto.PrescriptionWsDTO"/>
+		<property name="levelMapping">
+			<map>
+				<entry key="BASIC" value="code,asl,district"/>
+				<entry key="FULL" value="code,asl,district,date,patient,products"/>
+			</map>
+		</property>
+	</bean>
 </beans>
