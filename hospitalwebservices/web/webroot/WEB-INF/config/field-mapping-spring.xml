@@ -89,6 +89,25 @@
 			</map>
 		</property>
 	</bean>	
+	
+		<bean id="productFieldMapper" parent="fieldMapper">
+		<property name="sourceClass" value="de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO"/>
+		<property name="destClass"   value="de.hybris.platform.commercefacades.product.data.ProductData" />
+		<property name="fieldMapping">
+			<map/>
+		</property>
+	</bean>
+	
+		<bean parent="fieldSetLevelMapping" id="productWsDTOFieldSetLevelMapping">
+		<property name="dtoClass"
+		          value="de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO"/>
+		<property name="levelMapping">
+			<map>
+				<entry key="FULL" value="code,name,age,pregnancy,symptom,use,action,offlineDate,onlineDate,priceQuantity,approvalStatus,ean,manufacturer,manufacturerAID"/>
+				<entry key="BASIC" value="code,name,approvalStatus,ean"/>
+			</map>
+		</property>
+	</bean>
 
 	<!-- Field mapping -->
    	<bean id="userFieldMapper" parent="fieldMapper">

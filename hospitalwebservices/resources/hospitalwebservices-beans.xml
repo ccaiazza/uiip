@@ -131,5 +131,18 @@
 		<property name="stringMap" type="java.util.Map&lt;String,String>"/>
 		<property name="integerMap" type="java.util.Map&lt;String,Integer>"/>
 	</bean>
-
+	
+	<bean class="de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO">
+	        <property name="onlineDate" type="java.util.Date" />
+			<property name="offlineDate" type="java.util.Date" />
+			<property name="ean" type="String" />
+			<property name="manufacturerAID" type="String" />
+			<property name="pregnancy" type="Boolean" />
+			<property name="age" type="java.lang.Integer" />
+			<property name="symptom" type="String" />
+			<property name="use" type="String" />
+			<property name="action" type="String" />
+			<property name="priceQuantity" type="java.lang.Double" />
+			<property name="approvalStatus" type="String" />
+	</bean>
 </beans>
