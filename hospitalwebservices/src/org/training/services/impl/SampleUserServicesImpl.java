@@ -66,29 +66,6 @@ public class SampleUserServicesImpl implements SampleUserServices
 		model.setDescription("not a normal user");
 		model.setAddresses(Arrays.asList(address, address1));
 		data.put("user2", model);
-
-
-
-		//		def client_id = 'mobile_android';
-		//		def client_secret = 'secret';
-		//		def redirect_uri = 'http://localhost:8080/oauth2_callback';
-		//
-		//		if (!params.token)
-		//		{
-		//			out << "No refresh token given..."
-		//			return
-		//		}
-		//
-		//		def token = params.token
-		//
-		//		//exchange code for real oauth token
-		//		URL tokenURL = "http://localhost:9001/authorizationserver/oauth/token".toURL()
-		//		HTTPResponse res = tokenURL.post(deadline: 30, payload:"refresh_token=${token}&client_id=${client_id}&client_secret=${client_secret}&redirect_uri=${URLEncoder.encode(redirect_uri, 'UTF-8')}&grant_type=refresh_token".getBytes())
-		//
-		//		out << res.text
-		//
-
-
 	}
 
 	@Override
