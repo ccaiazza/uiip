@@ -104,7 +104,7 @@
 		<property name="levelMapping">
 			<map>
 				<entry key="FULL" value="code,name,age,pregnancy,symptom,use,action,offlineDate,onlineDate,priceQuantity,approvalStatus,ean,manufacturer,manufacturerAID"/>
-				<entry key="BASIC" value="code,name,approvalStatus,ean"/>
+				<entry key="BASIC" value="code,name,approvalStatus,ean,manufacturer,manufacturerAID,priceQuantity"/>
 			</map>
 		</property>
 	</bean>
