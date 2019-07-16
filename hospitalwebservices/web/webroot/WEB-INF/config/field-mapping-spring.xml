@@ -196,7 +196,7 @@
 		<property name="levelMapping">
 			<map>
 				<entry key="BASIC" value="code,asl,district"/>
-				<entry key="FULL" value="code,asl,district,date,patient,products"/>
+				<entry key="FULL" value="code,asl,district,date,patient,products(FULL)"/>
 			</map>
 		</property>
 	</bean>
