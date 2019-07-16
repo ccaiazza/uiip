@@ -312,10 +312,24 @@
 	<bean id="defaultPrescriptionPopulator"
 		class="org.training.hospital.facades.populators.PrescriptionPopulator">
 		<property name="patientConverter" ref="patientConverter" />
-		<property name="productConverter" ref="productConverter" />
+		<property name="medicalProductConverter" ref="medicalProductConverter" />
+		
 	</bean>
 	
-
+<alias name="defaultMedicalProductConverter" alias="medicalProductConverter" />
+	<bean id="defaultMedicalProductConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="de.hybris.platform.commercefacades.product.data.ProductData" />
+		<property name="populators">
+			<list>
+				<ref bean="productMedicalPopulator" />
+				<ref bean="productPopulator" />
+			</list>
+		</property>
+	</bean>
+	
+	
 	<alias name="defaultHeadConverter" alias="headConverter" />
 	<bean id="defaultHeadConverter"
 		parent="abstractPopulatingConverter">

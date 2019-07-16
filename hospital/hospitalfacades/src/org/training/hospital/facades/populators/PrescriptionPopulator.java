@@ -1,8 +1,10 @@
 package org.training.hospital.facades.populators;
 
 import org.springframework.beans.factory.annotation.Required;
+
 import org.training.hospital.core.model.PatientModel;
 import org.training.hospital.core.model.PrescriptionModel;
+
 import org.training.hospital.facades.product.data.PatientData;
 import org.training.hospital.facades.product.data.PrescriptionData;
 
@@ -16,7 +18,7 @@ public class PrescriptionPopulator implements Populator<PrescriptionModel, Presc
 
 	
 	private Converter<PatientModel, PatientData> patientConverter;
-	private Converter<ProductModel, ProductData> productConverter;
+	private Converter<ProductModel, ProductData> medicalProductConverter;
 	
 	
 	@Override
@@ -34,7 +36,8 @@ public class PrescriptionPopulator implements Populator<PrescriptionModel, Presc
 			target.setDate(source.getDate());
 			target.setExemption(source.getExemption());
 			target.setPatient(patientConverter.convert(source.getPatient()));
-			target.setProducts(productConverter.convertAll(source.getProducts()));
+			target.setProducts(medicalProductConverter.convertAll(source.getProducts()));
+			
 			
 		}
 
@@ -57,16 +60,26 @@ public class PrescriptionPopulator implements Populator<PrescriptionModel, Presc
 
 
 
-
-	public Converter<ProductModel, ProductData> getProductConverter() {
-		return productConverter;
+	public Converter<ProductModel, ProductData> getMedicalProductConverter() {
+		return medicalProductConverter;
 	}
 
 
+
+	
 	@Required
-	public void setProductConverter(Converter<ProductModel, ProductData> productConverter) {
-		this.productConverter = productConverter;
+	public void setMedicalProductConverter(Converter<ProductModel, ProductData> medicalProductConverter) {
+		this.medicalProductConverter = medicalProductConverter;
 	}
+
+
+
+	
+	
+
+
+
+	
 
 		
 		
