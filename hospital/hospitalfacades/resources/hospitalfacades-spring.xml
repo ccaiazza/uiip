@@ -269,13 +269,20 @@
 		<property name="hospitalConverter" ref="hospitalConverter" />
 	</bean>
 	
+		<alias name="defaultPrescriptionFacade" alias="prescriptionFacade" />
+	<bean id="defaultPrescriptionFacade"
+		class="org.training.hospital.facades.impl.DefaultPrescriptionFacade">
+		<property name="prescriptionService" ref="prescriptionService" />
+		<property name="prescriptionConverter" ref="prescriptionConverter" />	
+	</bean>
+	
 	<alias name="defaultRepartoPopulator" alias="repartoPopulator" />
 	<bean id="defaultRepartoPopulator"
 		class="org.training.hospital.facades.populators.RepartoPopulator">
 		<property name="headConverter" ref="headConverter" />
 		<property name="hospitalConverter" ref="hospitalConverter" />
 	</bean>
-	
+
 	<alias name="defaultRepartoConverter" alias="repartoConverter" />
 	<bean id="defaultRepartoConverter"
 		parent="abstractPopulatingConverter">
@@ -287,7 +294,42 @@
 			</list>
 		</property>
 	</bean>
-
+	
+		<alias name="defaultPrescriptionConverter" alias="prescriptionConverter" />
+	<bean id="defaultPrescriptionConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="org.training.hospital.facades.product.data.PrescriptionData" />
+		<property name="populators">
+			<list>
+				<ref bean="prescriptionPopulator" />
+			</list>
+		</property>
+	</bean>
+	
+	
+	<alias name="defaultPrescriptionPopulator" alias="prescriptionPopulator" />
+	<bean id="defaultPrescriptionPopulator"
+		class="org.training.hospital.facades.populators.PrescriptionPopulator">
+		<property name="patientConverter" ref="patientConverter" />
+		<property name="medicalProductConverter" ref="medicalProductConverter" />
+		
+	</bean>
+	
+<alias name="defaultMedicalProductConverter" alias="medicalProductConverter" />
+	<bean id="defaultMedicalProductConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="de.hybris.platform.commercefacades.product.data.ProductData" />
+		<property name="populators">
+			<list>
+				<ref bean="productMedicalPopulator" />
+				<ref bean="productPopulator" />
+			</list>
+		</property>
+	</bean>
+	
+	
 	<alias name="defaultHeadConverter" alias="headConverter" />
 	<bean id="defaultHeadConverter"
 		parent="abstractPopulatingConverter">
@@ -321,13 +363,13 @@
 	<bean id="defaultHospitalPopulator"
 		class="org.training.hospital.facades.populators.HospitalPopulator">
 	</bean>
-	
+
 	<alias name="defaultPatientPopulator" alias="patientPopulator" />
 	<bean id="defaultPatientPopulator"
 		class="org.training.hospital.facades.populators.PatientPopulator">
 		<property name="bedConverter" ref="bedConverter" />
 	</bean>
-	
+
 	<alias name="defaultPatientConverter" alias="patientConverter" />
 	<bean id="defaultPatientConverter"
 		parent="abstractPopulatingConverter">
@@ -373,7 +415,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<alias name="defaultPathologyFacade" alias="pathologyFacade" />
 	<bean id="defaultPathologyFacade"
 		class="org.training.hospital.facades.impl.DefaultPathologyFacade">
@@ -425,18 +467,21 @@
 		</property>
 	</bean>
 
-	<alias name="defaultProductPharmacyPopulator" alias="productPopulator" />
-	<bean id="defaultProductPharmacyPopulator" parent="defaultProductPopulator"
+	<alias name="defaultProductPharmacyPopulator"
+		alias="productPopulator" />
+	<bean id="defaultProductPharmacyPopulator"
+		parent="defaultProductPopulator"
 		class="org.training.hospital.facades.populators.ProductPharmacyPopulator">
 	</bean>
-	
-	<alias name="defaultMedicalPopulator" alias="productMedicalPopulator" />
-	<bean id="defaultMedicalPopulator" 
+
+	<alias name="defaultMedicalPopulator"
+		alias="productMedicalPopulator" />
+	<bean id="defaultMedicalPopulator"
 		class="org.training.hospital.facades.populators.MedicalPopulator">
 	</bean>
-	
+
 	<alias name="defaultProductConfiguredPopulator"
-	alias="productConfiguredPopulator" />
+		alias="productConfiguredPopulator" />
 	<bean id="defaultProductConfiguredPopulator"
 		class="de.hybris.platform.commercefacades.converter.impl.DefaultConfigurablePopulator">
 		<property name="populators">
@@ -444,9 +489,12 @@
 				key-type="de.hybris.platform.commercefacades.product.ProductOption">
 				<entry key="MEDICAL" value-ref="productMedicalPopulator" />
 				<entry key="BASIC" value-ref="productBasicPopulatorList" />
-				<entry key="DESCRIPTION" value-ref="productDescriptionPopulatorList" />
-				<entry key="CATEGORIES" value-ref="productCategoriesPopulatorList" />
-				<entry key="VARIANT_FULL" value-ref="productVariantFullPopulatorList" />
+				<entry key="DESCRIPTION"
+					value-ref="productDescriptionPopulatorList" />
+				<entry key="CATEGORIES"
+					value-ref="productCategoriesPopulatorList" />
+				<entry key="VARIANT_FULL"
+					value-ref="productVariantFullPopulatorList" />
 			</map>
 		</property>
 	</bean>
