@@ -104,7 +104,7 @@
 		<property name="levelMapping">
 			<map>
 				<entry key="FULL" value="code,name,age,pregnancy,symptom,use,action,offlineDate,onlineDate,priceQuantity,approvalStatus,ean,manufacturer,manufacturerAID"/>
-				<entry key="BASIC" value="code,name,approvalStatus,ean"/>
+				<entry key="BASIC" value="code,name,approvalStatus,ean,manufacturer,manufacturerAID,priceQuantity"/>
 			</map>
 		</property>
 	</bean>
@@ -178,6 +178,25 @@
 				<entry key="BASIC" value="town"/>
 				<entry key="DEFAULT" value="town,street"/>
 				<entry key="FULL" value="town,street,streetNumber"/>
+			</map>
+		</property>
+	</bean>
+	
+		<bean id="prescriptionFieldMapper" parent="fieldMapper">
+		<property name="sourceClass" value="org.training.dto.PrescriptionWsDTO"/>
+		<property name="destClass"   value="org.training.hospital.facades.product.data.PrescriptionData"/>
+		<property name="fieldMapping">
+			<map/>	
+		</property>
+	</bean>
+	
+	<bean parent="fieldSetLevelMapping" id="prescriptionWsDTOFieldSetLevelMapping">
+		<property name="dtoClass"
+		          value="org.training.dto.PrescriptionWsDTO"/>
+		<property name="levelMapping">
+			<map>
+				<entry key="BASIC" value="code,asl,district"/>
+				<entry key="FULL" value="code,asl,district,date,patient,products(FULL)"/>
 			</map>
 		</property>
 	</bean>

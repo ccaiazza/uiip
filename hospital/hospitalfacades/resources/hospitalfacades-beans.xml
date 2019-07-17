@@ -22,7 +22,12 @@
 			<property name="action" type="String" />
 			<property name="priceQuantity" type="java.lang.Double" />
 			<property name="approvalStatus" type="String" />
+			
 			</bean>
+			
+			
+	
+			
 
 	<bean
 		class="org.training.hospital.facades.product.data.GenderData">
@@ -70,6 +75,12 @@
 			type="java.util.List&lt;org.training.hospital.facades.product.data.RepartoData>" />
 		<property name="citta" type="String" />
 	</bean>
+	
+		<bean
+		class="org.training.hospital.facades.product.data.MedicalProductData"
+		extends="de.hybris.platform.commercefacades.product.data.ProductData">
+	</bean>
+	
 
 	<bean
 		class="org.training.hospital.facades.product.data.PatientData">
@@ -84,6 +95,19 @@
 		<property name="name" type="String" />
 		<property name="bed" type="org.training.hospital.facades.product.data.BedData" />
 	</bean>
+
+	<bean
+		class="org.training.hospital.facades.product.data.PrescriptionData">
+		<property name="code" type="String" />
+		<property name="asl" type="String" />
+		<property name="district" type="String" />
+		<property name="date" type="java.util.Date" />
+		<property name="exemption" type="Boolean" />
+		<property name="patient" type="org.training.hospital.facades.product.data.PatientData" />
+		<property name="products" type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.ProductData>" />
+		
+	</bean>
+
 
 	<bean
 		class="org.training.hospital.facades.product.data.PathologyData">

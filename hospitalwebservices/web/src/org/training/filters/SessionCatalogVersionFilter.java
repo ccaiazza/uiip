@@ -6,6 +6,7 @@ package org.training.filters;
 import de.hybris.platform.catalog.CatalogVersionService;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -57,15 +58,17 @@ public class SessionCatalogVersionFilter extends AbstractUrlMatchingFilter
 		filterChain.doFilter(request, response);
 	}
 
+	@Override
+	protected String getValue(final HttpServletRequest request, final String regexp)
+	{
+		final Matcher matcher = getMatcher(request, regexp);
+		if (matcher.find())
+		{
+			return matcher.group(2);
+		}
+		return null;
+	}
 
-
-
-
-
-
-	/**
-	 * @return the catalogVersionService
-	 */
 	public CatalogVersionService getCatalogVersionService()
 	{
 		return catalogVersionService;

@@ -70,8 +70,8 @@ xmlns:context="http://www.springframework.org/schema/context"
 
     <bean id="hospitalwebservicesFilter" class="org.training.filters.SessionCatalogVersionFilter">
 		<property name="catalogVersionService" ref="catalogVersionService" />
-		<property name="catalogRegexp" value="^/[^/]+/product/catalogs/([^/]+)/[^/]+" />
-		<property name="catalogVersionRegexp" value="^/[^/]+/product/catalogs/[^/]+/([^/]+)"/> 
+		<property name="catalogRegexp" value="^/[^/]+/(product|prescription)/catalogs/([^/]+)/[^/]+"/>
+		<property name="catalogVersionRegexp" value="^/[^/]+/(product|prescription)/catalogs/[^/]+/([^/]+)"/> 
 	</bean>
 	<!-- Filter that catches and resolves exceptions thrown from other filters. Can be added to filter chain if you need such functionality -->
 	<alias alias="exceptionTranslationFilter" name="defaultExceptionTranslationFilter" />
