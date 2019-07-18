@@ -8,17 +8,24 @@ import org.training.hospital.core.service.PrescriptionService;
 import org.training.hospital.facades.facade.PrescriptionFacade;
 import org.training.hospital.facades.product.data.PrescriptionData;
 
+import de.hybris.platform.core.model.user.UserModel;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
+import de.hybris.platform.servicelayer.user.UserService;
 
 public class DefaultPrescriptionFacade implements PrescriptionFacade {
 	
 	private PrescriptionService prescriptionService;
 	private Converter<PrescriptionModel, PrescriptionData> prescriptionConverter ;
+	private UserService userService;
+	
 	
 
 	@Override
-	public List<PrescriptionData> getPrescriptionForPatient(String code) {
-		List<PrescriptionModel> list = prescriptionService.getPrescriptionForPatient(code);
+	public List<PrescriptionData> getPrescriptionsForPatientCode() {
+		final UserModel currentUser = userService.getCurrentUser();
+		final String patientCode = currentUser.getUid();
+		
+		List<PrescriptionModel> list = prescriptionService.getPrescriptionsForPatientCode(patientCode);
 		return prescriptionConverter.convertAll(list);	
 	}
 
@@ -38,5 +45,19 @@ public class DefaultPrescriptionFacade implements PrescriptionFacade {
 	@Required
 	public void setPrescriptionConverter(Converter<PrescriptionModel, PrescriptionData> prescriptionConverter) {
 		this.prescriptionConverter = prescriptionConverter;
+	}
+
+	
+	public UserService getUserService() {
+		return userService;
+	}
+
+	@Required
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}	
+	
+	
+	
+	
 }

@@ -30,23 +30,23 @@ import io.swagger.annotations.Authorization;
 
 
 @Controller
-@RequestMapping(value = "/prescription/catalogs/{catalogId}/{catalogVersion}")
+@RequestMapping(value ="/prescription/patient/{patientId}/catalogs/{catalogId}/{catalogVersion}" )
 public class PrescriptionController extends BaseController
 {
 	@Resource
 	private PrescriptionFacade prescriptionFacade;
 
-	@RequestMapping(value = "/patient/{code}", method = RequestMethod.GET)
+	@RequestMapping(value = "/description", method = RequestMethod.GET)
 	@CacheControl(directive = CacheControlDirective.PUBLIC, maxAge = 1800)
 	@ResponseBody
 	@ApiOperation(value = "Method with path parameter returns sample DTO", notes = "Sample method returning Cache-Control header and using Path Variable", produces = "application/json,application/xml", authorizations =
 { @Authorization(value = CLIENT_CREDENTIAL_AUTHORIZATION_NAME), @Authorization(value = PASSWORD_AUTHORIZATION_NAME) })
-	public List<PrescriptionWsDTO> getPrescriptionWsDTO(@PathVariable
-	final String code, @ApiParam(value = "Sample path variable parameter. It should be returned in response DTO", required = true)
+	public List<PrescriptionWsDTO> getPrescriptionWsDTO(
+	@ApiParam(value = "Sample path variable parameter. It should be returned in response DTO", required = true)
 	@RequestParam(required = false, defaultValue = HospitalwebservicesConstants.FULL_FIELD_SET)
 	final String fields)
 	{
-		final List<PrescriptionData> prescriptionData = prescriptionFacade.getPrescriptionForPatient(code);
+		final List<PrescriptionData> prescriptionData = prescriptionFacade.getPrescriptionsForPatientCode();
 		return getDataMapper().mapAsList(prescriptionData, PrescriptionWsDTO.class, fields);
 	}
 }
