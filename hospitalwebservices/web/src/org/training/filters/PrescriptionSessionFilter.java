@@ -4,9 +4,9 @@
 package org.training.filters;
 
 import de.hybris.platform.catalog.CatalogVersionService;
+import de.hybris.platform.servicelayer.session.SessionService;
 
 import java.io.IOException;
-import java.util.regex.Matcher;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -16,19 +16,21 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Required;
+import org.training.constants.HospitalwebservicesConstants;
+import org.training.hospital.core.service.PatientService;
 
 
-/**
- * @author ssole
- *
- */
-public class SessionCatalogVersionFilter extends AbstractUrlMatchingFilter
+
+public class PrescriptionSessionFilter extends AbstractUrlMatchingFilter
 {
 
 	private CatalogVersionService catalogVersionService;
 	private String catalogRegexp;
 	private String catalogVersionRegexp;
-	private static final Logger LOG = Logger.getLogger(SessionCatalogVersionFilter.class);
+	private String patientRegexp;
+	private SessionService sessionService;
+	private PatientService patientService;
+	private static final Logger LOG = Logger.getLogger(PrescriptionSessionFilter.class);
 
 	@Override
 	protected void doFilterInternal(final HttpServletRequest request, final HttpServletResponse response,
@@ -36,10 +38,11 @@ public class SessionCatalogVersionFilter extends AbstractUrlMatchingFilter
 	{
 		final String catalog = getValue(request, catalogRegexp);
 		final String version = getValue(request, catalogVersionRegexp);
+		final String patient = getValue(request, patientRegexp);
 
-		if (StringUtils.isEmpty(catalog) && StringUtils.isEmpty(version))
+		if (StringUtils.isEmpty(catalog) && StringUtils.isEmpty(version) && StringUtils.isEmpty(patient))
 		{
-			LOG.info("Catalog and version not found");
+			LOG.info("Catalog, catalogversion and patient not found");
 
 		}
 		else if (StringUtils.isEmpty(catalog))
@@ -50,23 +53,24 @@ public class SessionCatalogVersionFilter extends AbstractUrlMatchingFilter
 		{
 			LOG.info("Version not found");
 		}
+		else if (StringUtils.isEmpty(patient))
+		{
+			LOG.info("Patient not found");
+		}
 		else
 		{
+			if (patientService.getPatientForUid(patient) != null)
+			{
+				sessionService.setAttribute(HospitalwebservicesConstants.USER_SESSION, patientService.getPatientForUid(patient));
+			}
+			else
+			{
+				LOG.info("Patient not found");
+			}
 			this.catalogVersionService.setSessionCatalogVersion(catalog, version);
 		}
 
 		filterChain.doFilter(request, response);
-	}
-
-	@Override
-	protected String getValue(final HttpServletRequest request, final String regexp)
-	{
-		final Matcher matcher = getMatcher(request, regexp);
-		if (matcher.find())
-		{
-			return matcher.group(2);
-		}
-		return null;
 	}
 
 	public CatalogVersionService getCatalogVersionService()
@@ -120,7 +124,39 @@ public class SessionCatalogVersionFilter extends AbstractUrlMatchingFilter
 		this.catalogVersionRegexp = catalogVersionRegexp;
 	}
 
+	public String getPatientRegexp()
+	{
+		return patientRegexp;
 	}
+
+	@Required
+	public void setPatientRegexp(final String patientRegexp)
+	{
+		this.patientRegexp = patientRegexp;
+	}
+
+	public SessionService getSessionService()
+	{
+		return sessionService;
+	}
+
+	@Required
+	public void setSessionService(final SessionService sessionService)
+	{
+		this.sessionService = sessionService;
+	}
+
+	public PatientService getPatientService()
+	{
+		return patientService;
+	}
+
+	@Required
+	public void setPatientService(final PatientService patientService)
+	{
+		this.patientService = patientService;
+	}
+}
 
 
 
