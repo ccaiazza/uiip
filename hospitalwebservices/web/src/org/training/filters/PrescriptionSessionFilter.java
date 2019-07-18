@@ -49,7 +49,7 @@ public class PrescriptionSessionFilter extends AbstractUrlMatchingFilter
 		{
 			LOG.info("Catalog not found");
 		}
-		else if (StringUtils.isEmpty(catalog))
+		else if (StringUtils.isEmpty(version))
 		{
 			LOG.info("Version not found");
 		}
