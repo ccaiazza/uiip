@@ -40,34 +40,15 @@ public class PrescriptionSessionFilter extends AbstractUrlMatchingFilter
 		final String version = getValue(request, catalogVersionRegexp);
 		final String patient = getValue(request, patientRegexp);
 
-		if (StringUtils.isEmpty(catalog) && StringUtils.isEmpty(version) && StringUtils.isEmpty(patient))
-		{
-			LOG.info("Catalog, catalogversion and patient not found");
-
-		}
-		else if (StringUtils.isEmpty(catalog))
-		{
-			LOG.info("Catalog not found");
-		}
-		else if (StringUtils.isEmpty(version))
-		{
-			LOG.info("Version not found");
-		}
-		else if (StringUtils.isEmpty(patient))
-		{
-			LOG.info("Patient not found");
-		}
-		else
+		if (!(StringUtils.isEmpty(catalog) && StringUtils.isEmpty(version) && StringUtils.isEmpty(patient)))
 		{
 			if (patientService.getPatientForUid(patient) != null)
 			{
 				sessionService.setAttribute(HospitalwebservicesConstants.USER_SESSION, patientService.getPatientForUid(patient));
 			}
-			else
-			{
-				LOG.info("Patient not found");
-			}
+
 			this.catalogVersionService.setSessionCatalogVersion(catalog, version);
+
 		}
 
 		filterChain.doFilter(request, response);

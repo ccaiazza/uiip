@@ -32,24 +32,10 @@ public class ProductSessionFilter extends AbstractUrlMatchingFilter
 			final String catalog = getValue(request, catalogRegexp);
 			final String version = getValue(request, catalogVersionRegexp);
 
-			if (StringUtils.isEmpty(catalog) && StringUtils.isEmpty(version))
-			{
-				LOG.info("Catalog and catalogversion not found");
-
-			}
-			else if (StringUtils.isEmpty(catalog))
-			{
-				LOG.info("Catalog not found");
-			}
-			else if (StringUtils.isEmpty(catalog))
-			{
-				LOG.info("Version not found");
-			}
-			else
+			if (!(StringUtils.isEmpty(catalog) && StringUtils.isEmpty(version)))
 			{
 				this.catalogVersionService.setSessionCatalogVersion(catalog, version);
 			}
-
 			filterChain.doFilter(request, response);
 		}
 	}
