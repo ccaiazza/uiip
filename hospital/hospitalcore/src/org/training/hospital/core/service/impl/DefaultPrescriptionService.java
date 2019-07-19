@@ -27,11 +27,8 @@ public class DefaultPrescriptionService implements PrescriptionService {
 	}
 
 	@Override
-	public List<PrescriptionModel> getPrescriptionForPatient(String code) {
-		final List<PrescriptionModel> rs=  prescriptionDao.findPrescriptionByPatient(code);
-		for(PrescriptionModel p :rs) {	
-			p.getProducts();
-		}
+	public List<PrescriptionModel> getPrescriptionsForPatientCode(String code) {
+		final List<PrescriptionModel> rs=  prescriptionDao.findPrescriptionsByPatientCode(code);
 		return rs;
 	}
 

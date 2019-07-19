@@ -33,8 +33,8 @@ public class DefaultPrescriptionDao extends DefaultGenericDao implements Prescri
 		}
 	}
 	@Override
-	public List<PrescriptionModel> findPrescriptionByPatient(String code) {
-		final String queryString= "SELECT {" +PrescriptionModel.PK +"} FROM {PRESCRIPTION AS P JOIN PATIENT AS C ON{"+ PrescriptionModel.PATIENT +"} = {C.PK}} WHERE{C.UID} =?code";
+	public List<PrescriptionModel> findPrescriptionsByPatientCode(String code) {
+		final String queryString= "SELECT {" +PrescriptionModel.PK +"} FROM {Prescription AS P JOIN Patient AS C ON{P.Patient} = {C.pk}} WHERE{C.uid} =?code";
 
 		final FlexibleSearchQuery query=new FlexibleSearchQuery(queryString);
 		query.addQueryParameter("code", code);
