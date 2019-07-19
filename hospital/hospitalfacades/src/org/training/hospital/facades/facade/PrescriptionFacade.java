@@ -6,6 +6,6 @@ import org.training.hospital.facades.product.data.PrescriptionData;
 
 public interface PrescriptionFacade {
 	
-	public List<PrescriptionData> getPrescriptionForPatient(String code);
+	public List<PrescriptionData> getPrescriptionsForPatientCode();
 
 }
