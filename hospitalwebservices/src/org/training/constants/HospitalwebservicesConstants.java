@@ -31,6 +31,7 @@ public final class HospitalwebservicesConstants extends GeneratedHospitalwebserv
 	public static final String BASIC_FIELD_SET = "BASIC";
 	public static final String FULL_FIELD_SET = "FULL";
 	public static final String BASIC_OPTION = "BASIC,DESCRIPTION,MEDICAL,CATEGORIES";
+	public static final String USER_SESSION = "user";
 
 	private HospitalwebservicesConstants()
 	{

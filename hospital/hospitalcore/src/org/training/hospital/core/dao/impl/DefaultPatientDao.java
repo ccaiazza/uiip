@@ -3,15 +3,15 @@
  */
 package org.training.hospital.core.dao.impl;
 
-import de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao;
-import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
-import de.hybris.platform.servicelayer.search.SearchResult;
-
 import java.util.Date;
 import java.util.List;
 
 import org.training.hospital.core.dao.PatientDao;
 import org.training.hospital.core.model.PatientModel;
+
+import de.hybris.platform.servicelayer.internal.dao.DefaultGenericDao;
+import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
+import de.hybris.platform.servicelayer.search.SearchResult;
 
 /**
  * @author soprasteria
@@ -53,18 +53,15 @@ public class DefaultPatientDao extends DefaultGenericDao implements PatientDao
 
 	@Override
 	public PatientModel findPatientByUid(String uid) {
-		
-	final String queryString= "SELECT {"+ PatientModel.PK +"} FROM {"+ PatientModel._TYPECODE +" AS P } WHERE {P.uid}=?uid ";	
-	
-	final FlexibleSearchQuery query= new FlexibleSearchQuery(queryString);
-	query.addQueryParameter("uid", uid);
-	final SearchResult<PatientModel> result=getFlexibleSearchService().search(query);
-		return result.getResult().get(0);
+
+		final String queryString= "SELECT {"+ PatientModel.PK +"} FROM {"+ PatientModel._TYPECODE +" AS P } WHERE {P.uid}=?uid ";	
+
+		final FlexibleSearchQuery query= new FlexibleSearchQuery(queryString);
+		query.addQueryParameter("uid", uid);
+		final SearchResult<PatientModel> result=getFlexibleSearchService().search(query);
+		if(result.getResult().isEmpty()) {
+			return null;
+		}
+		else return result.getResult().get(0);
 	}
-
-	
-
-
-
-
 }

@@ -274,6 +274,7 @@
 		class="org.training.hospital.facades.impl.DefaultPrescriptionFacade">
 		<property name="prescriptionService" ref="prescriptionService" />
 		<property name="prescriptionConverter" ref="prescriptionConverter" />	
+		<property name="userService" ref="userService" />
 	</bean>
 	
 	<alias name="defaultRepartoPopulator" alias="repartoPopulator" />

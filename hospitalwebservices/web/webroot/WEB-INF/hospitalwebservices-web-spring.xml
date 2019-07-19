@@ -55,7 +55,8 @@ xmlns:context="http://www.springframework.org/schema/context"
 					- comment or remove restSessionFilter above
 					- comment or remove SessionHindingRequestFilter in web.xml -->
 <!-- 				<ref bean="sessionFilter" /> -->
-				<ref bean = "hospitalwebservicesFilter"/>
+				<ref bean = "hospitalwebservicesPrescriptionFilter"/>
+				<ref bean = "hospitalwebservicesProductFilter"/>
 				
 
 				<!-- Security -->
@@ -68,10 +69,19 @@ xmlns:context="http://www.springframework.org/schema/context"
 		<property name="sessionService" ref="sessionService" />
 	</bean>
 
-    <bean id="hospitalwebservicesFilter" class="org.training.filters.SessionCatalogVersionFilter">
+    <bean id="hospitalwebservicesPrescriptionFilter" class="org.training.filters.PrescriptionSessionFilter">
 		<property name="catalogVersionService" ref="catalogVersionService" />
-		<property name="catalogRegexp" value="^/[^/]+/(product|prescription)/catalogs/([^/]+)/[^/]+"/>
-		<property name="catalogVersionRegexp" value="^/[^/]+/(product|prescription)/catalogs/[^/]+/([^/]+)"/> 
+		<property name="sessionService" ref="sessionService" />
+		<property name="patientService" ref="patientService" />
+		<property name="catalogRegexp" value="^/[^/]+/prescription/[^/]+/[^/]+/catalogs/([^/]+)/[^/]+"/>
+		<property name="catalogVersionRegexp" value="^/[^/]+/prescription/[^/]+/[^/]+/catalogs/[^/]+/([^/]+)"/> 
+		<property name="patientRegexp" value="^/[^/]+/prescription/[^/]+/([^/]+)/catalogs/[^/]+/[^/]+"/> 
+	</bean>
+	
+	 <bean id="hospitalwebservicesProductFilter" class="org.training.filters.ProductSessionFilter">
+		<property name="catalogVersionService" ref="catalogVersionService" />
+		<property name="catalogRegexp" value="^/[^/]+/product/catalogs/([^/]+)/[^/]+"/>
+		<property name="catalogVersionRegexp" value="^/[^/]+/product/catalogs/[^/]+/([^/]+)"/> 
 	</bean>
 	<!-- Filter that catches and resolves exceptions thrown from other filters. Can be added to filter chain if you need such functionality -->
 	<alias alias="exceptionTranslationFilter" name="defaultExceptionTranslationFilter" />
