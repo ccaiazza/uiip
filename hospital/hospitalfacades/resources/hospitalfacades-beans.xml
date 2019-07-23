@@ -104,8 +104,7 @@
 		<property name="date" type="java.util.Date" />
 		<property name="exemption" type="Boolean" />
 		<property name="patient" type="org.training.hospital.facades.product.data.PatientData" />
-		<property name="products" type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.ProductData>" />
-		
+		<property name="products" type="java.util.List&lt;org.training.hospital.facades.product.data.MedicalProductData>" />
 	</bean>
 
 
