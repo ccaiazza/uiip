@@ -868,4 +868,15 @@
 		<property name="prescriptionDao" ref="defaultPrescriptionDao" />
 	</bean>
 	
+	<alias name="defaultMedicalProductDao" alias="medicalProductDao" />
+	<bean id="defaultMedicalProductDao"
+		class="org.training.hospital.core.dao.impl.DefaultMedicalProductDao">
+		<constructor-arg value="MedicalProduct" />
+	</bean>
+	
+	<alias name="defaultMedicalProductService" alias="medicalProductService" />
+	<bean id="defaultMedicalProductService"
+		class="org.training.hospital.core.service.impl.DefaultMedicalProductService">
+		<property name="medicalProductDao" ref="defaultMedicalProductDao" />
+	</bean>
 </beans>

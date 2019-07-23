@@ -1,7 +1,5 @@
 package org.training.hospital.core.service.impl;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Required;
@@ -23,7 +21,9 @@ public class DefaultPrescriptionService implements PrescriptionService {
 		if(rs !=null) {
 			return rs;
 		}
-		return rs;
+		else {
+			return null;
+		}
 	}
 
 	@Override

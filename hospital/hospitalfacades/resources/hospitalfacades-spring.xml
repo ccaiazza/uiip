@@ -274,6 +274,7 @@
 		class="org.training.hospital.facades.impl.DefaultPrescriptionFacade">
 		<property name="prescriptionService" ref="prescriptionService" />
 		<property name="prescriptionConverter" ref="prescriptionConverter" />	
+		<property name="reversePrescriptionConverter" ref="reversePrescriptionConverter" />	
 		<property name="userService" ref="userService" />
 	</bean>
 	
@@ -321,7 +322,7 @@
 	<bean id="defaultMedicalProductConverter"
 		parent="abstractPopulatingConverter">
 		<property name="targetClass"
-			value="de.hybris.platform.commercefacades.product.data.ProductData" />
+			value="org.training.hospital.facades.product.data.MedicalProductData" />
 		<property name="populators">
 			<list>
 				<ref bean="productMedicalPopulator" />
@@ -497,6 +498,28 @@
 				<entry key="VARIANT_FULL"
 					value-ref="productVariantFullPopulatorList" />
 			</map>
+		</property>
+	</bean>
+	
+		<alias name="defaultReversePrescriptionPopulator"
+		alias="reversePrescriptionPopulator" />
+	<bean id="defaultReversePrescriptionPopulator"
+		class="org.training.hospital.facades.populators.ReversePrescriptionPopulator">
+		<property name="modelService" ref="modelService" />
+		<property name="userService" ref="userService" />
+		<property name="patientService" ref="patientService" />
+		<property name="medicalProductService" ref="medicalProductService" />
+	</bean>
+	
+	<alias name="defaultReversePrescriptionConverter" alias="reversePrescriptionConverter" />
+	<bean id="defaultReversePrescriptionConverter"
+		parent="abstractPopulatingConverter">
+		<property name="targetClass"
+			value="org.training.hospital.core.model.PrescriptionModel" />
+		<property name="populators">
+			<list>
+				<ref bean="reversePrescriptionPopulator" />
+			</list>
 		</property>
 	</bean>
 </beans>
