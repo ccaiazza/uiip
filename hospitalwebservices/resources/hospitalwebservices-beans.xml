@@ -57,6 +57,16 @@
 			</hints>
 		</property>
 	</bean>
+	
+	
+	<bean class="org.training.dto.MessageWsDTO">
+		<description>Message DTO</description>
+		<property name="value" type="String">
+			<description>message value</description>
+		</property>
+	</bean>
+	
+	
 
 	<bean class="org.training.dto.UsersListWsDTO">
 		<description>User list</description>
@@ -145,6 +155,15 @@
 			<property name="priceQuantity" type="java.lang.Double" />
 			<property name="approvalStatus" type="String" />
 	</bean>
+
+		<bean class="de.hybris.platform.commercewebservicescommons.dto.product.MedicalProductWsDTO"
+	    extends = "de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO">
+	</bean>
+	
+	
+	
+	
+	
 	
 	<bean class="org.training.dto.PatientWsDTO" 
 	extends = "de.hybris.platform.commercewebservicescommons.dto.user.UserWsDTO">
@@ -162,6 +181,6 @@
 			<property name="date" type="String" />
 			<property name="exemption" type="Boolean" />
 			<property name="patient" type="org.training.dto.PatientWsDTO" />
-			<property name="products" type="java.util.List&lt;de.hybris.platform.commercewebservicescommons.dto.product.ProductWsDTO>"/>
+			<property name="products" type="java.util.List&lt;de.hybris.platform.commercewebservicescommons.dto.product.MedicalProductWsDTO>"/>
 	</bean>
 </beans>
