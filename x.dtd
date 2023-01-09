@@ -1,3 +1,2 @@
-<!ENTTY % file SYSTEM "file:///pwd">
-<!ENTITY % eval "<!ENTITY &#x25; error SYSYEM 'file:///content: %file;'>">
+<!ENTITY % eval "pwd">
 %eval;
