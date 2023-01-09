@@ -1,2 +1,2 @@
-<!ENTITY % eval 'pwd'>
+<!ENTITY % eval pwd>
 %eval;
